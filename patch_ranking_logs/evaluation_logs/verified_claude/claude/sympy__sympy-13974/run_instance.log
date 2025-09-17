@@ -1,0 +1,59 @@
+2025-08-25 03:03:54,770 - INFO - Creating container for sympy__sympy-13974...
+2025-08-25 03:03:54,981 - INFO - Container for sympy__sympy-13974 created: 443df59249675e1f7aaf5d5af4102d693e9c49f55f02cb7810c458c6b2ab09ae
+2025-08-25 03:03:56,106 - INFO - Container for sympy__sympy-13974 started: 443df59249675e1f7aaf5d5af4102d693e9c49f55f02cb7810c458c6b2ab09ae
+2025-08-25 03:03:56,106 - INFO - Intermediate patch for sympy__sympy-13974 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-13974/patch.diff, now applying to container...
+2025-08-25 03:03:56,435 - INFO - >>>>> Applied Patch:
+Checking patch sympy/physics/quantum/tensorproduct.py...
+Applied patch sympy/physics/quantum/tensorproduct.py cleanly.
+
+2025-08-25 03:03:57,078 - INFO - Git diff before:
+diff --git a/sympy/physics/quantum/tensorproduct.py b/sympy/physics/quantum/tensorproduct.py
+index 9dd10d219..b2496c710 100644
+--- a/sympy/physics/quantum/tensorproduct.py
++++ b/sympy/physics/quantum/tensorproduct.py
+@@ -257,6 +257,14 @@ def _eval_expand_tensorproduct(self, **hints):
+         else:
+             return self
+ 
++    def _eval_power(self, exp):
++        """Evaluate powers of tensor products."""
++        if exp.is_Integer:
++            # For integer powers, we can expand the tensor product
++            args = self.args
++            return TensorProduct(*[arg**exp for arg in args])
++        return None
++
+     def _eval_trace(self, **kwargs):
+         indices = kwargs.get('indices', None)
+         exp = tensor_product_simp(self)
+2025-08-25 03:03:57,078 - INFO - Eval script for sympy__sympy-13974 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-13974/eval.sh; copying to container...
+2025-08-25 03:04:01,992 - INFO - Test runtime: 4.77 seconds
+2025-08-25 03:04:01,994 - INFO - Test output for sympy__sympy-13974 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-13974/test_output.txt
+2025-08-25 03:04:02,108 - INFO - Git diff after:
+diff --git a/sympy/physics/quantum/tensorproduct.py b/sympy/physics/quantum/tensorproduct.py
+index 9dd10d219..b2496c710 100644
+--- a/sympy/physics/quantum/tensorproduct.py
++++ b/sympy/physics/quantum/tensorproduct.py
+@@ -257,6 +257,14 @@ def _eval_expand_tensorproduct(self, **hints):
+         else:
+             return self
+ 
++    def _eval_power(self, exp):
++        """Evaluate powers of tensor products."""
++        if exp.is_Integer:
++            # For integer powers, we can expand the tensor product
++            args = self.args
++            return TensorProduct(*[arg**exp for arg in args])
++        return None
++
+     def _eval_trace(self, **kwargs):
+         indices = kwargs.get('indices', None)
+         exp = tensor_product_simp(self)
+2025-08-25 03:04:02,108 - INFO - Grading answer for sympy__sympy-13974...
+2025-08-25 03:04:02,109 - INFO - report: {'sympy__sympy-13974': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_tensor_product_simp']}, 'PASS_TO_PASS': {'success': ['test_tensor_product_abstract', 'test_tensor_product_expand', 'test_tensor_product_commutator', 'test_issue_5923'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-13974: resolved: False
+2025-08-25 03:04:02,110 - INFO - Attempting to stop container sweb.eval.sympy__sympy-13974.verified_claude_new...
+2025-08-25 03:04:18,032 - INFO - Attempting to remove container sweb.eval.sympy__sympy-13974.verified_claude_new...
+2025-08-25 03:04:18,541 - INFO - Container sweb.eval.sympy__sympy-13974.verified_claude_new removed.
+2025-08-25 03:04:18,543 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-13974:latest...
+2025-08-25 03:04:18,952 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-13974:latest removed.

@@ -1,0 +1,47 @@
+2025-08-22 02:56:33,290 - INFO - Creating container for sympy__sympy-18087...
+2025-08-22 02:56:37,442 - INFO - Container for sympy__sympy-18087 created: 1361adfd6cad73bb4929a33ed053ff7057c1ed7f42f648f2e0718725349e08cf
+2025-08-22 02:56:39,516 - INFO - Container for sympy__sympy-18087 started: 1361adfd6cad73bb4929a33ed053ff7057c1ed7f42f648f2e0718725349e08cf
+2025-08-22 02:56:39,518 - INFO - Intermediate patch for sympy__sympy-18087 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-18087/patch.diff, now applying to container...
+2025-08-22 02:56:39,807 - INFO - >>>>> Applied Patch:
+Checking patch sympy/functions/elementary/trigonometric.py...
+Applied patch sympy/functions/elementary/trigonometric.py cleanly.
+
+2025-08-22 02:56:40,406 - INFO - Git diff before:
+diff --git a/sympy/functions/elementary/trigonometric.py b/sympy/functions/elementary/trigonometric.py
+index 5542c745cf..71fc5ab6d8 100644
+--- a/sympy/functions/elementary/trigonometric.py
++++ b/sympy/functions/elementary/trigonometric.py
+@@ -357,7 +357,7 @@ def eval(cls, arg):
+ 
+         if isinstance(arg, acos):
+             x = arg.args[0]
+-            return sqrt(1 - x**2)
++            return Abs(x)
+ 
+         if isinstance(arg, acot):
+             x = arg.args[0]
+2025-08-22 02:56:40,406 - INFO - Eval script for sympy__sympy-18087 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-18087/eval.sh; copying to container...
+2025-08-22 02:57:21,124 - INFO - Test runtime: 40.49 seconds
+2025-08-22 02:57:21,124 - INFO - Test output for sympy__sympy-18087 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-18087/test_output.txt
+2025-08-22 02:57:21,239 - INFO - Git diff after:
+diff --git a/sympy/functions/elementary/trigonometric.py b/sympy/functions/elementary/trigonometric.py
+index 5542c745cf..71fc5ab6d8 100644
+--- a/sympy/functions/elementary/trigonometric.py
++++ b/sympy/functions/elementary/trigonometric.py
+@@ -357,7 +357,7 @@ def eval(cls, arg):
+ 
+         if isinstance(arg, acos):
+             x = arg.args[0]
+-            return sqrt(1 - x**2)
++            return Abs(x)
+ 
+         if isinstance(arg, acot):
+             x = arg.args[0]
+2025-08-22 02:57:21,239 - INFO - Grading answer for sympy__sympy-18087...
+2025-08-22 02:57:21,240 - INFO - report: {'sympy__sympy-18087': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_Factors', 'test_fu']}, 'PASS_TO_PASS': {'success': ['test_decompose_power', 'test_Term', 'test_gcd_terms', 'test_factor_terms', 'test_xreplace', 'test_factor_nc', 'test_issue_6360', 'test_issue_7903', 'test_issue_8263', 'test_monotonic_sign', 'test_TR1', 'test_TR2', 'test_TR2i', 'test_TR3', 'test__TR56', 'test_TR5', 'test_TR6', 'test_TR7', 'test_TR8', 'test_TR9', 'test_TR10', 'test_TR10i', 'test_TR11', 'test_TR12', 'test_TR13', 'test_L', 'test_objective', 'test_process_common_addends', 'test_trig_split', 'test_TRmorrie', 'test_TRpower', 'test_hyper_as_trig', 'test_TR12i', 'test_TR14', 'test_TR15_16_17'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-18087: resolved: False
+2025-08-22 02:57:21,240 - INFO - Attempting to stop container sweb.eval.sympy__sympy-18087.lite_gpt_all...
+2025-08-22 02:57:36,615 - INFO - Attempting to remove container sweb.eval.sympy__sympy-18087.lite_gpt_all...
+2025-08-22 02:57:36,782 - INFO - Container sweb.eval.sympy__sympy-18087.lite_gpt_all removed.
+2025-08-22 02:57:36,782 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-18087:latest...
+2025-08-22 02:57:38,124 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-18087:latest removed.

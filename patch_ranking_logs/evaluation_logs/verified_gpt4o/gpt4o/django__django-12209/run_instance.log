@@ -1,0 +1,63 @@
+2025-08-26 05:08:58,581 - INFO - Creating container for django__django-12209...
+2025-08-26 05:08:59,331 - INFO - Container for django__django-12209 created: d6f58d4d330e666ede0f8375605076755fb537b4aed2f5350108939f2279670a
+2025-08-26 05:09:06,684 - INFO - Container for django__django-12209 started: d6f58d4d330e666ede0f8375605076755fb537b4aed2f5350108939f2279670a
+2025-08-26 05:09:06,684 - INFO - Intermediate patch for django__django-12209 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-12209/patch.diff, now applying to container...
+2025-08-26 05:09:06,990 - INFO - >>>>> Applied Patch:
+Checking patch django/db/models/base.py...
+Applied patch django/db/models/base.py cleanly.
+
+2025-08-26 05:09:08,645 - INFO - Git diff before:
+diff --git a/django/db/models/base.py b/django/db/models/base.py
+index e3b14a41a0..a8bc6bd832 100644
+--- a/django/db/models/base.py
++++ b/django/db/models/base.py
+@@ -847,12 +847,14 @@ class Model(metaclass=ModelBase):
+         if not pk_set and (force_update or update_fields):
+             raise ValueError("Cannot force an update in save() with no primary key.")
+         updated = False
+-        # Skip an UPDATE when adding an instance and primary key has a default.
++        # Skip an UPDATE when adding an instance and primary key has a default,
++        # unless an explicit primary key value is provided.
+         if (
+             not force_insert and
+             self._state.adding and
+             self._meta.pk.default and
+-            self._meta.pk.default is not NOT_PROVIDED
++            self._meta.pk.default is not NOT_PROVIDED and
++            not pk_set
+         ):
+             force_insert = True
+         # If possible, try an UPDATE. If that doesn't update anything, do an INSERT.
+2025-08-26 05:09:08,647 - INFO - Eval script for django__django-12209 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-12209/eval.sh; copying to container...
+2025-08-26 05:09:25,298 - INFO - Test runtime: 16.53 seconds
+2025-08-26 05:09:25,298 - INFO - Test output for django__django-12209 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-12209/test_output.txt
+2025-08-26 05:09:25,390 - INFO - Git diff after:
+diff --git a/django/db/models/base.py b/django/db/models/base.py
+index e3b14a41a0..a8bc6bd832 100644
+--- a/django/db/models/base.py
++++ b/django/db/models/base.py
+@@ -847,12 +847,14 @@ class Model(metaclass=ModelBase):
+         if not pk_set and (force_update or update_fields):
+             raise ValueError("Cannot force an update in save() with no primary key.")
+         updated = False
+-        # Skip an UPDATE when adding an instance and primary key has a default.
++        # Skip an UPDATE when adding an instance and primary key has a default,
++        # unless an explicit primary key value is provided.
+         if (
+             not force_insert and
+             self._state.adding and
+             self._meta.pk.default and
+-            self._meta.pk.default is not NOT_PROVIDED
++            self._meta.pk.default is not NOT_PROVIDED and
++            not pk_set
+         ):
+             force_insert = True
+         # If possible, try an UPDATE. If that doesn't update anything, do an INSERT.
+2025-08-26 05:09:25,390 - INFO - Grading answer for django__django-12209...
+2025-08-26 05:09:25,391 - INFO - report: {'django__django-12209': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['partial(func, *args, **keywords) - new function with partial application'], 'failure': []}, 'PASS_TO_PASS': {'success': [], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-12209: resolved: True
+2025-08-26 05:09:25,391 - INFO - Attempting to stop container sweb.eval.django__django-12209.verified_gpt4o_all2...
+2025-08-26 05:09:41,721 - INFO - Attempting to remove container sweb.eval.django__django-12209.verified_gpt4o_all2...
+2025-08-26 05:09:41,856 - INFO - Container sweb.eval.django__django-12209.verified_gpt4o_all2 removed.
+2025-08-26 05:09:41,856 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-12209:latest...
+2025-08-26 05:09:53,261 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-12209:latest removed.

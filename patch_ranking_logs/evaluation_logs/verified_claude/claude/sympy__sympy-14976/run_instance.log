@@ -1,0 +1,55 @@
+2025-08-25 03:03:23,525 - INFO - Creating container for sympy__sympy-14976...
+2025-08-25 03:03:23,675 - INFO - Container for sympy__sympy-14976 created: f12c7a54ac58ec96fe2d50a48c7549b7213fe6749c1d9d5e35221c6948135356
+2025-08-25 03:03:26,204 - INFO - Container for sympy__sympy-14976 started: f12c7a54ac58ec96fe2d50a48c7549b7213fe6749c1d9d5e35221c6948135356
+2025-08-25 03:03:26,207 - INFO - Intermediate patch for sympy__sympy-14976 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-14976/patch.diff, now applying to container...
+2025-08-25 03:03:27,076 - INFO - >>>>> Applied Patch:
+Checking patch sympy/utilities/lambdify.py...
+Applied patch sympy/utilities/lambdify.py cleanly.
+
+2025-08-25 03:03:27,781 - INFO - Git diff before:
+diff --git a/sympy/utilities/lambdify.py b/sympy/utilities/lambdify.py
+index f71bea25f..08fa03237 100644
+--- a/sympy/utilities/lambdify.py
++++ b/sympy/utilities/lambdify.py
+@@ -397,7 +397,11 @@ def lambdify(args, expr, modules=None, printer=None, use_imps=True,
+ 
+     if printer is None:
+         if _module_present('mpmath', namespaces):
+-            from sympy.printing.pycode import MpmathPrinter as Printer
++            from sympy.printing.pycode import MpmathPrinter
++            class ModifiedMpmathPrinter(MpmathPrinter):
++                def _print_Rational(self, expr):
++                    return 'mpmath.mpf(\'%s\')/mpmath.mpf(\'%s\')' % (expr.p, expr.q)
++            Printer = ModifiedMpmathPrinter
+         elif _module_present('numpy', namespaces):
+             from sympy.printing.pycode import NumPyPrinter as Printer
+         elif _module_present('numexpr', namespaces):
+2025-08-25 03:03:27,782 - INFO - Eval script for sympy__sympy-14976 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-14976/eval.sh; copying to container...
+2025-08-25 03:03:33,515 - INFO - Test runtime: 5.65 seconds
+2025-08-25 03:03:33,516 - INFO - Test output for sympy__sympy-14976 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-14976/test_output.txt
+2025-08-25 03:03:34,195 - INFO - Git diff after:
+diff --git a/sympy/utilities/lambdify.py b/sympy/utilities/lambdify.py
+index f71bea25f..08fa03237 100644
+--- a/sympy/utilities/lambdify.py
++++ b/sympy/utilities/lambdify.py
+@@ -397,7 +397,11 @@ def lambdify(args, expr, modules=None, printer=None, use_imps=True,
+ 
+     if printer is None:
+         if _module_present('mpmath', namespaces):
+-            from sympy.printing.pycode import MpmathPrinter as Printer
++            from sympy.printing.pycode import MpmathPrinter
++            class ModifiedMpmathPrinter(MpmathPrinter):
++                def _print_Rational(self, expr):
++                    return 'mpmath.mpf(\'%s\')/mpmath.mpf(\'%s\')' % (expr.p, expr.q)
++            Printer = ModifiedMpmathPrinter
+         elif _module_present('numpy', namespaces):
+             from sympy.printing.pycode import NumPyPrinter as Printer
+         elif _module_present('numexpr', namespaces):
+2025-08-25 03:03:34,195 - INFO - Grading answer for sympy__sympy-14976...
+2025-08-25 03:03:34,196 - INFO - report: {'sympy__sympy-14976': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_MpmathPrinter']}, 'PASS_TO_PASS': {'success': ['test_PythonCodePrinter', 'test_NumPyPrinter', 'test_SciPyPrinter', 'test_pycode_reserved_words', 'test_printmethod', 'test_codegen_ast_nodes', 'test_nsolve_denominator', 'test_nsolve', 'test_issue_6408', 'test_increased_dps', 'test_nsolve_precision', 'test_nsolve_complex', 'test_nsolve_dict_kwarg'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-14976: resolved: False
+2025-08-25 03:03:34,196 - INFO - Attempting to stop container sweb.eval.sympy__sympy-14976.verified_claude_new...
+2025-08-25 03:03:49,804 - INFO - Attempting to remove container sweb.eval.sympy__sympy-14976.verified_claude_new...
+2025-08-25 03:03:49,852 - INFO - Container sweb.eval.sympy__sympy-14976.verified_claude_new removed.
+2025-08-25 03:03:49,852 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-14976:latest...
+2025-08-25 03:03:50,166 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-14976:latest removed.

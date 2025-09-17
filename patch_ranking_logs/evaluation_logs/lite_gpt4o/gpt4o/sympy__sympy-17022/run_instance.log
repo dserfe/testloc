@@ -1,0 +1,51 @@
+2025-08-22 02:56:15,828 - INFO - Creating container for sympy__sympy-17022...
+2025-08-22 02:56:16,347 - INFO - Container for sympy__sympy-17022 created: f904bcdfc40d5013edc0a0ef1eccbcf8482b4059cd7f4576127f64bce097fe7f
+2025-08-22 02:56:24,001 - INFO - Container for sympy__sympy-17022 started: f904bcdfc40d5013edc0a0ef1eccbcf8482b4059cd7f4576127f64bce097fe7f
+2025-08-22 02:56:24,002 - INFO - Intermediate patch for sympy__sympy-17022 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-17022/patch.diff, now applying to container...
+2025-08-22 02:56:24,693 - INFO - >>>>> Applied Patch:
+Checking patch sympy/utilities/lambdify.py...
+Applied patch sympy/utilities/lambdify.py cleanly.
+
+2025-08-22 02:56:25,373 - INFO - Git diff before:
+diff --git a/sympy/utilities/lambdify.py b/sympy/utilities/lambdify.py
+index a940509b47..e117457ea5 100644
+--- a/sympy/utilities/lambdify.py
++++ b/sympy/utilities/lambdify.py
+@@ -22,8 +22,8 @@
+ # by simple variable maps, like I => 1j
+ MATH_DEFAULT = {}
+ MPMATH_DEFAULT = {}
+-NUMPY_DEFAULT = {"I": 1j}
+-SCIPY_DEFAULT = {"I": 1j}
++NUMPY_DEFAULT = {}
++SCIPY_DEFAULT = {}
+ TENSORFLOW_DEFAULT = {}
+ SYMPY_DEFAULT = {}
+ NUMEXPR_DEFAULT = {}
+2025-08-22 02:56:25,411 - INFO - Eval script for sympy__sympy-17022 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-17022/eval.sh; copying to container...
+2025-08-22 02:56:34,518 - INFO - Test runtime: 8.53 seconds
+2025-08-22 02:56:34,518 - INFO - Test output for sympy__sympy-17022 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-17022/test_output.txt
+2025-08-22 02:56:34,689 - INFO - Git diff after:
+diff --git a/sympy/utilities/lambdify.py b/sympy/utilities/lambdify.py
+index a940509b47..e117457ea5 100644
+--- a/sympy/utilities/lambdify.py
++++ b/sympy/utilities/lambdify.py
+@@ -22,8 +22,8 @@
+ # by simple variable maps, like I => 1j
+ MATH_DEFAULT = {}
+ MPMATH_DEFAULT = {}
+-NUMPY_DEFAULT = {"I": 1j}
+-SCIPY_DEFAULT = {"I": 1j}
++NUMPY_DEFAULT = {}
++SCIPY_DEFAULT = {}
+ TENSORFLOW_DEFAULT = {}
+ SYMPY_DEFAULT = {}
+ NUMEXPR_DEFAULT = {}
+2025-08-22 02:56:34,689 - INFO - Grading answer for sympy__sympy-17022...
+2025-08-22 02:56:34,689 - INFO - report: {'sympy__sympy-17022': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_NumPyPrinter']}, 'PASS_TO_PASS': {'success': ['test_numpy_piecewise_regression', 'test_PythonCodePrinter', 'test_MpmathPrinter', 'test_SciPyPrinter', 'test_pycode_reserved_words', 'test_printmethod', 'test_codegen_ast_nodes', 'test_issue_14283'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-17022: resolved: False
+2025-08-22 02:56:34,690 - INFO - Attempting to stop container sweb.eval.sympy__sympy-17022.lite_gpt_all...
+2025-08-22 02:56:51,332 - INFO - Attempting to remove container sweb.eval.sympy__sympy-17022.lite_gpt_all...
+2025-08-22 02:56:51,731 - INFO - Container sweb.eval.sympy__sympy-17022.lite_gpt_all removed.
+2025-08-22 02:56:51,732 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-17022:latest...
+2025-08-22 02:56:53,115 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-17022:latest removed.

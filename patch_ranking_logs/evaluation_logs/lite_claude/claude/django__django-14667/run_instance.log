@@ -1,0 +1,53 @@
+2025-09-04 06:23:56,690 - INFO - Creating container for django__django-14667...
+2025-09-04 06:23:57,836 - INFO - Container for django__django-14667 created: 2d0cd0bf761428402c0e3238eb47b8d481f1187f1c24d6deb57264420efee90c
+2025-09-04 06:23:58,460 - INFO - Container for django__django-14667 started: 2d0cd0bf761428402c0e3238eb47b8d481f1187f1c24d6deb57264420efee90c
+2025-09-04 06:23:58,461 - INFO - Intermediate patch for django__django-14667 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-14667/patch.diff, now applying to container...
+2025-09-04 06:23:58,607 - INFO - >>>>> Applied Patch:
+Checking patch django/db/models/sql/query.py...
+Applied patch django/db/models/sql/query.py cleanly.
+
+2025-09-04 06:23:59,980 - INFO - Git diff before:
+diff --git a/django/db/models/sql/query.py b/django/db/models/sql/query.py
+index 8837881579..279ecd643c 100644
+--- a/django/db/models/sql/query.py
++++ b/django/db/models/sql/query.py
+@@ -2085,8 +2085,9 @@ class Query(BaseExpression):
+             # Add to existing deferred names.
+             self.deferred_loading = existing.union(field_names), True
+         else:
+-            # Remove names from the set of any existing "immediate load" names.
+-            self.deferred_loading = existing.difference(field_names), False
++            # When we're already in only() mode, we need to add these fields
++            # to be excluded from the only() fields.
++            self.deferred_loading = existing.union(field_names), True
+ 
+     def add_immediate_loading(self, field_names):
+         """
+2025-09-04 06:23:59,981 - INFO - Eval script for django__django-14667 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-14667/eval.sh; copying to container...
+2025-09-04 06:24:08,581 - INFO - Test runtime: 8.51 seconds
+2025-09-04 06:24:08,582 - INFO - Test output for django__django-14667 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-14667/test_output.txt
+2025-09-04 06:24:08,677 - INFO - Git diff after:
+diff --git a/django/db/models/sql/query.py b/django/db/models/sql/query.py
+index 8837881579..279ecd643c 100644
+--- a/django/db/models/sql/query.py
++++ b/django/db/models/sql/query.py
+@@ -2085,8 +2085,9 @@ class Query(BaseExpression):
+             # Add to existing deferred names.
+             self.deferred_loading = existing.union(field_names), True
+         else:
+-            # Remove names from the set of any existing "immediate load" names.
+-            self.deferred_loading = existing.difference(field_names), False
++            # When we're already in only() mode, we need to add these fields
++            # to be excluded from the only() fields.
++            self.deferred_loading = existing.union(field_names), True
+ 
+     def add_immediate_loading(self, field_names):
+         """
+2025-09-04 06:24:08,677 - INFO - Grading answer for django__django-14667...
+2025-09-04 06:24:08,678 - INFO - report: {'django__django-14667': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_defer_only_chaining (defer.tests.DeferTests)']}, 'PASS_TO_PASS': {'success': ['test_custom_refresh_on_deferred_loading (defer.tests.TestDefer2)', 'When an inherited model is fetched from the DB, its PK is also fetched.', 'Ensure select_related together with only on a proxy model behaves', 'test_eq (defer.tests.TestDefer2)', 'test_refresh_not_loading_deferred_fields (defer.tests.TestDefer2)', 'test_defer_baseclass_when_subclass_has_added_field (defer.tests.BigChildDeferTests)', 'test_defer_subclass (defer.tests.BigChildDeferTests)', 'test_defer_subclass_both (defer.tests.BigChildDeferTests)', 'test_only_baseclass_when_subclass_has_added_field (defer.tests.BigChildDeferTests)', 'test_only_subclass (defer.tests.BigChildDeferTests)', 'test_defer (defer.tests.DeferTests)', 'test_defer_baseclass_when_subclass_has_no_added_fields (defer.tests.DeferTests)', 'test_defer_extra (defer.tests.DeferTests)', 'test_defer_foreign_keys_are_deferred_and_not_traversed (defer.tests.DeferTests)', 'test_defer_none_to_clear_deferred_set (defer.tests.DeferTests)', 'test_defer_of_overridden_scalar (defer.tests.DeferTests)', 'test_defer_on_an_already_deferred_field (defer.tests.DeferTests)', 'test_defer_select_related_raises_invalid_query (defer.tests.DeferTests)', 'test_defer_values_does_not_defer (defer.tests.DeferTests)', 'test_defer_with_select_related (defer.tests.DeferTests)', 'test_get (defer.tests.DeferTests)', 'test_only (defer.tests.DeferTests)', 'test_only_baseclass_when_subclass_has_no_added_fields (defer.tests.DeferTests)', 'test_only_none_raises_error (defer.tests.DeferTests)', 'test_only_select_related_raises_invalid_query (defer.tests.DeferTests)', 'test_only_values_does_not_defer (defer.tests.DeferTests)', 'test_only_with_select_related (defer.tests.DeferTests)', 'test_saving_object_with_deferred_field (defer.tests.DeferTests)'], 'failure': ['test_defer_only_clear (defer.tests.DeferTests)']}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-14667: resolved: False
+2025-09-04 06:24:08,679 - INFO - Attempting to stop container sweb.eval.django__django-14667.lite_claude_all...
+2025-09-04 06:24:24,786 - INFO - Attempting to remove container sweb.eval.django__django-14667.lite_claude_all...
+2025-09-04 06:24:25,502 - INFO - Container sweb.eval.django__django-14667.lite_claude_all removed.
+2025-09-04 06:24:25,506 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-14667:latest...
+2025-09-04 06:24:28,267 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-14667:latest removed.

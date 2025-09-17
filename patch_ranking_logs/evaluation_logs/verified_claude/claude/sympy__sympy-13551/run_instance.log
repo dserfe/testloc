@@ -1,0 +1,69 @@
+2025-08-25 03:03:27,241 - INFO - Creating container for sympy__sympy-13551...
+2025-08-25 03:03:27,416 - INFO - Container for sympy__sympy-13551 created: 657b6f305fba954bbce92eb39d64cb3ca8a741f1fe06af38015c24432629f714
+2025-08-25 03:03:31,704 - INFO - Container for sympy__sympy-13551 started: 657b6f305fba954bbce92eb39d64cb3ca8a741f1fe06af38015c24432629f714
+2025-08-25 03:03:31,704 - INFO - Intermediate patch for sympy__sympy-13551 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-13551/patch.diff, now applying to container...
+2025-08-25 03:03:32,194 - INFO - >>>>> Applied Patch:
+Checking patch sympy/concrete/products.py...
+Applied patch sympy/concrete/products.py cleanly.
+
+2025-08-25 03:03:32,675 - INFO - Git diff before:
+diff --git a/sympy/concrete/products.py b/sympy/concrete/products.py
+index 66aafde2d..d09e20f06 100644
+--- a/sympy/concrete/products.py
++++ b/sympy/concrete/products.py
+@@ -255,6 +255,20 @@ def _eval_product(self, term, limits):
+         if dif.is_Integer:
+             return Mul(*[term.subs(k, a + i) for i in range(dif + 1)])
+ 
++        # Handle terms of form c + b**k where c is independent of k
++        if term.is_Add and len(term.args) == 2:
++            args = list(term.args)
++            if any(not arg.has(k) for arg in args):
++                # Find which term has k and which doesn't
++                k_term = next(arg for arg in args if arg.has(k))
++                c = next(arg for arg in args if not arg.has(k))
++                # Check if k_term is of form b**k
++                if k_term.is_Pow and k_term.args[1] == k:
++                    b = k_term.args[0]
++                    # For product(c + b**k, (k, a, n)) where c is independent of k
++                    # Use direct computation
++                    return Mul(*[c + b**i for i in range(a, n + 1)])
++
+         elif term.is_polynomial(k):
+             poly = term.as_poly(k)
+2025-08-25 03:03:32,675 - INFO - Eval script for sympy__sympy-13551 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-13551/eval.sh; copying to container...
+2025-08-25 03:03:55,748 - INFO - Test runtime: 22.86 seconds
+2025-08-25 03:03:55,748 - INFO - Test output for sympy__sympy-13551 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-13551/test_output.txt
+2025-08-25 03:03:56,231 - INFO - Git diff after:
+diff --git a/sympy/concrete/products.py b/sympy/concrete/products.py
+index 66aafde2d..d09e20f06 100644
+--- a/sympy/concrete/products.py
++++ b/sympy/concrete/products.py
+@@ -255,6 +255,20 @@ def _eval_product(self, term, limits):
+         if dif.is_Integer:
+             return Mul(*[term.subs(k, a + i) for i in range(dif + 1)])
+ 
++        # Handle terms of form c + b**k where c is independent of k
++        if term.is_Add and len(term.args) == 2:
++            args = list(term.args)
++            if any(not arg.has(k) for arg in args):
++                # Find which term has k and which doesn't
++                k_term = next(arg for arg in args if arg.has(k))
++                c = next(arg for arg in args if not arg.has(k))
++                # Check if k_term is of form b**k
++                if k_term.is_Pow and k_term.args[1] == k:
++                    b = k_term.args[0]
++                    # For product(c + b**k, (k, a, n)) where c is independent of k
++                    # Use direct computation
++                    return Mul(*[c + b**i for i in range(a, n + 1)])
++
+         elif term.is_polynomial(k):
+             poly = term.as_poly(k)
+2025-08-25 03:03:56,232 - INFO - Grading answer for sympy__sympy-13551...
+2025-08-25 03:03:56,233 - INFO - report: {'sympy__sympy-13551': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_issue_13546'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_karr_convention', 'test_karr_proposition_2a', 'test_karr_proposition_2b', 'test_multiple_products', 'test__eval_product', 'test_product_pow', 'test_infinite_product', 'test_conjugate_transpose', 'test_simplify', 'test_change_index', 'test_reorder', 'test_Product_is_convergent', 'test_reverse_order', 'test_issue_9983'], 'failure': ['test_simple_products', 'test_rational_products', 'test_special_products']}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-13551: resolved: False
+2025-08-25 03:03:56,234 - INFO - Attempting to stop container sweb.eval.sympy__sympy-13551.verified_claude_new...
+2025-08-25 03:04:12,367 - INFO - Attempting to remove container sweb.eval.sympy__sympy-13551.verified_claude_new...
+2025-08-25 03:04:12,470 - INFO - Container sweb.eval.sympy__sympy-13551.verified_claude_new removed.
+2025-08-25 03:04:12,471 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-13551:latest...
+2025-08-25 03:04:13,096 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-13551:latest removed.

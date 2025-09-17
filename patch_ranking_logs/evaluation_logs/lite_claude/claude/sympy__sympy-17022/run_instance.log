@@ -1,0 +1,59 @@
+2025-09-04 06:32:01,884 - INFO - Creating container for sympy__sympy-17022...
+2025-09-04 06:32:02,382 - INFO - Container for sympy__sympy-17022 created: 7c2e8e12e07a555656444b93fec5d24dd2422cc7217cab372aaa1b84d19035ab
+2025-09-04 06:32:03,730 - INFO - Container for sympy__sympy-17022 started: 7c2e8e12e07a555656444b93fec5d24dd2422cc7217cab372aaa1b84d19035ab
+2025-09-04 06:32:03,730 - INFO - Intermediate patch for sympy__sympy-17022 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-17022/patch.diff, now applying to container...
+2025-09-04 06:32:03,899 - INFO - >>>>> Applied Patch:
+Checking patch sympy/utilities/lambdify.py...
+Applied patch sympy/utilities/lambdify.py cleanly.
+
+2025-09-04 06:32:04,335 - INFO - Git diff before:
+diff --git a/sympy/utilities/lambdify.py b/sympy/utilities/lambdify.py
+index a940509b47..1b895156fb 100644
+--- a/sympy/utilities/lambdify.py
++++ b/sympy/utilities/lambdify.py
+@@ -19,11 +19,11 @@
+ __doctest_requires__ = {('lambdify',): ['numpy', 'tensorflow']}
+ 
+ # Default namespaces, letting us define translations that can't be defined
+-# by simple variable maps, like I => 1j
++# by simple variable maps
+ MATH_DEFAULT = {}
+ MPMATH_DEFAULT = {}
+-NUMPY_DEFAULT = {"I": 1j}
+-SCIPY_DEFAULT = {"I": 1j}
++NUMPY_DEFAULT = {}
++SCIPY_DEFAULT = {}
+ TENSORFLOW_DEFAULT = {}
+ SYMPY_DEFAULT = {}
+ NUMEXPR_DEFAULT = {}
+2025-09-04 06:32:04,336 - INFO - Eval script for sympy__sympy-17022 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-17022/eval.sh; copying to container...
+2025-09-04 06:32:09,130 - INFO - Test runtime: 4.51 seconds
+2025-09-04 06:32:09,130 - INFO - Test output for sympy__sympy-17022 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-17022/test_output.txt
+2025-09-04 06:32:09,214 - INFO - Git diff after:
+diff --git a/sympy/utilities/lambdify.py b/sympy/utilities/lambdify.py
+index a940509b47..1b895156fb 100644
+--- a/sympy/utilities/lambdify.py
++++ b/sympy/utilities/lambdify.py
+@@ -19,11 +19,11 @@
+ __doctest_requires__ = {('lambdify',): ['numpy', 'tensorflow']}
+ 
+ # Default namespaces, letting us define translations that can't be defined
+-# by simple variable maps, like I => 1j
++# by simple variable maps
+ MATH_DEFAULT = {}
+ MPMATH_DEFAULT = {}
+-NUMPY_DEFAULT = {"I": 1j}
+-SCIPY_DEFAULT = {"I": 1j}
++NUMPY_DEFAULT = {}
++SCIPY_DEFAULT = {}
+ TENSORFLOW_DEFAULT = {}
+ SYMPY_DEFAULT = {}
+ NUMEXPR_DEFAULT = {}
+2025-09-04 06:32:09,214 - INFO - Grading answer for sympy__sympy-17022...
+2025-09-04 06:32:09,214 - INFO - report: {'sympy__sympy-17022': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_NumPyPrinter']}, 'PASS_TO_PASS': {'success': ['test_numpy_piecewise_regression', 'test_PythonCodePrinter', 'test_MpmathPrinter', 'test_SciPyPrinter', 'test_pycode_reserved_words', 'test_printmethod', 'test_codegen_ast_nodes', 'test_issue_14283'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-17022: resolved: False
+2025-09-04 06:32:09,215 - INFO - Attempting to stop container sweb.eval.sympy__sympy-17022.lite_claude_all...
+2025-09-04 06:32:24,762 - INFO - Attempting to remove container sweb.eval.sympy__sympy-17022.lite_claude_all...
+2025-09-04 06:32:27,047 - INFO - Container sweb.eval.sympy__sympy-17022.lite_claude_all removed.
+2025-09-04 06:32:27,047 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-17022:latest...
+2025-09-04 06:32:30,389 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-17022:latest removed.

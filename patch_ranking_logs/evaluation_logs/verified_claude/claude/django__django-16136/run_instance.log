@@ -1,0 +1,51 @@
+2025-08-25 02:52:20,313 - INFO - Creating container for django__django-16136...
+2025-08-25 02:52:20,680 - INFO - Container for django__django-16136 created: 7b5b7c2ca1d752fb038b43b990e9f3f5ade44843c7cf8f6f1ca2016bed398129
+2025-08-25 02:52:21,463 - INFO - Container for django__django-16136 started: 7b5b7c2ca1d752fb038b43b990e9f3f5ade44843c7cf8f6f1ca2016bed398129
+2025-08-25 02:52:21,464 - INFO - Intermediate patch for django__django-16136 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-16136/patch.diff, now applying to container...
+2025-08-25 02:52:21,608 - INFO - >>>>> Applied Patch:
+Checking patch django/views/generic/base.py...
+Applied patch django/views/generic/base.py cleanly.
+
+2025-08-25 02:52:22,559 - INFO - Git diff before:
+diff --git a/django/views/generic/base.py b/django/views/generic/base.py
+index db1842e3e5..b7073097fa 100644
+--- a/django/views/generic/base.py
++++ b/django/views/generic/base.py
+@@ -148,6 +148,10 @@ class View:
+             request.path,
+             extra={"status_code": 405, "request": request},
+         )
++        if self.view_is_async:
++            async def func():
++                return HttpResponseNotAllowed(self._allowed_methods())
++            return func()
+         return HttpResponseNotAllowed(self._allowed_methods())
+ 
+     def options(self, request, *args, **kwargs):
+2025-08-25 02:52:22,559 - INFO - Eval script for django__django-16136 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-16136/eval.sh; copying to container...
+2025-08-25 02:52:30,486 - INFO - Test runtime: 7.86 seconds
+2025-08-25 02:52:30,489 - INFO - Test output for django__django-16136 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-16136/test_output.txt
+2025-08-25 02:52:30,572 - INFO - Git diff after:
+diff --git a/django/views/generic/base.py b/django/views/generic/base.py
+index db1842e3e5..b7073097fa 100644
+--- a/django/views/generic/base.py
++++ b/django/views/generic/base.py
+@@ -148,6 +148,10 @@ class View:
+             request.path,
+             extra={"status_code": 405, "request": request},
+         )
++        if self.view_is_async:
++            async def func():
++                return HttpResponseNotAllowed(self._allowed_methods())
++            return func()
+         return HttpResponseNotAllowed(self._allowed_methods())
+ 
+     def options(self, request, *args, **kwargs):
+2025-08-25 02:52:30,572 - INFO - Grading answer for django__django-16136...
+2025-08-25 02:52:30,573 - INFO - report: {'django__django-16136': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_http_method_not_allowed_responds_correctly (async.tests.ViewTests)', 'test_mixed_views_raise_error (async.tests.ViewTests)'], 'failure': []}, 'PASS_TO_PASS': {'success': ["View and by extension any subclasses that don't define handlers are", 'test_options_handler_responds_correctly (async.tests.ViewTests)', 'test_views_are_correctly_marked (async.tests.ViewTests)', 'test_caches_local (async.tests.CacheTest)', 'test_async_unsafe (async.tests.AsyncUnsafeTest)', 'Utility class which turns an awaitable that only works on the thread with', 'test_get_async_connection (async.tests.DatabaseConnectionTest)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-16136: resolved: True
+2025-08-25 02:52:30,573 - INFO - Attempting to stop container sweb.eval.django__django-16136.verified_claude_new...
+2025-08-25 02:52:46,184 - INFO - Attempting to remove container sweb.eval.django__django-16136.verified_claude_new...
+2025-08-25 02:52:46,620 - INFO - Container sweb.eval.django__django-16136.verified_claude_new removed.
+2025-08-25 02:52:46,621 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-16136:latest...
+2025-08-25 02:52:47,228 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-16136:latest removed.

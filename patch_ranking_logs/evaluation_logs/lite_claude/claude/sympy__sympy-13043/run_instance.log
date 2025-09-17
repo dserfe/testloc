@@ -1,0 +1,45 @@
+2025-09-04 06:31:39,431 - INFO - Creating container for sympy__sympy-13043...
+2025-09-04 06:31:40,874 - INFO - Container for sympy__sympy-13043 created: 5aed7e5c09d0ab3ca0b9d2d607b99273c8cb944f51054a0b63277d1294408dac
+2025-09-04 06:31:43,772 - INFO - Container for sympy__sympy-13043 started: 5aed7e5c09d0ab3ca0b9d2d607b99273c8cb944f51054a0b63277d1294408dac
+2025-09-04 06:31:43,773 - INFO - Intermediate patch for sympy__sympy-13043 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-13043/patch.diff, now applying to container...
+2025-09-04 06:31:43,926 - INFO - >>>>> Applied Patch:
+Checking patch sympy/integrals/intpoly.py...
+Applied patch sympy/integrals/intpoly.py cleanly.
+
+2025-09-04 06:31:44,338 - INFO - Git diff before:
+diff --git a/sympy/integrals/intpoly.py b/sympy/integrals/intpoly.py
+index fc72bd206f..c2f59ff57c 100644
+--- a/sympy/integrals/intpoly.py
++++ b/sympy/integrals/intpoly.py
+@@ -593,7 +593,8 @@ def decompose(expr, separate=False):
+         poly_dict[0] = expr
+ 
+     if separate:
+-        return list(poly_dict.values())
++        from sympy.core.compatibility import default_sort_key
++        return sorted(poly_dict.values(), key=default_sort_key)
+     return poly_dict
+2025-09-04 06:31:44,338 - INFO - Eval script for sympy__sympy-13043 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-13043/eval.sh; copying to container...
+2025-09-04 06:31:49,367 - INFO - Test runtime: 4.89 seconds
+2025-09-04 06:31:49,367 - INFO - Test output for sympy__sympy-13043 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-13043/test_output.txt
+2025-09-04 06:31:49,573 - INFO - Git diff after:
+diff --git a/sympy/integrals/intpoly.py b/sympy/integrals/intpoly.py
+index fc72bd206f..c2f59ff57c 100644
+--- a/sympy/integrals/intpoly.py
++++ b/sympy/integrals/intpoly.py
+@@ -593,7 +593,8 @@ def decompose(expr, separate=False):
+         poly_dict[0] = expr
+ 
+     if separate:
+-        return list(poly_dict.values())
++        from sympy.core.compatibility import default_sort_key
++        return sorted(poly_dict.values(), key=default_sort_key)
+     return poly_dict
+2025-09-04 06:31:49,574 - INFO - Grading answer for sympy__sympy-13043...
+2025-09-04 06:31:49,630 - INFO - report: {'sympy__sympy-13043': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_decompose']}, 'PASS_TO_PASS': {'success': ['test_best_origin'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-13043: resolved: False
+2025-09-04 06:31:49,631 - INFO - Attempting to stop container sweb.eval.sympy__sympy-13043.lite_claude_all...
+2025-09-04 06:32:05,960 - INFO - Attempting to remove container sweb.eval.sympy__sympy-13043.lite_claude_all...
+2025-09-04 06:32:06,002 - INFO - Container sweb.eval.sympy__sympy-13043.lite_claude_all removed.
+2025-09-04 06:32:06,004 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-13043:latest...
+2025-09-04 06:32:06,376 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-13043:latest removed.

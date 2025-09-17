@@ -1,0 +1,49 @@
+2025-08-25 03:03:59,466 - INFO - Creating container for sympy__sympy-16792...
+2025-08-25 03:03:59,577 - INFO - Container for sympy__sympy-16792 created: 12867fc6b68d4fee24eedfec386675079d5f7c08648ac80e71101d85bf078b12
+2025-08-25 03:04:01,033 - INFO - Container for sympy__sympy-16792 started: 12867fc6b68d4fee24eedfec386675079d5f7c08648ac80e71101d85bf078b12
+2025-08-25 03:04:01,034 - INFO - Intermediate patch for sympy__sympy-16792 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-16792/patch.diff, now applying to container...
+2025-08-25 03:04:01,196 - INFO - >>>>> Applied Patch:
+Checking patch sympy/utilities/codegen.py...
+Applied patch sympy/utilities/codegen.py cleanly.
+
+2025-08-25 03:04:01,692 - INFO - Git diff before:
+diff --git a/sympy/utilities/codegen.py b/sympy/utilities/codegen.py
+index f0befb2bd..4a866b3d8 100644
+--- a/sympy/utilities/codegen.py
++++ b/sympy/utilities/codegen.py
+@@ -910,7 +910,8 @@ def get_prototype(self, routine):
+         type_args = []
+         for arg in routine.arguments:
+             name = self.printer.doprint(arg.name)
+-            if arg.dimensions or isinstance(arg, ResultBase):
++            # Check for matrix types in addition to dimensions and ResultBase
++            if arg.dimensions or isinstance(arg, ResultBase) or getattr(arg, 'is_Matrix', False):
+                 type_args.append((arg.get_datatype('C'), "*%s" % name))
+             else:
+                 type_args.append((arg.get_datatype('C'), name))
+2025-08-25 03:04:01,693 - INFO - Eval script for sympy__sympy-16792 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-16792/eval.sh; copying to container...
+2025-08-25 03:04:09,143 - INFO - Test runtime: 7.29 seconds
+2025-08-25 03:04:09,161 - INFO - Test output for sympy__sympy-16792 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-16792/test_output.txt
+2025-08-25 03:04:09,381 - INFO - Git diff after:
+diff --git a/sympy/utilities/codegen.py b/sympy/utilities/codegen.py
+index f0befb2bd..4a866b3d8 100644
+--- a/sympy/utilities/codegen.py
++++ b/sympy/utilities/codegen.py
+@@ -910,7 +910,8 @@ def get_prototype(self, routine):
+         type_args = []
+         for arg in routine.arguments:
+             name = self.printer.doprint(arg.name)
+-            if arg.dimensions or isinstance(arg, ResultBase):
++            # Check for matrix types in addition to dimensions and ResultBase
++            if arg.dimensions or isinstance(arg, ResultBase) or getattr(arg, 'is_Matrix', False):
+                 type_args.append((arg.get_datatype('C'), "*%s" % name))
+             else:
+                 type_args.append((arg.get_datatype('C'), name))
+2025-08-25 03:04:09,511 - INFO - Grading answer for sympy__sympy-16792...
+2025-08-25 03:04:09,512 - INFO - report: {'sympy__sympy-16792': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_ccode_unused_array_arg']}, 'PASS_TO_PASS': {'success': ['test_Routine_argument_order', 'test_empty_c_code', 'test_empty_c_code_with_comment', 'test_empty_c_header', 'test_simple_c_code', 'test_c_code_reserved_words', 'test_numbersymbol_c_code', 'test_c_code_argument_order', 'test_simple_c_header', 'test_simple_c_codegen', 'test_multiple_results_c', 'test_no_results_c', 'test_ansi_math1_codegen', 'test_ansi_math2_codegen', 'test_complicated_codegen', 'test_loops_c', 'test_dummy_loops_c', 'test_partial_loops_c', 'test_output_arg_c', 'test_output_arg_c_reserved_words', 'test_ccode_results_named_ordered', 'test_ccode_matrixsymbol_slice', 'test_ccode_cse', 'test_empty_f_code', 'test_empty_f_code_with_header', 'test_empty_f_header', 'test_simple_f_code', 'test_numbersymbol_f_code', 'test_erf_f_code', 'test_f_code_argument_order', 'test_simple_f_header', 'test_simple_f_codegen', 'test_multiple_results_f', 'test_no_results_f', 'test_intrinsic_math_codegen', 'test_intrinsic_math2_codegen', 'test_complicated_codegen_f95', 'test_loops', 'test_dummy_loops_f95', 'test_loops_InOut', 'test_partial_loops_f', 'test_output_arg_f', 'test_inline_function', 'test_f_code_call_signature_wrap', 'test_check_case', 'test_check_case_false_positive', 'test_c_fortran_omit_routine_name', 'test_fcode_matrix_output', 'test_fcode_results_named_ordered', 'test_fcode_matrixsymbol_slice', 'test_fcode_matrixsymbol_slice_autoname', 'test_global_vars', 'test_custom_codegen', 'test_c_with_printer'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-16792: resolved: False
+2025-08-25 03:04:09,513 - INFO - Attempting to stop container sweb.eval.sympy__sympy-16792.verified_claude_new...
+2025-08-25 03:04:26,011 - INFO - Attempting to remove container sweb.eval.sympy__sympy-16792.verified_claude_new...
+2025-08-25 03:04:26,257 - INFO - Container sweb.eval.sympy__sympy-16792.verified_claude_new removed.
+2025-08-25 03:04:26,258 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-16792:latest...
+2025-08-25 03:04:27,376 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-16792:latest removed.

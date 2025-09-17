@@ -1,0 +1,47 @@
+2025-08-22 02:56:11,839 - INFO - Creating container for sympy__sympy-15345...
+2025-08-22 02:56:12,555 - INFO - Container for sympy__sympy-15345 created: 2a22eec4c9373af0e131f69e4c7f2f6d2d22b2445f6886d467a7441bb7d652c5
+2025-08-22 02:56:16,060 - INFO - Container for sympy__sympy-15345 started: 2a22eec4c9373af0e131f69e4c7f2f6d2d22b2445f6886d467a7441bb7d652c5
+2025-08-22 02:56:16,061 - INFO - Intermediate patch for sympy__sympy-15345 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-15345/patch.diff, now applying to container...
+2025-08-22 02:56:16,340 - INFO - >>>>> Applied Patch:
+Checking patch sympy/printing/mathematica.py...
+Applied patch sympy/printing/mathematica.py cleanly.
+
+2025-08-22 02:56:17,071 - INFO - Git diff before:
+diff --git a/sympy/printing/mathematica.py b/sympy/printing/mathematica.py
+index ea7e3a2d9..6dc2cb142 100644
+--- a/sympy/printing/mathematica.py
++++ b/sympy/printing/mathematica.py
+@@ -99,6 +99,8 @@ def _print_Function(self, expr):
+             for cond, mfunc in cond_mfunc:
+                 if cond(*expr.args):
+                     return "%s[%s]" % (mfunc, self.stringify(expr.args, ", "))
++        if expr.func.__name__ == 'Max':
++            return "Max[%s]" % self.stringify(expr.args, ", ")
+         return expr.func.__name__ + "[%s]" % self.stringify(expr.args, ", ")
+ 
+     def _print_Integral(self, expr):
+2025-08-22 02:56:17,071 - INFO - Eval script for sympy__sympy-15345 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-15345/eval.sh; copying to container...
+2025-08-22 02:56:23,984 - INFO - Test runtime: 6.79 seconds
+2025-08-22 02:56:23,984 - INFO - Test output for sympy__sympy-15345 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-15345/test_output.txt
+2025-08-22 02:56:24,225 - INFO - Git diff after:
+diff --git a/sympy/printing/mathematica.py b/sympy/printing/mathematica.py
+index ea7e3a2d9..6dc2cb142 100644
+--- a/sympy/printing/mathematica.py
++++ b/sympy/printing/mathematica.py
+@@ -99,6 +99,8 @@ def _print_Function(self, expr):
+             for cond, mfunc in cond_mfunc:
+                 if cond(*expr.args):
+                     return "%s[%s]" % (mfunc, self.stringify(expr.args, ", "))
++        if expr.func.__name__ == 'Max':
++            return "Max[%s]" % self.stringify(expr.args, ", ")
+         return expr.func.__name__ + "[%s]" % self.stringify(expr.args, ", ")
+ 
+     def _print_Integral(self, expr):
+2025-08-22 02:56:24,225 - INFO - Grading answer for sympy__sympy-15345...
+2025-08-22 02:56:24,225 - INFO - report: {'sympy__sympy-15345': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_Function']}, 'PASS_TO_PASS': {'success': ['test_Integer', 'test_Rational', 'test_Pow', 'test_Mul', 'test_constants', 'test_containers', 'test_Integral', 'test_Derivative'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-15345: resolved: False
+2025-08-22 02:56:24,226 - INFO - Attempting to stop container sweb.eval.sympy__sympy-15345.lite_gpt_all...
+2025-08-22 02:56:40,818 - INFO - Attempting to remove container sweb.eval.sympy__sympy-15345.lite_gpt_all...
+2025-08-22 02:56:41,322 - INFO - Container sweb.eval.sympy__sympy-15345.lite_gpt_all removed.
+2025-08-22 02:56:41,322 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-15345:latest...
+2025-08-22 02:56:42,300 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-15345:latest removed.

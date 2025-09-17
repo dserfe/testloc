@@ -1,0 +1,73 @@
+2025-09-04 06:32:30,390 - INFO - Creating container for sympy__sympy-21627...
+2025-09-04 06:32:30,737 - INFO - Container for sympy__sympy-21627 created: 4e313f1a211950968212091cc6c3090dceb2dc7c13c68cbcfe4133c97e2de39c
+2025-09-04 06:32:31,677 - INFO - Container for sympy__sympy-21627 started: 4e313f1a211950968212091cc6c3090dceb2dc7c13c68cbcfe4133c97e2de39c
+2025-09-04 06:32:31,678 - INFO - Intermediate patch for sympy__sympy-21627 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-21627/patch.diff, now applying to container...
+2025-09-04 06:32:31,801 - INFO - >>>>> Applied Patch:
+Checking patch sympy/functions/elementary/hyperbolic.py...
+Applied patch sympy/functions/elementary/hyperbolic.py cleanly.
+
+2025-09-04 06:32:32,286 - INFO - Git diff before:
+diff --git a/sympy/functions/elementary/hyperbolic.py b/sympy/functions/elementary/hyperbolic.py
+index 892e19cabb..8393edf401 100644
+--- a/sympy/functions/elementary/hyperbolic.py
++++ b/sympy/functions/elementary/hyperbolic.py
+@@ -264,6 +264,10 @@ def _eval_is_finite(self):
+         arg = self.args[0]
+         return arg.is_finite
+ 
++    def _eval_is_zero(self):
++        # cosh(x) is zero only for complex values
++        return False
++
+     def _eval_is_zero(self):
+         arg = self.args[0]
+         if arg.is_zero:
+@@ -499,6 +503,10 @@ def _eval_is_finite(self):
+         arg = self.args[0]
+         return arg.is_finite
+ 
++    def _eval_is_zero(self):
++        # cosh(x) is zero only for complex values
++        return False
++
+ 
+ class tanh(HyperbolicFunction):
+     r"""
+2025-09-04 06:32:32,286 - INFO - Eval script for sympy__sympy-21627 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-21627/eval.sh; copying to container...
+2025-09-04 06:32:49,297 - INFO - Test runtime: 16.94 seconds
+2025-09-04 06:32:49,298 - INFO - Test output for sympy__sympy-21627 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-21627/test_output.txt
+2025-09-04 06:32:49,348 - INFO - Git diff after:
+diff --git a/sympy/functions/elementary/hyperbolic.py b/sympy/functions/elementary/hyperbolic.py
+index 892e19cabb..8393edf401 100644
+--- a/sympy/functions/elementary/hyperbolic.py
++++ b/sympy/functions/elementary/hyperbolic.py
+@@ -264,6 +264,10 @@ def _eval_is_finite(self):
+         arg = self.args[0]
+         return arg.is_finite
+ 
++    def _eval_is_zero(self):
++        # cosh(x) is zero only for complex values
++        return False
++
+     def _eval_is_zero(self):
+         arg = self.args[0]
+         if arg.is_zero:
+@@ -499,6 +503,10 @@ def _eval_is_finite(self):
+         arg = self.args[0]
+         return arg.is_finite
+ 
++    def _eval_is_zero(self):
++        # cosh(x) is zero only for complex values
++        return False
++
+ 
+ class tanh(HyperbolicFunction):
+     r"""
+2025-09-04 06:32:49,348 - INFO - Grading answer for sympy__sympy-21627...
+2025-09-04 06:32:49,356 - INFO - report: {'sympy__sympy-21627': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_Abs']}, 'PASS_TO_PASS': {'success': ['test_re', 'test_im', 'test_sign', 'test_as_real_imag', 'test_Abs_rewrite', 'test_Abs_real', 'test_Abs_properties', 'test_abs', 'test_arg', 'test_arg_rewrite', 'test_adjoint', 'test_conjugate', 'test_conjugate_transpose', 'test_transpose', 'test_polarify', 'test_unpolarify', 'test_issue_4035', 'test_issue_3206', 'test_issue_4754_derivative_conjugate', 'test_derivatives_issue_4757', 'test_issue_11413', 'test_periodic_argument', 'test_principal_branch', 'test_issue_14216', 'test_issue_14238', 'test_zero_assumptions'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-21627: resolved: False
+2025-09-04 06:32:49,356 - INFO - Attempting to stop container sweb.eval.sympy__sympy-21627.lite_claude_all...
+2025-09-04 06:33:04,587 - INFO - Attempting to remove container sweb.eval.sympy__sympy-21627.lite_claude_all...
+2025-09-04 06:33:04,618 - INFO - Container sweb.eval.sympy__sympy-21627.lite_claude_all removed.
+2025-09-04 06:33:04,618 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-21627:latest...
+2025-09-04 06:33:04,750 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-21627:latest removed.

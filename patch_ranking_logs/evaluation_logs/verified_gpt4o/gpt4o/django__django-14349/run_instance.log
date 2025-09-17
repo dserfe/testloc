@@ -1,0 +1,51 @@
+2025-08-26 05:09:57,242 - INFO - Creating container for django__django-14349...
+2025-08-26 05:09:57,604 - INFO - Container for django__django-14349 created: 3af163d73889bb8cbdced5d026f1c0c802610989b46a93e819a30f668e75c524
+2025-08-26 05:09:58,269 - INFO - Container for django__django-14349 started: 3af163d73889bb8cbdced5d026f1c0c802610989b46a93e819a30f668e75c524
+2025-08-26 05:09:58,269 - INFO - Intermediate patch for django__django-14349 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-14349/patch.diff, now applying to container...
+2025-08-26 05:09:58,420 - INFO - >>>>> Applied Patch:
+Checking patch django/core/validators.py...
+Applied patch django/core/validators.py cleanly.
+
+2025-08-26 05:09:59,515 - INFO - Git diff before:
+diff --git a/django/core/validators.py b/django/core/validators.py
+index a385819510..6d6c5d51db 100644
+--- a/django/core/validators.py
++++ b/django/core/validators.py
+@@ -101,6 +101,10 @@ class URLValidator(RegexValidator):
+     def __call__(self, value):
+         if not isinstance(value, str):
+             raise ValidationError(self.message, code=self.code, params={'value': value})
++        # Check for forbidden characters in the URL
++        if any(char in value for char in '\n\r\t'):
++            raise ValidationError(self.message, code=self.code, params={'value': value})
++
+         # Check if the scheme is valid.
+         scheme = value.split('://')[0].lower()
+         if scheme not in self.schemes:
+2025-08-26 05:09:59,516 - INFO - Eval script for django__django-14349 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-14349/eval.sh; copying to container...
+2025-08-26 05:10:09,232 - INFO - Test runtime: 9.65 seconds
+2025-08-26 05:10:09,232 - INFO - Test output for django__django-14349 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-14349/test_output.txt
+2025-08-26 05:10:09,329 - INFO - Git diff after:
+diff --git a/django/core/validators.py b/django/core/validators.py
+index a385819510..6d6c5d51db 100644
+--- a/django/core/validators.py
++++ b/django/core/validators.py
+@@ -101,6 +101,10 @@ class URLValidator(RegexValidator):
+     def __call__(self, value):
+         if not isinstance(value, str):
+             raise ValidationError(self.message, code=self.code, params={'value': value})
++        # Check for forbidden characters in the URL
++        if any(char in value for char in '\n\r\t'):
++            raise ValidationError(self.message, code=self.code, params={'value': value})
++
+         # Check if the scheme is valid.
+         scheme = value.split('://')[0].lower()
+         if scheme not in self.schemes:
+2025-08-26 05:10:09,329 - INFO - Grading answer for django__django-14349...
+2025-08-26 05:10:09,329 - INFO - report: {'django__django-14349': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_validators (validators.tests.TestValidators)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_domain_whitelist (validators.tests.DeprecationTests)', 'test_domain_whitelist_access_warning (validators.tests.DeprecationTests)', 'test_domain_whitelist_set_warning (validators.tests.DeprecationTests)', 'test_whitelist (validators.tests.DeprecationTests)', 'test_whitelist_warning (validators.tests.DeprecationTests)', 'test_basic_equality (validators.tests.TestValidatorEquality)', 'test_decimal_equality (validators.tests.TestValidatorEquality)', 'test_email_equality (validators.tests.TestValidatorEquality)', 'test_file_extension_equality (validators.tests.TestValidatorEquality)', 'test_prohibit_null_characters_validator_equality (validators.tests.TestValidatorEquality)', 'test_regex_equality (validators.tests.TestValidatorEquality)', 'test_regex_equality_blank (validators.tests.TestValidatorEquality)', 'test_regex_equality_nocache (validators.tests.TestValidatorEquality)', 'test_max_length_validator_message (validators.tests.TestValidators)', 'test_message_dict (validators.tests.TestValidators)', 'test_message_list (validators.tests.TestValidators)', 'test_regex_validator_flags (validators.tests.TestValidators)', 'test_single_message (validators.tests.TestValidators)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-14349: resolved: True
+2025-08-26 05:10:09,329 - INFO - Attempting to stop container sweb.eval.django__django-14349.verified_gpt4o_all2...
+2025-08-26 05:10:27,137 - INFO - Attempting to remove container sweb.eval.django__django-14349.verified_gpt4o_all2...
+2025-08-26 05:10:28,992 - INFO - Container sweb.eval.django__django-14349.verified_gpt4o_all2 removed.
+2025-08-26 05:10:28,996 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-14349:latest...
+2025-08-26 05:10:31,005 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-14349:latest removed.

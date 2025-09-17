@@ -1,0 +1,47 @@
+2025-08-22 02:47:58,730 - INFO - Creating container for django__django-12284...
+2025-08-22 02:48:04,268 - INFO - Container for django__django-12284 created: eface78c05753932c46b00c8091d33f829e6dfa4425dd7ea71b81d39c85b3d09
+2025-08-22 02:48:05,336 - INFO - Container for django__django-12284 started: eface78c05753932c46b00c8091d33f829e6dfa4425dd7ea71b81d39c85b3d09
+2025-08-22 02:48:05,337 - INFO - Intermediate patch for django__django-12284 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-12284/patch.diff, now applying to container...
+2025-08-22 02:48:05,531 - INFO - >>>>> Applied Patch:
+Checking patch django/db/models/base.py...
+Applied patch django/db/models/base.py cleanly.
+
+2025-08-22 02:48:06,650 - INFO - Git diff before:
+diff --git a/django/db/models/base.py b/django/db/models/base.py
+index 8ea6c05ef9..e20b314dfb 100644
+--- a/django/db/models/base.py
++++ b/django/db/models/base.py
+@@ -945,7 +945,8 @@ class Model(metaclass=ModelBase):
+ 
+     def _get_FIELD_display(self, field):
+         value = getattr(self, field.attname)
+-        choices_dict = dict(make_hashable(field.flatchoices))
++        # Get the choices from the field of the current instance's class
++        choices_dict = dict(make_hashable(self._meta.get_field(field.name).flatchoices))
+         # force_str() to coerce lazy strings.
+         return force_str(choices_dict.get(make_hashable(value), value), strings_only=True)
+2025-08-22 02:48:06,650 - INFO - Eval script for django__django-12284 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-12284/eval.sh; copying to container...
+2025-08-22 02:48:17,836 - INFO - Test runtime: 10.97 seconds
+2025-08-22 02:48:17,836 - INFO - Test output for django__django-12284 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-12284/test_output.txt
+2025-08-22 02:48:17,982 - INFO - Git diff after:
+diff --git a/django/db/models/base.py b/django/db/models/base.py
+index 8ea6c05ef9..e20b314dfb 100644
+--- a/django/db/models/base.py
++++ b/django/db/models/base.py
+@@ -945,7 +945,8 @@ class Model(metaclass=ModelBase):
+ 
+     def _get_FIELD_display(self, field):
+         value = getattr(self, field.attname)
+-        choices_dict = dict(make_hashable(field.flatchoices))
++        # Get the choices from the field of the current instance's class
++        choices_dict = dict(make_hashable(self._meta.get_field(field.name).flatchoices))
+         # force_str() to coerce lazy strings.
+         return force_str(choices_dict.get(make_hashable(value), value), strings_only=True)
+2025-08-22 02:48:17,982 - INFO - Grading answer for django__django-12284...
+2025-08-22 02:48:17,983 - INFO - report: {'django__django-12284': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_overriding_inherited_FIELD_display (model_fields.tests.GetFieldDisplayTests)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_blank_in_choices (model_fields.tests.GetChoicesTests)', 'test_blank_in_grouped_choices (model_fields.tests.GetChoicesTests)', 'test_empty_choices (model_fields.tests.GetChoicesTests)', 'test_lazy_strings_not_evaluated (model_fields.tests.GetChoicesTests)', 'test_choices_and_field_display (model_fields.tests.GetFieldDisplayTests)', 'test_empty_iterator_choices (model_fields.tests.GetFieldDisplayTests)', 'A translated display value is coerced to str.', 'test_iterator_choices (model_fields.tests.GetFieldDisplayTests)', 'test_overriding_FIELD_display (model_fields.tests.GetFieldDisplayTests)', 'test_check (model_fields.tests.ChoicesTests)', 'test_choices (model_fields.tests.ChoicesTests)', 'test_flatchoices (model_fields.tests.ChoicesTests)', 'test_formfield (model_fields.tests.ChoicesTests)', 'test_invalid_choice (model_fields.tests.ChoicesTests)', 'test_get_choices (model_fields.tests.GetChoicesLimitChoicesToTests)', 'test_get_choices_reverse_related_field (model_fields.tests.GetChoicesLimitChoicesToTests)', 'Can supply a custom choices form class to Field.formfield()', 'deconstruct() uses __qualname__ for nested class support.', 'Field instances can be pickled.', 'test_field_name (model_fields.tests.BasicFieldTests)', 'Fields are ordered based on their creation.', 'test_field_repr (model_fields.tests.BasicFieldTests)', '__repr__() uses __qualname__ for nested class support.', 'test_field_str (model_fields.tests.BasicFieldTests)', 'test_field_verbose_name (model_fields.tests.BasicFieldTests)', 'Field.formfield() sets disabled for fields with choices.', 'test_show_hidden_initial (model_fields.tests.BasicFieldTests)', 'test_get_choices (model_fields.tests.GetChoicesOrderingTests)', 'test_get_choices_default_ordering (model_fields.tests.GetChoicesOrderingTests)', 'test_get_choices_reverse_related_field (model_fields.tests.GetChoicesOrderingTests)', 'test_get_choices_reverse_related_field_default_ordering (model_fields.tests.GetChoicesOrderingTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-12284: resolved: True
+2025-08-22 02:48:17,983 - INFO - Attempting to stop container sweb.eval.django__django-12284.lite_gpt_all...
+2025-08-22 02:48:33,959 - INFO - Attempting to remove container sweb.eval.django__django-12284.lite_gpt_all...
+2025-08-22 02:48:34,055 - INFO - Container sweb.eval.django__django-12284.lite_gpt_all removed.
+2025-08-22 02:48:34,055 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-12284:latest...
+2025-08-22 02:48:34,688 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-12284:latest removed.

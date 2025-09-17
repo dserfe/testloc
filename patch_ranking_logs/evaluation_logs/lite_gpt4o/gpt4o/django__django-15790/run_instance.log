@@ -1,0 +1,51 @@
+2025-08-22 02:49:50,972 - INFO - Creating container for django__django-15790...
+2025-08-22 02:49:57,421 - INFO - Container for django__django-15790 created: 7f4ee1db110baf6ab2830de2f52bf3a33413ed01cc3c4f67dcfec417eb849b8b
+2025-08-22 02:49:59,327 - INFO - Container for django__django-15790 started: 7f4ee1db110baf6ab2830de2f52bf3a33413ed01cc3c4f67dcfec417eb849b8b
+2025-08-22 02:49:59,328 - INFO - Intermediate patch for django__django-15790 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-15790/patch.diff, now applying to container...
+2025-08-22 02:49:59,493 - INFO - >>>>> Applied Patch:
+Checking patch django/template/engine.py...
+Applied patch django/template/engine.py cleanly.
+
+2025-08-22 02:50:01,009 - INFO - Git diff before:
+diff --git a/django/template/engine.py b/django/template/engine.py
+index f2215c0e4e..4d0b574b63 100644
+--- a/django/template/engine.py
++++ b/django/template/engine.py
+@@ -121,6 +121,11 @@ class Engine:
+     def get_template_libraries(self, libraries):
+         loaded = {}
+         for name, path in libraries.items():
++            if name in loaded:
++                raise ImproperlyConfigured(
++                    f"'{name}' is used for multiple template tag modules: "
++                    f"'{loaded[name].__name__}', '{path}'"
++                )
+             loaded[name] = import_library(path)
+         return loaded
+2025-08-22 02:50:01,009 - INFO - Eval script for django__django-15790 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-15790/eval.sh; copying to container...
+2025-08-22 02:50:14,685 - INFO - Test runtime: 13.34 seconds
+2025-08-22 02:50:14,685 - INFO - Test output for django__django-15790 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-15790/test_output.txt
+2025-08-22 02:50:14,791 - INFO - Git diff after:
+diff --git a/django/template/engine.py b/django/template/engine.py
+index f2215c0e4e..4d0b574b63 100644
+--- a/django/template/engine.py
++++ b/django/template/engine.py
+@@ -121,6 +121,11 @@ class Engine:
+     def get_template_libraries(self, libraries):
+         loaded = {}
+         for name, path in libraries.items():
++            if name in loaded:
++                raise ImproperlyConfigured(
++                    f"'{name}' is used for multiple template tag modules: "
++                    f"'{loaded[name].__name__}', '{path}'"
++                )
+             loaded[name] = import_library(path)
+         return loaded
+2025-08-22 02:50:14,791 - INFO - Grading answer for django__django-15790...
+2025-08-22 02:50:14,792 - INFO - report: {'django__django-15790': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_template_tags_same_library_in_installed_apps_libraries (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)']}, 'PASS_TO_PASS': {'success': ['Error if template loaders are specified and APP_DIRS is True.', 'test_app_dirs_removed (check_framework.test_templates.CheckTemplateSettingsAppDirsTest)', 'test_loaders_removed (check_framework.test_templates.CheckTemplateSettingsAppDirsTest)', 'test_string_if_invalid_both_are_strings (check_framework.test_templates.CheckTemplateStringIfInvalidTest)', 'test_string_if_invalid_first_is_string (check_framework.test_templates.CheckTemplateStringIfInvalidTest)', 'test_string_if_invalid_not_specified (check_framework.test_templates.CheckTemplateStringIfInvalidTest)', 'test_string_if_invalid_not_string (check_framework.test_templates.CheckTemplateStringIfInvalidTest)', 'test_template_tags_with_different_library_name (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)', 'test_template_tags_with_different_name (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)', 'test_template_tags_with_same_library_name (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)', 'test_template_tags_with_same_library_name_and_module_name (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)', 'test_template_tags_with_same_name (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-15790: resolved: False
+2025-08-22 02:50:14,792 - INFO - Attempting to stop container sweb.eval.django__django-15790.lite_gpt_all...
+2025-08-22 02:50:30,457 - INFO - Attempting to remove container sweb.eval.django__django-15790.lite_gpt_all...
+2025-08-22 02:50:32,224 - INFO - Container sweb.eval.django__django-15790.lite_gpt_all removed.
+2025-08-22 02:50:32,224 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-15790:latest...
+2025-08-22 02:50:37,581 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-15790:latest removed.

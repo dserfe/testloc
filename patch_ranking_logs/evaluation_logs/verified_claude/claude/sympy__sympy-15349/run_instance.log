@@ -1,0 +1,47 @@
+2025-08-25 03:03:27,196 - INFO - Creating container for sympy__sympy-15349...
+2025-08-25 03:03:27,454 - INFO - Container for sympy__sympy-15349 created: e6c27d624ffc8370eed21dfcd75d483d602be3608e2e387563c6abbddca64548
+2025-08-25 03:03:32,720 - INFO - Container for sympy__sympy-15349 started: e6c27d624ffc8370eed21dfcd75d483d602be3608e2e387563c6abbddca64548
+2025-08-25 03:03:32,721 - INFO - Intermediate patch for sympy__sympy-15349 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-15349/patch.diff, now applying to container...
+2025-08-25 03:03:33,669 - INFO - >>>>> Applied Patch:
+Checking patch sympy/algebras/quaternion.py...
+Applied patch sympy/algebras/quaternion.py cleanly.
+
+2025-08-25 03:03:34,624 - INFO - Git diff before:
+diff --git a/sympy/algebras/quaternion.py b/sympy/algebras/quaternion.py
+index b84e7cb95..7eae8d73d 100644
+--- a/sympy/algebras/quaternion.py
++++ b/sympy/algebras/quaternion.py
+@@ -529,7 +529,7 @@ def to_rotation_matrix(self, v=None):
+ 
+         m10 = 2*s*(q.b*q.c + q.d*q.a)
+         m11 = 1 - 2*s*(q.b**2 + q.d**2)
+-        m12 = 2*s*(q.c*q.d + q.b*q.a)
++        m12 = 2*s*(q.c*q.d - q.b*q.a)
+ 
+         m20 = 2*s*(q.b*q.d - q.c*q.a)
+         m21 = 2*s*(q.c*q.d + q.b*q.a)
+2025-08-25 03:03:34,624 - INFO - Eval script for sympy__sympy-15349 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-15349/eval.sh; copying to container...
+2025-08-25 03:03:44,499 - INFO - Test runtime: 8.50 seconds
+2025-08-25 03:03:44,500 - INFO - Test output for sympy__sympy-15349 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-15349/test_output.txt
+2025-08-25 03:03:44,674 - INFO - Git diff after:
+diff --git a/sympy/algebras/quaternion.py b/sympy/algebras/quaternion.py
+index b84e7cb95..7eae8d73d 100644
+--- a/sympy/algebras/quaternion.py
++++ b/sympy/algebras/quaternion.py
+@@ -529,7 +529,7 @@ def to_rotation_matrix(self, v=None):
+ 
+         m10 = 2*s*(q.b*q.c + q.d*q.a)
+         m11 = 1 - 2*s*(q.b**2 + q.d**2)
+-        m12 = 2*s*(q.c*q.d + q.b*q.a)
++        m12 = 2*s*(q.c*q.d - q.b*q.a)
+ 
+         m20 = 2*s*(q.b*q.d - q.c*q.a)
+         m21 = 2*s*(q.c*q.d + q.b*q.a)
+2025-08-25 03:03:44,674 - INFO - Grading answer for sympy__sympy-15349...
+2025-08-25 03:03:44,674 - INFO - report: {'sympy__sympy-15349': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_quaternion_conversions'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_quaternion_construction', 'test_quaternion_complex_real_addition', 'test_quaternion_functions'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-15349: resolved: True
+2025-08-25 03:03:44,674 - INFO - Attempting to stop container sweb.eval.sympy__sympy-15349.verified_claude_new...
+2025-08-25 03:04:00,613 - INFO - Attempting to remove container sweb.eval.sympy__sympy-15349.verified_claude_new...
+2025-08-25 03:04:00,784 - INFO - Container sweb.eval.sympy__sympy-15349.verified_claude_new removed.
+2025-08-25 03:04:00,784 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-15349:latest...
+2025-08-25 03:04:01,325 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-15349:latest removed.

@@ -1,0 +1,59 @@
+2025-08-26 05:14:39,793 - INFO - Creating container for sympy__sympy-12481...
+2025-08-26 05:14:42,671 - INFO - Container for sympy__sympy-12481 created: 2e812762e5c0738891bc71a5a43528f22c939da41631edd801abf9748f448a91
+2025-08-26 05:14:48,469 - INFO - Container for sympy__sympy-12481 started: 2e812762e5c0738891bc71a5a43528f22c939da41631edd801abf9748f448a91
+2025-08-26 05:14:48,470 - INFO - Intermediate patch for sympy__sympy-12481 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sympy__sympy-12481/patch.diff, now applying to container...
+2025-08-26 05:14:48,634 - INFO - >>>>> Applied Patch:
+Checking patch sympy/combinatorics/permutations.py...
+Applied patch sympy/combinatorics/permutations.py cleanly.
+
+2025-08-26 05:14:48,990 - INFO - Git diff before:
+diff --git a/sympy/combinatorics/permutations.py b/sympy/combinatorics/permutations.py
+index 136ed5a47..4ac1c2ef3 100644
+--- a/sympy/combinatorics/permutations.py
++++ b/sympy/combinatorics/permutations.py
+@@ -895,12 +895,8 @@ def __new__(cls, *args, **kwargs):
+         # counting starts from 1.
+ 
+         temp = flatten(args)
+-        if has_dups(temp):
+-            if is_cycle:
+-                raise ValueError('there were repeated elements; to resolve '
+-                'cycles use Cycle%s.' % ''.join([str(tuple(c)) for c in args]))
+-            else:
+-                raise ValueError('there were repeated elements.')
++        if has_dups(temp) and not is_cycle:
++            raise ValueError('there were repeated elements.')
+         temp = set(temp)
+ 
+         if not is_cycle and \
+2025-08-26 05:14:48,991 - INFO - Eval script for sympy__sympy-12481 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sympy__sympy-12481/eval.sh; copying to container...
+2025-08-26 05:14:56,027 - INFO - Test runtime: 6.92 seconds
+2025-08-26 05:14:56,027 - INFO - Test output for sympy__sympy-12481 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sympy__sympy-12481/test_output.txt
+2025-08-26 05:14:56,330 - INFO - Git diff after:
+diff --git a/sympy/combinatorics/permutations.py b/sympy/combinatorics/permutations.py
+index 136ed5a47..4ac1c2ef3 100644
+--- a/sympy/combinatorics/permutations.py
++++ b/sympy/combinatorics/permutations.py
+@@ -895,12 +895,8 @@ def __new__(cls, *args, **kwargs):
+         # counting starts from 1.
+ 
+         temp = flatten(args)
+-        if has_dups(temp):
+-            if is_cycle:
+-                raise ValueError('there were repeated elements; to resolve '
+-                'cycles use Cycle%s.' % ''.join([str(tuple(c)) for c in args]))
+-            else:
+-                raise ValueError('there were repeated elements.')
++        if has_dups(temp) and not is_cycle:
++            raise ValueError('there were repeated elements.')
+         temp = set(temp)
+ 
+         if not is_cycle and \
+2025-08-26 05:14:56,340 - INFO - Grading answer for sympy__sympy-12481...
+2025-08-26 05:14:56,340 - INFO - report: {'sympy__sympy-12481': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_args'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_Permutation', 'test_josephus', 'test_ranking', 'test_mul', 'test_Cycle', 'test_from_sequence', 'test_printing_cyclic'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-12481: resolved: True
+2025-08-26 05:14:56,341 - INFO - Attempting to stop container sweb.eval.sympy__sympy-12481.verified_gpt4o_all2...
+2025-08-26 05:15:12,434 - INFO - Attempting to remove container sweb.eval.sympy__sympy-12481.verified_gpt4o_all2...
+2025-08-26 05:15:13,782 - INFO - Container sweb.eval.sympy__sympy-12481.verified_gpt4o_all2 removed.
+2025-08-26 05:15:13,786 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-12481:latest...
+2025-08-26 05:15:35,519 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-12481:latest removed.

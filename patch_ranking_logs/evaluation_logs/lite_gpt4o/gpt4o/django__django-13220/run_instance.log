@@ -1,0 +1,53 @@
+2025-08-22 02:48:30,111 - INFO - Creating container for django__django-13220...
+2025-08-22 02:48:38,733 - INFO - Container for django__django-13220 created: 335d233341934639ac554c3cbdb5914df8c7a463b6ea8ddb8b72d179901650b3
+2025-08-22 02:48:46,820 - INFO - Container for django__django-13220 started: 335d233341934639ac554c3cbdb5914df8c7a463b6ea8ddb8b72d179901650b3
+2025-08-22 02:48:46,821 - INFO - Intermediate patch for django__django-13220 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-13220/patch.diff, now applying to container...
+2025-08-22 02:48:47,345 - INFO - >>>>> Applied Patch:
+Checking patch django/core/exceptions.py...
+Applied patch django/core/exceptions.py cleanly.
+
+2025-08-22 02:48:49,404 - INFO - Git diff before:
+diff --git a/django/core/exceptions.py b/django/core/exceptions.py
+index dc084b8692..5febc8ef70 100644
+--- a/django/core/exceptions.py
++++ b/django/core/exceptions.py
+@@ -174,6 +174,11 @@ class ValidationError(Exception):
+                     message %= error.params
+                 yield str(message)
+ 
++    def __eq__(self, other):
++        if not isinstance(other, ValidationError):
++            return NotImplemented
++        return sorted(self.messages) == sorted(other.messages)
++
+     def __str__(self):
+         if hasattr(self, 'error_dict'):
+             return repr(dict(self))
+2025-08-22 02:48:49,428 - INFO - Eval script for django__django-13220 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-13220/eval.sh; copying to container...
+2025-08-22 02:49:07,066 - INFO - Test runtime: 17.50 seconds
+2025-08-22 02:49:07,066 - INFO - Test output for django__django-13220 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-13220/test_output.txt
+2025-08-22 02:49:07,432 - INFO - Git diff after:
+diff --git a/django/core/exceptions.py b/django/core/exceptions.py
+index dc084b8692..5febc8ef70 100644
+--- a/django/core/exceptions.py
++++ b/django/core/exceptions.py
+@@ -174,6 +174,11 @@ class ValidationError(Exception):
+                     message %= error.params
+                 yield str(message)
+ 
++    def __eq__(self, other):
++        if not isinstance(other, ValidationError):
++            return NotImplemented
++        return sorted(self.messages) == sorted(other.messages)
++
+     def __str__(self):
+         if hasattr(self, 'error_dict'):
+             return repr(dict(self))
+2025-08-22 02:49:07,432 - INFO - Grading answer for django__django-13220...
+2025-08-22 02:49:07,433 - INFO - report: {'django__django-13220': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_eq (test_exceptions.test_validation_error.TestValidationError)', 'test_eq_nested (test_exceptions.test_validation_error.TestValidationError)', 'test_hash (test_exceptions.test_validation_error.TestValidationError)', 'test_hash_nested (test_exceptions.test_validation_error.TestValidationError)']}, 'PASS_TO_PASS': {'success': ['test_messages_concatenates_error_dict_values (test_exceptions.test_validation_error.TestValidationError)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-13220: resolved: False
+2025-08-22 02:49:07,433 - INFO - Attempting to stop container sweb.eval.django__django-13220.lite_gpt_all...
+2025-08-22 02:49:23,314 - INFO - Attempting to remove container sweb.eval.django__django-13220.lite_gpt_all...
+2025-08-22 02:49:23,578 - INFO - Container sweb.eval.django__django-13220.lite_gpt_all removed.
+2025-08-22 02:49:23,579 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-13220:latest...
+2025-08-22 02:49:33,327 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-13220:latest removed.

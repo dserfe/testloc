@@ -1,0 +1,51 @@
+2025-08-25 02:48:40,817 - INFO - Creating container for django__django-10554...
+2025-08-25 02:48:43,520 - INFO - Container for django__django-10554 created: 5f24c52ac6ebb11ab9f8b04fb9fecf41476bcfd82f11b2745e8494d90ac28746
+2025-08-25 02:48:45,131 - INFO - Container for django__django-10554 started: 5f24c52ac6ebb11ab9f8b04fb9fecf41476bcfd82f11b2745e8494d90ac28746
+2025-08-25 02:48:45,131 - INFO - Intermediate patch for django__django-10554 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-10554/patch.diff, now applying to container...
+2025-08-25 02:48:45,406 - INFO - >>>>> Applied Patch:
+Checking patch django/db/models/sql/compiler.py...
+Applied patch django/db/models/sql/compiler.py cleanly.
+
+2025-08-25 02:48:46,540 - INFO - Git diff before:
+diff --git a/django/db/models/sql/compiler.py b/django/db/models/sql/compiler.py
+index a791908caf..2de817de35 100644
+--- a/django/db/models/sql/compiler.py
++++ b/django/db/models/sql/compiler.py
+@@ -427,6 +427,10 @@ class SQLCompiler:
+                 # the query on all combined queries, if not already set.
+                 if not compiler.query.values_select and self.query.values_select:
+                     compiler.query = compiler.query.clone()
++                    # Ensure we include any columns referenced in ordering
++                    if compiler.query.order_by:
++                        order_by_cols = {col.lstrip('-') for col in compiler.query.order_by}
++                        compiler.query.add_fields(order_by_cols)
+                     compiler.query.set_values((
+                         *self.query.extra_select,
+                         *self.query.values_select,
+2025-08-25 02:48:46,540 - INFO - Eval script for django__django-10554 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-10554/eval.sh; copying to container...
+2025-08-25 02:48:59,372 - INFO - Test runtime: 12.68 seconds
+2025-08-25 02:48:59,372 - INFO - Test output for django__django-10554 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-10554/test_output.txt
+2025-08-25 02:48:59,722 - INFO - Git diff after:
+diff --git a/django/db/models/sql/compiler.py b/django/db/models/sql/compiler.py
+index a791908caf..2de817de35 100644
+--- a/django/db/models/sql/compiler.py
++++ b/django/db/models/sql/compiler.py
+@@ -427,6 +427,10 @@ class SQLCompiler:
+                 # the query on all combined queries, if not already set.
+                 if not compiler.query.values_select and self.query.values_select:
+                     compiler.query = compiler.query.clone()
++                    # Ensure we include any columns referenced in ordering
++                    if compiler.query.order_by:
++                        order_by_cols = {col.lstrip('-') for col in compiler.query.order_by}
++                        compiler.query.add_fields(order_by_cols)
+                     compiler.query.set_values((
+                         *self.query.extra_select,
+                         *self.query.values_select,
+2025-08-25 02:48:59,722 - INFO - Grading answer for django__django-10554...
+2025-08-25 02:48:59,724 - INFO - report: {'django__django-10554': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_union_with_values_list_on_annotated_and_unannotated (queries.test_qs_combinators.QuerySetSetOperationTests)'], 'failure': ['test_union_with_values_list_and_order (queries.test_qs_combinators.QuerySetSetOperationTests)']}, 'PASS_TO_PASS': {'success': ['test_combining_multiple_models (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_count_difference (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_count_intersection (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_count_union (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_count_union_empty_result (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_difference_with_empty_qs (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_difference_with_values (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_intersection_with_empty_qs (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_intersection_with_values (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_limits (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_order_raises_on_non_selected_column (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_ordering (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_ordering_by_f_expression (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_qs_with_subcompound_qs (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_simple_difference (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_simple_intersection (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_simple_union (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_distinct (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_with_empty_qs (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_with_extra_and_values_list (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_with_two_annotated_values_list (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_with_values (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_unsupported_ordering_slicing_raises_db_error (queries.test_qs_combinators.QuerySetSetOperationTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-10554: resolved: False
+2025-08-25 02:48:59,724 - INFO - Attempting to stop container sweb.eval.django__django-10554.verified_claude_new...
+2025-08-25 02:49:15,307 - INFO - Attempting to remove container sweb.eval.django__django-10554.verified_claude_new...
+2025-08-25 02:49:15,564 - INFO - Container sweb.eval.django__django-10554.verified_claude_new removed.
+2025-08-25 02:49:15,565 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-10554:latest...
+2025-08-25 02:49:16,760 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-10554:latest removed.

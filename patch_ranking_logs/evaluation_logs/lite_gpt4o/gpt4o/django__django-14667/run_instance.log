@@ -1,0 +1,95 @@
+2025-08-22 02:48:38,541 - INFO - Creating container for django__django-14667...
+2025-08-22 02:48:38,614 - INFO - Container for django__django-14667 created: 4f4ea55820e8b561c7b270a04469bd516dc71da15f40df7806c671dc6a58b2b8
+2025-08-22 02:48:42,951 - INFO - Container for django__django-14667 started: 4f4ea55820e8b561c7b270a04469bd516dc71da15f40df7806c671dc6a58b2b8
+2025-08-22 02:48:42,951 - INFO - Intermediate patch for django__django-14667 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-14667/patch.diff, now applying to container...
+2025-08-22 02:48:43,142 - INFO - >>>>> Applied Patch:
+Checking patch django/db/models/query.py...
+Applied patch django/db/models/query.py cleanly.
+
+2025-08-22 02:48:44,467 - INFO - Git diff before:
+diff --git a/django/db/models/query.py b/django/db/models/query.py
+index 71a52fb754..5edfc9ee0e 100644
+--- a/django/db/models/query.py
++++ b/django/db/models/query.py
+@@ -1197,6 +1197,10 @@ class QuerySet:
+             raise TypeError('Cannot change a query once a slice has been taken.')
+         clone = self._chain()
+         clone.query.add_extra(select, select_params, where, params, tables, order_by)
++        if clone.query.deferred_loading[1] is False:
++            only_fields = set(fields)
++            fields_to_remove = only_fields.intersection(clone.query.deferred_loading[0])
++            clone.query.deferred_loading = (clone.query.deferred_loading[0].difference(fields_to_remove), False)
+         return clone
+ 
+     def reverse(self):
+@@ -1205,6 +1209,10 @@ class QuerySet:
+             raise TypeError('Cannot reverse a query once a slice has been taken.')
+         clone = self._chain()
+         clone.query.standard_ordering = not clone.query.standard_ordering
++        if clone.query.deferred_loading[1] is False:
++            only_fields = set(fields)
++            fields_to_remove = only_fields.intersection(clone.query.deferred_loading[0])
++            clone.query.deferred_loading = (clone.query.deferred_loading[0].difference(fields_to_remove), False)
+         return clone
+ 
+     def defer(self, *fields):
+@@ -1222,6 +1230,10 @@ class QuerySet:
+             clone.query.clear_deferred_loading()
+         else:
+             clone.query.add_deferred_loading(fields)
++        if clone.query.deferred_loading[1] is False:
++            only_fields = set(fields)
++            fields_to_remove = only_fields.intersection(clone.query.deferred_loading[0])
++            clone.query.deferred_loading = (clone.query.deferred_loading[0].difference(fields_to_remove), False)
+         return clone
+ 
+     def only(self, *fields):
+2025-08-22 02:48:44,470 - INFO - Eval script for django__django-14667 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-14667/eval.sh; copying to container...
+2025-08-22 02:48:56,201 - INFO - Test runtime: 11.61 seconds
+2025-08-22 02:48:56,201 - INFO - Test output for django__django-14667 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-14667/test_output.txt
+2025-08-22 02:48:56,294 - INFO - Git diff after:
+diff --git a/django/db/models/query.py b/django/db/models/query.py
+index 71a52fb754..5edfc9ee0e 100644
+--- a/django/db/models/query.py
++++ b/django/db/models/query.py
+@@ -1197,6 +1197,10 @@ class QuerySet:
+             raise TypeError('Cannot change a query once a slice has been taken.')
+         clone = self._chain()
+         clone.query.add_extra(select, select_params, where, params, tables, order_by)
++        if clone.query.deferred_loading[1] is False:
++            only_fields = set(fields)
++            fields_to_remove = only_fields.intersection(clone.query.deferred_loading[0])
++            clone.query.deferred_loading = (clone.query.deferred_loading[0].difference(fields_to_remove), False)
+         return clone
+ 
+     def reverse(self):
+@@ -1205,6 +1209,10 @@ class QuerySet:
+             raise TypeError('Cannot reverse a query once a slice has been taken.')
+         clone = self._chain()
+         clone.query.standard_ordering = not clone.query.standard_ordering
++        if clone.query.deferred_loading[1] is False:
++            only_fields = set(fields)
++            fields_to_remove = only_fields.intersection(clone.query.deferred_loading[0])
++            clone.query.deferred_loading = (clone.query.deferred_loading[0].difference(fields_to_remove), False)
+         return clone
+ 
+     def defer(self, *fields):
+@@ -1222,6 +1230,10 @@ class QuerySet:
+             clone.query.clear_deferred_loading()
+         else:
+             clone.query.add_deferred_loading(fields)
++        if clone.query.deferred_loading[1] is False:
++            only_fields = set(fields)
++            fields_to_remove = only_fields.intersection(clone.query.deferred_loading[0])
++            clone.query.deferred_loading = (clone.query.deferred_loading[0].difference(fields_to_remove), False)
+         return clone
+ 
+     def only(self, *fields):
+2025-08-22 02:48:56,295 - INFO - Grading answer for django__django-14667...
+2025-08-22 02:48:56,296 - INFO - report: {'django__django-14667': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_defer_only_chaining (defer.tests.DeferTests)']}, 'PASS_TO_PASS': {'success': ['test_custom_refresh_on_deferred_loading (defer.tests.TestDefer2)', 'When an inherited model is fetched from the DB, its PK is also fetched.', 'Ensure select_related together with only on a proxy model behaves', 'test_eq (defer.tests.TestDefer2)', 'test_refresh_not_loading_deferred_fields (defer.tests.TestDefer2)', 'test_defer_baseclass_when_subclass_has_added_field (defer.tests.BigChildDeferTests)', 'test_defer_subclass (defer.tests.BigChildDeferTests)', 'test_defer_subclass_both (defer.tests.BigChildDeferTests)', 'test_only_baseclass_when_subclass_has_added_field (defer.tests.BigChildDeferTests)', 'test_only_subclass (defer.tests.BigChildDeferTests)', 'test_defer (defer.tests.DeferTests)', 'test_defer_baseclass_when_subclass_has_no_added_fields (defer.tests.DeferTests)', 'test_defer_extra (defer.tests.DeferTests)', 'test_defer_foreign_keys_are_deferred_and_not_traversed (defer.tests.DeferTests)', 'test_defer_none_to_clear_deferred_set (defer.tests.DeferTests)', 'test_defer_of_overridden_scalar (defer.tests.DeferTests)', 'test_defer_on_an_already_deferred_field (defer.tests.DeferTests)', 'test_defer_only_clear (defer.tests.DeferTests)', 'test_defer_select_related_raises_invalid_query (defer.tests.DeferTests)', 'test_defer_values_does_not_defer (defer.tests.DeferTests)', 'test_defer_with_select_related (defer.tests.DeferTests)', 'test_get (defer.tests.DeferTests)', 'test_only (defer.tests.DeferTests)', 'test_only_baseclass_when_subclass_has_no_added_fields (defer.tests.DeferTests)', 'test_only_none_raises_error (defer.tests.DeferTests)', 'test_only_select_related_raises_invalid_query (defer.tests.DeferTests)', 'test_only_values_does_not_defer (defer.tests.DeferTests)', 'test_only_with_select_related (defer.tests.DeferTests)', 'test_saving_object_with_deferred_field (defer.tests.DeferTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-14667: resolved: False
+2025-08-22 02:48:56,296 - INFO - Attempting to stop container sweb.eval.django__django-14667.lite_gpt_all...
+2025-08-22 02:49:12,840 - INFO - Attempting to remove container sweb.eval.django__django-14667.lite_gpt_all...
+2025-08-22 02:49:13,124 - INFO - Container sweb.eval.django__django-14667.lite_gpt_all removed.
+2025-08-22 02:49:13,124 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-14667:latest...
+2025-08-22 02:49:14,396 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-14667:latest removed.

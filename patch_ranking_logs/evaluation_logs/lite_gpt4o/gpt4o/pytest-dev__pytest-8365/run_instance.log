@@ -1,0 +1,47 @@
+2025-08-22 02:52:09,871 - INFO - Creating container for pytest-dev__pytest-8365...
+2025-08-22 02:52:17,069 - INFO - Container for pytest-dev__pytest-8365 created: 100b762ca6c1bcbe9eb2b4443a2b1905263655e1ca419c72bb59f90ef988ff79
+2025-08-22 02:52:17,760 - INFO - Container for pytest-dev__pytest-8365 started: 100b762ca6c1bcbe9eb2b4443a2b1905263655e1ca419c72bb59f90ef988ff79
+2025-08-22 02:52:17,761 - INFO - Intermediate patch for pytest-dev__pytest-8365 written to logs/run_evaluation/lite_gpt_all/agentless/pytest-dev__pytest-8365/patch.diff, now applying to container...
+2025-08-22 02:52:17,931 - INFO - >>>>> Applied Patch:
+Checking patch src/_pytest/tmpdir.py...
+Applied patch src/_pytest/tmpdir.py cleanly.
+
+2025-08-22 02:52:18,140 - INFO - Git diff before:
+diff --git a/src/_pytest/tmpdir.py b/src/_pytest/tmpdir.py
+index 29c7e19d7..9aeedc35c 100644
+--- a/src/_pytest/tmpdir.py
++++ b/src/_pytest/tmpdir.py
+@@ -112,6 +112,7 @@ class TempPathFactory:
+             from_env = os.environ.get("PYTEST_DEBUG_TEMPROOT")
+             temproot = Path(from_env or tempfile.gettempdir()).resolve()
+             user = get_user() or "unknown"
++            user = user.replace("\\", "_").replace("/", "_")
+             # use a sub-directory in the temproot to speed-up
+             # make_numbered_dir() call
+             rootdir = temproot.joinpath(f"pytest-of-{user}")
+2025-08-22 02:52:18,141 - INFO - Eval script for pytest-dev__pytest-8365 written to logs/run_evaluation/lite_gpt_all/agentless/pytest-dev__pytest-8365/eval.sh; copying to container...
+2025-08-22 02:52:27,112 - INFO - Test runtime: 8.83 seconds
+2025-08-22 02:52:27,112 - INFO - Test output for pytest-dev__pytest-8365 written to logs/run_evaluation/lite_gpt_all/agentless/pytest-dev__pytest-8365/test_output.txt
+2025-08-22 02:52:27,193 - INFO - Git diff after:
+diff --git a/src/_pytest/tmpdir.py b/src/_pytest/tmpdir.py
+index 29c7e19d7..9aeedc35c 100644
+--- a/src/_pytest/tmpdir.py
++++ b/src/_pytest/tmpdir.py
+@@ -112,6 +112,7 @@ class TempPathFactory:
+             from_env = os.environ.get("PYTEST_DEBUG_TEMPROOT")
+             temproot = Path(from_env or tempfile.gettempdir()).resolve()
+             user = get_user() or "unknown"
++            user = user.replace("\\", "_").replace("/", "_")
+             # use a sub-directory in the temproot to speed-up
+             # make_numbered_dir() call
+             rootdir = temproot.joinpath(f"pytest-of-{user}")
+2025-08-22 02:52:27,193 - INFO - Grading answer for pytest-dev__pytest-8365...
+2025-08-22 02:52:27,195 - INFO - report: {'pytest-dev__pytest-8365': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['testing/test_tmpdir.py::test_tmp_path_factory_handles_invalid_dir_characters']}, 'PASS_TO_PASS': {'success': ['testing/test_tmpdir.py::TestTempdirHandler::test_mktemp', 'testing/test_tmpdir.py::TestTempdirHandler::test_tmppath_relative_basetemp_absolute', 'testing/test_tmpdir.py::test_get_user_uid_not_found', 'testing/test_tmpdir.py::TestNumberedDir::test_make', 'testing/test_tmpdir.py::TestNumberedDir::test_cleanup_lock_create', 'testing/test_tmpdir.py::TestNumberedDir::test_lock_register_cleanup_removal', 'testing/test_tmpdir.py::TestNumberedDir::test_cleanup_keep', 'testing/test_tmpdir.py::TestNumberedDir::test_cleanup_locked', 'testing/test_tmpdir.py::TestNumberedDir::test_cleanup_ignores_symlink', 'testing/test_tmpdir.py::TestNumberedDir::test_removal_accepts_lock', 'testing/test_tmpdir.py::TestRmRf::test_rm_rf', 'testing/test_tmpdir.py::TestRmRf::test_rm_rf_with_read_only_file', 'testing/test_tmpdir.py::TestRmRf::test_rm_rf_with_read_only_directory', 'testing/test_tmpdir.py::TestRmRf::test_on_rm_rf_error', 'testing/test_tmpdir.py::test_tmpdir_equals_tmp_path', 'testing/test_tmpdir.py::test_tmpdir_fixture', 'testing/test_tmpdir.py::TestConfigTmpdir::test_getbasetemp_custom_removes_old', 'testing/test_tmpdir.py::test_mktemp[mypath-True]', 'testing/test_tmpdir.py::test_mktemp[/mypath1-False]', 'testing/test_tmpdir.py::test_mktemp[./mypath1-True]', 'testing/test_tmpdir.py::test_mktemp[../mypath3-False]', 'testing/test_tmpdir.py::test_mktemp[../../mypath4-False]', 'testing/test_tmpdir.py::test_mktemp[mypath5/..-False]', 'testing/test_tmpdir.py::test_mktemp[mypath6/../mypath6-True]', 'testing/test_tmpdir.py::test_mktemp[mypath7/../mypath7/..-False]', 'testing/test_tmpdir.py::test_tmpdir_always_is_realpath', 'testing/test_tmpdir.py::test_tmp_path_always_is_realpath', 'testing/test_tmpdir.py::test_tmpdir_too_long_on_parametrization', 'testing/test_tmpdir.py::test_tmpdir_factory', 'testing/test_tmpdir.py::test_tmpdir_fallback_tox_env', 'testing/test_tmpdir.py::test_tmpdir_fallback_uid_not_found', 'testing/test_tmpdir.py::test_basetemp_with_read_only_files'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for pytest-dev__pytest-8365: resolved: False
+2025-08-22 02:52:27,196 - INFO - Attempting to stop container sweb.eval.pytest-dev__pytest-8365.lite_gpt_all...
+2025-08-22 02:52:56,311 - INFO - Failed to stop container sweb.eval.pytest-dev__pytest-8365.lite_gpt_all: 500 Server Error for http+docker://localhost/v1.47/containers/100b762ca6c1bcbe9eb2b4443a2b1905263655e1ca419c72bb59f90ef988ff79/stop?t=15: Internal Server Error ("cannot stop container: 100b762ca6c1bcbe9eb2b4443a2b1905263655e1ca419c72bb59f90ef988ff79: tried to kill container, but did not receive an exit event"). Trying to forcefully kill...
+2025-08-22 02:53:00,044 - INFO - PID for container sweb.eval.pytest-dev__pytest-8365.lite_gpt_all: 0 - not killing.
+2025-08-22 02:53:00,044 - INFO - Attempting to remove container sweb.eval.pytest-dev__pytest-8365.lite_gpt_all...
+2025-08-22 02:53:02,788 - INFO - Container sweb.eval.pytest-dev__pytest-8365.lite_gpt_all removed.
+2025-08-22 02:53:02,788 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-8365:latest...
+2025-08-22 02:53:11,900 - INFO - Image swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-8365:latest removed.

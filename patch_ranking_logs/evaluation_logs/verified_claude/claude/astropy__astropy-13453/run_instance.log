@@ -1,0 +1,45 @@
+2025-08-25 02:48:14,644 - INFO - Creating container for astropy__astropy-13453...
+2025-08-25 02:48:16,382 - INFO - Container for astropy__astropy-13453 created: 0892b9bf4e75d93ce2ff2678509fe171495e3a424e0436699e982c4c48010653
+2025-08-25 02:48:17,746 - INFO - Container for astropy__astropy-13453 started: 0892b9bf4e75d93ce2ff2678509fe171495e3a424e0436699e982c4c48010653
+2025-08-25 02:48:17,746 - INFO - Intermediate patch for astropy__astropy-13453 written to logs/run_evaluation/verified_claude_new/agentless_claude/astropy__astropy-13453/patch.diff, now applying to container...
+2025-08-25 02:48:17,920 - INFO - >>>>> Applied Patch:
+Checking patch astropy/io/ascii/html.py...
+Applied patch astropy/io/ascii/html.py cleanly.
+
+2025-08-25 02:48:18,426 - INFO - Git diff before:
+diff --git a/astropy/io/ascii/html.py b/astropy/io/ascii/html.py
+index 266cf229c..41d857157 100644
+--- a/astropy/io/ascii/html.py
++++ b/astropy/io/ascii/html.py
+@@ -437,6 +437,8 @@ class HTML(core.BaseReader):
+                                     new_cols.append(new_col)
+                             else:
+ 
++                                if col.info.name in self.data.formats:
++                                    col.info.format = self.data.formats[col.info.name]
+                                 col_iter_str_vals = self.fill_values(col, col.info.iter_str_vals())
+                                 col_str_iters.append(col_iter_str_vals)
+2025-08-25 02:48:18,427 - INFO - Eval script for astropy__astropy-13453 written to logs/run_evaluation/verified_claude_new/agentless_claude/astropy__astropy-13453/eval.sh; copying to container...
+2025-08-25 02:49:42,046 - INFO - Test runtime: 83.52 seconds
+2025-08-25 02:49:42,047 - INFO - Test output for astropy__astropy-13453 written to logs/run_evaluation/verified_claude_new/agentless_claude/astropy__astropy-13453/test_output.txt
+2025-08-25 02:49:42,144 - INFO - Git diff after:
+diff --git a/astropy/io/ascii/html.py b/astropy/io/ascii/html.py
+index 266cf229c..41d857157 100644
+--- a/astropy/io/ascii/html.py
++++ b/astropy/io/ascii/html.py
+@@ -437,6 +437,8 @@ class HTML(core.BaseReader):
+                                     new_cols.append(new_col)
+                             else:
+ 
++                                if col.info.name in self.data.formats:
++                                    col.info.format = self.data.formats[col.info.name]
+                                 col_iter_str_vals = self.fill_values(col, col.info.iter_str_vals())
+                                 col_str_iters.append(col_iter_str_vals)
+2025-08-25 02:49:42,144 - INFO - Grading answer for astropy__astropy-13453...
+2025-08-25 02:49:42,147 - INFO - report: {'astropy__astropy-13453': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['astropy/io/ascii/tests/test_html.py::test_write_table_formatted_columns'], 'failure': []}, 'PASS_TO_PASS': {'success': ['astropy/io/ascii/tests/test_html.py::test_listwriter', 'astropy/io/ascii/tests/test_html.py::test_htmlinputter_no_bs4', 'astropy/io/ascii/tests/test_html.py::test_multicolumn_write', 'astropy/io/ascii/tests/test_html.py::test_write_no_multicols', 'astropy/io/ascii/tests/test_html.py::test_write_table_html_fill_values', 'astropy/io/ascii/tests/test_html.py::test_write_table_html_fill_values_optional_columns', 'astropy/io/ascii/tests/test_html.py::test_write_table_html_fill_values_masked', 'astropy/io/ascii/tests/test_html.py::test_multicolumn_table_html_fill_values', 'astropy/io/ascii/tests/test_html.py::test_multi_column_write_table_html_fill_values_masked'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for astropy__astropy-13453: resolved: True
+2025-08-25 02:49:42,148 - INFO - Attempting to stop container sweb.eval.astropy__astropy-13453.verified_claude_new...
+2025-08-25 02:49:57,919 - INFO - Attempting to remove container sweb.eval.astropy__astropy-13453.verified_claude_new...
+2025-08-25 02:49:58,863 - INFO - Container sweb.eval.astropy__astropy-13453.verified_claude_new removed.
+2025-08-25 02:49:58,863 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.astropy_1776_astropy-13453:latest...
+2025-08-25 02:49:59,241 - INFO - Image swebench/sweb.eval.x86_64.astropy_1776_astropy-13453:latest removed.

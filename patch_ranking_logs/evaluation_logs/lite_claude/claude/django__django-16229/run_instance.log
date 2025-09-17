@@ -1,0 +1,47 @@
+2025-09-04 06:24:42,311 - INFO - Creating container for django__django-16229...
+2025-09-04 06:24:43,024 - INFO - Container for django__django-16229 created: 91e10a917bc132c0bb761e8085a00aa036c872b3a3261c749b8781526981da9a
+2025-09-04 06:24:45,231 - INFO - Container for django__django-16229 started: 91e10a917bc132c0bb761e8085a00aa036c872b3a3261c749b8781526981da9a
+2025-09-04 06:24:45,231 - INFO - Intermediate patch for django__django-16229 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-16229/patch.diff, now applying to container...
+2025-09-04 06:24:45,556 - INFO - >>>>> Applied Patch:
+Checking patch django/forms/forms.py...
+Applied patch django/forms/forms.py cleanly.
+
+2025-09-04 06:24:48,616 - INFO - Git diff before:
+diff --git a/django/forms/forms.py b/django/forms/forms.py
+index 6884e6e724..fd3cfbb04d 100644
+--- a/django/forms/forms.py
++++ b/django/forms/forms.py
+@@ -518,7 +518,7 @@ class BaseForm(RenderableFormMixin):
+         or the field, in that order. Evaluate callable values.
+         """
+         value = self.initial.get(field_name, field.initial)
+-        if callable(value):
++        if callable(value) and not (hasattr(field, 'show_hidden_initial') and field.show_hidden_initial):
+             value = value()
+         # If this is an auto-generated default date, nix the microseconds
+         # for standardized handling. See #22502.
+2025-09-04 06:24:48,623 - INFO - Eval script for django__django-16229 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-16229/eval.sh; copying to container...
+2025-09-04 06:24:59,766 - INFO - Test runtime: 10.76 seconds
+2025-09-04 06:24:59,766 - INFO - Test output for django__django-16229 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-16229/test_output.txt
+2025-09-04 06:24:59,959 - INFO - Git diff after:
+diff --git a/django/forms/forms.py b/django/forms/forms.py
+index 6884e6e724..fd3cfbb04d 100644
+--- a/django/forms/forms.py
++++ b/django/forms/forms.py
+@@ -518,7 +518,7 @@ class BaseForm(RenderableFormMixin):
+         or the field, in that order. Evaluate callable values.
+         """
+         value = self.initial.get(field_name, field.initial)
+-        if callable(value):
++        if callable(value) and not (hasattr(field, 'show_hidden_initial') and field.show_hidden_initial):
+             value = value()
+         # If this is an auto-generated default date, nix the microseconds
+         # for standardized handling. See #22502.
+2025-09-04 06:24:59,959 - INFO - Grading answer for django__django-16229...
+2025-09-04 06:24:59,960 - INFO - report: {'django__django-16229': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_callable_default_hidden_widget_value_not_overridden (forms_tests.tests.tests.ModelFormCallableModelDefault)']}, 'PASS_TO_PASS': {'success': ['Test for issue 10405', "If a model's ManyToManyField has blank=True and is saved with no data,", 'test_m2m_field_exclusion (forms_tests.tests.tests.ManyToManyExclusionTestCase)', 'test_empty_field_char (forms_tests.tests.tests.Jinja2EmptyLabelTestCase)', 'test_empty_field_char_none (forms_tests.tests.tests.Jinja2EmptyLabelTestCase)', 'test_empty_field_integer (forms_tests.tests.tests.Jinja2EmptyLabelTestCase)', 'test_get_display_value_on_none (forms_tests.tests.tests.Jinja2EmptyLabelTestCase)', 'test_html_rendering_of_prepopulated_models (forms_tests.tests.tests.Jinja2EmptyLabelTestCase)', 'test_save_empty_label_forms (forms_tests.tests.tests.Jinja2EmptyLabelTestCase)', 'test_boundary_conditions (forms_tests.tests.tests.FormsModelTestCase)', 'test_unicode_filename (forms_tests.tests.tests.FormsModelTestCase)', 'test_empty_field_char (forms_tests.tests.tests.EmptyLabelTestCase)', 'test_empty_field_char_none (forms_tests.tests.tests.EmptyLabelTestCase)', 'test_empty_field_integer (forms_tests.tests.tests.EmptyLabelTestCase)', 'test_get_display_value_on_none (forms_tests.tests.tests.EmptyLabelTestCase)', 'test_html_rendering_of_prepopulated_models (forms_tests.tests.tests.EmptyLabelTestCase)', 'test_save_empty_label_forms (forms_tests.tests.tests.EmptyLabelTestCase)', 'Initial instances for model fields may also be instances (refs #7287)', "If a model's ForeignKey has blank=False and a default, no empty option"], 'failure': ['test_formfield_initial (forms_tests.tests.tests.FormsModelTestCase)', 'The initial value for a callable default returning a queryset is the']}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-16229: resolved: False
+2025-09-04 06:24:59,961 - INFO - Attempting to stop container sweb.eval.django__django-16229.lite_claude_all...
+2025-09-04 06:25:16,169 - INFO - Attempting to remove container sweb.eval.django__django-16229.lite_claude_all...
+2025-09-04 06:25:17,215 - INFO - Container sweb.eval.django__django-16229.lite_claude_all removed.
+2025-09-04 06:25:17,215 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-16229:latest...
+2025-09-04 06:25:23,445 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-16229:latest removed.

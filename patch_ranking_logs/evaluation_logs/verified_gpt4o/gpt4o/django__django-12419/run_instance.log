@@ -1,0 +1,45 @@
+2025-08-26 05:08:58,467 - INFO - Creating container for django__django-12419...
+2025-08-26 05:08:59,265 - INFO - Container for django__django-12419 created: c9b54b5f8b16d5522d1d401c06ddd78054f89d1891a8ffecfae35e466101cfdc
+2025-08-26 05:09:00,993 - INFO - Container for django__django-12419 started: c9b54b5f8b16d5522d1d401c06ddd78054f89d1891a8ffecfae35e466101cfdc
+2025-08-26 05:09:00,994 - INFO - Intermediate patch for django__django-12419 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-12419/patch.diff, now applying to container...
+2025-08-26 05:09:01,204 - INFO - >>>>> Applied Patch:
+Checking patch django/conf/global_settings.py...
+Applied patch django/conf/global_settings.py cleanly.
+
+2025-08-26 05:09:02,509 - INFO - Git diff before:
+diff --git a/django/conf/global_settings.py b/django/conf/global_settings.py
+index 09c9b95d26..5e30e02773 100644
+--- a/django/conf/global_settings.py
++++ b/django/conf/global_settings.py
+@@ -637,6 +637,6 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+ SECURE_HSTS_PRELOAD = False
+ SECURE_HSTS_SECONDS = 0
+ SECURE_REDIRECT_EXEMPT = []
+-SECURE_REFERRER_POLICY = None
++SECURE_REFERRER_POLICY = "same-origin"
+ SECURE_SSL_HOST = None
+ SECURE_SSL_REDIRECT = False
+2025-08-26 05:09:02,509 - INFO - Eval script for django__django-12419 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-12419/eval.sh; copying to container...
+2025-08-26 05:09:15,346 - INFO - Test runtime: 12.68 seconds
+2025-08-26 05:09:15,346 - INFO - Test output for django__django-12419 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-12419/test_output.txt
+2025-08-26 05:09:15,572 - INFO - Git diff after:
+diff --git a/django/conf/global_settings.py b/django/conf/global_settings.py
+index 09c9b95d26..5e30e02773 100644
+--- a/django/conf/global_settings.py
++++ b/django/conf/global_settings.py
+@@ -637,6 +637,6 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+ SECURE_HSTS_PRELOAD = False
+ SECURE_HSTS_SECONDS = 0
+ SECURE_REDIRECT_EXEMPT = []
+-SECURE_REFERRER_POLICY = None
++SECURE_REFERRER_POLICY = "same-origin"
+ SECURE_SSL_HOST = None
+ SECURE_SSL_REDIRECT = False
+2025-08-26 05:09:15,572 - INFO - Grading answer for django__django-12419...
+2025-08-26 05:09:15,573 - INFO - report: {'django__django-12419': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_middleware_headers (project_template.test_settings.TestStartProjectSettings)'], 'failure': []}, 'PASS_TO_PASS': {'success': [], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-12419: resolved: True
+2025-08-26 05:09:15,573 - INFO - Attempting to stop container sweb.eval.django__django-12419.verified_gpt4o_all2...
+2025-08-26 05:09:32,545 - INFO - Attempting to remove container sweb.eval.django__django-12419.verified_gpt4o_all2...
+2025-08-26 05:09:32,691 - INFO - Container sweb.eval.django__django-12419.verified_gpt4o_all2 removed.
+2025-08-26 05:09:32,693 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-12419:latest...
+2025-08-26 05:09:34,301 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-12419:latest removed.

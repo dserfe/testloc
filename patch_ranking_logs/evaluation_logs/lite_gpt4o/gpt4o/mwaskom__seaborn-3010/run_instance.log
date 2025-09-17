@@ -1,0 +1,51 @@
+2025-08-22 02:51:16,656 - INFO - Creating container for mwaskom__seaborn-3010...
+2025-08-22 02:51:21,494 - INFO - Container for mwaskom__seaborn-3010 created: 411f2610d7bf1fceead651e91b146cf8baa369622d946661d4d7fa258b3bde8c
+2025-08-22 02:51:22,325 - INFO - Container for mwaskom__seaborn-3010 started: 411f2610d7bf1fceead651e91b146cf8baa369622d946661d4d7fa258b3bde8c
+2025-08-22 02:51:22,325 - INFO - Intermediate patch for mwaskom__seaborn-3010 written to logs/run_evaluation/lite_gpt_all/agentless/mwaskom__seaborn-3010/patch.diff, now applying to container...
+2025-08-22 02:51:22,459 - INFO - >>>>> Applied Patch:
+Checking patch seaborn/_stats/regression.py...
+Applied patch seaborn/_stats/regression.py cleanly.
+
+2025-08-22 02:51:22,605 - INFO - Git diff before:
+diff --git a/seaborn/_stats/regression.py b/seaborn/_stats/regression.py
+index 7b7ddc8d..fb43a156 100644
+--- a/seaborn/_stats/regression.py
++++ b/seaborn/_stats/regression.py
+@@ -21,8 +21,8 @@ class PolyFit(Stat):
+ 
+     def _fit_predict(self, data):
+ 
+-        x = data["x"]
+-        y = data["y"]
++        x = data["x"].dropna()
++        y = data["y"].dropna()
+         if x.nunique() <= self.order:
+             # TODO warn?
+             xx = yy = []
+2025-08-22 02:51:22,605 - INFO - Eval script for mwaskom__seaborn-3010 written to logs/run_evaluation/lite_gpt_all/agentless/mwaskom__seaborn-3010/eval.sh; copying to container...
+2025-08-22 02:51:28,378 - INFO - Test runtime: 5.66 seconds
+2025-08-22 02:51:28,381 - INFO - Test output for mwaskom__seaborn-3010 written to logs/run_evaluation/lite_gpt_all/agentless/mwaskom__seaborn-3010/test_output.txt
+2025-08-22 02:51:28,466 - INFO - Git diff after:
+diff --git a/seaborn/_stats/regression.py b/seaborn/_stats/regression.py
+index 7b7ddc8d..fb43a156 100644
+--- a/seaborn/_stats/regression.py
++++ b/seaborn/_stats/regression.py
+@@ -21,8 +21,8 @@ class PolyFit(Stat):
+ 
+     def _fit_predict(self, data):
+ 
+-        x = data["x"]
+-        y = data["y"]
++        x = data["x"].dropna()
++        y = data["y"].dropna()
+         if x.nunique() <= self.order:
+             # TODO warn?
+             xx = yy = []
+2025-08-22 02:51:28,466 - INFO - Grading answer for mwaskom__seaborn-3010...
+2025-08-22 02:51:28,467 - INFO - report: {'mwaskom__seaborn-3010': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/_stats/test_regression.py::TestPolyFit::test_missing_data'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/_stats/test_regression.py::TestPolyFit::test_no_grouper', 'tests/_stats/test_regression.py::TestPolyFit::test_one_grouper'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for mwaskom__seaborn-3010: resolved: True
+2025-08-22 02:51:28,467 - INFO - Attempting to stop container sweb.eval.mwaskom__seaborn-3010.lite_gpt_all...
+2025-08-22 02:51:48,697 - INFO - Attempting to remove container sweb.eval.mwaskom__seaborn-3010.lite_gpt_all...
+2025-08-22 02:51:52,405 - INFO - Container sweb.eval.mwaskom__seaborn-3010.lite_gpt_all removed.
+2025-08-22 02:51:52,406 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.mwaskom_1776_seaborn-3010:latest...
+2025-08-22 02:51:53,939 - INFO - Image swebench/sweb.eval.x86_64.mwaskom_1776_seaborn-3010:latest removed.

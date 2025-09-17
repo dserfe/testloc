@@ -1,0 +1,53 @@
+2025-08-25 02:50:57,031 - INFO - Creating container for django__django-14007...
+2025-08-25 02:50:57,563 - INFO - Container for django__django-14007 created: 35f2f092d29a881d68721e4e75d8f97012365303553f0484cb32871b4b4714b1
+2025-08-25 02:50:58,956 - INFO - Container for django__django-14007 started: 35f2f092d29a881d68721e4e75d8f97012365303553f0484cb32871b4b4714b1
+2025-08-25 02:50:58,956 - INFO - Intermediate patch for django__django-14007 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-14007/patch.diff, now applying to container...
+2025-08-25 02:50:59,112 - INFO - >>>>> Applied Patch:
+Checking patch django/db/models/fields/__init__.py...
+Applied patch django/db/models/fields/__init__.py cleanly.
+
+2025-08-25 02:51:00,552 - INFO - Git diff before:
+diff --git a/django/db/models/fields/__init__.py b/django/db/models/fields/__init__.py
+index 0f53d9c30b..b09e949ca7 100644
+--- a/django/db/models/fields/__init__.py
++++ b/django/db/models/fields/__init__.py
+@@ -2454,6 +2454,11 @@ class AutoFieldMixin:
+         kwargs['blank'] = True
+         super().__init__(*args, **kwargs)
+ 
++    def convert_returned_value(self, value, expression, connection):
++        if hasattr(self, 'from_db_value'):
++            return self.from_db_value(value, expression, connection)
++        return value
++
+     def check(self, **kwargs):
+         return [
+             *super().check(**kwargs),
+2025-08-25 02:51:00,553 - INFO - Eval script for django__django-14007 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-14007/eval.sh; copying to container...
+2025-08-25 02:51:11,445 - INFO - Test runtime: 10.74 seconds
+2025-08-25 02:51:11,445 - INFO - Test output for django__django-14007 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-14007/test_output.txt
+2025-08-25 02:51:11,743 - INFO - Git diff after:
+diff --git a/django/db/models/fields/__init__.py b/django/db/models/fields/__init__.py
+index 0f53d9c30b..b09e949ca7 100644
+--- a/django/db/models/fields/__init__.py
++++ b/django/db/models/fields/__init__.py
+@@ -2454,6 +2454,11 @@ class AutoFieldMixin:
+         kwargs['blank'] = True
+         super().__init__(*args, **kwargs)
+ 
++    def convert_returned_value(self, value, expression, connection):
++        if hasattr(self, 'from_db_value'):
++            return self.from_db_value(value, expression, connection)
++        return value
++
+     def check(self, **kwargs):
+         return [
+             *super().check(**kwargs),
+2025-08-25 02:51:11,743 - INFO - Grading answer for django__django-14007...
+2025-08-25 02:51:11,744 - INFO - report: {'django__django-14007': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_auto_field_subclass_create (custom_pk.tests.CustomPKTests)']}, 'PASS_TO_PASS': {'success': ['Get can accept pk or the real attribute name', 'Custom pks work with in_bulk, both for integer and non-integer types', 'pk and attribute name are available on the model', 'Both pk and custom attribute_name can be used in filter and friends', "Custom pk doesn't affect related_name based lookups", 'Queries across tables, involving primary key', 'custom pks do not affect save', 'test_custom_field_pk (custom_pk.tests.CustomPKTests)', 'New objects can be created both with pk and the custom name', 'test_unicode_pk (custom_pk.tests.CustomPKTests)', 'test_unique_pk (custom_pk.tests.CustomPKTests)', 'test_zero_non_autoincrement_pk (custom_pk.tests.CustomPKTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-14007: resolved: False
+2025-08-25 02:51:11,744 - INFO - Attempting to stop container sweb.eval.django__django-14007.verified_claude_new...
+2025-08-25 02:51:27,209 - INFO - Attempting to remove container sweb.eval.django__django-14007.verified_claude_new...
+2025-08-25 02:51:27,247 - INFO - Container sweb.eval.django__django-14007.verified_claude_new removed.
+2025-08-25 02:51:27,247 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-14007:latest...
+2025-08-25 02:51:27,672 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-14007:latest removed.

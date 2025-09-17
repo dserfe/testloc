@@ -1,0 +1,51 @@
+2025-08-26 05:08:37,088 - INFO - Creating container for astropy__astropy-13453...
+2025-08-26 05:08:40,725 - INFO - Container for astropy__astropy-13453 created: bebc8a1d80621795924722cccdf9309151e5f1c336aaac9a864d49aa0de40218
+2025-08-26 05:08:41,376 - INFO - Container for astropy__astropy-13453 started: bebc8a1d80621795924722cccdf9309151e5f1c336aaac9a864d49aa0de40218
+2025-08-26 05:08:41,376 - INFO - Intermediate patch for astropy__astropy-13453 written to logs/run_evaluation/verified_gpt4o_all2/agentless/astropy__astropy-13453/patch.diff, now applying to container...
+2025-08-26 05:08:41,546 - INFO - >>>>> Applied Patch:
+Checking patch astropy/io/ascii/ui.py...
+Applied patch astropy/io/ascii/ui.py cleanly.
+
+2025-08-26 05:08:42,099 - INFO - Git diff before:
+diff --git a/astropy/io/ascii/ui.py b/astropy/io/ascii/ui.py
+index bef801959..094477ead 100644
+--- a/astropy/io/ascii/ui.py
++++ b/astropy/io/ascii/ui.py
+@@ -848,6 +848,11 @@ def write(table, output=None, format=None, Writer=None, fast_writer=True, *,
+             'The key(s) {} specified in the formats argument do not match a column name.'
+             .format(diff_format_with_names), AstropyWarning)
+ 
++    if 'formats' in kwargs:
++        for colname, formatter in kwargs['formats'].items():
++            if colname in table.colnames:
++                table[colname].info.format = formatter
++
+     if table.has_mixin_columns:
+         fast_writer = False
+2025-08-26 05:08:42,099 - INFO - Eval script for astropy__astropy-13453 written to logs/run_evaluation/verified_gpt4o_all2/agentless/astropy__astropy-13453/eval.sh; copying to container...
+2025-08-26 05:10:05,840 - INFO - Test runtime: 83.58 seconds
+2025-08-26 05:10:05,842 - INFO - Test output for astropy__astropy-13453 written to logs/run_evaluation/verified_gpt4o_all2/agentless/astropy__astropy-13453/test_output.txt
+2025-08-26 05:10:05,917 - INFO - Git diff after:
+diff --git a/astropy/io/ascii/ui.py b/astropy/io/ascii/ui.py
+index bef801959..094477ead 100644
+--- a/astropy/io/ascii/ui.py
++++ b/astropy/io/ascii/ui.py
+@@ -848,6 +848,11 @@ def write(table, output=None, format=None, Writer=None, fast_writer=True, *,
+             'The key(s) {} specified in the formats argument do not match a column name.'
+             .format(diff_format_with_names), AstropyWarning)
+ 
++    if 'formats' in kwargs:
++        for colname, formatter in kwargs['formats'].items():
++            if colname in table.colnames:
++                table[colname].info.format = formatter
++
+     if table.has_mixin_columns:
+         fast_writer = False
+2025-08-26 05:10:05,917 - INFO - Grading answer for astropy__astropy-13453...
+2025-08-26 05:10:05,920 - INFO - report: {'astropy__astropy-13453': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['astropy/io/ascii/tests/test_html.py::test_write_table_formatted_columns'], 'failure': []}, 'PASS_TO_PASS': {'success': ['astropy/io/ascii/tests/test_html.py::test_listwriter', 'astropy/io/ascii/tests/test_html.py::test_htmlinputter_no_bs4', 'astropy/io/ascii/tests/test_html.py::test_multicolumn_write', 'astropy/io/ascii/tests/test_html.py::test_write_no_multicols', 'astropy/io/ascii/tests/test_html.py::test_write_table_html_fill_values', 'astropy/io/ascii/tests/test_html.py::test_write_table_html_fill_values_optional_columns', 'astropy/io/ascii/tests/test_html.py::test_write_table_html_fill_values_masked', 'astropy/io/ascii/tests/test_html.py::test_multicolumn_table_html_fill_values', 'astropy/io/ascii/tests/test_html.py::test_multi_column_write_table_html_fill_values_masked'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for astropy__astropy-13453: resolved: True
+2025-08-26 05:10:05,921 - INFO - Attempting to stop container sweb.eval.astropy__astropy-13453.verified_gpt4o_all2...
+2025-08-26 05:10:25,107 - INFO - Attempting to remove container sweb.eval.astropy__astropy-13453.verified_gpt4o_all2...
+2025-08-26 05:10:25,242 - INFO - Container sweb.eval.astropy__astropy-13453.verified_gpt4o_all2 removed.
+2025-08-26 05:10:25,242 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.astropy_1776_astropy-13453:latest...
+2025-08-26 05:10:28,948 - INFO - Image swebench/sweb.eval.x86_64.astropy_1776_astropy-13453:latest removed.

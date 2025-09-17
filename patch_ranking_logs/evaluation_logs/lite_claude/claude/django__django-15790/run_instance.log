@@ -1,0 +1,63 @@
+2025-09-04 06:24:41,848 - INFO - Creating container for django__django-15790...
+2025-09-04 06:24:42,554 - INFO - Container for django__django-15790 created: 336938a479cdf955d99ae1cd7543f9e40a35b9733f18e4086c9813a59f75342b
+2025-09-04 06:24:44,625 - INFO - Container for django__django-15790 started: 336938a479cdf955d99ae1cd7543f9e40a35b9733f18e4086c9813a59f75342b
+2025-09-04 06:24:44,625 - INFO - Intermediate patch for django__django-15790 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-15790/patch.diff, now applying to container...
+2025-09-04 06:24:45,116 - INFO - >>>>> Applied Patch:
+Checking patch django/core/checks/templates.py...
+Applied patch django/core/checks/templates.py cleanly.
+
+2025-09-04 06:24:48,376 - INFO - Git diff before:
+diff --git a/django/core/checks/templates.py b/django/core/checks/templates.py
+index 5214276987..c48ae59be4 100644
+--- a/django/core/checks/templates.py
++++ b/django/core/checks/templates.py
+@@ -61,12 +61,14 @@ def check_for_template_tags_with_the_same_name(app_configs, **kwargs):
+         libraries[module_name].append(module_path)
+ 
+     for library_name, items in libraries.items():
+-        if len(items) > 1:
++        # Deduplicate items to avoid false positives
++        unique_items = list(dict.fromkeys(items))
++        if len(unique_items) > 1:
+             errors.append(
+                 Error(
+                     E003.msg.format(
+                         repr(library_name),
+-                        ", ".join(repr(item) for item in items),
++                        ", ".join(repr(item) for item in unique_items),
+                     ),
+                     id=E003.id,
+                 )
+2025-09-04 06:24:48,376 - INFO - Eval script for django__django-15790 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-15790/eval.sh; copying to container...
+2025-09-04 06:24:59,351 - INFO - Test runtime: 10.61 seconds
+2025-09-04 06:24:59,351 - INFO - Test output for django__django-15790 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-15790/test_output.txt
+2025-09-04 06:24:59,441 - INFO - Git diff after:
+diff --git a/django/core/checks/templates.py b/django/core/checks/templates.py
+index 5214276987..c48ae59be4 100644
+--- a/django/core/checks/templates.py
++++ b/django/core/checks/templates.py
+@@ -61,12 +61,14 @@ def check_for_template_tags_with_the_same_name(app_configs, **kwargs):
+         libraries[module_name].append(module_path)
+ 
+     for library_name, items in libraries.items():
+-        if len(items) > 1:
++        # Deduplicate items to avoid false positives
++        unique_items = list(dict.fromkeys(items))
++        if len(unique_items) > 1:
+             errors.append(
+                 Error(
+                     E003.msg.format(
+                         repr(library_name),
+-                        ", ".join(repr(item) for item in items),
++                        ", ".join(repr(item) for item in unique_items),
+                     ),
+                     id=E003.id,
+                 )
+2025-09-04 06:24:59,441 - INFO - Grading answer for django__django-15790...
+2025-09-04 06:24:59,441 - INFO - report: {'django__django-15790': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_template_tags_same_library_in_installed_apps_libraries (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['Error if template loaders are specified and APP_DIRS is True.', 'test_app_dirs_removed (check_framework.test_templates.CheckTemplateSettingsAppDirsTest)', 'test_loaders_removed (check_framework.test_templates.CheckTemplateSettingsAppDirsTest)', 'test_string_if_invalid_both_are_strings (check_framework.test_templates.CheckTemplateStringIfInvalidTest)', 'test_string_if_invalid_first_is_string (check_framework.test_templates.CheckTemplateStringIfInvalidTest)', 'test_string_if_invalid_not_specified (check_framework.test_templates.CheckTemplateStringIfInvalidTest)', 'test_string_if_invalid_not_string (check_framework.test_templates.CheckTemplateStringIfInvalidTest)', 'test_template_tags_with_different_library_name (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)', 'test_template_tags_with_different_name (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)', 'test_template_tags_with_same_library_name (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)', 'test_template_tags_with_same_library_name_and_module_name (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)', 'test_template_tags_with_same_name (check_framework.test_templates.CheckTemplateTagLibrariesWithSameName)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-15790: resolved: True
+2025-09-04 06:24:59,442 - INFO - Attempting to stop container sweb.eval.django__django-15790.lite_claude_all...
+2025-09-04 06:25:15,149 - INFO - Attempting to remove container sweb.eval.django__django-15790.lite_claude_all...
+2025-09-04 06:25:15,813 - INFO - Container sweb.eval.django__django-15790.lite_claude_all removed.
+2025-09-04 06:25:15,815 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-15790:latest...
+2025-09-04 06:25:22,091 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-15790:latest removed.

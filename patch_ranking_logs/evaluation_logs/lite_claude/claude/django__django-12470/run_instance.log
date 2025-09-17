@@ -1,0 +1,55 @@
+2025-09-04 06:22:59,666 - INFO - Creating container for django__django-12470...
+2025-09-04 06:23:03,431 - INFO - Container for django__django-12470 created: 7e9db978b2019791ad1adcea01a4f5e2f0733611957f7ea27c2add9a58ef0221
+2025-09-04 06:23:04,757 - INFO - Container for django__django-12470 started: 7e9db978b2019791ad1adcea01a4f5e2f0733611957f7ea27c2add9a58ef0221
+2025-09-04 06:23:04,757 - INFO - Intermediate patch for django__django-12470 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-12470/patch.diff, now applying to container...
+2025-09-04 06:23:05,055 - INFO - >>>>> Applied Patch:
+Checking patch django/db/models/sql/query.py...
+Applied patch django/db/models/sql/query.py cleanly.
+
+2025-09-04 06:23:06,224 - INFO - Git diff before:
+diff --git a/django/db/models/sql/query.py b/django/db/models/sql/query.py
+index 78c4f47b5b..35ec86201a 100644
+--- a/django/db/models/sql/query.py
++++ b/django/db/models/sql/query.py
+@@ -2261,10 +2261,9 @@ def get_order_dir(field, default='ASC'):
+     The 'default' param is used to indicate which way no prefix (or a '+'
+     prefix) should sort. The '-' prefix always sorts the opposite way.
+     """
+-    dirn = ORDER_DIR[default]
+     if field[0] == '-':
+-        return field[1:], dirn[1]
+-    return field, dirn[0]
++        return field[1:], 'DESC' if default == 'ASC' else 'ASC'
++    return field, default
+ 
+ 
+ def add_to_dict(data, key, value):
+2025-09-04 06:23:06,225 - INFO - Eval script for django__django-12470 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-12470/eval.sh; copying to container...
+2025-09-04 06:23:18,587 - INFO - Test runtime: 12.27 seconds
+2025-09-04 06:23:18,588 - INFO - Test output for django__django-12470 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-12470/test_output.txt
+2025-09-04 06:23:18,799 - INFO - Git diff after:
+diff --git a/django/db/models/sql/query.py b/django/db/models/sql/query.py
+index 78c4f47b5b..35ec86201a 100644
+--- a/django/db/models/sql/query.py
++++ b/django/db/models/sql/query.py
+@@ -2261,10 +2261,9 @@ def get_order_dir(field, default='ASC'):
+     The 'default' param is used to indicate which way no prefix (or a '+'
+     prefix) should sort. The '-' prefix always sorts the opposite way.
+     """
+-    dirn = ORDER_DIR[default]
+     if field[0] == '-':
+-        return field[1:], dirn[1]
+-    return field, dirn[0]
++        return field[1:], 'DESC' if default == 'ASC' else 'ASC'
++    return field, default
+ 
+ 
+ def add_to_dict(data, key, value):
+2025-09-04 06:23:18,799 - INFO - Grading answer for django__django-12470...
+2025-09-04 06:23:18,800 - INFO - report: {'django__django-12470': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_inherited_ordering_pk_desc (model_inheritance.tests.ModelInheritanceTests)']}, 'PASS_TO_PASS': {'success': ['test_abstract_fk_related_name (model_inheritance.tests.InheritanceSameModelNameTests)', 'test_unique (model_inheritance.tests.InheritanceUniqueTests)', 'test_unique_together (model_inheritance.tests.InheritanceUniqueTests)', 'test_abstract (model_inheritance.tests.ModelInheritanceTests)', 'test_abstract_parent_link (model_inheritance.tests.ModelInheritanceTests)', 'Creating a child with non-abstract parents only issues INSERTs.', 'test_custompk_m2m (model_inheritance.tests.ModelInheritanceTests)', 'test_eq (model_inheritance.tests.ModelInheritanceTests)', 'test_init_subclass (model_inheritance.tests.ModelInheritanceTests)', 'test_meta_fields_and_ordering (model_inheritance.tests.ModelInheritanceTests)', 'test_mixin_init (model_inheritance.tests.ModelInheritanceTests)', 'test_model_with_distinct_accessors (model_inheritance.tests.ModelInheritanceTests)', 'test_model_with_distinct_related_query_name (model_inheritance.tests.ModelInheritanceTests)', 'test_reverse_relation_for_different_hierarchy_tree (model_inheritance.tests.ModelInheritanceTests)', 'test_set_name (model_inheritance.tests.ModelInheritanceTests)', 'test_update_parent_filtering (model_inheritance.tests.ModelInheritanceTests)', 'test_exclude_inherited_on_null (model_inheritance.tests.ModelInheritanceDataTests)', 'test_filter_inherited_model (model_inheritance.tests.ModelInheritanceDataTests)', 'test_filter_inherited_on_null (model_inheritance.tests.ModelInheritanceDataTests)', 'test_filter_on_parent_returns_object_of_parent_type (model_inheritance.tests.ModelInheritanceDataTests)', 'test_inherited_does_not_exist_exception (model_inheritance.tests.ModelInheritanceDataTests)', 'test_inherited_multiple_objects_returned_exception (model_inheritance.tests.ModelInheritanceDataTests)', 'test_parent_cache_reuse (model_inheritance.tests.ModelInheritanceDataTests)', 'test_parent_child_one_to_one_link (model_inheritance.tests.ModelInheritanceDataTests)', 'test_parent_child_one_to_one_link_on_nonrelated_objects (model_inheritance.tests.ModelInheritanceDataTests)', 'test_parent_fields_available_for_filtering_in_child_model (model_inheritance.tests.ModelInheritanceDataTests)', 'test_related_objects_for_inherited_models (model_inheritance.tests.ModelInheritanceDataTests)', 'test_select_related_defer (model_inheritance.tests.ModelInheritanceDataTests)', 'test_select_related_works_on_parent_model_fields (model_inheritance.tests.ModelInheritanceDataTests)', 'test_update_inherited_model (model_inheritance.tests.ModelInheritanceDataTests)', 'test_update_query_counts (model_inheritance.tests.ModelInheritanceDataTests)', 'test_update_works_on_parent_and_child_models_at_once (model_inheritance.tests.ModelInheritanceDataTests)', 'test_values_works_on_parent_model_fields (model_inheritance.tests.ModelInheritanceDataTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-12470: resolved: False
+2025-09-04 06:23:18,800 - INFO - Attempting to stop container sweb.eval.django__django-12470.lite_claude_all...
+2025-09-04 06:23:34,420 - INFO - Attempting to remove container sweb.eval.django__django-12470.lite_claude_all...
+2025-09-04 06:23:34,653 - INFO - Container sweb.eval.django__django-12470.lite_claude_all removed.
+2025-09-04 06:23:34,653 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-12470:latest...
+2025-09-04 06:23:35,133 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-12470:latest removed.

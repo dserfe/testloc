@@ -1,0 +1,43 @@
+2025-08-22 02:54:41,275 - INFO - Creating container for sympy__sympy-13043...
+2025-08-22 02:54:42,409 - INFO - Container for sympy__sympy-13043 created: 047c93f8fbb8d624a8e1ca56723695a9eb3b7cc61dea256f6c8af558d0a780f9
+2025-08-22 02:54:42,813 - INFO - Container for sympy__sympy-13043 started: 047c93f8fbb8d624a8e1ca56723695a9eb3b7cc61dea256f6c8af558d0a780f9
+2025-08-22 02:54:42,813 - INFO - Intermediate patch for sympy__sympy-13043 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-13043/patch.diff, now applying to container...
+2025-08-22 02:54:42,978 - INFO - >>>>> Applied Patch:
+Checking patch sympy/integrals/intpoly.py...
+Applied patch sympy/integrals/intpoly.py cleanly.
+
+2025-08-22 02:54:43,428 - INFO - Git diff before:
+diff --git a/sympy/integrals/intpoly.py b/sympy/integrals/intpoly.py
+index fc72bd206f..537bf7cdfa 100644
+--- a/sympy/integrals/intpoly.py
++++ b/sympy/integrals/intpoly.py
+@@ -593,7 +593,7 @@ def decompose(expr, separate=False):
+         poly_dict[0] = expr
+ 
+     if separate:
+-        return list(poly_dict.values())
++        return [term for degree, term in sorted(poly_dict.items())]
+     return poly_dict
+2025-08-22 02:54:43,428 - INFO - Eval script for sympy__sympy-13043 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-13043/eval.sh; copying to container...
+2025-08-22 02:54:51,052 - INFO - Test runtime: 7.49 seconds
+2025-08-22 02:54:51,053 - INFO - Test output for sympy__sympy-13043 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-13043/test_output.txt
+2025-08-22 02:54:51,129 - INFO - Git diff after:
+diff --git a/sympy/integrals/intpoly.py b/sympy/integrals/intpoly.py
+index fc72bd206f..537bf7cdfa 100644
+--- a/sympy/integrals/intpoly.py
++++ b/sympy/integrals/intpoly.py
+@@ -593,7 +593,7 @@ def decompose(expr, separate=False):
+         poly_dict[0] = expr
+ 
+     if separate:
+-        return list(poly_dict.values())
++        return [term for degree, term in sorted(poly_dict.items())]
+     return poly_dict
+2025-08-22 02:54:51,129 - INFO - Grading answer for sympy__sympy-13043...
+2025-08-22 02:54:51,141 - INFO - report: {'sympy__sympy-13043': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_decompose']}, 'PASS_TO_PASS': {'success': ['test_best_origin'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-13043: resolved: False
+2025-08-22 02:54:51,141 - INFO - Attempting to stop container sweb.eval.sympy__sympy-13043.lite_gpt_all...
+2025-08-22 02:55:08,238 - INFO - Attempting to remove container sweb.eval.sympy__sympy-13043.lite_gpt_all...
+2025-08-22 02:55:09,434 - INFO - Container sweb.eval.sympy__sympy-13043.lite_gpt_all removed.
+2025-08-22 02:55:09,436 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-13043:latest...
+2025-08-22 02:55:36,980 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-13043:latest removed.

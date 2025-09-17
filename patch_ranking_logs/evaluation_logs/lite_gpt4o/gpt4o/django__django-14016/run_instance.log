@@ -1,0 +1,59 @@
+2025-08-22 02:48:34,898 - INFO - Creating container for django__django-14016...
+2025-08-22 02:48:38,703 - INFO - Container for django__django-14016 created: dc8df84b2e13fd1f0b6aee7caf9e393f1181755576943a26b4cc6e51d993bfec
+2025-08-22 02:48:44,056 - INFO - Container for django__django-14016 started: dc8df84b2e13fd1f0b6aee7caf9e393f1181755576943a26b4cc6e51d993bfec
+2025-08-22 02:48:44,056 - INFO - Intermediate patch for django__django-14016 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-14016/patch.diff, now applying to container...
+2025-08-22 02:48:44,288 - INFO - >>>>> Applied Patch:
+Checking patch django/db/models/query_utils.py...
+Applied patch django/db/models/query_utils.py cleanly.
+
+2025-08-22 02:48:45,883 - INFO - Git diff before:
+diff --git a/django/db/models/query_utils.py b/django/db/models/query_utils.py
+index c2623f099f..74e99bcbd4 100644
+--- a/django/db/models/query_utils.py
++++ b/django/db/models/query_utils.py
+@@ -38,6 +38,14 @@ class Q(tree.Node):
+     conditional = True
+ 
+     def __init__(self, *args, _connector=None, _negated=False, **kwargs):
++        def convert_to_list(value):
++            if isinstance(value, dict):
++                value = value.items()
++            elif hasattr(value, '__iter__') and not isinstance(value, str):
++                value = list(value)
++            return value
++
++        kwargs = {k: convert_to_list(v) for k, v in kwargs.items()}
+         super().__init__(children=[*args, *sorted(kwargs.items())], connector=_connector, negated=_negated)
+ 
+     def _combine(self, other, conn):
+2025-08-22 02:48:45,883 - INFO - Eval script for django__django-14016 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-14016/eval.sh; copying to container...
+2025-08-22 02:48:58,573 - INFO - Test runtime: 12.34 seconds
+2025-08-22 02:48:58,573 - INFO - Test output for django__django-14016 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-14016/test_output.txt
+2025-08-22 02:48:58,806 - INFO - Git diff after:
+diff --git a/django/db/models/query_utils.py b/django/db/models/query_utils.py
+index c2623f099f..74e99bcbd4 100644
+--- a/django/db/models/query_utils.py
++++ b/django/db/models/query_utils.py
+@@ -38,6 +38,14 @@ class Q(tree.Node):
+     conditional = True
+ 
+     def __init__(self, *args, _connector=None, _negated=False, **kwargs):
++        def convert_to_list(value):
++            if isinstance(value, dict):
++                value = value.items()
++            elif hasattr(value, '__iter__') and not isinstance(value, str):
++                value = list(value)
++            return value
++
++        kwargs = {k: convert_to_list(v) for k, v in kwargs.items()}
+         super().__init__(children=[*args, *sorted(kwargs.items())], connector=_connector, negated=_negated)
+ 
+     def _combine(self, other, conn):
+2025-08-22 02:48:58,806 - INFO - Grading answer for django__django-14016...
+2025-08-22 02:48:58,807 - INFO - report: {'django__django-14016': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_combine_and_empty (queries.test_q.QTests)', 'test_combine_or_empty (queries.test_q.QTests)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_combine_and_both_empty (queries.test_q.QTests)', 'test_combine_not_q_object (queries.test_q.QTests)', 'test_combine_or_both_empty (queries.test_q.QTests)', 'test_deconstruct (queries.test_q.QTests)', 'test_deconstruct_and (queries.test_q.QTests)', 'test_deconstruct_multiple_kwargs (queries.test_q.QTests)', 'test_deconstruct_negated (queries.test_q.QTests)', 'test_deconstruct_nested (queries.test_q.QTests)', 'test_deconstruct_or (queries.test_q.QTests)', 'test_reconstruct (queries.test_q.QTests)', 'test_reconstruct_and (queries.test_q.QTests)', 'test_reconstruct_negated (queries.test_q.QTests)', 'test_reconstruct_or (queries.test_q.QTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-14016: resolved: True
+2025-08-22 02:48:58,807 - INFO - Attempting to stop container sweb.eval.django__django-14016.lite_gpt_all...
+2025-08-22 02:49:15,233 - INFO - Attempting to remove container sweb.eval.django__django-14016.lite_gpt_all...
+2025-08-22 02:49:15,898 - INFO - Container sweb.eval.django__django-14016.lite_gpt_all removed.
+2025-08-22 02:49:15,899 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-14016:latest...
+2025-08-22 02:49:18,334 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-14016:latest removed.

@@ -1,0 +1,55 @@
+2025-08-25 03:01:37,411 - INFO - Creating container for scikit-learn__scikit-learn-14053...
+2025-08-25 03:01:37,660 - INFO - Container for scikit-learn__scikit-learn-14053 created: c3ea7ca1cceb6b0480d5604ff1f2b55d0bd6bd3c13fc0935775482829c94a652
+2025-08-25 03:01:38,379 - INFO - Container for scikit-learn__scikit-learn-14053 started: c3ea7ca1cceb6b0480d5604ff1f2b55d0bd6bd3c13fc0935775482829c94a652
+2025-08-25 03:01:38,379 - INFO - Intermediate patch for scikit-learn__scikit-learn-14053 written to logs/run_evaluation/verified_claude_new/agentless_claude/scikit-learn__scikit-learn-14053/patch.diff, now applying to container...
+2025-08-25 03:01:38,507 - INFO - >>>>> Applied Patch:
+Checking patch sklearn/tree/export.py...
+Applied patch sklearn/tree/export.py cleanly.
+
+2025-08-25 03:01:38,771 - INFO - Git diff before:
+diff --git a/sklearn/tree/export.py b/sklearn/tree/export.py
+index 1fe11e596..0f977f98c 100644
+--- a/sklearn/tree/export.py
++++ b/sklearn/tree/export.py
+@@ -890,9 +890,11 @@ def export_text(decision_tree, feature_names=None, max_depth=10,
+         value_fmt = "{}{} value: {}\n"
+ 
+     if feature_names:
+-        feature_names_ = [feature_names[i] for i in tree_.feature]
++        feature_names_ = [feature_names[i] if i != _tree.TREE_UNDEFINED else "undefined"
++                         for i in tree_.feature]
+     else:
+-        feature_names_ = ["feature_{}".format(i) for i in tree_.feature]
++        feature_names_ = ["feature_{}".format(i) if i != _tree.TREE_UNDEFINED else "undefined"
++                         for i in tree_.feature]
+ 
+     export_text.report = ""
+2025-08-25 03:01:38,772 - INFO - Eval script for scikit-learn__scikit-learn-14053 written to logs/run_evaluation/verified_claude_new/agentless_claude/scikit-learn__scikit-learn-14053/eval.sh; copying to container...
+2025-08-25 03:01:44,709 - INFO - Test runtime: 5.88 seconds
+2025-08-25 03:01:44,710 - INFO - Test output for scikit-learn__scikit-learn-14053 written to logs/run_evaluation/verified_claude_new/agentless_claude/scikit-learn__scikit-learn-14053/test_output.txt
+2025-08-25 03:01:46,196 - INFO - Git diff after:
+diff --git a/sklearn/tree/export.py b/sklearn/tree/export.py
+index 1fe11e596..0f977f98c 100644
+--- a/sklearn/tree/export.py
++++ b/sklearn/tree/export.py
+@@ -890,9 +890,11 @@ def export_text(decision_tree, feature_names=None, max_depth=10,
+         value_fmt = "{}{} value: {}\n"
+ 
+     if feature_names:
+-        feature_names_ = [feature_names[i] for i in tree_.feature]
++        feature_names_ = [feature_names[i] if i != _tree.TREE_UNDEFINED else "undefined"
++                         for i in tree_.feature]
+     else:
+-        feature_names_ = ["feature_{}".format(i) for i in tree_.feature]
++        feature_names_ = ["feature_{}".format(i) if i != _tree.TREE_UNDEFINED else "undefined"
++                         for i in tree_.feature]
+ 
+     export_text.report = ""
+2025-08-25 03:01:46,196 - INFO - Grading answer for scikit-learn__scikit-learn-14053...
+2025-08-25 03:01:46,198 - INFO - report: {'scikit-learn__scikit-learn-14053': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['sklearn/tree/tests/test_export.py::test_export_text'], 'failure': []}, 'PASS_TO_PASS': {'success': ['sklearn/tree/tests/test_export.py::test_graphviz_toy', 'sklearn/tree/tests/test_export.py::test_graphviz_errors', 'sklearn/tree/tests/test_export.py::test_friedman_mse_in_graphviz', 'sklearn/tree/tests/test_export.py::test_precision', 'sklearn/tree/tests/test_export.py::test_export_text_errors'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for scikit-learn__scikit-learn-14053: resolved: True
+2025-08-25 03:01:46,199 - INFO - Attempting to stop container sweb.eval.scikit-learn__scikit-learn-14053.verified_claude_new...
+2025-08-25 03:02:03,240 - INFO - Attempting to remove container sweb.eval.scikit-learn__scikit-learn-14053.verified_claude_new...
+2025-08-25 03:02:03,804 - INFO - Container sweb.eval.scikit-learn__scikit-learn-14053.verified_claude_new removed.
+2025-08-25 03:02:03,804 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-14053:latest...
+2025-08-25 03:02:04,170 - INFO - Image swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-14053:latest removed.

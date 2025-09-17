@@ -1,0 +1,47 @@
+2025-09-04 06:27:50,455 - INFO - Creating container for matplotlib__matplotlib-23987...
+2025-09-04 06:27:56,555 - INFO - Container for matplotlib__matplotlib-23987 created: 6a03c31a02bd23f407a4bbdefbe231aaf61942fc52fea58f8fda2809425491ac
+2025-09-04 06:27:56,868 - INFO - Container for matplotlib__matplotlib-23987 started: 6a03c31a02bd23f407a4bbdefbe231aaf61942fc52fea58f8fda2809425491ac
+2025-09-04 06:27:56,868 - INFO - Intermediate patch for matplotlib__matplotlib-23987 written to logs/run_evaluation/lite_claude_all/agentless_claude/matplotlib__matplotlib-23987/patch.diff, now applying to container...
+2025-09-04 06:27:56,959 - INFO - >>>>> Applied Patch:
+Checking patch lib/matplotlib/layout_engine.py...
+Applied patch lib/matplotlib/layout_engine.py cleanly.
+
+2025-09-04 06:27:58,103 - INFO - Git diff before:
+diff --git a/lib/matplotlib/layout_engine.py b/lib/matplotlib/layout_engine.py
+index 56e82b5699..12c471c9c8 100644
+--- a/lib/matplotlib/layout_engine.py
++++ b/lib/matplotlib/layout_engine.py
+@@ -115,7 +115,7 @@ class PlaceHolderLayoutEngine(LayoutEngine):
+         layout engine it is replacing.
+ 
+     """
+-    def __init__(self, adjust_compatible, colorbar_gridspec, **kwargs):
++    def __init__(self, adjust_compatible=True, colorbar_gridspec=True, **kwargs):
+         self._adjust_compatible = adjust_compatible
+         self._colorbar_gridspec = colorbar_gridspec
+         super().__init__(**kwargs)
+2025-09-04 06:27:58,104 - INFO - Eval script for matplotlib__matplotlib-23987 written to logs/run_evaluation/lite_claude_all/agentless_claude/matplotlib__matplotlib-23987/eval.sh; copying to container...
+2025-09-04 06:28:19,370 - INFO - Test runtime: 21.22 seconds
+2025-09-04 06:28:19,370 - INFO - Test output for matplotlib__matplotlib-23987 written to logs/run_evaluation/lite_claude_all/agentless_claude/matplotlib__matplotlib-23987/test_output.txt
+2025-09-04 06:28:19,434 - INFO - Git diff after:
+diff --git a/lib/matplotlib/layout_engine.py b/lib/matplotlib/layout_engine.py
+index 56e82b5699..12c471c9c8 100644
+--- a/lib/matplotlib/layout_engine.py
++++ b/lib/matplotlib/layout_engine.py
+@@ -115,7 +115,7 @@ class PlaceHolderLayoutEngine(LayoutEngine):
+         layout engine it is replacing.
+ 
+     """
+-    def __init__(self, adjust_compatible, colorbar_gridspec, **kwargs):
++    def __init__(self, adjust_compatible=True, colorbar_gridspec=True, **kwargs):
+         self._adjust_compatible = adjust_compatible
+         self._colorbar_gridspec = colorbar_gridspec
+         super().__init__(**kwargs)
+2025-09-04 06:28:19,434 - INFO - Grading answer for matplotlib__matplotlib-23987...
+2025-09-04 06:28:19,435 - INFO - report: {'matplotlib__matplotlib-23987': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['lib/matplotlib/tests/test_constrainedlayout.py::test_set_constrained_layout[False-False]']}, 'PASS_TO_PASS': {'success': ['lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout1[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout2[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout3[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout4[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout5[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout6[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_identical_subgridspec', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout7', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout8[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout9[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout10[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout11[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout11rat[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout12[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout13[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout14[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout15[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout16[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout17[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout18', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout19', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout20', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout21', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout22', 'lib/matplotlib/tests/test_constrainedlayout.py::test_constrained_layout23', 'lib/matplotlib/tests/test_constrainedlayout.py::test_colorbar_location[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_hidden_axes', 'lib/matplotlib/tests/test_constrainedlayout.py::test_colorbar_align', 'lib/matplotlib/tests/test_constrainedlayout.py::test_colorbars_no_overlapV[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_colorbars_no_overlapH[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_manually_set_position', 'lib/matplotlib/tests/test_constrainedlayout.py::test_bboxtight[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_bbox[png]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_align_labels', 'lib/matplotlib/tests/test_constrainedlayout.py::test_suplabels', 'lib/matplotlib/tests/test_constrainedlayout.py::test_gridspec_addressing', 'lib/matplotlib/tests/test_constrainedlayout.py::test_discouraged_api', 'lib/matplotlib/tests/test_constrainedlayout.py::test_kwargs', 'lib/matplotlib/tests/test_constrainedlayout.py::test_rect', 'lib/matplotlib/tests/test_constrainedlayout.py::test_compressed1', 'lib/matplotlib/tests/test_constrainedlayout.py::test_set_constrained_layout[True-True]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_set_constrained_layout[arg2-True]', 'lib/matplotlib/tests/test_constrainedlayout.py::test_set_constrained_layout[arg3-True]'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for matplotlib__matplotlib-23987: resolved: False
+2025-09-04 06:28:19,435 - INFO - Attempting to stop container sweb.eval.matplotlib__matplotlib-23987.lite_claude_all...
+2025-09-04 06:28:35,065 - INFO - Attempting to remove container sweb.eval.matplotlib__matplotlib-23987.lite_claude_all...
+2025-09-04 06:28:35,146 - INFO - Container sweb.eval.matplotlib__matplotlib-23987.lite_claude_all removed.
+2025-09-04 06:28:35,146 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-23987:latest...
+2025-09-04 06:28:39,032 - INFO - Image swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-23987:latest removed.

@@ -1,0 +1,49 @@
+2025-09-04 06:32:46,922 - INFO - Creating container for sympy__sympy-24102...
+2025-09-04 06:32:46,974 - INFO - Container for sympy__sympy-24102 created: 508125f372494a01908a47e0c72c4020ba8662845049b51e7fa9f5768b346792
+2025-09-04 06:32:47,347 - INFO - Container for sympy__sympy-24102 started: 508125f372494a01908a47e0c72c4020ba8662845049b51e7fa9f5768b346792
+2025-09-04 06:32:47,347 - INFO - Intermediate patch for sympy__sympy-24102 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-24102/patch.diff, now applying to container...
+2025-09-04 06:32:47,439 - INFO - >>>>> Applied Patch:
+Checking patch sympy/parsing/mathematica.py...
+Applied patch sympy/parsing/mathematica.py cleanly.
+
+2025-09-04 06:32:47,881 - INFO - Git diff before:
+diff --git a/sympy/parsing/mathematica.py b/sympy/parsing/mathematica.py
+index 7ea14ce33a..1a00c0a501 100644
+--- a/sympy/parsing/mathematica.py
++++ b/sympy/parsing/mathematica.py
+@@ -615,7 +615,9 @@ def _get_tokenizer(self):
+         tokens.extend(map(re.escape, tokens_escape))
+         tokens.append(",")
+         tokens.append("\n")
+-        tokenizer = re.compile("(" + "|".join(tokens) + ")")
++        # Add support for Unicode characters
++        tokens.append(r"\w+")  # This will match Unicode word characters
++        tokenizer = re.compile("(" + "|".join(tokens) + ")", re.UNICODE)
+         self._regex_tokenizer = tokenizer
+         return self._regex_tokenizer
+2025-09-04 06:32:47,882 - INFO - Eval script for sympy__sympy-24102 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-24102/eval.sh; copying to container...
+2025-09-04 06:32:52,024 - INFO - Test runtime: 4.10 seconds
+2025-09-04 06:32:52,025 - INFO - Test output for sympy__sympy-24102 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-24102/test_output.txt
+2025-09-04 06:32:52,082 - INFO - Git diff after:
+diff --git a/sympy/parsing/mathematica.py b/sympy/parsing/mathematica.py
+index 7ea14ce33a..1a00c0a501 100644
+--- a/sympy/parsing/mathematica.py
++++ b/sympy/parsing/mathematica.py
+@@ -615,7 +615,9 @@ def _get_tokenizer(self):
+         tokens.extend(map(re.escape, tokens_escape))
+         tokens.append(",")
+         tokens.append("\n")
+-        tokenizer = re.compile("(" + "|".join(tokens) + ")")
++        # Add support for Unicode characters
++        tokens.append(r"\w+")  # This will match Unicode word characters
++        tokenizer = re.compile("(" + "|".join(tokens) + ")", re.UNICODE)
+         self._regex_tokenizer = tokenizer
+         return self._regex_tokenizer
+2025-09-04 06:32:52,082 - INFO - Grading answer for sympy__sympy-24102...
+2025-09-04 06:32:52,083 - INFO - report: {'sympy__sympy-24102': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_parser_mathematica_tokenizer'], 'failure': ['test_mathematica']}, 'PASS_TO_PASS': {'success': [], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-24102: resolved: False
+2025-09-04 06:32:52,084 - INFO - Attempting to stop container sweb.eval.sympy__sympy-24102.lite_claude_all...
+2025-09-04 06:33:07,319 - INFO - Attempting to remove container sweb.eval.sympy__sympy-24102.lite_claude_all...
+2025-09-04 06:33:07,350 - INFO - Container sweb.eval.sympy__sympy-24102.lite_claude_all removed.
+2025-09-04 06:33:07,350 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-24102:latest...
+2025-09-04 06:33:07,478 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-24102:latest removed.

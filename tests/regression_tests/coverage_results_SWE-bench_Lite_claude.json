@@ -1,0 +1,5556 @@
+[
+  {
+    "instance_id": "django__django-10914",
+    "file_function": {
+      "tests/file_storage/tests.py": [
+        "test_file_get_accessed_time_timezone",
+        "test_setting_changed",
+        "test_file_get_modified_time_timezone",
+        "test_file_upload_directory_permissions",
+        "test_makedirs_race_handling",
+        "test_save_doesnt_close",
+        "test_file_get_created_time_timezone",
+        "test_race_condition",
+        "test_file_upload_permissions",
+        "test_listdir",
+        "test_files",
+        "test_file_chunks_error",
+        "test_remove_race_handling",
+        "test_delete_deletes_directories",
+        "test_base_url"
+      ],
+      "tests/file_uploads/tests.py": [
+        "test_not_a_directory"
+      ],
+      "tests/files/tests.py": [
+        "test_open_resets_file_to_start_and_returns_context_manager"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-13480",
+    "file_function": {
+      "sympy/functions/elementary/tests/test_hyperbolic.py": [
+        "test_simplifications",
+        "test_coth"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-16139",
+    "file_function": {
+      "tests/auth_tests/test_views.py": [
+        "test_user_change_password"
+      ],
+      "tests/auth_tests/test_forms.py": [
+        "test_bug_17944_empty_password",
+        "test_username_validity"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-21379",
+    "file_function": {
+      "sympy/functions/elementary/tests/test_piecewise.py": [
+        "test_piecewise1",
+        "test_piecewise_fold"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-18621",
+    "file_function": {
+      "sympy/matrices/expressions/tests/test_blockmatrix.py": [
+        "test_reblock_2x2",
+        "test_block_plus_ident",
+        "test_bc_dist_diag",
+        "test_BlockDiagMatrix",
+        "test_blockcut"
+      ],
+      "sympy/matrices/tests/test_matrices.py": [
+        "test_creation"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-25638",
+    "file_function": {
+      "sklearn/utils/tests/test_multiclass.py": [
+        "test_unique_labels",
+        "test_type_of_target",
+        "test_unique_labels_mixed_types",
+        "test_unique_labels_non_specific",
+        "test_type_of_target_pandas_sparse"
+      ],
+      "sklearn/preprocessing/tests/test_label.py": [
+        "test_label_binarizer_errors"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-14855",
+    "file_function": {
+      "tests/admin_views/tests.py": [
+        "test_view_subtitle_per_object"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-25747",
+    "file_function": {
+      "sklearn/utils/tests/test_set_output.py": [
+        "test_set_output_mro",
+        "test__wrap_in_pandas_container_column_errors",
+        "test__wrap_in_pandas_container_error_validation",
+        "test_set_output_mixin_custom_mixin"
+      ],
+      "sklearn/tests/test_pipeline.py": [
+        "test_feature_union_set_output",
+        "test_feature_union_warns_unknown_transformer_weight",
+        "test_feature_union_getitem_error",
+        "test_set_feature_union_step_drop",
+        "test_n_features_in_feature_union",
+        "test_feature_union_feature_names",
+        "test_set_feature_union_passthrough",
+        "test_feature_union_check_if_fitted",
+        "test_feature_union",
+        "test_feature_union_getitem",
+        "test_feature_union_feature_names_in_",
+        "test_verbose"
+      ],
+      "sklearn/compose/tests/test_column_transformer.py": [
+        "test_transformers_with_pandas_out_but_not_feature_names_out"
+      ]
+    }
+  },
+  {
+    "instance_id": "sphinx-doc__sphinx-8713",
+    "file_function": {
+      "tests/test_ext_napoleon_docstring.py": [
+        "test_list_in_parameter_description",
+        "test_docstrings",
+        "test_parameters_with_class_reference"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-14396",
+    "file_function": {
+      "sympy/polys/tests/test_polyoptions.py": [
+        "test_Domain_preprocess"
+      ],
+      "sympy/polys/tests/test_polytools.py": [
+        "test_Poly_set_domain",
+        "test_Poly__new__"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-13773",
+    "file_function": {
+      "sympy/matrices/expressions/tests/test_matmul.py": [
+        "test_doit_deep_false_still_canonical",
+        "test_matmul_args_cnc",
+        "test_determinant",
+        "test_doit_drills_down",
+        "test_adjoint"
+      ],
+      "sympy/matrices/tests/test_interactions.py": [
+        "test_indexing_interactions"
+      ],
+      "sympy/matrices/expressions/tests/test_derivatives.py": [
+        "test_matrix_derivative_vectors_and_scalars"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11019",
+    "file_function": {
+      "tests/model_forms/tests.py": [
+        "test_image_field",
+        "test_callable_field_default"
+      ],
+      "tests/forms_tests/tests/test_media.py": [
+        "test_form_media",
+        "test_media_inheritance_from_property",
+        "test_merge_warning",
+        "test_media_inheritance_single_type"
+      ],
+      "tests/forms_tests/widget_tests/test_widget.py": [
+        "test_value_omitted_from_data"
+      ],
+      "tests/forms_tests/tests/test_forms.py": [
+        "test_templates_with_forms",
+        "test_hidden_widget",
+        "test_form_with_noniterable_boundfield"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13925",
+    "file_function": {
+      "tests/model_options/test_default_pk.py": [
+        "test_app_default_auto_field",
+        "test_app_default_auto_field_none",
+        "test_app_default_auto_field_nonexistent",
+        "test_default_auto_field_setting",
+        "test_default_auto_field_setting_non_auto",
+        "test_default_auto_field_setting_none",
+        "test_m2m_default_auto_field_setting"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-25079",
+    "file_function": {
+      "lib/matplotlib/tests/test_colors.py": [
+        "test_scalarmappable_norm_update",
+        "test_boundarynorm_and_colorbarbase",
+        "test_TwoSlopeNorm_autoscale"
+      ],
+      "lib/matplotlib/tests/test_colorbar.py": [
+        "test_colorbar_contourf_extend_patches",
+        "test_remove_cb_whose_mappable_has_no_figure",
+        "test_colorbar_extension_length",
+        "test_remove_from_figure_cl",
+        "test_cbar_minorticks_for_rc_xyminortickvisible",
+        "test_contour_colorbar",
+        "test_colorbar_set_formatter_locator",
+        "test_colorbar_errors",
+        "test_colorbar_extend_drawedges",
+        "test_remove_from_figure",
+        "test_colorbar_format",
+        "test_colorbar_powernorm_extension",
+        "test_colorbar_get_ticks",
+        "test_boundaries",
+        "test_colorbar_closed_patch",
+        "test_colorbar_minorticks_on_off",
+        "test_negative_boundarynorm"
+      ],
+      "lib/matplotlib/tests/test_image.py": [
+        "test_jpeg_alpha",
+        "test_imsave_color_alpha",
+        "test_str_norms",
+        "test_imshow_quantitynd"
+      ],
+      "lib/matplotlib/tests/test_contour.py": [
+        "test_given_colors_levels_and_extends",
+        "test_contourf_log_extension"
+      ],
+      "lib/matplotlib/tests/test_axes.py": [
+        "test_hexbin_empty",
+        "test_hexbin_log_clim",
+        "test_scatter_norm_vminvmax",
+        "test_hexbin_log"
+      ],
+      "lib/matplotlib/tests/test_collections.py": [
+        "test_color_logic",
+        "test_collection_set_array"
+      ]
+    }
+  },
+  {
+    "instance_id": "pylint-dev__pylint-6506",
+    "file_function": {
+      "tests/config/test_find_default_config_files.py": [
+        "test_verbose_output_no_config"
+      ],
+      "tests/config/test_config.py": [
+        "test_unknown_option_name",
+        "test_unknown_short_option_name"
+      ],
+      "tests/test_functional.py": [
+        "test_functional"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-12308",
+    "file_function": {
+      "tests/admin_utils/tests.py": [
+        "test_list_display_for_value",
+        "test_number_formats_with_thousand_separator_display_for_field",
+        "test_number_formats_display_for_field",
+        "test_list_display_for_value_boolean",
+        "test_null_display_for_field"
+      ],
+      "tests/admin_views/tests.py": [
+        "test_change_list_sorting_model_admin",
+        "test_change_list_sorting_callable",
+        "test_multiple_sort_same_field",
+        "test_change_list_column_field_classes"
+      ],
+      "tests/admin_changelist/tests.py": [
+        "test_computed_list_display_localization"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15320",
+    "file_function": {
+      "tests/expressions/tests.py": [
+        "test_nested_subquery",
+        "test_subquery",
+        "test_nested_subquery_outer_ref_2"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13757",
+    "file_function": {
+      "tests/model_fields/test_jsonfield.py": [
+        "test_key_transform_expression",
+        "test_isnull_key",
+        "test_isnull_key_or_none",
+        "test_lookups_with_key_transform",
+        "test_nested_key_transform_on_subquery",
+        "test_nested_key_transform_expression"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11179",
+    "file_function": {
+      "tests/delete_regress/tests.py": [
+        "test_foreign_key_delete_nullifies_correct_columns"
+      ],
+      "tests/delete/tests.py": [
+        "test_setnull",
+        "test_m2m",
+        "test_do_nothing_qscount"
+      ],
+      "tests/model_forms/tests.py": [
+        "test_file_field_data"
+      ],
+      "tests/save_delete_hooks/tests.py": [
+        "test_basic"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-18698",
+    "file_function": {
+      "sympy/polys/tests/test_sqfreetools.py": [
+        "test_dup_sqf",
+        "test_dmp_sqf"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11815",
+    "file_function": {
+      "tests/migrations/test_commands.py": [
+        "test_makemigrations_with_custom_name",
+        "test_makemigrations_migrations_modules_nonexistent_toplevel_package",
+        "test_migrate_with_system_checks",
+        "test_makemigrations_disabled_migrations_for_app",
+        "test_squashmigrations_squashes"
+      ],
+      "tests/migrations/test_writer.py": [
+        "test_register_serializer",
+        "test_migration_path",
+        "test_migration_file_header_comments"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11999",
+    "file_function": {
+      "tests/model_fields/tests.py": [
+        "test_formfield",
+        "test_choices_and_field_display",
+        "test_flatchoices",
+        "test_field_repr",
+        "test_get_choices",
+        "test_invalid_choice",
+        "test_field_str",
+        "test_check"
+      ],
+      "tests/model_fields/test_charfield.py": [
+        "test_charfield_with_choices_raises_error_on_invalid_choice",
+        "test_enum_choices_invalid_input",
+        "test_charfield_cleans_empty_string_when_blank_true",
+        "test_charfield_with_choices_cleans_valid_choice"
+      ],
+      "tests/model_inheritance/test_abstract_inheritance.py": [
+        "test_multi_inheritance_field_clashes"
+      ],
+      "tests/model_forms/tests.py": [
+        "test_default_filefield",
+        "test_custom_error_messages",
+        "test_exclude_and_validation",
+        "test_setattr_raises_validation_error_field_specific"
+      ],
+      "tests/model_inheritance/tests.py": [
+        "test_filter_inherited_on_null",
+        "test_exclude_inherited_on_null",
+        "test_update_inherited_model"
+      ],
+      "tests/model_formsets/tests.py": [
+        "test_custom_pk",
+        "test_callable_defaults",
+        "test_outdated_deletion"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-23191",
+    "file_function": {
+      "sympy/printing/pretty/tests/test_pretty.py": [
+        "test_EulerGamma",
+        "test_pretty_limits",
+        "test_issue_21758",
+        "test_QuotientRing",
+        "test_units",
+        "test_SingularityFunction",
+        "test_Assignment",
+        "test_pretty_sqrt",
+        "test_pretty_KroneckerDelta",
+        "test_pretty_derivatives",
+        "test_Homomorphism",
+        "test_pretty_RootSum",
+        "test_issue_15583",
+        "test_pretty_Mod",
+        "test_pretty_print_tensor_partial_deriv",
+        "test_GoldenRatio",
+        "test_hadamard_power",
+        "test_issue_6359",
+        "test_degree_printing",
+        "test_pretty_UnevaluatedExpr",
+        "test_pretty_order",
+        "test_pretty_sum",
+        "test_RandomDomain",
+        "test_gammas",
+        "test_matrixSymbolBold",
+        "test_pretty_integrals",
+        "test_pretty_UniversalSet",
+        "test_pretty_sets",
+        "test_Mul",
+        "test_pretty_geometry",
+        "test_issue_9877",
+        "test_GroebnerBasis",
+        "test_diffgeom",
+        "test_beta",
+        "test_pretty_ComplexRegion",
+        "test_pretty_MIMOFeedback",
+        "test_ProductSet_exponent",
+        "test_pretty_seq",
+        "test_Adjoint",
+        "test_vector_expr_pretty_printing",
+        "test_pretty_ComplexRootOf",
+        "test_pretty_Contains",
+        "test_issue_7927",
+        "test_pretty_Series",
+        "test_symbolic_probability",
+        "test_Catalan",
+        "test_pretty_special_functions",
+        "test_MatrixSlice",
+        "test_issue_18272",
+        "test_diffgeom_print_WedgeProduct",
+        "test_MatrixElement_printing",
+        "test_pretty_dotproduct",
+        "test_str_special_matrices",
+        "test_pretty_ndim_arrays",
+        "test_pretty_Cycle",
+        "test_expint",
+        "test_pretty_Permutation",
+        "test_pretty_Domain",
+        "test_pretty_primeomega",
+        "test_issue_15560",
+        "test_deltas",
+        "test_issue_17857",
+        "test_pretty_FormalPowerSeries",
+        "test_categories",
+        "test_tensor_TensorProduct",
+        "test_pretty_Boolean",
+        "test_pretty_primenu",
+        "test_print_builtin_set",
+        "test_pretty_FourierSeries",
+        "test_pretty_ImageSet",
+        "test_elliptic_functions",
+        "test_MatrixExpressions",
+        "test_pretty_Feedback",
+        "test_pretty_basic",
+        "test_pretty_misc_functions",
+        "test_Tr",
+        "test_pretty_ConditionSet",
+        "test_pretty_SymmetricDifference",
+        "test_meijerg",
+        "test_issue_7179",
+        "test_pretty_matrix",
+        "test_pretty_ITE",
+        "test_imaginary_unit",
+        "test_pretty_Subs",
+        "test_pretty_print_tensor_expr",
+        "test_pretty_SetExpr",
+        "test_pretty_functions",
+        "test_pretty_piecewise",
+        "test_PrettyPoly",
+        "test_hyper",
+        "test_print_lerchphi",
+        "test_pretty_sequences"
+      ],
+      "sympy/vector/tests/test_printing.py": [
+        "test_pretty_print_unicode_v"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11133",
+    "file_function": {
+      "tests/httpwrappers/tests.py": [
+        "test_iter_content",
+        "test_non_string_content",
+        "test_lazy_content"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15252",
+    "file_function": {
+      "tests/migrations/test_executor.py": [
+        "test_migrate_marks_replacement_unapplied",
+        "test_alter_id_type_with_fk"
+      ],
+      "tests/migrations/test_commands.py": [
+        "test_migrate_backward_to_squashed_migration"
+      ],
+      "tests/backends/base/test_creation.py": [
+        "test_migrate_test_setting_true",
+        "test_migrate_test_setting_false"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-23964",
+    "file_function": {
+      "lib/matplotlib/tests/test_backend_ps.py": [
+        "test_partial_usetex",
+        "test_savefig_to_stringio"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15851",
+    "file_function": {
+      "tests/dbshell/test_postgresql.py": [
+        "test_crash_password_does_not_leak",
+        "test_ssl_certificate",
+        "test_passfile"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-14608",
+    "file_function": {
+      "tests/forms_tests/tests/test_formsets.py": [
+        "test_no_data_error",
+        "test_formset_total_error_count_with_non_form_errors",
+        "test_non_form_errors"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-13142",
+    "file_function": {
+      "sklearn/mixture/tests/test_gaussian_mixture.py": [
+        "test_gaussian_mixture_attributes",
+        "test_gaussian_mixture_fit_predict"
+      ],
+      "sklearn/mixture/tests/test_bayesian_mixture.py": [
+        "test_bayesian_mixture_fit_predict"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-13895",
+    "file_function": {
+      "sympy/core/tests/test_expr.py": [
+        "test_as_numer_denom",
+        "test_is_constant",
+        "test_is_rational_function",
+        "test_equals",
+        "test_is_polynomial",
+        "test_is_algebraic_expr",
+        "test_action_verbs",
+        "test_round"
+      ],
+      "sympy/core/tests/test_eval_power.py": [
+        "test_issue_6782",
+        "test_issue_6429",
+        "test_issue_7638",
+        "test_expand",
+        "test_issue_6653",
+        "test_issue_4362",
+        "test_better_sqrt"
+      ],
+      "sympy/functions/elementary/tests/test_exponential.py": [
+        "test_exp_subs"
+      ],
+      "sympy/core/tests/test_numbers.py": [
+        "test_NaN",
+        "test_powers_Integer"
+      ],
+      "sympy/core/tests/test_evalf.py": [
+        "test_issue_4806",
+        "test_AssocOp_Function"
+      ],
+      "sympy/core/tests/test_arit.py": [
+        "test_pow_E",
+        "test_Pow_is_zero",
+        "test_Add_is_negative_positive",
+        "test_Pow_is_nonpositive_nonnegative",
+        "test_Mod",
+        "test_Pow_is_even_odd",
+        "test_Pow_is_real",
+        "test_Pow_is_negative_positive",
+        "test_Pow_is_integer",
+        "test_issue_8247_8354"
+      ],
+      "sympy/functions/elementary/tests/test_miscellaneous.py": [
+        "test_Max"
+      ],
+      "sympy/simplify/tests/test_simplify.py": [
+        "test_hypersimp",
+        "test_separatevars",
+        "test_besselsimp",
+        "test_issue_9448",
+        "test_nsimplify"
+      ],
+      "sympy/core/tests/test_function.py": [
+        "test_function__eval_nseries"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-14087",
+    "file_function": {
+      "sklearn/linear_model/tests/test_logistic.py": [
+        "test_error",
+        "test_LogisticRegressionCV_no_refit",
+        "test_consistency_path",
+        "test_logistic_regression_path_coefs_multinomial",
+        "test_logistic_regression_multi_class_auto",
+        "test_logistic_regressioncv_class_weights",
+        "test_logistic_cv_mock_scorer",
+        "test_logistic_regression_class_weights",
+        "test_penalty_none",
+        "test_ovr_multinomial_iris",
+        "test_logistic_regression_path_convergence_fail",
+        "test_l1_ratios_param",
+        "test_logistic_cv_score_does_not_warn_by_default",
+        "test_logistic_regression_sample_weights"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-13043",
+    "file_function": {
+      "sympy/integrals/tests/test_intpoly.py": [
+        "test_polytope_integrate",
+        "test_decompose"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-20322",
+    "file_function": {
+      "sympy/simplify/tests/test_simplify.py": [
+        "test_simplify_expr"
+      ],
+      "sympy/functions/elementary/tests/test_integers.py": [
+        "test_floor",
+        "test_ceiling",
+        "test_issue_18689"
+      ],
+      "sympy/core/tests/test_sympify.py": [
+        "test_sympyify_iterables",
+        "test_sympify_raises",
+        "test__sympify",
+        "test_sympify1"
+      ],
+      "sympy/core/tests/test_expr.py": [
+        "test_SAGE1"
+      ],
+      "sympy/core/tests/test_evalf.py": [
+        "test_evalf_integer_parts"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-14238",
+    "file_function": {
+      "tests/model_options/test_default_pk.py": [
+        "test_app_default_auto_field",
+        "test_default_auto_field_setting"
+      ],
+      "tests/model_forms/tests.py": [
+        "test_inherited_unique",
+        "test_onetoonefield",
+        "test_m2m_editing"
+      ],
+      "tests/model_fields/test_autofield.py": [
+        "test_issubclass_of_autofield"
+      ],
+      "tests/model_fields/test_integerfield.py": [
+        "test_rel_db_type",
+        "test_coercing",
+        "test_types"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-18869",
+    "file_function": {
+      "lib/matplotlib/tests/test_rcparams.py": [
+        "test_Bug_2543",
+        "test_rcparams_reset_after_fail",
+        "test_RcParams_class"
+      ],
+      "lib/matplotlib/tests/test_style.py": [
+        "test_context_with_badparam"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-16041",
+    "file_function": {
+      "tests/forms_tests/tests/test_formsets.py": [
+        "test_empty_forms_are_unbound",
+        "test_disable_delete_extra_formset_forms",
+        "test_form_kwargs_empty_form"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-21847",
+    "file_function": {
+      "sympy/polys/tests/test_monomials.py": [
+        "test_monomials"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-15678",
+    "file_function": {
+      "sympy/geometry/tests/test_util.py": [
+        "test_idiff"
+      ]
+    }
+  },
+  {
+    "instance_id": "pylint-dev__pylint-5859",
+    "file_function": {
+      "tests/test_self.py": [
+        "test_no_ext_file",
+        "test_bom_marker",
+        "test_no_out_encoding"
+      ],
+      "tests/checkers/unittest_misc.py": [
+        "test_issue_2321_should_trigger",
+        "test_xxx_without_space",
+        "test_fixme_with_message",
+        "test_absent_codetag"
+      ]
+    }
+  },
+  {
+    "instance_id": "psf__requests-2317",
+    "file_function": {
+      "tests/test_requests.py": [
+        "test_HTTP_200_OK_GET_WITH_PARAMS",
+        "test_BASICAUTH_TUPLE_HTTP_200_OK_GET",
+        "test_HTTP_200_OK_PUT"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13768",
+    "file_function": {
+      "tests/dispatch/tests.py": [
+        "test_send_robust_fail",
+        "test_send_robust_ignored_sender",
+        "test_send_robust_no_receivers",
+        "test_send_robust_success"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-16792",
+    "file_function": {
+      "sympy/utilities/tests/test_codegen.py": [
+        "test_multiple_results_c",
+        "test_dummy_loops_c",
+        "test_numbersymbol_c_code",
+        "test_ccode_results_named_ordered",
+        "test_ccode_cse",
+        "test_output_arg_c"
+      ],
+      "sympy/utilities/tests/test_autowrap.py": [
+        "test_autowrap_args",
+        "test_cython_wrapper_inoutarg",
+        "test_cython_wrapper_scalar_function",
+        "test_cython_wrapper_compile_flags"
+      ],
+      "sympy/external/tests/test_codegen.py": [
+        "test_basic_codegen",
+        "test_complicated_codegen",
+        "test_intrinsic_math1_codegen"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-12481",
+    "file_function": {
+      "sympy/combinatorics/tests/test_permutations.py": [
+        "test_args",
+        "test_Permutation"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-19254",
+    "file_function": {
+      "sympy/polys/tests/test_factortools.py": [
+        "test_dmp_zz_mignotte_bound",
+        "test_dmp_zz_factor",
+        "test_dup_zz_mignotte_bound"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-24066",
+    "file_function": {
+      "sympy/physics/units/tests/test_dimensions.py": [
+        "test_Dimension_properties"
+      ]
+    }
+  },
+  {
+    "instance_id": "pydata__xarray-3364",
+    "file_function": {
+      "xarray/tests/test_concat.py": [
+        "test_concat_coords",
+        "test_concat_compat",
+        "test_concat_data_vars",
+        "test_concat_promote_shape",
+        "test_concat",
+        "test_concat_errors"
+      ],
+      "xarray/tests/test_dataarray.py": [
+        "test_groupby_apply_identity"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15213",
+    "file_function": {
+      "tests/annotations/tests.py": [
+        "test_q_expression_annotation_with_aggregation",
+        "test_grouping_by_q_expression_annotation",
+        "test_combined_f_expression_annotation_with_aggregation",
+        "test_combined_expression_annotation_with_aggregation"
+      ],
+      "tests/expressions/tests.py": [
+        "test_expressions"
+      ]
+    }
+  },
+  {
+    "instance_id": "pydata__xarray-4094",
+    "file_function": {
+      "xarray/tests/test_dataarray.py": [
+        "test_to_unstacked_dataset_raises_value_error",
+        "test_unstack_pandas_consistency",
+        "test_stack_unstack"
+      ],
+      "xarray/tests/test_dataset.py": [
+        "test_unstack_fill_value",
+        "test_to_stacked_array_to_unstacked_dataset",
+        "test_to_stacked_array_to_unstacked_dataset_different_dimension"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-23299",
+    "file_function": {
+      "lib/matplotlib/tests/test_rcparams.py": [
+        "test_rcparams"
+      ],
+      "lib/matplotlib/tests/test_backend_bases.py": [
+        "test_non_gui_warning"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13033",
+    "file_function": {
+      "tests/ordering/tests.py": [
+        "test_random_ordering",
+        "test_order_by_nulls_first",
+        "test_order_by_constant_value",
+        "test_order_by_ptr_field_with_default_ordering_by_expression",
+        "test_reverse_ordering_pure",
+        "test_order_by_f_expression_duplicates"
+      ],
+      "tests/queries/tests.py": [
+        "test_disjunction_promotion_select_related",
+        "test_ordering",
+        "test_extra_values_order_multiple",
+        "test_join_reuse_order",
+        "test_infinite_loop"
+      ],
+      "tests/select_related/tests.py": [
+        "test_chaining"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15202",
+    "file_function": {
+      "tests/forms_tests/tests/test_validators.py": [
+        "test_value_placeholder_with_char_field"
+      ],
+      "tests/forms_tests/field_tests/test_urlfield.py": [
+        "test_urlfield_strip_on_none_value",
+        "test_urlfield_clean_not_required",
+        "test_urlfield_clean_invalid"
+      ],
+      "tests/validators/tests.py": [
+        "test_validators"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-14580",
+    "file_function": {
+      "tests/migrations/test_writer.py": [
+        "test_register_serializer",
+        "test_migration_path",
+        "test_register_non_serializer",
+        "test_serialize_numbers"
+      ],
+      "tests/migrations/test_commands.py": [
+        "test_makemigrations_migrations_modules_nonexistent_toplevel_package",
+        "test_files_content",
+        "test_makemigrations_auto_merge_name",
+        "test_makemigrations_empty_connections",
+        "test_squashmigrations_initial_attribute",
+        "test_makemigrations_default_merge_name"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-13177",
+    "file_function": {
+      "sympy/core/tests/test_arit.py": [
+        "test_Mod",
+        "test_Mod_is_nonposneg"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15790",
+    "file_function": {
+      "tests/check_framework/test_templates.py": [
+        "test_template_tags_with_same_library_name",
+        "test_template_tags_with_same_library_name_and_module_name"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13158",
+    "file_function": {
+      "tests/model_forms/tests.py": [
+        "test_model_multiple_choice_field",
+        "test_model_multiple_choice_required_false",
+        "test_m2m_editing"
+      ],
+      "tests/queries/test_qs_combinators.py": [
+        "test_union_with_empty_qs"
+      ],
+      "tests/admin_views/tests.py": [
+        "test_change"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-10508",
+    "file_function": {
+      "sklearn/preprocessing/tests/test_label.py": [
+        "test_label_encoder_fit_transform",
+        "test_label_encoder_errors",
+        "test_label_encoder"
+      ],
+      "sklearn/tests/test_multioutput.py": [
+        "test_multiclass_multioutput_estimator"
+      ],
+      "sklearn/tests/test_multiclass.py": [
+        "test_ovo_string_y"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-21055",
+    "file_function": {
+      "sympy/integrals/tests/test_integrals.py": [
+        "test_issue_11856",
+        "test_limit_bug"
+      ],
+      "sympy/functions/elementary/tests/test_complexes.py": [
+        "test_Abs_rewrite",
+        "test_derivatives_issue_4757",
+        "test_Abs",
+        "test_issue_15893"
+      ],
+      "sympy/simplify/tests/test_simplify.py": [
+        "test_issue_17141_slow"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-13439",
+    "file_function": {
+      "sklearn/tests/test_pipeline.py": [
+        "test_pipeline_init",
+        "test_pipeline_transform",
+        "test_pipeline_memory",
+        "test_set_pipeline_step_passthrough",
+        "test_pipeline_methods_preprocessing_svm",
+        "test_classes_property",
+        "test_fit_predict_with_intermediate_fit_params",
+        "test_pipeline_sample_weight_supported",
+        "test_pipeline_with_cache_attribute",
+        "test_pipeline_index",
+        "test_pipeline_slice"
+      ],
+      "sklearn/tests/test_base.py": [
+        "test_is_classifier"
+      ]
+    }
+  },
+  {
+    "instance_id": "astropy__astropy-14182",
+    "file_function": {
+      "astropy/io/ascii/tests/test_write.py": [
+        "test_roundtrip_masked"
+      ]
+    }
+  },
+  {
+    "instance_id": "pylint-dev__pylint-7228",
+    "file_function": {
+      "tests/config/test_config.py": [
+        "test_unknown_yes_no",
+        "test_unknown_option_name",
+        "test_unknown_py_version"
+      ],
+      "tests/config/unittest_config.py": [
+        "test__regexp_validator_valid",
+        "test__regexp_csv_validator_valid",
+        "test__regexp_validator_invalid"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-16988",
+    "file_function": {
+      "sympy/sets/tests/test_sets.py": [
+        "test_imageset",
+        "test_intersection",
+        "test_Complement",
+        "test_union_intersection_constructor",
+        "test_issue_9623",
+        "test_intersect1",
+        "test_issue_9447",
+        "test_issue_9637"
+      ],
+      "sympy/sets/tests/test_fancysets.py": [
+        "test_ComplexRegion_intersect"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-15346",
+    "file_function": {
+      "sympy/functions/elementary/tests/test_trigonometric.py": [
+        "test_trig_period",
+        "test_real_imag",
+        "test_sin"
+      ],
+      "sympy/simplify/tests/test_trigsimp.py": [
+        "test_trigsimp_groebner",
+        "test_trigsimp_issues"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-12284",
+    "file_function": {
+      "tests/model_fields/test_charfield.py": [
+        "test_assignment_from_choice_enum",
+        "test_charfield_with_choices_raises_error_on_invalid_choice",
+        "test_enum_choices_invalid_input",
+        "test_emoji",
+        "test_charfield_with_choices_cleans_valid_choice",
+        "test_max_length_passed_to_formfield",
+        "test_charfield_cleans_empty_string_when_blank_true"
+      ],
+      "tests/model_fields/tests.py": [
+        "test_formfield",
+        "test_choices_and_field_display",
+        "test_flatchoices",
+        "test_field_repr",
+        "test_get_choices",
+        "test_invalid_choice",
+        "test_field_str",
+        "test_overriding_FIELD_display",
+        "test_check"
+      ],
+      "tests/validation/tests.py": [
+        "test_invalid_v4_ip_raises_error",
+        "test_invalid_v6_ip_raises_error",
+        "test_validation_with_invalid_blank_field",
+        "test_invalid_generic_ip_raises_error",
+        "test_custom_validate_method",
+        "test_validation_with_empty_blank_field",
+        "test_correct_FK_value_validates"
+      ],
+      "tests/model_inheritance/tests.py": [
+        "test_eq",
+        "test_update_parent_filtering",
+        "test_unique_together",
+        "test_unique",
+        "test_related_objects_for_inherited_models",
+        "test_filter_inherited_on_null",
+        "test_select_related_defer"
+      ],
+      "tests/model_inheritance/test_abstract_inheritance.py": [
+        "test_multi_inheritance_field_clashes"
+      ],
+      "tests/validation/test_unique.py": [
+        "test_unique_for_date",
+        "test_unique_for_date_with_nullable_date"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15347",
+    "file_function": {
+      "tests/messages_tests/test_fallback.py": [
+        "test_get",
+        "test_get_fallback"
+      ],
+      "tests/messages_tests/test_mixins.py": [
+        "test_set_messages_success_on_delete"
+      ],
+      "tests/messages_tests/test_cookie.py": [
+        "test_get"
+      ]
+    }
+  },
+  {
+    "instance_id": "mwaskom__seaborn-3010",
+    "file_function": {
+      "tests/_stats/test_regression.py": [
+        "test_no_grouper",
+        "test_one_grouper"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-23117",
+    "file_function": {
+      "sympy/tensor/array/tests/test_arrayop.py": [
+        "test_array_permutedims",
+        "test_tensordiagonal"
+      ],
+      "sympy/tensor/array/tests/test_immutable_ndim_array.py": [
+        "test_issue_21870",
+        "test_ndim_array_initiation",
+        "test_ndim_array_converting"
+      ],
+      "sympy/tensor/array/tests/test_ndim_array_conversions.py": [
+        "test_NDim_array_conv"
+      ],
+      "sympy/tensor/array/tests/test_mutable_ndim_array.py": [
+        "test_ndim_array_initiation",
+        "test_arithmetic"
+      ]
+    }
+  },
+  {
+    "instance_id": "sphinx-doc__sphinx-8721",
+    "file_function": {
+      "tests/test_ext_viewcode.py": [
+        "test_local_source_files"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13321",
+    "file_function": {
+      "tests/auth_tests/test_views.py": [
+        "test_login_session_without_hash_session_key",
+        "test_session_key_flushed_on_login"
+      ],
+      "tests/sessions_tests/tests.py": [
+        "test_sessionmanager_save"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-21171",
+    "file_function": {
+      "sympy/printing/tests/test_latex.py": [
+        "test_latex_SingularityFunction"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-16820",
+    "file_function": {
+      "tests/migrations/test_operations.py": [
+        "test_remove_index",
+        "test_add_index"
+      ],
+      "tests/migrations/test_autodetector.py": [
+        "test_remove_field_and_index_together",
+        "test_index_together_ordering",
+        "test_same_app_circular_fk_dependency_with_unique_together_and_indexes"
+      ],
+      "tests/migrations/test_optimizer/OptimizerTests/test_add_remove_index.py": [
+        "test_add_remove_index"
+      ],
+      "tests/migrations/test_operations/OperationTests/test_add_func_index.py": [
+        "test_add_func_index"
+      ],
+      "tests/migrations/test_operations/OperationTests/test_remove_func_index.py": [
+        "test_remove_func_index"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-16408",
+    "file_function": {
+      "tests/filtered_relation/tests/FilteredRelationTests/test_with_join_and_complex_condition.py": [
+        "test_with_join_and_complex_condition"
+      ],
+      "tests/queries/test_query/TestQuery/test_multiple_fields.py": [
+        "test_multiple_fields"
+      ],
+      "tests/filtered_relation/tests/FilteredRelationTests/test_condition_deeper_relation_name.py": [
+        "test_condition_deeper_relation_name"
+      ],
+      "tests/aggregation_regress/tests/AggregationTests/test_field_error.py": [
+        "test_field_error"
+      ],
+      "tests/queries/test_query/TestQuery/test_non_alias_cols_query.py": [
+        "test_non_alias_cols_query"
+      ],
+      "tests/queries/tests/ValuesQuerysetTests/test_field_error_values_list.py": [
+        "test_field_error_values_list"
+      ],
+      "tests/filtered_relation/tests/FilteredRelationTests/test_condition_outside_relation_name.py": [
+        "test_condition_outside_relation_name"
+      ],
+      "tests/filtered_relation/tests/FilteredRelationTests/test_relation_name_lookup.py": [
+        "test_relation_name_lookup"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11630",
+    "file_function": {
+      "tests/check_framework/test_model_checks.py": [
+        "test_collision_in_different_models",
+        "test_collision_in_same_app",
+        "test_collision_in_same_model",
+        "test_collision_across_apps"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-20590",
+    "file_function": {
+      "sympy/core/tests/test_args.py": [
+        "test_sympy__series__fourier__FiniteFourierSeries",
+        "test_sympy__tensor__array__sparse_ndim_array__ImmutableSparseNDimArray",
+        "test_sympy__series__formal__FormalPowerSeriesCompose",
+        "test_sympy__series__fourier__FourierSeries",
+        "test_sympy__stats__rv__RandomIndexedSymbol",
+        "test_sympy__vector__integrals__ParametricIntegral"
+      ],
+      "sympy/core/tests/test_expr.py": [
+        "test_find",
+        "test_random",
+        "test_is_constant",
+        "test_replace",
+        "test_equals"
+      ],
+      "sympy/core/tests/test_basic.py": [
+        "test_rewrite",
+        "test_as_dummy",
+        "test_matches_basic",
+        "test_sorted_args",
+        "test_replace_exceptions",
+        "test_subs",
+        "test_call",
+        "test_doit"
+      ],
+      "sympy/core/tests/test_subs.py": [
+        "test_issue_8886",
+        "test_subs_dict1",
+        "test_subs_Matrix",
+        "test_dict_set"
+      ],
+      "sympy/core/tests/test_match.py": [
+        "test_match_bound",
+        "test_derivative2"
+      ],
+      "sympy/core/tests/test_symbol.py": [
+        "test_unicode",
+        "test_Dummy_force_dummy_index"
+      ],
+      "sympy/core/tests/test_sympify.py": [
+        "test_kernS"
+      ],
+      "sympy/core/tests/test_equal.py": [
+        "test_dummy_eq"
+      ],
+      "sympy/core/tests/test_assumptions.py": [
+        "test_sanitize_assumptions"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11905",
+    "file_function": {
+      "tests/queries/tests.py": [
+        "test_excluded_intermediary_m2m_table_joined",
+        "test_ticket7096",
+        "test_primary_key",
+        "test_null_in_exclude_qs"
+      ],
+      "tests/custom_lookups/tests.py": [
+        "test_div3_bilateral_extract",
+        "test_bilateral_inner_qs",
+        "test_basic_lookup",
+        "test_custom_exact_lookup_none_rhs"
+      ],
+      "tests/lookup/tests.py": [
+        "test_regex",
+        "test_none",
+        "test_custom_field_none_rhs"
+      ]
+    }
+  },
+  {
+    "instance_id": "psf__requests-863",
+    "file_function": {
+      "tests/test_requests.py": [
+        "test_HTTP_302_ALLOW_REDIRECT_GET",
+        "test_max_redirects",
+        "test_single_hook",
+        "test_redirect_history"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-13496",
+    "file_function": {
+      "sklearn/ensemble/tests/test_iforest.py": [
+        "test_iforest_subsampled_features",
+        "test_iforest_error",
+        "test_iforest_sparse",
+        "test_iforest_works",
+        "test_iforest_chunks_works1",
+        "test_iforest_chunks_works2"
+      ]
+    }
+  },
+  {
+    "instance_id": "psf__requests-1963",
+    "file_function": {
+      "tests/test_requests.py": [
+        "test_DIGEST_HTTP_200_OK_GET",
+        "test_uppercase_scheme_redirect",
+        "test_stream_timeout",
+        "test_requests_in_history_are_not_overridden",
+        "test_cannot_send_unprepared_requests",
+        "test_pyopenssl_redirect",
+        "test_cookie_sent_on_redirect",
+        "test_DIGEST_STREAM",
+        "test_DIGEST_AUTH_RETURNS_COOKIE"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-15609",
+    "file_function": {
+      "sympy/matrices/expressions/tests/test_matmul.py": [
+        "test_doit_deep_false_still_canonical",
+        "test_doit",
+        "test_determinant",
+        "test_adjoint",
+        "test_issue_12950"
+      ],
+      "sympy/matrices/expressions/tests/test_indexing.py": [
+        "test_matrix_expression_to_indices",
+        "test_matrix_expression_from_index_summation"
+      ],
+      "sympy/matrices/expressions/tests/test_matexpr.py": [
+        "test_factor_expand"
+      ],
+      "sympy/printing/tests/test_latex.py": [
+        "test_latex_indexed",
+        "test_latex_sum",
+        "test_MatrixElement_printing"
+      ]
+    }
+  },
+  {
+    "instance_id": "pytest-dev__pytest-8906",
+    "file_function": {
+      "testing/test_skipping.py": [
+        "test_imperativeskip_on_xfail_test",
+        "test_skipped_reasons_functional"
+      ],
+      "testing/test_runner.py": [
+        "test_pytest_exit",
+        "test_pytest_exit_msg",
+        "test_skipfunction"
+      ],
+      "testing/test_unittest.py": [
+        "test_exit_outcome"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-13647",
+    "file_function": {
+      "sympy/matrices/tests/test_commonmatrix.py": [
+        "test_col_insert"
+      ],
+      "sympy/matrices/tests/test_matrices.py": [
+        "test_errors",
+        "test_issue_10770",
+        "test_col_insert"
+      ]
+    }
+  },
+  {
+    "instance_id": "psf__requests-2148",
+    "file_function": {
+      "tests/test_requests.py": [
+        "test_DIGEST_STREAM",
+        "test_user_agent_transfers",
+        "test_response_decode_unicode",
+        "test_redirect_with_wrong_gzipped_header",
+        "test_manual_redirect_with_partial_body_read",
+        "test_HTTP_200_OK_GET_WITH_PARAMS"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-11040",
+    "file_function": {
+      "sklearn/neighbors/tests/test_neighbors.py": [
+        "test_predict_sparse_ball_kd_tree",
+        "test_neighbors_badargs",
+        "test_callable_metric",
+        "test_metric_params_interface",
+        "test_k_and_radius_neighbors_X_None",
+        "test_unsupervised_inputs",
+        "test_unsupervised_kneighbors",
+        "test_neighbors_metrics",
+        "test_k_and_radius_neighbors_duplicates",
+        "test_valid_brute_metric_for_auto_algorithm",
+        "test_precomputed_cross_validation"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-16046",
+    "file_function": {
+      "tests/utils_tests/test_numberformat.py": [
+        "test_decimal_numbers",
+        "test_format_number",
+        "test_float_numbers",
+        "test_large_number"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-10924",
+    "file_function": {
+      "tests/model_forms/tests.py": [
+        "test_file_path_field_blank"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-12856",
+    "file_function": {
+      "tests/constraints/tests.py": [
+        "test_deferrable_with_condition",
+        "test_condition_must_be_q",
+        "test_eq",
+        "test_invalid_defer_argument",
+        "test_repr",
+        "test_repr_with_condition",
+        "test_repr_with_deferrable"
+      ],
+      "tests/migrations/test_operations.py": [
+        "test_remove_deferred_unique_constraint",
+        "test_remove_partial_unique_constraint",
+        "test_create_model_with_deferred_unique_constraint",
+        "test_add_deferred_unique_constraint",
+        "test_add_partial_unique_constraint"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-11400",
+    "file_function": {
+      "sympy/printing/tests/test_ccode.py": [
+        "test_ccode_reserved_words",
+        "test_ccode_inline_function",
+        "test_ccode_Piecewise",
+        "test_Matrix_printing",
+        "test_ccode_constants_mathh",
+        "test_ccode_ITE",
+        "test_ccode_Pow",
+        "test_dereference_printing",
+        "test_ccode_sign",
+        "test_ccode_For"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-13241",
+    "file_function": {
+      "sklearn/decomposition/tests/test_kernel_pca.py": [
+        "test_nested_circles",
+        "test_remove_zero_eig",
+        "test_gridsearch_pipeline",
+        "test_kernel_pca_consistent_transform",
+        "test_gridsearch_pipeline_precomputed",
+        "test_kernel_pca"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15738",
+    "file_function": {
+      "tests/migrations/test_operations.py": [
+        "test_remove_covering_unique_constraint",
+        "test_alter_index_together_remove_with_unique_together",
+        "test_alter_unique_together_remove",
+        "test_rename_model_with_self_referential_m2m",
+        "test_rename_index_state_forwards",
+        "test_remove_unique_together_on_unique_field",
+        "test_remove_constraint",
+        "test_remove_partial_unique_constraint",
+        "test_rename_missing_field",
+        "test_rename_m2m_through_model",
+        "test_rename_index",
+        "test_remove_func_index",
+        "test_rename_index_state_forwards_unnamed_index",
+        "test_alter_index_together_remove",
+        "test_rename_referenced_field_state_forward",
+        "test_remove_unique_together_on_pk_field"
+      ],
+      "tests/migrations/test_autodetector.py": [
+        "test_partly_alter_foo_together",
+        "test_create_model_and_unique_together",
+        "test_proxy_to_mti_with_fk_to_proxy_proxy",
+        "test_proxy_non_model_parent",
+        "test_rename_foreign_object_fields"
+      ],
+      "tests/migrations/test_commands.py": [
+        "test_migrate_with_system_checks",
+        "test_migrate_not_reflected_changes",
+        "test_creates_replace_migration_manual_porting",
+        "test_migrate_fake_initial_case_insensitive"
+      ],
+      "tests/migrations/test_state.py": [
+        "test_rename_model",
+        "test_add_model_other_app",
+        "test_many_relations_to_same_model",
+        "test_alter_field",
+        "test_remove_model",
+        "test_alter_field_m2m_to_fk",
+        "test_relations_population",
+        "test_add_field_m2m_with_through"
+      ]
+    }
+  },
+  {
+    "instance_id": "mwaskom__seaborn-3190",
+    "file_function": {
+      "tests/_marks/test_bar.py": [
+        "test_mapped_properties"
+      ],
+      "tests/_core/test_plot.py": [
+        "test_computed_var_transform",
+        "test_on_axes",
+        "test_mark_data_log_transform_is_inverted",
+        "test_explicit_range_with_axis_scaling",
+        "test_identity_scale_ignored",
+        "test_identity_mapping_linewidth",
+        "test_identity_mapping_color_tuples"
+      ],
+      "tests/_core/test_scales.py": [
+        "test_coordinate_transform_with_parameter",
+        "test_interval_with_norm",
+        "test_coordinate_transform_error",
+        "test_symlog_tick_default",
+        "test_color_with_norm"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-25332",
+    "file_function": {
+      "lib/matplotlib/testing/decorators.py": [
+        "test_pickle_load_from_subprocess"
+      ],
+      "lib/matplotlib/tests/test_figure.py": [
+        "test_deepcopy"
+      ],
+      "lib/matplotlib/tests/test_pickle.py": [
+        "test_inset_and_secondary",
+        "test_shared"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-14817",
+    "file_function": {
+      "sympy/printing/pretty/tests/test_pretty.py": [
+        "test_MatrixSymbol_printing"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15498",
+    "file_function": {
+      "tests/middleware/tests.py": [
+        "test_if_none_match_and_no_etag",
+        "test_no_etag_no_store_cache",
+        "test_if_modified_since_and_same_last_modified",
+        "test_no_etag_streaming_response",
+        "test_no_etag_response_empty_content",
+        "test_middleware_calculates_etag"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-18199",
+    "file_function": {
+      "sympy/ntheory/tests/test_residue.py": [
+        "test_residue"
+      ]
+    }
+  },
+  {
+    "instance_id": "pytest-dev__pytest-7373",
+    "file_function": {
+      "testing/test_skipping.py": [
+        "test_marked_skip_with_not_string",
+        "test_mark_xfail_item",
+        "test_skipif_noreason",
+        "test_direct_gives_error",
+        "test_xfail_raises",
+        "test_errors_in_xfail_skip_expressions",
+        "test_xfail_not_run_xfail_reporting",
+        "test_xfail_condition_keyword",
+        "test_xfail_simple"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-17630",
+    "file_function": {
+      "sympy/matrices/expressions/tests/test_blockmatrix.py": [
+        "test_BlockMatrix",
+        "test_bc_matmul",
+        "test_reblock_2x2",
+        "test_BlockMatrix_Determinant",
+        "test_squareBlockMatrix",
+        "test_BlockMatrix_trace",
+        "test_BlockDiagMatrix",
+        "test_blockcut"
+      ],
+      "sympy/matrices/expressions/tests/test_matexpr.py": [
+        "test_generic_identity",
+        "test_issue_2749",
+        "test_MatMul_postprocessor",
+        "test_matrixelement_diff"
+      ],
+      "sympy/matrices/expressions/tests/test_matmul.py": [
+        "test_matmul_no_matrices",
+        "test_determinant",
+        "test_adjoint",
+        "test_issue_12950"
+      ]
+    }
+  },
+  {
+    "instance_id": "sphinx-doc__sphinx-8506",
+    "file_function": {
+      "tests/test_domain_std.py": [
+        "test_multiple_cmdoptions"
+      ],
+      "tests/test_build_html.py": [
+        "test_html5_output"
+      ],
+      "tests/test_build.py": [
+        "test_build_all"
+      ],
+      "tests/test_environment.py": [
+        "test_images"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-25500",
+    "file_function": {
+      "sklearn/tests/test_calibration.py": [
+        "test_calibration_with_fit_params",
+        "test_calibration",
+        "test_calibration_cv_splitter",
+        "test_calibration_nan_imputer",
+        "test_calibrated_classifier_error_base_estimator",
+        "test_calibration_without_sample_weight_base_estimator",
+        "test_calibrated_classifier_deprecation_base_estimator",
+        "test_calibration_multiclass",
+        "test_calibration_prefit"
+      ],
+      "sklearn/tests/test_isotonic.py": [
+        "test_assert_raises_exceptions",
+        "test_fast_predict",
+        "test_get_feature_names_out",
+        "test_isotonic_regression",
+        "test_isotonic_regression_pickle"
+      ],
+      "sklearn/tests/test_metaestimators.py": [
+        "test_meta_estimators_delegate_data_validation"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11564",
+    "file_function": {
+      "tests/template_tests/syntax_tests/test_static.py": [
+        "test_static_statictag_without_path",
+        "test_static_prefixtag02",
+        "test_static_prefixtag04",
+        "test_static_statictag04",
+        "test_static_prefixtag01",
+        "test_static_prefixtag_without_as",
+        "test_static_statictag03"
+      ],
+      "tests/staticfiles_tests/test_storage.py": [
+        "test_missing_entry",
+        "test_collect_static_files_permissions",
+        "test_collect_static_files_subclass_of_static_storage",
+        "test_file_change_after_collectstatic"
+      ],
+      "tests/staticfiles_tests/test_templatetags.py": [
+        "test_template_tag"
+      ]
+    }
+  },
+  {
+    "instance_id": "sphinx-doc__sphinx-10325",
+    "file_function": {
+      "tests/test_ext_autodoc.py": [
+        "test_overload",
+        "test_autodoc_module_member_order",
+        "test_autodoc_imported_members",
+        "test_autodoc_typed_instance_variables",
+        "test_parse_name",
+        "test_autodoc_inherited_members_None",
+        "test_autodoc_attributes",
+        "test_canonical",
+        "test_cython",
+        "test_autodoc_inherited_members",
+        "test_final",
+        "test_format_signature",
+        "test_overload2",
+        "test_autodoc_ignore_module_all",
+        "test_autodoc_inherited_members_Base"
+      ],
+      "tests/test_ext_autodoc_configs.py": [
+        "test_autoclass_content_and_docstring_signature_both",
+        "test_autodoc_typehints_format_fully_qualified_for_class_alias",
+        "test_autodoc_typehints_description_with_documented_init_no_undoc",
+        "test_autodoc_class_signature_separated_init",
+        "test_autoclass_content_both",
+        "test_mocked_module_imports",
+        "test_autodoc_typehints_description_with_documented_init",
+        "test_autodoc_default_options_with_values",
+        "test_autoclass_content_and_docstring_signature_init",
+        "test_autoclass_content_init"
+      ],
+      "tests/test_ext_autodoc_autoclass.py": [
+        "test_show_inheritance_for_subclass_of_generic_type",
+        "test_show_inheritance_for_decendants_of_generic_type",
+        "test_class_alias_for_imported_object_having_doccomment",
+        "test_autodoc_process_bases"
+      ],
+      "tests/test_ext_autodoc_automodule.py": [
+        "test_automodule"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13590",
+    "file_function": {
+      "tests/queries/tests.py": [
+        "test_subquery_exclude_outerref",
+        "test_correct_lookup",
+        "test_exclude_in"
+      ]
+    }
+  },
+  {
+    "instance_id": "psf__requests-3362",
+    "file_function": {
+      "tests/test_lowlevel.py": [
+        "test_chunked_upload"
+      ],
+      "tests/test_requests.py": [
+        "test_response_chunk_size_int",
+        "test_response_decode_unicode"
+      ],
+      "tests/test_utils.py": [
+        "test_precedence",
+        "test_none",
+        "test_get_encoding_from_headers"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-24334",
+    "file_function": {
+      "lib/matplotlib/tests/test_axes.py": [
+        "test_mismatched_ticklabels",
+        "test_displaced_spine",
+        "test_set_noniterable_ticklabels",
+        "test_set_ticks_with_labels",
+        "test_nodecorator"
+      ],
+      "lib/matplotlib/tests/test_text.py": [
+        "test_large_subscript_title"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-14894",
+    "file_function": {
+      "sklearn/tests/test_common.py": [
+        "test_estimators"
+      ],
+      "sklearn/svm/tests/test_sparse.py": [
+        "test_sparse_oneclasssvm"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-16527",
+    "file_function": {
+      "tests/admin_views/tests.py": [
+        "test_change_view"
+      ]
+    }
+  },
+  {
+    "instance_id": "sphinx-doc__sphinx-7686",
+    "file_function": {
+      "tests/test_ext_autosummary.py": [
+        "test_generate_autosummary_docs_property",
+        "test_autosummary_generate_overwrite2"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-25498",
+    "file_function": {
+      "lib/matplotlib/tests/test_colorbar.py": [
+        "test_colorbarbase",
+        "test_colorbar_get_ticks",
+        "test_parentless_mappable",
+        "test_boundaries",
+        "test_colorbar_minorticks_on_off",
+        "test_colorbar_closed_patch",
+        "test_colorbar_extension_shape",
+        "test_mappable_no_alpha",
+        "test_colorbar_scale_reset",
+        "test_colorbar_format",
+        "test_colorbar_positioning"
+      ],
+      "lib/matplotlib/tests/test_colors.py": [
+        "test_cmap_and_norm_from_levels_and_colors",
+        "test_boundarynorm_and_colorbarbase"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13551",
+    "file_function": {
+      "tests/auth_tests/test_tokens.py": [
+        "test_check_token_with_nonexistent_token_and_user",
+        "test_make_token",
+        "test_token_default_hashing_algorithm"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-15512",
+    "file_function": {
+      "sklearn/tests/test_common.py": [
+        "test_estimators"
+      ],
+      "sklearn/cluster/tests/test_affinity_propagation.py": [
+        "test_affinity_propagation_predict_non_convergence",
+        "test_affinity_propagation_predict_error",
+        "test_affinity_propagation",
+        "test_affinity_propagation_equal_mutual_similarities"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-25570",
+    "file_function": {
+      "sklearn/compose/tests/test_column_transformer.py": [
+        "test_column_transformer_verbose",
+        "test_column_transformer_get_set_params_with_remainder",
+        "test_transformers_with_pandas_out_but_not_feature_names_out",
+        "test_2D_transformer_output",
+        "test_column_transformer_no_estimators",
+        "test_column_transformer_get_feature_names",
+        "test_feature_name_validation_missing_columns_drop_passthough",
+        "test_column_transformer_get_set_params",
+        "test_column_transformer_mixed_cols_sparse",
+        "test_sk_visual_block_remainder_fitted_pandas",
+        "test_column_transformer_empty_columns",
+        "test_verbose_feature_names_out_true",
+        "test_sk_visual_block_remainder",
+        "test_column_transformer_set_output",
+        "test_2D_transformer_output_pandas",
+        "test_sk_visual_block_remainder_drop",
+        "test_column_transformer_error_msg_1D",
+        "test_column_transformer_invalid_transformer",
+        "test_column_transformer_reordered_column_names_remainder",
+        "test_verbose_feature_names_out_false_errors"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-17087",
+    "file_function": {
+      "tests/migrations/test_writer/WriterTests/test_serialize_enums.py": [
+        "test_serialize_enums"
+      ],
+      "tests/migrations/test_writer/WriterTests/test_serialize_complex_func_index.py": [
+        "test_serialize_complex_func_index"
+      ],
+      "tests/migrations/test_writer/WriterTests/test_serialize_collections.py": [
+        "test_serialize_collections"
+      ],
+      "tests/migrations/test_writer/WriterTests/test_register_serializer.py": [
+        "test_register_serializer"
+      ],
+      "tests/migrations/test_writer/WriterTests/test_serialize_builtin_types.py": [
+        "test_serialize_builtin_types"
+      ],
+      "tests/migrations/test_writer/WriterTests/test_serialize_managers.py": [
+        "test_serialize_managers"
+      ],
+      "tests/migrations/test_writer/OperationWriterTests/test_nested_args_signature.py": [
+        "test_nested_args_signature"
+      ],
+      "tests/migrations/test_writer/WriterTests/test_serialize_type_model.py": [
+        "test_serialize_type_model"
+      ],
+      "tests/migrations/test_writer/WriterTests/test_serialize_lazy_objects.py": [
+        "test_serialize_lazy_objects"
+      ],
+      "tests/migrations/test_writer/WriterTests/test_deconstruct_class_arguments.py": [
+        "test_deconstruct_class_arguments"
+      ],
+      "tests/migrations/test_writer/OperationWriterTests/test_nested_operation_expand_args_signature.py": [
+        "test_nested_operation_expand_args_signature"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-14308",
+    "file_function": {
+      "sympy/printing/pretty/tests/test_pretty.py": [
+        "test_issue_7927",
+        "test_MatrixExpressions",
+        "test_EulerGamma",
+        "test_pretty_limits",
+        "test_pretty_basic",
+        "test_pretty_Trace_issue_9044",
+        "test_Tr",
+        "test_pretty_ConditionSet",
+        "test_pretty_SymmetricDifference",
+        "test_pretty_special_functions",
+        "test_meijerg",
+        "test_issue_7179",
+        "test_pretty_ITE",
+        "test_pretty_matrix",
+        "test_pretty_order",
+        "test_pretty_sum",
+        "test_RandomDomain",
+        "test_MatrixSymbol_printing",
+        "test_gammas",
+        "test_diffgeom_print_WedgeProduct",
+        "test_QuotientRing",
+        "test_pretty_UnevaluatedExpr",
+        "test_MatrixElement_printing",
+        "test_pretty_dotproduct",
+        "test_pretty_Subs",
+        "test_issue_7117",
+        "test_SingularityFunction",
+        "test_units",
+        "test_pretty_sqrt",
+        "test_pretty_integrals",
+        "test_pretty_sets",
+        "test_pretty_ndim_arrays",
+        "test_pretty_KroneckerDelta",
+        "test_pretty_derivatives",
+        "test_negative_fractions",
+        "test_pretty_SetExpr",
+        "test_Homomorphism",
+        "test_pretty_functions",
+        "test_pretty_Cycle",
+        "test_expint",
+        "test_pretty_RootSum",
+        "test_pretty_Domain",
+        "test_pretty_geometry",
+        "test_pretty_primeomega",
+        "test_issue_9877",
+        "test_pretty_piecewise",
+        "test_GroebnerBasis",
+        "test_pretty_Mod",
+        "test_PrettyPoly",
+        "test_GoldenRatio",
+        "test_beta",
+        "test_pretty_ComplexRegion",
+        "test_issue_6359",
+        "test_deltas",
+        "test_pretty_seq",
+        "test_pretty_FormalPowerSeries",
+        "test_hyper",
+        "test_categories",
+        "test_Adjoint",
+        "test_tensor_TensorProduct",
+        "test_pretty_Boolean",
+        "test_degree_printing",
+        "test_pretty_sequences",
+        "test_pretty_primenu",
+        "test_vector_expr_pretty_printing",
+        "test_pretty_lambda",
+        "test_pretty_ComplexRootOf",
+        "test_pretty_Contains",
+        "test_print_builtin_set",
+        "test_pretty_FourierSeries",
+        "test_pretty_ImageSet",
+        "test_elliptic_functions"
+      ],
+      "sympy/vector/tests/test_printing.py": [
+        "test_pretty_print_unicode"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-24149",
+    "file_function": {
+      "lib/matplotlib/tests/test_cbook.py": [
+        "test_safe_first_element_with_none",
+        "test_flatiter"
+      ],
+      "lib/matplotlib/tests/test_axes.py": [
+        "test_scatter_plot",
+        "test_invalid_axis_limits",
+        "test_bar_labels"
+      ],
+      "lib/matplotlib/tests/test_collections.py": [
+        "test_scatter_alpha_array"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-18532",
+    "file_function": {
+      "sympy/core/tests/test_basic.py": [
+        "test_sorted_args"
+      ],
+      "sympy/series/tests/test_limits.py": [
+        "test_AccumBounds"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11283",
+    "file_function": {
+      "tests/auth_tests/test_migrations.py": [
+        "test_migrate_backwards",
+        "test_user_keeps_same_permissions_after_migrating_backward"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-24909",
+    "file_function": {
+      "sympy/physics/units/tests/test_prefixes.py": [
+        "test_prefix_operations"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-16816",
+    "file_function": {
+      "tests/admin_checks/tests/SystemChecksTestCase/test_readonly_lambda.py": [
+        "test_readonly_lambda"
+      ],
+      "tests/admin_checks/tests.py": [
+        "test_non_model_fields",
+        "test_exclude_inline_model_admin",
+        "test_non_model_first_field",
+        "test_fk_exclusion",
+        "test_fieldsets_fields_non_tuple",
+        "test_custom_get_form_with_fieldsets",
+        "test_exclude_values",
+        "test_graceful_m2m_fail"
+      ],
+      "tests/admin_checks/tests/SystemChecksTestCase/test_readonly_and_editable.py": [
+        "test_readonly_and_editable"
+      ],
+      "tests/admin_checks/tests/SystemChecksTestCase/test_list_editable_not_a_list_or_tuple.py": [
+        "test_list_editable_not_a_list_or_tuple"
+      ],
+      "tests/admin_checks/tests/SystemChecksTestCase/test_check_fieldset_sublists_for_duplicates.py": [
+        "test_check_fieldset_sublists_for_duplicates"
+      ],
+      "tests/admin_checks/tests/SystemChecksTestCase/test_exclude_duplicate_values.py": [
+        "test_exclude_duplicate_values"
+      ],
+      "tests/admin_checks/tests/SystemChecksTestCase/test_field_name_not_in_list_display.py": [
+        "test_field_name_not_in_list_display"
+      ],
+      "tests/admin_checks/tests/SystemChecksTestCase/test_check_sublists_for_duplicates.py": [
+        "test_check_sublists_for_duplicates"
+      ],
+      "tests/admin_views/tests.py": [
+        "test_check"
+      ],
+      "tests/admin_checks/tests/SystemChecksTestCase/test_nonexistent_field.py": [
+        "test_nonexistent_field"
+      ],
+      "tests/admin_checks/tests/SystemChecksTestCase/test_readonly_on_method.py": [
+        "test_readonly_on_method"
+      ],
+      "tests/admin_checks/tests/SystemChecksTestCase/test_readonly_fields_not_list_or_tuple.py": [
+        "test_readonly_fields_not_list_or_tuple"
+      ],
+      "tests/admin_checks/tests/SystemChecksTestCase/test_allows_checks_relying_on_other_modeladmins.py": [
+        "test_allows_checks_relying_on_other_modeladmins"
+      ],
+      "tests/admin_checks/tests/SystemChecksTestCase/test_nonexistent_field_on_inline.py": [
+        "test_nonexistent_field_on_inline"
+      ],
+      "tests/admin_checks/tests/SystemChecksTestCase/test_readonly_on_modeladmin.py": [
+        "test_readonly_on_modeladmin"
+      ],
+      "tests/admin_checks/tests/SystemChecksTestCase/test_app_label_in_admin_checks.py": [
+        "test_app_label_in_admin_checks"
+      ],
+      "tests/admin_checks/tests/SystemChecksTestCase/test_nested_fieldsets.py": [
+        "test_nested_fieldsets"
+      ],
+      "tests/admin_checks/tests/SystemChecksTestCase/test_list_editable_missing_field.py": [
+        "test_list_editable_missing_field"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-12708",
+    "file_function": {
+      "tests/schema/tests.py": [
+        "test_unique_together",
+        "test_index_together"
+      ],
+      "tests/migrations/test_operations.py": [
+        "test_alter_unique_together"
+      ]
+    }
+  },
+  {
+    "instance_id": "pytest-dev__pytest-11143",
+    "file_function": {
+      "testing/test_assertrewrite.py": [
+        "test_assertion_walrus_operator_in_operand_json_dumps",
+        "test_hook_call",
+        "test_hook_call_with_parens",
+        "test_assertion_walrus_operator_boolean_none_fails",
+        "test_call",
+        "test_boolop",
+        "test_assertion_walrus_operator_true_assertion_and_changes_variable_value",
+        "test_assertion_message",
+        "test_assertion_walrus_operator_equals_operand_function_keyword_arg",
+        "test_assertion_walrus_operator_compare_boolean_fails",
+        "test_comparisons",
+        "test_remember_rewritten_modules",
+        "test_many_brackets",
+        "test_assertion_walrus_operator_dont_rewrite",
+        "test_assertion_message_multiline",
+        "test_place_initial_imports"
+      ],
+      "testing/test_collection.py": [
+        "test_does_not_crash_on_error_from_decorated_function",
+        "test_modules_importable_as_side_effect",
+        "test_conftest"
+      ],
+      "testing/test_assertion.py": [
+        "test_assert_tuple_warning"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13265",
+    "file_function": {
+      "tests/migrations/test_autodetector.py": [
+        "test_circular_dependency_mixed_addcreate",
+        "test_add_alter_order_with_respect_to",
+        "test_circular_fk_dependency"
+      ],
+      "tests/migrations/test_optimizer.py": [
+        "test_optimize_through_create",
+        "test_none_app_label"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-14787",
+    "file_function": {
+      "tests/decorators/tests.py": [
+        "test_descriptors",
+        "test_argumented",
+        "test_preserve_attributes",
+        "test_preserve_signature"
+      ]
+    }
+  },
+  {
+    "instance_id": "pylint-dev__pylint-7080",
+    "file_function": {
+      "tests/test_functional.py": [
+        "test_functional"
+      ],
+      "tests/lint/unittest_expand_modules.py": [
+        "test_expand_modules",
+        "test_expand_modules_with_ignore"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11797",
+    "file_function": {
+      "tests/queries/tests.py": [
+        "test_correct_lookup",
+        "test_distinct_ordered_sliced_subquery",
+        "test_error_raised_on_filter_with_dictionary",
+        "test_subquery_exclude_outerref",
+        "test_distinct_ordered_sliced_subquery_aggregation"
+      ],
+      "tests/queries/test_query.py": [
+        "test_foreign_key"
+      ],
+      "tests/lookup/tests.py": [
+        "test_relation_nested_lookup_error"
+      ],
+      "tests/aggregation_regress/tests.py": [
+        "test_fobj_group_by",
+        "test_more_more_more"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-11281",
+    "file_function": {
+      "sklearn/mixture/tests/test_gaussian_mixture.py": [
+        "test_warm_start",
+        "test_init",
+        "test_gaussian_mixture_verbose",
+        "test_gaussian_mixture_attributes",
+        "test_gaussian_mixture_predict_predict_proba",
+        "test_gaussian_mixture_aic_bic",
+        "test_monotonic_likelihood",
+        "test_sample"
+      ]
+    }
+  },
+  {
+    "instance_id": "pylint-dev__pylint-7993",
+    "file_function": {
+      "tests/reporters/unittest_reporting.py": [
+        "test_template_option_non_existing",
+        "test_multi_format_output"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-23314",
+    "file_function": {
+      "lib/mpl_toolkits/tests/test_mplot3d.py": [
+        "test_quiver3d_masked",
+        "test_errorbar3d_errorevery",
+        "test_axes3d_focal_length_checks",
+        "test_bar3d_lightsource",
+        "test_add_collection3d_zs_array",
+        "test_contourf3d_extend",
+        "test_colorbar_pos",
+        "test_wireframe3dzerostrideraises",
+        "test_scatter3d",
+        "test_errorbar3d",
+        "test_shared_axes_retick",
+        "test_quiver3d_empty",
+        "test_patch_modification",
+        "test_axes3d_isometric",
+        "test_contour3d",
+        "test_surface3d_masked",
+        "test_text3d",
+        "test_contour3d_1d_input",
+        "test_bar3d",
+        "test_autoscale",
+        "test_contourf3d",
+        "test_quiver3d",
+        "test_wireframe3d",
+        "test_stem3d",
+        "test_pan",
+        "test_bar3d_shaded",
+        "test_simple",
+        "test_mixedsamplesraises",
+        "test_view_init_vertical_axis",
+        "test_plotsurface_1d_raises",
+        "test_computed_zorder",
+        "test_aspect_equal_error",
+        "test_surface3d",
+        "test_xyz",
+        "test_bar3d_notshaded",
+        "test_tricontour",
+        "test_add_collection3d_zs_scalar",
+        "test_trisurf3d"
+      ],
+      "lib/matplotlib/tests/test_collections.py": [
+        "test_polycollection_close"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-25442",
+    "file_function": {
+      "lib/matplotlib/tests/test_offsetbox.py": [
+        "test_annotationbbox_extents",
+        "test_picking"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-14667",
+    "file_function": {
+      "tests/defer_regress/tests.py": [
+        "test_defer_with_select_related",
+        "test_basic"
+      ],
+      "tests/aggregation/tests.py": [
+        "test_annotate_defer_select_related"
+      ],
+      "tests/defer/tests.py": [
+        "test_defer_none_to_clear_deferred_set",
+        "test_only",
+        "test_defer_only_chaining"
+      ],
+      "tests/queries/tests.py": [
+        "test_named_values_list_with_fields"
+      ]
+    }
+  },
+  {
+    "instance_id": "pytest-dev__pytest-5692",
+    "file_function": {
+      "testing/test_config.py": [
+        "test_override_ini_handled_asap"
+      ],
+      "testing/test_runner.py": [
+        "test_logstart_logfinish_hooks"
+      ],
+      "testing/test_reports.py": [
+        "test_test_report"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-23913",
+    "file_function": {
+      "lib/matplotlib/tests/test_legend.py": [
+        "test_fancy",
+        "test_legend_labelcolor_markeredgecolor",
+        "test_window_extent_cached_renderer",
+        "test_legend_set_alignment",
+        "test_legend_labelcolor_single",
+        "test_rc",
+        "test_get_set_draggable",
+        "test_legend_labelcolor_markerfacecolor",
+        "test_warn_big_data_best_loc",
+        "test_legend_labelcolor_rcparam_single",
+        "test_setting_alpha_keeps_polycollection_color",
+        "test_text_nohandler_warning",
+        "test_legend_title_fontprop_fontsize",
+        "test_legend_markers_from_line2d",
+        "test_legend_label_with_leading_underscore",
+        "test_legend_labelcolor_linecolor"
+      ],
+      "lib/matplotlib/tests/test_axes.py": [
+        "test_hist_stacked_bar"
+      ],
+      "lib/matplotlib/tests/test_offsetbox.py": [
+        "test_expand_with_tight_layout"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-13584",
+    "file_function": {
+      "sklearn/linear_model/tests/test_logistic.py": [
+        "test_error",
+        "test_LogisticRegressionCV_no_refit",
+        "test_consistency_path",
+        "test_logistic_regression_path_coefs_multinomial",
+        "test_logistic_regression_multi_class_auto",
+        "test_logistic_regressioncv_class_weights",
+        "test_logistic_cv_mock_scorer",
+        "test_logistic_regression_class_weights",
+        "test_penalty_none",
+        "test_l1_ratios_param",
+        "test_logistic_regression_path_convergence_fail"
+      ],
+      "sklearn/tests/test_common.py": [
+        "test_estimators"
+      ],
+      "sklearn/tests/test_config.py": [
+        "test_config_context"
+      ],
+      "sklearn/utils/tests/test_pprint.py": [
+        "test_length_constraint"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11583",
+    "file_function": {
+      "tests/utils_tests/test_autoreload.py": [
+        "test_main_module_is_resolved",
+        "test_file_added",
+        "test_snapshot_files_ignores_missing_files",
+        "test_check_errors_catches_all_exceptions",
+        "test_tick_does_not_trigger_twice",
+        "test_snapshot_files_with_duplicates"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-26011",
+    "file_function": {
+      "lib/matplotlib/tests/test_axes.py": [
+        "test_set_margin_updates_limits",
+        "test_inverted_limits",
+        "test_log_scales",
+        "test_axis_method_errors"
+      ]
+    }
+  },
+  {
+    "instance_id": "astropy__astropy-14995",
+    "file_function": {
+      "astropy/nddata/mixins/tests/test_ndarithmetic.py": [
+        "test_arithmetics_data_masks",
+        "test_arithmetics_wcs_func",
+        "test_arithmetics_handle_switches",
+        "test_arithmetics_meta_func",
+        "test_psf_warning"
+      ],
+      "astropy/nddata/tests/test_ccddata.py": [
+        "test_arithmetic_with_wcs_compare_fail",
+        "test_arithmetic_with_wcs_compare"
+      ],
+      "astropy/nddata/tests/test_nddata.py": [
+        "test_collapse"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-16400",
+    "file_function": {
+      "tests/auth_tests/test_management.py": [
+        "test_fields_with_fk_interactive",
+        "test_default_permissions",
+        "test_createsuperuser_command_suggested_username_with_database_option",
+        "test_swappable_user_username_non_unique",
+        "test_fields_with_m2m_interactive",
+        "test_with_database"
+      ],
+      "tests/migrate_signals/tests.py": [
+        "test_args"
+      ],
+      "tests/migrations/test_commands.py": [
+        "test_migrate_fake_initial_case_insensitive",
+        "test_migrate_with_system_checks",
+        "test_migrate_backward_to_squashed_migration"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-12419",
+    "file_function": {
+      "sympy/concrete/tests/test_sums_products.py": [
+        "test_evalf_euler_maclaurin",
+        "test_telescopic_sums",
+        "test_geometric_sums",
+        "test_issue_7097",
+        "test_euler_maclaurin",
+        "test_eval_diff",
+        "test_matrix_sum",
+        "test_simplify",
+        "test_is_zero",
+        "test_Sum_interface",
+        "test_equality",
+        "test_is_convergent",
+        "test_evalf_symbolic",
+        "test_is_absolutely_convergent",
+        "test_Sum_doit",
+        "test_arithmetic_sums",
+        "test_reverse_order",
+        "test_issue_6274"
+      ],
+      "sympy/matrices/expressions/tests/test_matexpr.py": [
+        "test_single_indexing",
+        "test_addition",
+        "test_identity_powers",
+        "test_matmul_simplify",
+        "test_MatPow",
+        "test_matrixelement_diff",
+        "test_multiplication",
+        "test_Identity",
+        "test_MatrixElement_with_values"
+      ],
+      "sympy/core/tests/test_evalf.py": [
+        "test_evalf_sum"
+      ],
+      "sympy/matrices/expressions/tests/test_trace.py": [
+        "test_Trace"
+      ],
+      "sympy/matrices/expressions/tests/test_indexing.py": [
+        "test_Identity_index",
+        "test_block_index",
+        "test_errors",
+        "test_mul_index"
+      ],
+      "sympy/series/tests/test_limits.py": [
+        "test_AccumBounds",
+        "test_limit_seq"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-13146",
+    "file_function": {
+      "sympy/series/tests/test_nseries.py": [
+        "test_bug2",
+        "test_log_power1",
+        "test_floor",
+        "test_bug5",
+        "test_issue_3505"
+      ],
+      "sympy/core/tests/test_evalf.py": [
+        "test_chop_value",
+        "test_evalf_sum",
+        "test_subs",
+        "test_issue_4806",
+        "test_evalf_bugs",
+        "test_issue_4945",
+        "test_evalf_power_subs_bugs",
+        "test_evalf_exponentiation",
+        "test_AssocOp_Function",
+        "test_evalf_trig"
+      ],
+      "sympy/functions/elementary/tests/test_complexes.py": [
+        "test_as_real_imag",
+        "test_adjoint",
+        "test_derivatives_issue_4757",
+        "test_sign",
+        "test_transpose",
+        "test_principal_branch"
+      ],
+      "sympy/simplify/tests/test_powsimp.py": [
+        "test_powsimp",
+        "test_issue_10195",
+        "test_powdenest"
+      ],
+      "sympy/simplify/tests/test_simplify.py": [
+        "test_simplify_function_inverse",
+        "test_issue_5652",
+        "test_simplify_ratio",
+        "test_simplify_other",
+        "test_hypersimp",
+        "test_separatevars",
+        "test_besselsimp",
+        "test_issue_9448",
+        "test_nsimplify"
+      ],
+      "sympy/functions/elementary/tests/test_exponential.py": [
+        "test_exp_subs",
+        "test_log_simplify"
+      ],
+      "sympy/core/tests/test_eval_power.py": [
+        "test_issue_7638",
+        "test_expand",
+        "test_issue_6068",
+        "test_issue_4362",
+        "test_better_sqrt"
+      ],
+      "sympy/functions/elementary/tests/test_miscellaneous.py": [
+        "test_Min"
+      ],
+      "sympy/core/tests/test_numbers.py": [
+        "test_NaN",
+        "test_powers_Integer"
+      ],
+      "sympy/series/tests/test_series.py": [
+        "test_sin_power",
+        "test_issue_5223"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-18189",
+    "file_function": {
+      "sympy/solvers/tests/test_diophantine.py": [
+        "test_classify_diop",
+        "test_diopcoverage",
+        "test_quadratic_non_perfect_slow",
+        "test_issue_9538",
+        "test_assumptions",
+        "test_general_pythagorean",
+        "test_input_format",
+        "test_diop_ternary_quadratic",
+        "test_sum_of_three_squares",
+        "test_diophantine",
+        "test_issue_8943",
+        "test_diophantine_permute_sign",
+        "test_quadratic_non_perfect_square",
+        "test_issue_9106"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-12286",
+    "file_function": {
+      "tests/check_framework/test_translation.py": [
+        "test_inconsistent_language_settings"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-14016",
+    "file_function": {
+      "tests/queries/test_q.py": [
+        "test_reconstruct_or",
+        "test_combine_and_empty",
+        "test_combine_not_q_object",
+        "test_deconstruct_or",
+        "test_combine_or_empty"
+      ],
+      "tests/or_lookups/tests.py": [
+        "test_filter_or"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15902",
+    "file_function": {
+      "tests/forms_tests/tests/test_renderers.py": [
+        "test_get_renderer"
+      ],
+      "tests/forms_tests/tests/test_formsets.py": [
+        "test_customize_management_form_error",
+        "test_repr",
+        "test_html_safe",
+        "test_empty_forms_are_unbound",
+        "test_formset_validate_min_flag_custom_formatted_error",
+        "test_formset_total_error_count_with_non_form_errors",
+        "test_formsets_with_ordering_custom_widget",
+        "test_limited_max_forms_two",
+        "test_max_num_zero_with_initial",
+        "test_formset_validate_min_excludes_empty_forms",
+        "test_disable_delete_extra_formset_forms",
+        "test_validate_max_ignores_forms_marked_for_deletion"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-19007",
+    "file_function": {
+      "sympy/matrices/expressions/tests/test_blockmatrix.py": [
+        "test_blockcut"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-14915",
+    "file_function": {
+      "tests/model_forms/test_modelchoicefield.py": [
+        "test_choices",
+        "test_choice_iterator_passes_model_to_widget",
+        "test_disabled_modelchoicefield_has_changed",
+        "test_custom_choice_iterator_passes_model_to_widget",
+        "test_disabled_modelmultiplechoicefield_has_changed",
+        "test_clean_model_instance",
+        "test_clean_to_field_name",
+        "test_disabled_modelchoicefield_initial_model_instance",
+        "test_basics",
+        "test_disabled_multiplemodelchoicefield"
+      ]
+    }
+  },
+  {
+    "instance_id": "pytest-dev__pytest-5495",
+    "file_function": {
+      "testing/test_assertrewrite.py": [
+        "test_many_brackets",
+        "test_boolop",
+        "test_call",
+        "test_len",
+        "test_long_case",
+        "test_dont_rewrite",
+        "test_boolop_percent",
+        "test_reload_is_same",
+        "test_custom_repr",
+        "test_place_initial_imports"
+      ],
+      "testing/test_failures.py": [
+        "test_failure_demo_fails_properly"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-20639",
+    "file_function": {
+      "sympy/printing/pretty/tests/test_pretty.py": [
+        "test_EulerGamma",
+        "test_pretty_limits",
+        "test_QuotientRing",
+        "test_units",
+        "test_SingularityFunction",
+        "test_Assignment",
+        "test_pretty_sqrt",
+        "test_pretty_KroneckerDelta",
+        "test_pretty_derivatives",
+        "test_Homomorphism",
+        "test_pretty_RootSum",
+        "test_issue_15583",
+        "test_pretty_Mod",
+        "test_pretty_print_tensor_partial_deriv",
+        "test_GoldenRatio",
+        "test_hadamard_power",
+        "test_issue_6359",
+        "test_degree_printing",
+        "test_pretty_UnevaluatedExpr",
+        "test_pretty_order",
+        "test_pretty_sum",
+        "test_RandomDomain",
+        "test_gammas",
+        "test_matrixSymbolBold",
+        "test_pretty_integrals",
+        "test_pretty_UniversalSet",
+        "test_pretty_sets",
+        "test_negative_fractions",
+        "test_pretty_geometry",
+        "test_issue_9877",
+        "test_GroebnerBasis",
+        "test_diffgeom",
+        "test_issue_12675",
+        "test_beta",
+        "test_pretty_ComplexRegion",
+        "test_ProductSet_exponent",
+        "test_pretty_seq",
+        "test_Adjoint",
+        "test_vector_expr_pretty_printing",
+        "test_pretty_ComplexRootOf",
+        "test_pretty_Contains",
+        "test_issue_7927",
+        "test_pretty_special_functions",
+        "test_MatrixSlice",
+        "test_issue_18272",
+        "test_diffgeom_print_WedgeProduct",
+        "test_MatrixElement_printing",
+        "test_pretty_dotproduct",
+        "test_str_special_matrices",
+        "test_pretty_ndim_arrays",
+        "test_pretty_Cycle",
+        "test_expint",
+        "test_pretty_Permutation",
+        "test_pretty_Domain",
+        "test_pretty_primeomega",
+        "test_issue_15560",
+        "test_deltas",
+        "test_issue_17857",
+        "test_pretty_FormalPowerSeries",
+        "test_categories",
+        "test_tensor_TensorProduct",
+        "test_pretty_Boolean",
+        "test_pretty_primenu",
+        "test_print_builtin_set",
+        "test_pretty_FourierSeries",
+        "test_pretty_ImageSet",
+        "test_elliptic_functions",
+        "test_MatrixExpressions",
+        "test_pretty_Feedback",
+        "test_pretty_basic",
+        "test_pretty_misc_functions",
+        "test_Tr",
+        "test_pretty_ConditionSet",
+        "test_pretty_SymmetricDifference",
+        "test_meijerg",
+        "test_issue_7179",
+        "test_pretty_matrix",
+        "test_pretty_ITE",
+        "test_imaginary_unit",
+        "test_pretty_Subs",
+        "test_pretty_print_tensor_expr",
+        "test_pretty_SetExpr",
+        "test_pretty_functions",
+        "test_pretty_piecewise",
+        "test_PrettyPoly",
+        "test_hyper",
+        "test_print_lerchphi",
+        "test_pretty_sequences"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-12700",
+    "file_function": {
+      "tests/view_tests/tests/test_debug.py": [
+        "test_dict_setting_with_non_str_key",
+        "test_callable_settings_forbidding_to_set_attributes",
+        "test_callable_settings",
+        "test_404_empty_path_not_in_urls"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-25433",
+    "file_function": {
+      "lib/matplotlib/tests/test_backend_template.py": [
+        "test_load_template"
+      ],
+      "lib/matplotlib/tests/test_widgets.py": [
+        "test_TextBox",
+        "test_slider_valstep_snapping",
+        "test_range_slider_same_init_values",
+        "test_save_blitted_widget_as_pdf",
+        "test_range_slider",
+        "test_span_selector"
+      ],
+      "lib/matplotlib/tests/test_figure.py": [
+        "test_savefig_preserve_layout_engine",
+        "test_savefig_backend",
+        "test_savefig_pixel_ratio",
+        "test_waitforbuttonpress",
+        "test_ginput"
+      ],
+      "lib/matplotlib/tests/test_backend_bases.py": [
+        "test_get_default_filename",
+        "test_canvas_ctor"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-14983",
+    "file_function": {
+      "sklearn/model_selection/tests/test_split.py": [
+        "test_get_n_splits_for_repeated_kfold",
+        "test_repeated_cv_value_errors",
+        "test_2d_y",
+        "test_cross_validator_with_default_params",
+        "test_get_n_splits_for_repeated_stratified_kfold",
+        "test_leave_one_p_group_out"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-10949",
+    "file_function": {
+      "sklearn/utils/tests/test_validation.py": [
+        "test_check_array",
+        "test_check_array_accept_sparse_type_exception",
+        "test_check_array_pandas_dtype_object_conversion"
+      ],
+      "sklearn/tests/test_common.py": [
+        "test_non_meta_estimators"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-14730",
+    "file_function": {
+      "tests/invalid_models_tests/test_relative_fields.py": [
+        "test_unique_m2m",
+        "test_many_to_many_to_missing_model",
+        "test_relationship_model_missing_foreign_key"
+      ],
+      "tests/model_fields/test_manytomanyfield.py": [
+        "test_through_db_table_mutually_exclusive",
+        "test_invalid_to_parameter"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11422",
+    "file_function": {
+      "tests/utils_tests/test_autoreload.py": [
+        "test_file_added",
+        "test_snapshot_files_ignores_missing_files",
+        "test_paths_are_pathlib_instances",
+        "test_watchman_unavailable",
+        "test_zip_reload",
+        "test_watchman_available",
+        "test_snapshot_files_with_duplicates"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-23262",
+    "file_function": {
+      "sympy/utilities/tests/test_lambdify.py": [
+        "test_matrix",
+        "test_atoms",
+        "test_ITE",
+        "test_deprecated_set",
+        "test_lambdify_dummy_arg",
+        "test_special_printers",
+        "test_sym_integral",
+        "test_lambdify_cse",
+        "test_str_args",
+        "test_issue_14941",
+        "test_lambdify_Derivative_arg_issue_16468"
+      ],
+      "sympy/printing/tests/test_lambdarepr.py": [
+        "test_sum__1",
+        "test_multiple_sums",
+        "test_numexpr",
+        "test_matrix",
+        "test_sum__2"
+      ],
+      "sympy/printing/tests/test_pycode.py": [
+        "test_issue_14283",
+        "test_PythonCodePrinter_standard",
+        "test_codegen_ast_nodes",
+        "test_frac",
+        "test_sqrt",
+        "test_PythonCodePrinter"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-22714",
+    "file_function": {
+      "sympy/geometry/tests/test_point.py": [
+        "test_transform",
+        "test_point",
+        "test_Point2D",
+        "test_point3D",
+        "test_arguments",
+        "test_dot",
+        "test_unit"
+      ]
+    }
+  },
+  {
+    "instance_id": "pylint-dev__pylint-7114",
+    "file_function": {
+      "tests/lint/test_pylinter.py": [
+        "test_check_deprecation"
+      ],
+      "tests/test_functional.py": [
+        "test_functional"
+      ],
+      "tests/lint/unittest_lint.py": [
+        "test_by_module_statement_value"
+      ],
+      "tests/lint/unittest_expand_modules.py": [
+        "test_expand_modules_with_ignore"
+      ],
+      "tests/test_regr.py": [
+        "test_package"
+      ]
+    }
+  },
+  {
+    "instance_id": "astropy__astropy-14365",
+    "file_function": {
+      "astropy/io/ascii/tests/test_qdp.py": [
+        "test_read_write_simple",
+        "test_roundtrip"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-22835",
+    "file_function": {
+      "lib/matplotlib/tests/test_colors.py": [
+        "test_scalarmappable_norm_update",
+        "test_TwoSlopeNorm_autoscale",
+        "test_Normalize",
+        "test_BoundaryNorm"
+      ],
+      "lib/matplotlib/tests/test_image.py": [
+        "test_format_cursor_data",
+        "test_mask_image_over_under",
+        "test_image_cursor_formatting"
+      ],
+      "lib/matplotlib/tests/test_axes.py": [
+        "test_hexbin_log"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15789",
+    "file_function": {
+      "tests/utils_tests/test_html.py": [
+        "test_json_script",
+        "test_json_script_without_id"
+      ],
+      "tests/template_tests/filter_tests/test_json_script.py": [
+        "test_basic"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-15308",
+    "file_function": {
+      "sympy/printing/tests/test_latex.py": [
+        "test_latex_SingularityFunction",
+        "test_PolynomialRingBase",
+        "test_latex_Range",
+        "test_latex_Integers",
+        "test_latex_builtins",
+        "test_latex_Naturals0",
+        "test_latex_bessel",
+        "test_latex_Contains",
+        "test_latex_sum",
+        "test_latex_fresnel",
+        "test_issue_7180",
+        "test_MatrixElement_printing",
+        "test_Adjoint",
+        "test_latex_Matrix",
+        "test_function_subclass_different_name",
+        "test_latex_subs",
+        "test_Quaternion_latex_printing",
+        "test_latex_MatrixSlice",
+        "test_latex_commutator",
+        "test_issue_7117",
+        "test_latex_FormalPowerSeries",
+        "test_hyper_printing",
+        "test_latex_intervals",
+        "test_latex_Heaviside",
+        "test_latex_ImageSet",
+        "test_latex_basic",
+        "test_latex_RootSum",
+        "test_latex_union",
+        "test_latex_FourierSeries",
+        "test_ZeroMatrix",
+        "test_latex_derivatives",
+        "test_latex_indexed",
+        "test_latex_functions",
+        "test_latex_integrals",
+        "test_latex_Piecewise",
+        "test_latex_NDimArray",
+        "test_QuotientRing",
+        "test_latex_vector_expressions",
+        "test_TensorProduct_printing",
+        "test_latex_limits",
+        "test_issue_10489",
+        "test_categories",
+        "test_latex_ConditionSet",
+        "test_latex_ComplexRegion",
+        "test_latex_UnevaluatedExpr",
+        "test_latex_Complexes",
+        "test_latex_Poly",
+        "test_Hadamard",
+        "test_issue_13651",
+        "test_issue_9216",
+        "test_latex_LeviCivita",
+        "test_WedgeProduct_printing",
+        "test_latex_euler",
+        "test_latex_ComplexRootOf",
+        "test_integral_transforms",
+        "test_latex_productset",
+        "test_Tr",
+        "test_latex_Poly_order",
+        "test_latex_DiracDelta",
+        "test_latex_sequences",
+        "test_latex_AccumuBounds",
+        "test_boolean_args_order",
+        "test_latex_symmetric_difference",
+        "test_issue_12886",
+        "test_latex_Float",
+        "test_latex_Complement",
+        "test_latex_Lambda",
+        "test_latex_RandomDomain",
+        "test_latex_printer_tensor",
+        "test_latex_product",
+        "test_latex_permutation",
+        "test_latex_log",
+        "test_latex_KroneckerDelta",
+        "test_latex_FracElement",
+        "test_latex",
+        "test_Modules",
+        "test_latex_numbers"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11039",
+    "file_function": {
+      "tests/migrations/test_commands.py": [
+        "test_sqlmigrate_backwards",
+        "test_sqlmigrate_forwards",
+        "test_sqlmigrate_app_name_specified_as_label",
+        "test_sqlmigrate_for_non_atomic_migration"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-14411",
+    "file_function": {
+      "tests/auth_tests/test_forms.py": [
+        "test_readonly_field_has_changed",
+        "test_bug_17944_empty_password",
+        "test_bug_17944_unmanageable_password",
+        "test_bug_17944_unknown_password_algorithm",
+        "test_unusable_password",
+        "test_bug_19349_render_with_none_value"
+      ],
+      "tests/auth_tests/test_views.py": [
+        "test_user_change_password"
+      ]
+    }
+  },
+  {
+    "instance_id": "sphinx-doc__sphinx-10451",
+    "file_function": {
+      "tests/test_ext_autodoc_configs.py": [
+        "test_autodoc_typehints_description_no_undoc_doc_rtype",
+        "test_autodoc_typehints_format_fully_qualified_for_generic_alias",
+        "test_autodoc_typehints_format_fully_qualified",
+        "test_autodoc_typehints_description_no_undoc",
+        "test_autodoc_typehints_description_for_invalid_node",
+        "test_mocked_module_imports",
+        "test_autodoc_typehints_description_with_documented_init"
+      ],
+      "tests/test_ext_autodoc.py": [
+        "test_autodoc",
+        "test_format_signature"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13315",
+    "file_function": {
+      "tests/model_forms/tests.py": [
+        "test_fields_for_model_applies_limit_choices_to",
+        "test_limit_choices_to_callable_for_fk_rel",
+        "test_blank_foreign_key_with_radio"
+      ],
+      "tests/model_forms/test_modelchoicefield.py": [
+        "test_choices_bool"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13710",
+    "file_function": {
+      "tests/admin_inlines/tests.py": [
+        "test_inline_editable_pk",
+        "test_inline_primary",
+        "test_inline_add_fk_add_perm",
+        "test_deleting_inline_with_protected_delete_does_not_validate",
+        "test_inline_nonauto_noneditable_pk",
+        "test_inline_nonauto_noneditable_inherited_pk"
+      ],
+      "tests/admin_views/tests.py": [
+        "test_should_be_able_to_edit_related_objects_on_add_view"
+      ]
+    }
+  },
+  {
+    "instance_id": "pydata__xarray-4248",
+    "file_function": {
+      "xarray/tests/test_formatting_html.py": [
+        "test_repr_of_multiindex"
+      ],
+      "xarray/tests/test_dataset.py": [
+        "test_repr_multiindex",
+        "test_repr"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11848",
+    "file_function": {
+      "tests/utils_tests/test_http.py": [
+        "test_parsing_rfc850",
+        "test_parsing_year_less_than_70"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-12747",
+    "file_function": {
+      "tests/delete_regress/tests.py": [
+        "test_foreign_key_delete_nullifies_correct_columns"
+      ],
+      "tests/delete/tests.py": [
+        "test_setnull",
+        "test_m2m",
+        "test_fast_delete_instance_set_pk_none",
+        "test_do_nothing_qscount"
+      ]
+    }
+  },
+  {
+    "instance_id": "sphinx-doc__sphinx-8435",
+    "file_function": {
+      "tests/test_ext_autodoc.py": [
+        "test_autodoc_TYPE_CHECKING",
+        "test_slots",
+        "test_enum_class",
+        "test_autoattribute_instance_attributes",
+        "test_autodoc_GenericAlias",
+        "test_autodoc_typed_instance_variables",
+        "test_autodoc_TypeVar"
+      ],
+      "tests/test_ext_autodoc_configs.py": [
+        "test_autodoc_default_options"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-12453",
+    "file_function": {
+      "tests/test_runner/test_debug_sql.py": [
+        "test_output_normal",
+        "test_output_verbose"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-18835",
+    "file_function": {
+      "sympy/utilities/tests/test_iterables.py": [
+        "test_multiset_combinations",
+        "test_uniq",
+        "test_multiset_permutations"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-23563",
+    "file_function": {
+      "lib/mpl_toolkits/tests/test_mplot3d.py": [
+        "test_get_axis_position",
+        "test_format_coord"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15061",
+    "file_function": {
+      "tests/forms_tests/field_tests/test_multivaluefield.py": [
+        "test_form_as_table",
+        "test_render_required_attributes",
+        "test_form_as_table_data"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-21614",
+    "file_function": {
+      "sympy/core/tests/test_function.py": [
+        "test_sort_variable",
+        "test_derivative_evaluate",
+        "test_derivative_numerically",
+        "test_issue_14719_10150",
+        "test_diff_symbols",
+        "test_issue_15947",
+        "test_Derivative_as_finite_difference",
+        "test_Derivative__new__",
+        "test_subs_in_derivative",
+        "test_unhandled",
+        "test_negative_counts",
+        "test_issue_5399",
+        "test_Subs_Derivative",
+        "test_derivative_quick_exit"
+      ],
+      "sympy/matrices/expressions/tests/test_derivatives.py": [
+        "test_matrix_derivative_vectors_and_scalars",
+        "test_matrix_derivatives_of_traces",
+        "test_derivatives_elementwise_applyfunc"
+      ],
+      "sympy/core/tests/test_diff.py": [
+        "test_diff_nth_derivative",
+        "test_issue_16160"
+      ],
+      "sympy/calculus/tests/test_finite_diff.py": [
+        "test_as_finite_diff"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-14534",
+    "file_function": {
+      "tests/forms_tests/tests/test_forms.py": [
+        "test_iterable_boundfield_select",
+        "test_form_with_iterable_boundfield_id"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-14997",
+    "file_function": {
+      "tests/migrations/test_operations.py": [
+        "test_remove_covering_unique_constraint",
+        "test_remove_deferred_unique_constraint",
+        "test_add_covering_unique_constraint",
+        "test_rename_field_case",
+        "test_create_model_with_deferred_unique_constraint",
+        "test_add_deferred_unique_constraint",
+        "test_repoint_field_m2m",
+        "test_create_model_with_partial_unique_constraint"
+      ],
+      "tests/constraints/tests.py": [
+        "test_eq",
+        "test_deconstruction_with_include",
+        "test_deferrable_with_opclasses",
+        "test_requires_field_or_expression",
+        "test_opclasses_and_fields_same_length",
+        "test_requires_name",
+        "test_condition_must_be_q",
+        "test_deferrable_with_include",
+        "test_expressions_with_opclasses",
+        "test_deconstruction_with_opclasses",
+        "test_deferrable_with_condition",
+        "test_invalid_include_argument",
+        "test_expressions_and_fields_mutually_exclusive",
+        "test_repr_with_condition",
+        "test_repr_with_expressions",
+        "test_invalid_opclasses_argument",
+        "test_deferrable_with_expressions",
+        "test_invalid_defer_argument",
+        "test_eq_with_expressions",
+        "test_repr"
+      ],
+      "tests/schema/tests.py": [
+        "test_m2m_custom",
+        "test_m2m",
+        "test_rename_referenced_field",
+        "test_m2m_repoint",
+        "test_remove_unique_together_does_not_remove_meta_constraints",
+        "test_m2m_repoint_custom",
+        "test_m2m_repoint_inherited",
+        "test_m2m_inherited",
+        "test_add_field_default_dropped",
+        "test_func_unique_constraint_partial",
+        "test_add_field_db_collation",
+        "test_alter_not_unique_field_to_primary_key"
+      ],
+      "tests/migrations/test_executor.py": [
+        "test_migrate_backward_to_squashed_migration",
+        "test_alter_id_type_with_fk"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-12184",
+    "file_function": {
+      "tests/urlpatterns_reverse/tests.py": [
+        "test_invalid_regex",
+        "test_invalid_reverse",
+        "test_ambiguous_object",
+        "test_404_tried_urls_have_names"
+      ],
+      "tests/handlers/tests.py": [
+        "test_no_response"
+      ],
+      "tests/urlpatterns/tests.py": [
+        "test_matching_urls"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-11870",
+    "file_function": {
+      "sympy/simplify/tests/test_trigsimp.py": [
+        "test_issue_2827_trigsimp_methods",
+        "test_trigsimp_groebner",
+        "test_exptrigsimp"
+      ],
+      "sympy/simplify/tests/test_simplify.py": [
+        "test_simplify_expr",
+        "test_simplify_issue_1308"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-25311",
+    "file_function": {
+      "lib/matplotlib/tests/test_legend.py": [
+        "test_figure_legend_outside",
+        "test_legend_labelcolor_markerfacecolor",
+        "test_legend_label_with_leading_underscore",
+        "test_fancy",
+        "test_legend_labelcolor_markeredgecolor",
+        "test_get_set_draggable",
+        "test_legend_pathcollection_labelcolor_markeredgecolor_iterable",
+        "test_reverse_legend_display",
+        "test_legend_pathcollection_labelcolor_markfacecolor_cmap",
+        "test_legend_pathcollection_labelcolor_markerfacecolor_iterable",
+        "test_legend_set_alignment",
+        "test_rc",
+        "test_warn_big_data_best_loc",
+        "test_text_nohandler_warning",
+        "test_legend_title_fontprop_fontsize",
+        "test_legend_markers_from_line2d",
+        "test_reverse_legend_handles_and_labels",
+        "test_legend_pathcollection_labelcolor_linecolor_iterable",
+        "test_legend_pathcollection_labelcolor_markerfacecolor",
+        "test_legend_pathcollection_labelcolor_markeredgecolor_cmap",
+        "test_legend_pathcollection_labelcolor_linecolor",
+        "test_legend_auto5",
+        "test_legend_labelcolor_single",
+        "test_legend_labelcolor_rcparam_single",
+        "test_setting_alpha_keeps_polycollection_color",
+        "test_legend_auto4",
+        "test_legend_pathcollection_labelcolor_markeredgecolor",
+        "test_legend_pathcollection_labelcolor_linecolor_cmap",
+        "test_legend_labelcolor_linecolor"
+      ]
+    }
+  },
+  {
+    "instance_id": "astropy__astropy-6938",
+    "file_function": {
+      "astropy/io/fits/tests/test_table.py": [
+        "test_new_table_from_recarray",
+        "test_zero_precision_float_column",
+        "test_missing_tnull"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-16910",
+    "file_function": {
+      "tests/prefetch_related/tests.py": [
+        "test_filter_deferred"
+      ],
+      "tests/select_related/tests.py": [
+        "test_select_related_after_values",
+        "test_select_related_after_values_list"
+      ],
+      "tests/select_related_regress/tests.py": [
+        "test_regression_12851"
+      ],
+      "tests/select_related/tests/SelectRelatedTests/test_none_clears_list.py": [
+        "test_none_clears_list"
+      ],
+      "tests/queries/tests/Queries3Tests/test_ticket22023.py": [
+        "test_ticket22023"
+      ],
+      "tests/select_related_regress/tests/SelectRelatedRegressTests/test_regression_10733.py": [
+        "test_regression_10733"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-13915",
+    "file_function": {
+      "sympy/core/tests/test_subs.py": [
+        "test_Function_subs",
+        "test_issue_8886",
+        "test_subs_dict",
+        "test_dict_set",
+        "test_issue_2877"
+      ],
+      "sympy/core/tests/test_basic.py": [
+        "test_subs"
+      ],
+      "sympy/core/tests/test_function.py": [
+        "test_Subs"
+      ],
+      "sympy/series/tests/test_series.py": [
+        "test_series_of_Subs"
+      ],
+      "sympy/series/tests/test_limits.py": [
+        "test_issue_10382"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11964",
+    "file_function": {
+      "tests/model_forms/tests.py": [
+        "test_save_blank_null_unique_charfield_saves_null",
+        "test_foreignkeys_which_use_to_field",
+        "test_file_field_data"
+      ],
+      "tests/model_fields/test_promises.py": [
+        "test_CharField",
+        "test_SlugField"
+      ],
+      "tests/model_fields/tests.py": [
+        "test_get_choices"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-17655",
+    "file_function": {
+      "sympy/geometry/tests/test_entity.py": [
+        "test_subs",
+        "test_reflect_entity_overrides"
+      ],
+      "sympy/geometry/tests/test_point.py": [
+        "test_point"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-17051",
+    "file_function": {
+      "tests/bulk_create/tests/BulkCreateTests/test_multi_table_inheritance_unsupported.py": [
+        "test_multi_table_inheritance_unsupported"
+      ],
+      "tests/bulk_create/tests/BulkCreateTests/test_simple.py": [
+        "test_simple"
+      ],
+      "tests/bulk_create/tests/BulkCreateTests/test_update_conflicts_unique_fields_pk.py": [
+        "test_update_conflicts_unique_fields_pk"
+      ],
+      "tests/queries/test_db_returning/ReturningValuesTests/test_bulk_insert.py": [
+        "test_bulk_insert"
+      ],
+      "tests/bulk_create/tests/BulkCreateTests/test_invalid_batch_size_exception.py": [
+        "test_invalid_batch_size_exception"
+      ]
+    }
+  },
+  {
+    "instance_id": "sphinx-doc__sphinx-8801",
+    "file_function": {
+      "tests/test_ext_autodoc.py": [
+        "test_autodoc_typed_instance_variables",
+        "test_overload",
+        "test_autodoc_GenericAlias",
+        "test_autodoc_inner_class",
+        "test_autodoc_TypeVar",
+        "test_autodoc_inherited_members",
+        "test_autodoc_imported_members",
+        "test_hide_value",
+        "test_autodoc_typed_inherited_instance_variables",
+        "test_final",
+        "test_format_signature"
+      ],
+      "tests/test_ext_autodoc_configs.py": [
+        "test_autodoc_default_options_with_values",
+        "test_autodoc_type_aliases",
+        "test_autoclass_content_both",
+        "test_autoclass_content_init",
+        "test_autodoc_typehints_description"
+      ],
+      "tests/test_ext_autodoc_autoclass.py": [
+        "test_show_inheritance_for_subclass_of_generic_type"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-12113",
+    "file_function": {
+      "tests/backends/sqlite/tests.py": [
+        "test_constraint_checks_disabled_atomic_allowed",
+        "test_database_sharing_in_threads",
+        "test_autoincrement",
+        "test_pathlib_name"
+      ],
+      "tests/backends/tests.py": [
+        "test_check_constraints",
+        "test_cursor_executemany",
+        "test_queries",
+        "test_disable_constraint_checks_manually"
+      ],
+      "tests/multiple_database/tests.py": [
+        "test_pseudo_empty_fixtures"
+      ],
+      "tests/backends/base/test_base.py": [
+        "test_database_queried"
+      ],
+      "tests/transactions/tests.py": [
+        "test_orm_query_after_error_and_rollback"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-12497",
+    "file_function": {
+      "tests/model_fields/test_foreignkey.py": [
+        "test_warning_when_unique_true_on_fk",
+        "test_non_local_to_field",
+        "test_recursive_fks_get_col",
+        "test_to_python",
+        "test_empty_string_fk"
+      ],
+      "tests/m2m_regress/tests.py": [
+        "test_add_m2m_with_base_class"
+      ],
+      "tests/model_fields/test_manytomanyfield.py": [
+        "test_value_from_object_instance_with_pk",
+        "test_abstract_model_app_relative_foreign_key"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-13031",
+    "file_function": {
+      "sympy/matrices/tests/test_commonmatrix.py": [
+        "test_hstack",
+        "test_vstack"
+      ],
+      "sympy/matrices/tests/test_matrices.py": [
+        "test_gauss_jordan_solve",
+        "test_issue_11944",
+        "test_issue_5320"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-13471",
+    "file_function": {
+      "sympy/utilities/tests/test_pickling.py": [
+        "test_core_numbers",
+        "test_core_interval"
+      ],
+      "sympy/core/tests/test_evalf.py": [
+        "test_evalf_complex"
+      ],
+      "sympy/core/tests/test_numbers.py": [
+        "test_Float"
+      ]
+    }
+  },
+  {
+    "instance_id": "pydata__xarray-4493",
+    "file_function": {
+      "xarray/tests/test_dataset.py": [
+        "test_set_index",
+        "test_pad",
+        "test_reset_index",
+        "test_groupby_math"
+      ],
+      "xarray/tests/test_computation.py": [
+        "test_apply_output_core_dimension"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-14999",
+    "file_function": {
+      "tests/migrations/test_optimizer.py": [
+        "test_optimize_elidable_operation",
+        "test_alter_alter_table_model"
+      ],
+      "tests/migrations/test_operations.py": [
+        "test_rename_model_with_m2m",
+        "test_rename_m2m_target_model",
+        "test_rename_model_with_self_referential_m2m"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-14752",
+    "file_function": {
+      "tests/admin_views/test_autocomplete_view.py": [
+        "test_field_does_not_allowed",
+        "test_missing_search_fields",
+        "test_limit_choices_to",
+        "test_custom_to_field_permission_denied",
+        "test_custom_to_field",
+        "test_field_no_related_field",
+        "test_field_does_not_exist",
+        "test_success"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-20212",
+    "file_function": {
+      "sympy/series/tests/test_limits.py": [
+        "test_issue_12398",
+        "test_extended_real_line",
+        "test_issue_13332",
+        "test_issue_15202",
+        "test_issue_14811",
+        "test_issue_18482",
+        "test_issue_12769",
+        "test_branch_cuts",
+        "test_issue_13416"
+      ],
+      "sympy/core/tests/test_power.py": [
+        "test_nseries",
+        "test_better_sqrt",
+        "test_Pow_Expr_args",
+        "test_zero",
+        "test_issue_7638",
+        "test_power_rewrite_exp",
+        "test_issue_4362"
+      ],
+      "sympy/core/tests/test_numbers.py": [
+        "test_zoo",
+        "test_issue_7742",
+        "test_issue_10020",
+        "test_NegativeInfinity",
+        "test_latex",
+        "test_NaN",
+        "test_Infinity",
+        "test_ComplexInfinity",
+        "test_Infinity_2",
+        "test_Infinity_floor_ceiling_power"
+      ],
+      "sympy/simplify/tests/test_simplify.py": [
+        "test_issue_17141_slow",
+        "test_issue_5652",
+        "test_nc_simplify",
+        "test_issue_17141",
+        "test_besselsimp",
+        "test_simplify_expr",
+        "test_nsimplify"
+      ],
+      "sympy/functions/elementary/tests/test_exponential.py": [
+        "test_exp_subs",
+        "test_exp_rewrite"
+      ],
+      "sympy/series/tests/test_nseries.py": [
+        "test_exp",
+        "test_exp_1",
+        "test_exp2"
+      ],
+      "sympy/core/tests/test_arit.py": [
+        "test_pow_E",
+        "test_Pow_is_zero",
+        "test_Pow_is_nonpositive_nonnegative",
+        "test_Pow_is_even_odd",
+        "test_Mod",
+        "test_Mod_Pow",
+        "test_Pow_is_real",
+        "test_Pow_is_integer",
+        "test_Mul_is_integer"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-24152",
+    "file_function": {
+      "sympy/physics/quantum/tests/test_represent.py": [
+        "test_format_sympy"
+      ],
+      "sympy/physics/quantum/tests/test_tensorproduct.py": [
+        "test_tensor_product_commutator",
+        "test_eval_trace",
+        "test_tensor_product_dagger",
+        "test_tensor_product_simp"
+      ]
+    }
+  },
+  {
+    "instance_id": "sphinx-doc__sphinx-8273",
+    "file_function": {
+      "tests/test_build.py": [
+        "test_build_all",
+        "test_master_doc_not_found"
+      ],
+      "tests/test_build_manpage.py": [
+        "test_rubric",
+        "test_all"
+      ],
+      "tests/test_config.py": [
+        "test_errors_if_setup_is_not_callable"
+      ]
+    }
+  },
+  {
+    "instance_id": "pytest-dev__pytest-7168",
+    "file_function": {
+      "testing/test_saferepr.py": [
+        "test_baseexception"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15996",
+    "file_function": {
+      "tests/migrations/test_writer.py": [
+        "test_serialize_enums",
+        "test_serialize_complex_func_index",
+        "test_serialize_builtins",
+        "test_register_serializer",
+        "test_register_non_serializer",
+        "test_serialize_managers",
+        "test_nested_args_signature",
+        "test_serialize_functions",
+        "test_serialize_lazy_objects",
+        "test_nested_operation_expand_args_signature"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13220",
+    "file_function": {
+      "tests/forms_tests/tests/test_error_messages.py": [
+        "test_list_error_message"
+      ],
+      "tests/validation/tests.py": [
+        "test_invalid_generic_ip_raises_error",
+        "test_custom_validate_method"
+      ],
+      "tests/test_exceptions/test_validation_error.py": [
+        "test_messages_concatenates_error_dict_values"
+      ],
+      "tests/validation/test_picklable.py": [
+        "test_validationerror_is_picklable"
+      ],
+      "tests/model_fields/tests.py": [
+        "test_invalid_choice"
+      ],
+      "tests/forms_tests/tests/test_validators.py": [
+        "test_all_errors_get_reported"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15388",
+    "file_function": {
+      "tests/utils_tests/test_autoreload.py": [
+        "test_watch_files_with_recursive_glob",
+        "test_snapshot_files_ignores_missing_files",
+        "test_watch_with_glob",
+        "test_watchman_unavailable",
+        "test_manage_py",
+        "test_wait_for_apps_ready_without_exception",
+        "test_watchman_available",
+        "test_watch_dir_with_unresolvable_path",
+        "test_calls_sys_exit",
+        "test_python_m_django",
+        "test_tick_does_not_trigger_twice",
+        "test_snapshot_files_with_duplicates",
+        "test_run_loop_stop_and_return",
+        "test_run_loop_catches_stopiteration",
+        "test_swallows_keyboard_interrupt",
+        "test_wait_for_apps_ready_checks_for_exception",
+        "test_calls_start_django"
+      ],
+      "tests/template_tests/test_response.py": [
+        "test_middleware_caching",
+        "test_using"
+      ],
+      "tests/template_tests/test_loaders.py": [
+        "test_directory_security"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-16873",
+    "file_function": {
+      "tests/template_tests/filter_tests/test_join/FunctionTests/test_list.py": [
+        "test_list"
+      ],
+      "tests/template_tests/filter_tests/test_join/FunctionTests/test_autoescape.py": [
+        "test_autoescape"
+      ],
+      "tests/template_tests/filter_tests/test_join/FunctionTests/test_noniterable_arg.py": [
+        "test_noniterable_arg"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-16229",
+    "file_function": {
+      "tests/admin_inlines/tests.py": [
+        "test_main_model_is_rendered_as_read_only",
+        "test_post_to_change_url_not_allowed",
+        "test_verbose_name_inline",
+        "test_inlines_are_rendered_as_read_only",
+        "test_inline_editable_pk",
+        "test_add_url_not_allowed",
+        "test_inline_add_fk_add_perm",
+        "test_deleting_inline_with_protected_delete_does_not_validate",
+        "test_inline_primary",
+        "test_inline_change_m2m_view_only_perm"
+      ],
+      "tests/admin_views/tests.py": [
+        "test_pluggable_search",
+        "test_should_be_able_to_edit_related_objects_on_change_view",
+        "test_delete_view_nonexistent_obj",
+        "test_delete_view",
+        "test_delete",
+        "test_message_error",
+        "test_add_with_GET_args",
+        "test_protected",
+        "test_disallowed_to_field",
+        "test_add",
+        "test_search_with_spaces",
+        "test_history_view_bad_url",
+        "test_should_be_able_to_edit_related_objects_on_changelist_view",
+        "test_exact_matches",
+        "test_change_view",
+        "test_save_as_new_with_validation_errors_with_inlines",
+        "test_add_view",
+        "test_missing_slash_append_slash_true",
+        "test_list_editable_action_submit",
+        "test_change",
+        "test_missing_slash_append_slash_true_without_final_catch_all_view",
+        "test_post_submission",
+        "test_render_views_no_subtitle",
+        "test_custom_model_admin_templates",
+        "test_list_editable_action_choices"
+      ],
+      "tests/model_formsets/tests.py": [
+        "test_inlineformset_factory_widgets",
+        "test_inlineformset_factory_field_class_overrides",
+        "test_inlineformset_with_arrayfield",
+        "test_inlineformset_factory_labels_overrides",
+        "test_custom_pk",
+        "test_inlineformset_factory_error_messages_overrides",
+        "test_inlineformset_factory_help_text_overrides"
+      ],
+      "tests/model_formsets_regress/tests.py": [
+        "test_inlineformset_factory_default"
+      ],
+      "tests/model_forms/tests.py": [
+        "test_override_unique_together_message",
+        "test_validates_with_replaced_field_excluded",
+        "test_invalid_meta_model",
+        "test_save_with_data_errors",
+        "test_unique_for_date"
+      ],
+      "tests/forms_tests/tests/test_forms.py": [
+        "test_forms_with_file_fields"
+      ]
+    }
+  },
+  {
+    "instance_id": "sphinx-doc__sphinx-7738",
+    "file_function": {
+      "tests/test_ext_napoleon_docstring.py": [
+        "test_raises_types",
+        "test_sphinx_admonitions",
+        "test_attributes_docstring",
+        "test_class_data_member",
+        "test_code_block_in_returns_section",
+        "test_class_data_member_inline",
+        "test_docstrings",
+        "test_section_header_formatting",
+        "test_see_also_refs",
+        "test_noindex",
+        "test_list_in_parameter_description",
+        "test_parameters_with_class_reference",
+        "test_keywords_with_types",
+        "test_section_header_underline_length",
+        "test_custom_generic_sections",
+        "test_underscore_in_attribute",
+        "test_attributes_with_class_reference"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-23987",
+    "file_function": {
+      "lib/matplotlib/tests/test_figure.py": [
+        "test_invalid_layouts",
+        "test_subfigure_pdf"
+      ],
+      "lib/matplotlib/tests/test_constrainedlayout.py": [
+        "test_constrained_layout15",
+        "test_compressed1",
+        "test_discouraged_api"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-16281",
+    "file_function": {
+      "sympy/printing/pretty/tests/test_pretty.py": [
+        "test_issue_6359",
+        "test_pretty_product"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11742",
+    "file_function": {
+      "tests/model_fields/tests.py": [
+        "test_get_choices_reverse_related_field_default_ordering",
+        "test_formfield",
+        "test_choices_and_field_display",
+        "test_flatchoices",
+        "test_field_repr",
+        "test_get_choices_reverse_related_field",
+        "test_get_choices",
+        "test_blank_in_grouped_choices",
+        "test_field_str",
+        "test_check"
+      ],
+      "tests/model_fields/test_charfield.py": [
+        "test_charfield_with_choices_raises_error_on_invalid_choice",
+        "test_enum_choices_invalid_input",
+        "test_lookup_integer_in_charfield",
+        "test_charfield_with_choices_cleans_valid_choice",
+        "test_max_length_passed_to_formfield",
+        "test_charfield_cleans_empty_string_when_blank_true"
+      ],
+      "tests/validation/tests.py": [
+        "test_invalid_v4_ip_raises_error",
+        "test_validation_with_invalid_blank_field",
+        "test_invalid_generic_ip_raises_error",
+        "test_validation_with_empty_blank_field",
+        "test_correct_FK_value_validates",
+        "test_missing_required_field_raises_error"
+      ]
+    }
+  },
+  {
+    "instance_id": "astropy__astropy-7746",
+    "file_function": {
+      "astropy/wcs/tests/test_wcs.py": [
+        "test_pix2world",
+        "test_shape_mismatch",
+        "test_invalid_shape"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13401",
+    "file_function": {
+      "tests/model_inheritance/tests.py": [
+        "test_filter_inherited_on_null",
+        "test_exclude_inherited_on_null"
+      ],
+      "tests/model_inheritance_regress/tests.py": [
+        "test_issue_7276"
+      ],
+      "tests/model_inheritance/test_abstract_inheritance.py": [
+        "test_multiple_inheritance_cannot_shadow_concrete_inherited_field",
+        "test_multi_inheritance_field_clashes"
+      ]
+    }
+  },
+  {
+    "instance_id": "pytest-dev__pytest-7490",
+    "file_function": {
+      "testing/test_skipping.py": [
+        "test_xfail_not_run_no_setup_run",
+        "test_strict_xfail",
+        "test_mark_xfail_item",
+        "test_dynamic_xfail_no_run",
+        "test_xfail_xpassed_strict",
+        "test_xfail_raises",
+        "test_strict_xfail_default_from_file",
+        "test_xfail_run_anyway",
+        "test_xfail_not_run_xfail_reporting",
+        "test_xfail_imperative",
+        "test_xfail_condition_keyword",
+        "test_skipif_reporting_multiple"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-22840",
+    "file_function": {
+      "sympy/matrices/expressions/tests/test_matexpr.py": [
+        "test_issue_2749",
+        "test_single_indexing",
+        "test_inv"
+      ],
+      "sympy/simplify/tests/test_cse.py": [
+        "test_cse_single2",
+        "test_issue_8891",
+        "test_cse_list",
+        "test_issue_4498",
+        "test_issue_6263",
+        "test_name_conflict_cust_symbols",
+        "test_issue_4020",
+        "test_postprocess",
+        "test_symbols_exhausted_error"
+      ],
+      "sympy/printing/tests/test_str.py": [
+        "test_MatrixSlice"
+      ],
+      "sympy/matrices/expressions/tests/test_indexing.py": [
+        "test_pow_index",
+        "test_errors",
+        "test_Identity_index"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11001",
+    "file_function": {
+      "tests/expressions_case/tests.py": [
+        "test_annotate_values_not_in_order_by"
+      ],
+      "tests/ordering/tests.py": [
+        "test_order_by_nulls_first",
+        "test_random_ordering",
+        "test_orders_nulls_first_on_filtered_subquery",
+        "test_order_by_f_expression",
+        "test_order_by_nulls_last",
+        "test_order_by_f_expression_duplicates"
+      ],
+      "tests/queries/tests.py": [
+        "test_ordering",
+        "test_extra_select_params_values_order_in_extra",
+        "test_extra_values_order_multiple",
+        "test_extra_values_order_twice"
+      ],
+      "tests/aggregation_regress/tests.py": [
+        "test_annotation",
+        "test_more_more_more"
+      ],
+      "tests/expressions_window/tests.py": [
+        "test_max_per_year",
+        "test_subquery_row_range_rank"
+      ],
+      "tests/db_functions/tests.py": [
+        "test_nested_function_ordering"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13658",
+    "file_function": {
+      "tests/bash_completion/tests.py": [
+        "test_completed_subcommand",
+        "test_manage_py",
+        "test_subcommands",
+        "test_django_admin_py"
+      ],
+      "tests/user_commands/tests.py": [
+        "test_system_exit"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-23476",
+    "file_function": {
+      "lib/matplotlib/tests/test_pickle.py": [
+        "test_complete",
+        "test_polar"
+      ],
+      "lib/matplotlib/tests/test_figure.py": [
+        "test_savefig_pixel_ratio",
+        "test_deepcopy"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-14017",
+    "file_function": {
+      "tests/expressions/tests.py": [
+        "test_filtering_on_q_that_is_boolean",
+        "test_aggregate_subquery_annotation",
+        "test_filtering_on_annotate_that_uses_q",
+        "test_subquery"
+      ],
+      "tests/queries/tests.py": [
+        "test_ticket5261"
+      ],
+      "tests/queries/test_q.py": [
+        "test_reconstruct_or",
+        "test_combine_and_empty",
+        "test_combine_not_q_object",
+        "test_deconstruct_or"
+      ]
+    }
+  },
+  {
+    "instance_id": "sphinx-doc__sphinx-7975",
+    "file_function": {
+      "tests/test_build_html.py": [
+        "test_html4_output",
+        "test_html5_output"
+      ],
+      "tests/test_build.py": [
+        "test_build_all"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-20442",
+    "file_function": {
+      "sympy/physics/units/tests/test_util.py": [
+        "test_convert_to_quantities"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-12983",
+    "file_function": {
+      "tests/utils_tests/test_text.py": [
+        "test_slugify"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-10297",
+    "file_function": {
+      "sklearn/linear_model/tests/test_ridge.py": [
+        "test_ridgecv_store_cv_values",
+        "test_errors_and_values_svd_helper",
+        "test_ridgecv_sample_weight",
+        "test_errors_and_values_helper",
+        "test_class_weights_cv"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-16379",
+    "file_function": {
+      "tests/cache/tests.py": [
+        "test_empty_cache_file_considered_expired"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-16595",
+    "file_function": {
+      "tests/migrations/test_commands.py": [
+        "test_makemigrations_interactive_not_null_alteration",
+        "test_makemigrations_interactive_not_null_addition"
+      ],
+      "tests/migrations/test_optimizer.py": [
+        "test_alter_field_delete_field",
+        "test_alter_field_rename_field"
+      ]
+    }
+  },
+  {
+    "instance_id": "pytest-dev__pytest-8365",
+    "file_function": {
+      "testing/test_tmpdir.py": [
+        "test_mktemp",
+        "test_tmpdir_fallback_uid_not_found"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-18087",
+    "file_function": {
+      "sympy/simplify/tests/test_trigsimp.py": [
+        "test_trigsimp_old",
+        "test_trigsimp_groebner",
+        "test_trigsimp1",
+        "test_issue_2827_trigsimp_methods"
+      ]
+    }
+  },
+  {
+    "instance_id": "pytest-dev__pytest-9359",
+    "file_function": {
+      "testing/test_assertrewrite.py": [
+        "test_many_brackets",
+        "test_hook_call",
+        "test_boolop",
+        "test_call",
+        "test_remember_rewritten_modules",
+        "test_long_case",
+        "test_read_pyc_more_invalid",
+        "test_get_assertion_exprs",
+        "test_dont_rewrite",
+        "test_get_data_support",
+        "test_place_initial_imports"
+      ],
+      "testing/test_failures.py": [
+        "test_failure_demo_fails_properly"
+      ],
+      "testing/test_runner.py": [
+        "test_runtest_in_module_ordering"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-12470",
+    "file_function": {
+      "tests/aggregation/tests.py": [
+        "test_aggregate_in_order_by"
+      ],
+      "tests/queries/tests.py": [
+        "test_invalid_order_by",
+        "test_ordering",
+        "test_slicing_cannot_reorder_queryset_once_sliced",
+        "test_tickets_5324_6704"
+      ],
+      "tests/ordering/tests.py": [
+        "test_orders_nulls_first_on_filtered_subquery"
+      ]
+    }
+  },
+  {
+    "instance_id": "sphinx-doc__sphinx-11445",
+    "file_function": {
+      "tests/test_build.py": [
+        "test_build_all"
+      ],
+      "tests/test_build_html.py": [
+        "test_html5_output"
+      ],
+      "tests/test_directive_other.py": [
+        "test_toctree"
+      ],
+      "tests/test_environment_toctree.py": [
+        "test_process_doc"
+      ],
+      "tests/test_environment.py": [
+        "test_images"
+      ],
+      "tests/test_toctree.py": [
+        "test_numbered_toctree"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11910",
+    "file_function": {
+      "tests/migrations/test_operations.py": [
+        "test_alter_field",
+        "test_rename_field_reloads_state_on_fk_target_changes",
+        "test_rename_referenced_field_state_forward",
+        "test_rename_missing_field",
+        "test_rename_field"
+      ],
+      "tests/migrations/test_autodetector.py": [
+        "test_alter_fk_before_model_deletion",
+        "test_rename_foreign_object_fields"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-12908",
+    "file_function": {
+      "tests/queries/test_qs_combinators.py": [
+        "test_union_with_values_list_and_order",
+        "test_qs_with_subcompound_qs",
+        "test_difference_with_empty_qs",
+        "test_intersection_with_empty_qs",
+        "test_union_with_empty_qs",
+        "test_unsupported_ordering_slicing_raises_db_error"
+      ],
+      "tests/queries/tests.py": [
+        "test_distinct_ordered_sliced_subquery",
+        "test_distinct_ordered_sliced_subquery_aggregation"
+      ],
+      "tests/aggregation_regress/tests.py": [
+        "test_annotation",
+        "test_annotate_joins",
+        "test_more_more_more",
+        "test_more"
+      ]
+    }
+  },
+  {
+    "instance_id": "psf__requests-2674",
+    "file_function": {
+      "tests/test_requests.py": [
+        "test_connection_error_invalid_port",
+        "test_DIGEST_HTTP_200_OK_GET",
+        "test_total_timeout_connect",
+        "test_invalid_timeout",
+        "test_read_timeout",
+        "test_response_iter_lines",
+        "test_decompress_gzip",
+        "test_connection_error_invalid_domain",
+        "test_connect_timeout"
+      ]
+    }
+  },
+  {
+    "instance_id": "pytest-dev__pytest-6116",
+    "file_function": {
+      "testing/test_collection.py": [
+        "test_collect_init_tests",
+        "test_collect_protocol_method",
+        "test_matchnodes_two_collections_same_file",
+        "test_collect_topdir",
+        "test_ignore_collect_path",
+        "test_collect_pkg_init_only",
+        "test_collectignore_exclude_on_option",
+        "test_exit_on_collection_with_maxfail_smaller_than_n_errors"
+      ],
+      "testing/test_runner.py": [
+        "test_collect_result",
+        "test_passfunction"
+      ],
+      "testing/test_session.py": [
+        "test_minus_x_import_error",
+        "test_exclude_glob"
+      ],
+      "testing/test_config.py": [
+        "test_pytest_plugins_in_non_top_level_conftest_unsupported_pyargs",
+        "test_config_blocked_default_plugins"
+      ]
+    }
+  },
+  {
+    "instance_id": "sphinx-doc__sphinx-8595",
+    "file_function": {
+      "tests/test_ext_autodoc.py": [
+        "test_autodoc_typed_instance_variables",
+        "test_parse_name",
+        "test_autodoc_attributes",
+        "test_cython",
+        "test_autodoc_module_member_order",
+        "test_autodoc_ignore_module_all"
+      ],
+      "tests/test_ext_autodoc_configs.py": [
+        "test_autodoc_type_aliases",
+        "test_autodoc_default_options"
+      ]
+    }
+  },
+  {
+    "instance_id": "mwaskom__seaborn-3407",
+    "file_function": {
+      "tests/_core/test_data.py": [
+        "test_data_vector_different_lengths_raises",
+        "test_multiindex_as_variables",
+        "test_index_as_variable",
+        "test_join_subset_data_inherit_variables",
+        "test_join_all_operations",
+        "test_undefined_variables_raise",
+        "test_join_remove_variable",
+        "test_empty_data_input",
+        "test_vectors_various_types",
+        "test_frame_and_vector_mismatched_lengths",
+        "test_key_with_no_data_raises"
+      ],
+      "tests/test_axisgrid.py": [
+        "test_pairplot_reg_hue",
+        "test_pairplot",
+        "test_pairplot_markers",
+        "test_corner",
+        "test_legend",
+        "test_pairplot_hist",
+        "test_pairplot_kde",
+        "test_dropna"
+      ]
+    }
+  },
+  {
+    "instance_id": "sphinx-doc__sphinx-8282",
+    "file_function": {
+      "tests/test_ext_autodoc.py": [
+        "test_coroutine",
+        "test_singledispatch",
+        "test_autodoc_inherited_members_None",
+        "test_autodoc_warnings",
+        "test_abstractmethods",
+        "test_format_signature",
+        "test_overload",
+        "test_final",
+        "test_singledispatchmethod"
+      ],
+      "tests/test_ext_autodoc_configs.py": [
+        "test_autodoc_typehints_none"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13028",
+    "file_function": {
+      "tests/queries/tests.py": [
+        "test_correct_lookup",
+        "test_error_raised_on_filter_with_dictionary",
+        "test_subquery_exclude_outerref"
+      ],
+      "tests/queries/test_query.py": [
+        "test_foreign_key",
+        "test_filter_non_conditional"
+      ],
+      "tests/aggregation_regress/tests.py": [
+        "test_ticket_11293_q_immutable",
+        "test_annotation_disjunction"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-14774",
+    "file_function": {
+      "sympy/printing/tests/test_latex.py": [
+        "test_latex_SingularityFunction",
+        "test_latex_limits",
+        "test_latex_basic",
+        "test_issue_10489",
+        "test_PolynomialRingBase",
+        "test_latex_DiracDelta",
+        "test_latex_RootSum",
+        "test_latex_sequences",
+        "test_categories",
+        "test_latex_AccumuBounds",
+        "test_latex_ConditionSet",
+        "test_boolean_args_order",
+        "test_latex_union",
+        "test_builtin_no_args",
+        "test_latex_symmetric_difference",
+        "test_issue_12886",
+        "test_latex_ComplexRegion",
+        "test_latex_Range",
+        "test_latex_Integers",
+        "test_latex_builtins",
+        "test_latex_Float",
+        "test_latex_UnevaluatedExpr",
+        "test_latex_FourierSeries",
+        "test_latex_Complexes",
+        "test_latex_Naturals0",
+        "test_latex_bessel",
+        "test_latex_Contains",
+        "test_latex_Complement",
+        "test_latex_Poly",
+        "test_ZeroMatrix",
+        "test_latex_derivatives",
+        "test_latex_sum",
+        "test_latex_fresnel",
+        "test_Hadamard",
+        "test_latex_indexed",
+        "test_MatrixElement_printing",
+        "test_issue_7180",
+        "test_Adjoint",
+        "test_latex_Matrix",
+        "test_function_subclass_different_name",
+        "test_latex_subs",
+        "test_latex_Lambda",
+        "test_issue_13651",
+        "test_latex_functions",
+        "test_latex_integrals",
+        "test_latex_RandomDomain",
+        "test_Quaternion_latex_printing",
+        "test_latex_MatrixSlice",
+        "test_latex_Piecewise",
+        "test_latex_NDimArray",
+        "test_latex_commutator",
+        "test_latex_product",
+        "test_latex_permutation",
+        "test_issue_7117",
+        "test_QuotientRing",
+        "test_latex_LeviCivita",
+        "test_WedgeProduct_printing",
+        "test_latex_vector_expressions",
+        "test_latex_log",
+        "test_latex_KroneckerDelta",
+        "test_latex_FormalPowerSeries",
+        "test_latex_euler",
+        "test_latex_ComplexRootOf",
+        "test_latex_FracElement",
+        "test_latex",
+        "test_Modules",
+        "test_hyper_printing",
+        "test_integral_transforms",
+        "test_latex_numbers",
+        "test_latex_intervals",
+        "test_latex_productset",
+        "test_latex_Heaviside",
+        "test_latex_ImageSet",
+        "test_Tr",
+        "test_TensorProduct_printing",
+        "test_latex_Poly_order"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-13497",
+    "file_function": {
+      "sklearn/feature_selection/tests/test_mutual_info.py": [
+        "test_mutual_info_options",
+        "test_mutual_info_classif_mixed"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-24213",
+    "file_function": {
+      "sympy/physics/units/tests/test_quantities.py": [
+        "test_issue_20288",
+        "test_dimensional_expr_of_derivative",
+        "test_factor_and_dimension",
+        "test_issue_24062",
+        "test_check_unit_consistency"
+      ]
+    }
+  },
+  {
+    "instance_id": "pytest-dev__pytest-7432",
+    "file_function": {
+      "testing/test_skipping.py": [
+        "test_xfail_imperative_in_setup_function",
+        "test_strict_xfail",
+        "test_xfail_raises",
+        "test_strict_xfail_default_from_file",
+        "test_xfail_imperative"
+      ],
+      "testing/test_reports.py": [
+        "test_itemreport_outcomes"
+      ]
+    }
+  },
+  {
+    "instance_id": "pytest-dev__pytest-7220",
+    "file_function": {
+      "testing/test_session.py": [
+        "test_minus_x_import_error",
+        "test_maxfail",
+        "test_exit_first_problem",
+        "test_collect_only_with_various_situations",
+        "test_basic_testitem_events"
+      ],
+      "testing/test_pytester.py": [
+        "test_runresult_assertion_on_xfail",
+        "test_runresult_assertion_on_xpassed"
+      ],
+      "testing/test_reports.py": [
+        "test_itemreport_outcomes"
+      ],
+      "testing/test_config.py": [
+        "test_pytest_plugins_in_non_top_level_conftest_unsupported_pyargs",
+        "test_options_on_small_file_do_not_blow_up",
+        "test_setupcfg_uses_toolpytest_with_pytest"
+      ],
+      "testing/test_capture.py": [
+        "test_teardown_capturing",
+        "test_capture_scope_cache",
+        "test_capsysbinary"
+      ],
+      "testing/test_runner.py": [
+        "test_makereport_getsource_dynamic_code",
+        "test_pytest_no_tests_collected_exit_status",
+        "test_importorskip_custom_reason",
+        "test_pytest_exit_returncode"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13448",
+    "file_function": {
+      "tests/backends/base/test_creation.py": [
+        "test_circular_reference_with_natural_key",
+        "test_custom_test_name",
+        "test_custom_test_name_with_test_prefix",
+        "test_self_reference",
+        "test_circular_reference"
+      ],
+      "tests/test_runner/test_debug_sql.py": [
+        "test_output_verbose",
+        "test_output_normal"
+      ],
+      "tests/test_runner/tests.py": [
+        "test_setup_aliased_default_database"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-17022",
+    "file_function": {
+      "sympy/utilities/tests/test_lambdify.py": [
+        "test_issue_2790",
+        "test_matrix",
+        "test_lambdify_imps",
+        "test_dummification",
+        "test_lambdify_Derivative_arg_issue_16468"
+      ],
+      "sympy/printing/tests/test_pycode.py": [
+        "test_NumPyPrinter",
+        "test_SciPyPrinter",
+        "test_NumPyPrinter_print_seq"
+      ],
+      "sympy/printing/tests/test_numpy.py": [
+        "test_numpy_piecewise_regression"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-12589",
+    "file_function": {
+      "tests/queries/tests.py": [
+        "test_distinct_ordered_sliced_subquery",
+        "test_distinct_ordered_sliced_subquery_aggregation"
+      ],
+      "tests/aggregation/tests.py": [
+        "test_group_by_exists_annotation",
+        "test_group_by_subquery_annotation"
+      ],
+      "tests/aggregation_regress/tests.py": [
+        "test_fobj_group_by",
+        "test_more_more_more"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-24265",
+    "file_function": {
+      "lib/matplotlib/tests/test_style.py": [
+        "test_available",
+        "test_context",
+        "test_use"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-12236",
+    "file_function": {
+      "sympy/polys/tests/test_partfrac.py": [
+        "test_apart",
+        "test_apart_full",
+        "test_noncommutative"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15400",
+    "file_function": {
+      "tests/utils_tests/test_simplelazyobject.py": [
+        "test_pickle"
+      ],
+      "tests/utils_tests/test_lazyobject.py": [
+        "test_deepcopy_class",
+        "test_repr",
+        "test_delattr",
+        "test_copy_list_no_evaluation",
+        "test_deepcopy_list",
+        "test_copy_class"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-24102",
+    "file_function": {
+      "sympy/parsing/tests/test_mathematica.py": [
+        "test_parser_mathematica_exp_alt",
+        "test_mathematica",
+        "test_parser_mathematica_tokenizer"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-14024",
+    "file_function": {
+      "sympy/simplify/tests/test_powsimp.py": [
+        "test_powsimp",
+        "test_issue_10195"
+      ],
+      "sympy/simplify/tests/test_simplify.py": [
+        "test_simplify_function_inverse",
+        "test_Piecewise",
+        "test_simplify_ratio",
+        "test_simplify_other",
+        "test_besselsimp",
+        "test_simplify_expr",
+        "test_simplify_rational",
+        "test_issue_6811"
+      ],
+      "sympy/core/tests/test_eval_power.py": [
+        "test_issue_7638",
+        "test_issue_4362",
+        "test_better_sqrt"
+      ],
+      "sympy/core/tests/test_subs.py": [
+        "test_subs_noncommutative",
+        "test_logexppow"
+      ],
+      "sympy/core/tests/test_expr.py": [
+        "test_is_constant",
+        "test_round",
+        "test_issue_11877"
+      ],
+      "sympy/core/tests/test_numbers.py": [
+        "test_NaN",
+        "test_issue_13890"
+      ],
+      "sympy/core/tests/test_function.py": [
+        "test_function__eval_nseries"
+      ],
+      "sympy/core/tests/test_evalf.py": [
+        "test_evalf_integer_parts"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-15345",
+    "file_function": {
+      "sympy/printing/tests/test_mathematica.py": [
+        "test_constants",
+        "test_Pow",
+        "test_Integral",
+        "test_Derivative",
+        "test_Function",
+        "test_Mul",
+        "test_Sum"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13964",
+    "file_function": {
+      "tests/model_inheritance/tests.py": [
+        "test_update_inherited_model",
+        "test_related_objects_for_inherited_models",
+        "test_parent_cache_reuse"
+      ],
+      "tests/queries/tests.py": [
+        "test_ticket9848"
+      ],
+      "tests/foreign_object/tests.py": [
+        "test_inheritance",
+        "test_translations"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13933",
+    "file_function": {
+      "tests/model_forms/test_modelchoicefield.py": [
+        "test_choices",
+        "test_disabled_modelchoicefield_has_changed",
+        "test_disabled_modelmultiplechoicefield_has_changed",
+        "test_disabled_modelchoicefield_initial_model_instance",
+        "test_basics"
+      ],
+      "tests/forms_tests/tests/test_error_messages.py": [
+        "test_modelchoicefield"
+      ],
+      "tests/model_forms/tests.py": [
+        "test_model_multiple_choice_field",
+        "test_fields_for_model_applies_limit_choices_to",
+        "test_callable_called_each_time_form_is_instantiated",
+        "test_show_hidden_initial_changed_queries_efficiently",
+        "test_initial_values"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13447",
+    "file_function": {
+      "tests/admin_views/tests.py": [
+        "test_render_views_no_subtitle",
+        "test_add",
+        "test_delete_view_nonexistent_obj",
+        "test_view_subtitle_per_object"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-12125",
+    "file_function": {
+      "tests/migrations/test_writer.py": [
+        "test_simple_migration",
+        "test_deconstruct_class_arguments",
+        "test_serialize_fields",
+        "test_serialize_class_based_validators"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-18057",
+    "file_function": {
+      "sympy/core/tests/test_sympify.py": [
+        "test_int_float",
+        "test_sympify_factorial",
+        "test_sympyify_iterables",
+        "test_sympify_keywords",
+        "test_sympify1"
+      ],
+      "sympy/core/tests/test_expr.py": [
+        "test_count",
+        "test_action_verbs",
+        "test_SAGE1"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-14672",
+    "file_function": {
+      "tests/model_fields/test_manytomanyfield.py": [
+        "test_abstract_model_app_relative_foreign_key"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-14155",
+    "file_function": {
+      "tests/handlers/tests.py": [
+        "test_unawaited_response",
+        "test_no_response"
+      ],
+      "tests/urlpatterns_reverse/tests.py": [
+        "test_repr",
+        "test_urlpattern_resolve"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-21612",
+    "file_function": {
+      "sympy/parsing/tests/test_latex_deps.py": [
+        "test_no_import"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-12471",
+    "file_function": {
+      "sklearn/preprocessing/tests/test_encoders.py": [
+        "test_one_hot_encoder_inverse",
+        "test_one_hot_encoder_unsorted_categories",
+        "test_ordinal_encoder_raise_missing",
+        "test_one_hot_encoder_force_new_behaviour",
+        "test_one_hot_encoder",
+        "test_one_hot_encoder_raise_missing",
+        "test_one_hot_encoder_specified_categories"
+      ]
+    }
+  },
+  {
+    "instance_id": "pytest-dev__pytest-5413",
+    "file_function": {
+      "testing/test_excinfo.py": [
+        "test_match_succeeds",
+        "test_excinfo_for_later",
+        "test_excinfo_repr",
+        "test_excinfo_str",
+        "test_match_raises_error",
+        "test_no_recursion_index_on_recursion_error",
+        "test_traceback_no_recursion_index"
+      ],
+      "testing/test_collection.py": [
+        "test_collector_respects_tbstyle"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15814",
+    "file_function": {
+      "tests/model_inheritance/tests.py": [
+        "test_inherited_multiple_objects_returned_exception",
+        "test_parent_cache_reuse",
+        "test_related_objects_for_inherited_models",
+        "test_queryset_class_getitem",
+        "test_reverse_relation_for_different_hierarchy_tree"
+      ],
+      "tests/queries/tests.py": [
+        "test_ticket_21203",
+        "test_heterogeneous_qs_combination",
+        "test_21001",
+        "test_ticket7181",
+        "test_field_error_values_list",
+        "test_named_values_list_flat",
+        "test_ticket_21366",
+        "test_col_alias_quoted",
+        "test_ticket7791",
+        "test_ticket14729",
+        "test_ordering",
+        "test_or_with_both_slice_and_ordering",
+        "test_exclude_nullable_fields",
+        "test_exclude_many_to_many",
+        "test_ticket7759",
+        "test_slicing_cannot_reorder_queryset_once_sliced",
+        "test_ticket9848",
+        "test_ticket2496",
+        "test_tickets_1878_2939",
+        "test_extra_values",
+        "test_ticket_23605",
+        "test_subquery_exclude_outerref",
+        "test_tickets_7698_10202",
+        "test_invalid_queryset_model",
+        "test_slicing_can_slice_again_after_slicing",
+        "test_extra_select_alias_sql_injection",
+        "test_excluded_intermediary_m2m_table_joined",
+        "test_empty_sliced_subquery_exclude",
+        "test_error_raised_on_filter_with_dictionary",
+        "test_ticket7235",
+        "test_deferred_load_qs_pickling",
+        "test_ticket14511",
+        "test_named_values_list_expression_with_default_alias",
+        "test_ticket22023",
+        "test_tickets_7087_12242",
+        "test_xor_with_both_slice_and_ordering",
+        "test_invalid_index",
+        "test_ticket9997",
+        "test_empty_queryset",
+        "test_parallel_iterators",
+        "test_exclude_subquery",
+        "test_distinct_ordered_sliced_subquery",
+        "test_avoid_infinite_loop_on_too_many_subqueries",
+        "test_ticket10432",
+        "test_order_by_rawsql",
+        "test_tickets_6180_6203",
+        "test_slicing_cannot_combine_queries_once_sliced",
+        "test_slicing_cannot_filter_queryset_once_sliced",
+        "test_ticket24525"
+      ],
+      "tests/select_related/tests.py": [
+        "test_none_clears_list",
+        "test_chaining"
+      ],
+      "tests/queries/test_query.py": [
+        "test_names_to_path_field",
+        "test_transform",
+        "test_clone_select_related",
+        "test_foreign_key",
+        "test_subquery_annotation",
+        "test_filter_non_conditional",
+        "test_multiple_fields",
+        "test_filter_conditional_join"
+      ],
+      "tests/select_related_onetoone/tests.py": [
+        "test_reverse_related_validation_with_filtered_relation",
+        "test_onetoone_with_two_subclasses",
+        "test_inheritance_deferred2"
+      ],
+      "tests/proxy_model_inheritance/tests.py": [
+        "test_table_exists"
+      ],
+      "tests/proxy_models/tests.py": [
+        "test_proxy_bug"
+      ],
+      "tests/select_related_regress/tests.py": [
+        "test_regression_10733"
+      ]
+    }
+  },
+  {
+    "instance_id": "astropy__astropy-12907",
+    "file_function": {
+      "astropy/modeling/tests/test_models.py": [
+        "test_custom_separability_matrix"
+      ],
+      "astropy/modeling/tests/test_separable.py": [
+        "test_cstack",
+        "test_separable",
+        "test_cdot"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15819",
+    "file_function": {
+      "tests/inspectdb/tests.py": [
+        "test_attribute_name_not_python_keyword"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-11897",
+    "file_function": {
+      "sympy/printing/tests/test_latex.py": [
+        "test_latex_SingularityFunction",
+        "test_latex_limits",
+        "test_latex_basic",
+        "test_issue_10489",
+        "test_PolynomialRingBase",
+        "test_latex_DiracDelta",
+        "test_latex_RootSum",
+        "test_latex_sequences",
+        "test_categories",
+        "test_latex_AccumuBounds",
+        "test_latex_ConditionSet",
+        "test_modifiers",
+        "test_boolean_args_order",
+        "test_latex_union",
+        "test_builtin_no_args",
+        "test_latex_symmetric_difference",
+        "test_latex_Range",
+        "test_latex_ComplexRegion",
+        "test_latex_Integers",
+        "test_latex_builtins",
+        "test_latex_Float",
+        "test_latex_UnevaluatedExpr",
+        "test_latex_FourierSeries",
+        "test_latex_Complexes",
+        "test_latex_Naturals0",
+        "test_latex_bessel",
+        "test_latex_Contains",
+        "test_latex_Complement",
+        "test_latex_Poly",
+        "test_ZeroMatrix",
+        "test_latex_derivatives",
+        "test_latex_sum",
+        "test_latex_fresnel",
+        "test_Hadamard",
+        "test_latex_indexed",
+        "test_issue_7180",
+        "test_Adjoint",
+        "test_latex_Matrix",
+        "test_latex_mul_symbol",
+        "test_latex_Lambda",
+        "test_latex_subs",
+        "test_latex_functions",
+        "test_latex_integrals",
+        "test_latex_RandomDomain",
+        "test_builtins_without_args",
+        "test_latex_MatrixSlice",
+        "test_latex_Piecewise",
+        "test_latex_NDimArray",
+        "test_latex_commutator",
+        "test_latex_product",
+        "test_latex_permutation",
+        "test_issue_7117",
+        "test_QuotientRing",
+        "test_latex_LeviCivita",
+        "test_latex_symbols",
+        "test_latex_KroneckerDelta",
+        "test_latex_FormalPowerSeries",
+        "test_latex_ComplexRootOf",
+        "test_latex_FracElement",
+        "test_latex",
+        "test_Modules",
+        "test_hyper_printing",
+        "test_integral_transforms",
+        "test_latex_numbers",
+        "test_latex_intervals",
+        "test_latex_productset",
+        "test_latex_Heaviside",
+        "test_latex_ImageSet",
+        "test_Tr"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-14092",
+    "file_function": {
+      "sklearn/utils/tests/test_validation.py": [
+        "test_check_scalar_invalid"
+      ],
+      "sklearn/neighbors/tests/test_nca.py": [
+        "test_warm_start_validation",
+        "test_auto_init",
+        "test_init_transformation",
+        "test_warm_start_effectiveness",
+        "test_verbose",
+        "test_toy_example_collapse_points",
+        "test_callback",
+        "test_params_validation",
+        "test_convergence_warning"
+      ]
+    }
+  },
+  {
+    "instance_id": "pydata__xarray-5131",
+    "file_function": {
+      "xarray/tests/test_computation.py": [
+        "test_apply_1d_and_0d",
+        "test_apply_groupby_add",
+        "test_apply_identity"
+      ],
+      "xarray/tests/test_groupby.py": [
+        "test_groupby_repr_datetime",
+        "test_groupby_repr",
+        "test_groupby_drops_nans"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-13971",
+    "file_function": {
+      "sympy/printing/tests/test_latex.py": [
+        "test_latex_sequences",
+        "test_latex_Range"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-20154",
+    "file_function": {
+      "sympy/utilities/tests/test_iterables.py": [
+        "test_partitions"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-16503",
+    "file_function": {
+      "sympy/printing/pretty/tests/test_pretty.py": [
+        "test_pretty_sum"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11049",
+    "file_function": {
+      "tests/forms_tests/field_tests/test_durationfield.py": [
+        "test_durationfield_prepare_value",
+        "test_durationfield_clean",
+        "test_overflow_translation",
+        "test_overflow",
+        "test_durationfield_integer_value"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-14317",
+    "file_function": {
+      "sympy/printing/tests/test_latex.py": [
+        "test_latex_Poly",
+        "test_Modules",
+        "test_QuotientRing",
+        "test_PolynomialRingBase"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15695",
+    "file_function": {
+      "tests/migrations/test_operations.py": [
+        "test_rename_index_unknown_unnamed_index",
+        "test_rename_index",
+        "test_rename_index_arguments",
+        "test_rename_index_unnamed_index"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-22005",
+    "file_function": {
+      "sympy/solvers/tests/test_polysys.py": [
+        "test_solve_poly_system"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-24970",
+    "file_function": {
+      "lib/matplotlib/tests/test_colors.py": [
+        "test_colormap_invalid",
+        "test_register_cmap",
+        "test_colormap_equals"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-13660",
+    "file_function": {
+      "tests/shell/tests.py": [
+        "test_stdin_read",
+        "test_shell_with_ipython_not_installed",
+        "test_shell_with_bpython_not_installed",
+        "test_command_option"
+      ]
+    }
+  },
+  {
+    "instance_id": "mwaskom__seaborn-2848",
+    "file_function": {
+      "tests/test_axisgrid.py": [
+        "test_corner",
+        "test_hue_in_map",
+        "test_map_mixed_funcsig"
+      ],
+      "tests/test_relational.py": [
+        "test_scatterplot_smoke"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-20049",
+    "file_function": {
+      "sympy/physics/vector/tests/test_point.py": [
+        "test_point_v2pt_theorys",
+        "test_point_partial_velocity"
+      ],
+      "sympy/physics/mechanics/tests/test_body.py": [
+        "test_particle_body_add_force"
+      ]
+    }
+  },
+  {
+    "instance_id": "sphinx-doc__sphinx-8474",
+    "file_function": {
+      "tests/test_build_latex.py": [
+        "test_footnote",
+        "test_latex_basic_manual_ja",
+        "test_latex_logo_if_not_found",
+        "test_babel_with_language_de",
+        "test_polyglossia_with_language_de"
+      ],
+      "tests/test_toctree.py": [
+        "test_singlehtml_toctree"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-26020",
+    "file_function": {
+      "lib/mpl_toolkits/axes_grid1/tests/test_axes_grid1.py": [
+        "test_image_grid_each_left_label_mode_all",
+        "test_axes_class_tuple",
+        "test_grid_axes_lists",
+        "test_image_grid_label_mode_deprecation_warning",
+        "test_grid_errors",
+        "test_imagegrid_cbar_mode_edge",
+        "test_axesgrid_colorbar_log_smoketest",
+        "test_image_grid_single_bottom"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-12454",
+    "file_function": {
+      "sympy/matrices/tests/test_sparse.py": [
+        "test_sparse_matrix"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-19487",
+    "file_function": {
+      "sympy/functions/elementary/tests/test_complexes.py": [
+        "test_Abs_rewrite",
+        "test_derivatives_issue_4757",
+        "test_Abs",
+        "test_issue_15893"
+      ],
+      "sympy/simplify/tests/test_simplify.py": [
+        "test_issue_17141_slow"
+      ]
+    }
+  },
+  {
+    "instance_id": "matplotlib__matplotlib-22711",
+    "file_function": {
+      "lib/matplotlib/tests/test_widgets.py": [
+        "test_range_slider"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-11620",
+    "file_function": {
+      "tests/admin_views/tests.py": [
+        "test_allows_attributeerror_to_bubble_up",
+        "test_add_view",
+        "test_invalid_appindex_url",
+        "test_i18n_language_non_english_default",
+        "test_add_with_GET_args"
+      ],
+      "tests/urlpatterns/tests.py": [
+        "test_resolve_value_error_means_no_match",
+        "test_invalid_converter",
+        "test_resolve_type_error_propagates",
+        "test_two_variable_at_start_of_path_pattern",
+        "test_converter_reverse_with_second_layer_instance_namespace",
+        "test_path_inclusion_is_matchable",
+        "test_non_identifier_parameter_name_causes_exception",
+        "test_path_lookup_with_double_inclusion",
+        "test_converter_reverse"
+      ],
+      "tests/resolve_url/tests.py": [
+        "test_non_view_callable_raises_no_reverse_match"
+      ],
+      "tests/handlers/tests.py": [
+        "test_no_response"
+      ],
+      "tests/middleware_exceptions/tests.py": [
+        "test_process_template_response_returns_none"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-15011",
+    "file_function": {
+      "sympy/core/tests/test_function.py": [
+        "test_issue_7068"
+      ],
+      "sympy/utilities/tests/test_lambdify.py": [
+        "test_sym_integral",
+        "test_issue_2790",
+        "test_matrix",
+        "test_nested_args",
+        "test_lambdify_imps",
+        "test_lambdify_docstring",
+        "test_special_printers",
+        "test_dummification",
+        "test_issue_14941",
+        "test_lambdify_dummy_arg"
+      ],
+      "sympy/printing/tests/test_lambdarepr.py": [
+        "test_printmethod",
+        "test_piecewise"
+      ],
+      "sympy/core/tests/test_symbol.py": [
+        "test_unicode",
+        "test_as_dummy"
+      ]
+    }
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn-13779",
+    "file_function": {
+      "sklearn/ensemble/tests/test_voting.py": [
+        "test_multilabel",
+        "test_notfitted",
+        "test_predict_proba_on_toy_problem",
+        "test_weights_regressor",
+        "test_sample_weight",
+        "test_set_estimator_none",
+        "test_predictproba_hardvoting",
+        "test_transform",
+        "test_estimator_init"
+      ]
+    }
+  },
+  {
+    "instance_id": "sphinx-doc__sphinx-8627",
+    "file_function": {
+      "tests/test_domain_py.py": [
+        "test_domain_py_xrefs",
+        "test_optional_pyfunction_signature",
+        "test_parse_annotation",
+        "test_get_full_qualified_name",
+        "test_noindexentry",
+        "test_pyfunction_signature_full_py38",
+        "test_resolve_xref_for_properties"
+      ],
+      "tests/test_ext_autodoc_configs.py": [
+        "test_autodoc_typehints_description"
+      ]
+    }
+  },
+  {
+    "instance_id": "pytest-dev__pytest-5227",
+    "file_function": {
+      "testing/logging/test_formatter.py": [
+        "test_coloredlogformatter"
+      ],
+      "testing/logging/test_reporting.py": [
+        "section"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-13437",
+    "file_function": {
+      "sympy/series/tests/test_limits.py": [
+        "test_basic1",
+        "test_basic2",
+        "test_heuristic",
+        "test_Limit",
+        "test_exponential",
+        "test_polynomial",
+        "test_rational"
+      ],
+      "sympy/functions/combinatorial/tests/test_comb_numbers.py": [
+        "test_bell"
+      ],
+      "sympy/series/tests/test_demidovich.py": [
+        "test_Limits_simple_0",
+        "test_Limits_simple_1"
+      ]
+    }
+  },
+  {
+    "instance_id": "pallets__flask-4045",
+    "file_function": {
+      "tests/test_async.py": [
+        "_async_app",
+        "index"
+      ],
+      "tests/test_cli.py": [
+        "test_cli_blueprints",
+        "test_cli_empty"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-16106",
+    "file_function": {
+      "sympy/printing/tests/test_mathml.py": [
+        "test_content_mathml_order",
+        "test_presentation_mathml_order"
+      ],
+      "sympy/utilities/tests/test_pickling.py": [
+        "test_printing1",
+        "test_printing2"
+      ]
+    }
+  },
+  {
+    "instance_id": "sympy__sympy-17139",
+    "file_function": {
+      "sympy/simplify/tests/test_fu.py": [
+        "test_TR6"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-16255",
+    "file_function": {
+      "tests/sitemaps_tests/test_http.py": [
+        "test_sitemap_get_urls_no_site_1",
+        "test_sitemap_get_urls_no_site_2",
+        "test_sitemap_item"
+      ],
+      "tests/sitemaps_tests/test_generic.py": [
+        "test_generic_sitemap_attributes",
+        "test_get_protocol_defined_in_constructor",
+        "test_get_protocol_passed_as_argument",
+        "test_get_protocol_default",
+        "test_get_protocol_default_warning"
+      ]
+    }
+  },
+  {
+    "instance_id": "pytest-dev__pytest-5221",
+    "file_function": {
+      "testing/test_capture.py": [
+        "test_getmethod_default_no_fd"
+      ]
+    }
+  },
+  {
+    "instance_id": "django__django-15781",
+    "file_function": {
+      "tests/user_commands/tests.py": [
+        "patched_check",
+        "test_create_parser_kwargs"
+      ],
+      "tests/admin_scripts/tests.py": [
+        "test_no_color_force_color_mutually_exclusive_execute",
+        "test_no_color_force_color_mutually_exclusive_command_init",
+        "test_base_run_from_argv",
+        "raise_command_error",
+        "test_run_from_argv_closes_connections"
+      ]
+    }
+  }
+]

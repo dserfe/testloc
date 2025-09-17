@@ -1,0 +1,47 @@
+2025-08-22 02:48:30,225 - INFO - Creating container for django__django-13158...
+2025-08-22 02:48:38,728 - INFO - Container for django__django-13158 created: a1f02961cebd26a733092010bda85c7ccccb16eb09cd72e9c80e2a3c03adb963
+2025-08-22 02:48:45,832 - INFO - Container for django__django-13158 started: a1f02961cebd26a733092010bda85c7ccccb16eb09cd72e9c80e2a3c03adb963
+2025-08-22 02:48:45,833 - INFO - Intermediate patch for django__django-13158 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-13158/patch.diff, now applying to container...
+2025-08-22 02:48:46,324 - INFO - >>>>> Applied Patch:
+Checking patch django/forms/models.py...
+Applied patch django/forms/models.py cleanly.
+
+2025-08-22 02:48:48,175 - INFO - Git diff before:
+diff --git a/django/forms/models.py b/django/forms/models.py
+index ab611afca7..ce55bb4f9c 100644
+--- a/django/forms/models.py
++++ b/django/forms/models.py
+@@ -1323,6 +1323,8 @@ class ModelMultipleChoiceField(ModelChoiceField):
+         if self.required and not value:
+             raise ValidationError(self.error_messages['required'], code='required')
+         elif not self.required and not value:
++            if hasattr(self.queryset, 'combinator'):
++                return self.queryset.model.objects.none()
+             return self.queryset.none()
+         if not isinstance(value, (list, tuple)):
+             raise ValidationError(
+2025-08-22 02:48:48,183 - INFO - Eval script for django__django-13158 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-13158/eval.sh; copying to container...
+2025-08-22 02:49:07,756 - INFO - Test runtime: 19.29 seconds
+2025-08-22 02:49:07,763 - INFO - Test output for django__django-13158 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-13158/test_output.txt
+2025-08-22 02:49:07,893 - INFO - Git diff after:
+diff --git a/django/forms/models.py b/django/forms/models.py
+index ab611afca7..ce55bb4f9c 100644
+--- a/django/forms/models.py
++++ b/django/forms/models.py
+@@ -1323,6 +1323,8 @@ class ModelMultipleChoiceField(ModelChoiceField):
+         if self.required and not value:
+             raise ValidationError(self.error_messages['required'], code='required')
+         elif not self.required and not value:
++            if hasattr(self.queryset, 'combinator'):
++                return self.queryset.model.objects.none()
+             return self.queryset.none()
+         if not isinstance(value, (list, tuple)):
+             raise ValidationError(
+2025-08-22 02:49:07,894 - INFO - Grading answer for django__django-13158...
+2025-08-22 02:49:07,896 - INFO - report: {'django__django-13158': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_union_none (queries.test_qs_combinators.QuerySetSetOperationTests)']}, 'PASS_TO_PASS': {'success': ['test_combining_multiple_models (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_count_difference (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_count_intersection (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_count_union (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_count_union_empty_result (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_difference_with_empty_qs (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_difference_with_values (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_intersection_with_empty_qs (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_intersection_with_values (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_limits (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_order_by_same_type (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_order_raises_on_non_selected_column (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_ordering (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_ordering_by_alias (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_ordering_by_f_expression (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_ordering_by_f_expression_and_alias (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_qs_with_subcompound_qs (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_simple_difference (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_simple_intersection (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_simple_union (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_distinct (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_with_empty_qs (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_with_extra_and_values_list (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_with_two_annotated_values_list (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_with_values (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_with_values_list_and_order (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_with_values_list_on_annotated_and_unannotated (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_unsupported_operations_on_combined_qs (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_unsupported_ordering_slicing_raises_db_error (queries.test_qs_combinators.QuerySetSetOperationTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-13158: resolved: False
+2025-08-22 02:49:07,896 - INFO - Attempting to stop container sweb.eval.django__django-13158.lite_gpt_all...
+2025-08-22 02:49:23,512 - INFO - Attempting to remove container sweb.eval.django__django-13158.lite_gpt_all...
+2025-08-22 02:49:23,580 - INFO - Container sweb.eval.django__django-13158.lite_gpt_all removed.
+2025-08-22 02:49:23,580 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-13158:latest...
+2025-08-22 02:49:30,925 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-13158:latest removed.

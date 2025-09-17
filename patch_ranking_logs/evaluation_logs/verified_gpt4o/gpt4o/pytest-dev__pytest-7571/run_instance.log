@@ -1,0 +1,45 @@
+2025-08-26 05:11:39,500 - INFO - Creating container for pytest-dev__pytest-7571...
+2025-08-26 05:11:41,896 - INFO - Container for pytest-dev__pytest-7571 created: 65039825aa7016687e083d58f90a99afe80041621f7a0b27145d7f5c6c0434f8
+2025-08-26 05:11:42,628 - INFO - Container for pytest-dev__pytest-7571 started: 65039825aa7016687e083d58f90a99afe80041621f7a0b27145d7f5c6c0434f8
+2025-08-26 05:11:42,629 - INFO - Intermediate patch for pytest-dev__pytest-7571 written to logs/run_evaluation/verified_gpt4o_all2/agentless/pytest-dev__pytest-7571/patch.diff, now applying to container...
+2025-08-26 05:11:42,769 - INFO - >>>>> Applied Patch:
+Checking patch src/_pytest/logging.py...
+Applied patch src/_pytest/logging.py cleanly.
+
+2025-08-26 05:11:42,908 - INFO - Git diff before:
+diff --git a/src/_pytest/logging.py b/src/_pytest/logging.py
+index 11031f2f2..7ebff1831 100644
+--- a/src/_pytest/logging.py
++++ b/src/_pytest/logging.py
+@@ -356,6 +356,7 @@ class LogCaptureFixture:
+         for logger_name, level in self._initial_logger_levels.items():
+             logger = logging.getLogger(logger_name)
+             logger.setLevel(level)
++        self.handler.setLevel(logging.NOTSET)  # restore handler level to default
+ 
+     @property
+     def handler(self) -> LogCaptureHandler:
+2025-08-26 05:11:42,909 - INFO - Eval script for pytest-dev__pytest-7571 written to logs/run_evaluation/verified_gpt4o_all2/agentless/pytest-dev__pytest-7571/eval.sh; copying to container...
+2025-08-26 05:11:49,040 - INFO - Test runtime: 6.07 seconds
+2025-08-26 05:11:49,041 - INFO - Test output for pytest-dev__pytest-7571 written to logs/run_evaluation/verified_gpt4o_all2/agentless/pytest-dev__pytest-7571/test_output.txt
+2025-08-26 05:11:49,140 - INFO - Git diff after:
+diff --git a/src/_pytest/logging.py b/src/_pytest/logging.py
+index 11031f2f2..7ebff1831 100644
+--- a/src/_pytest/logging.py
++++ b/src/_pytest/logging.py
+@@ -356,6 +356,7 @@ class LogCaptureFixture:
+         for logger_name, level in self._initial_logger_levels.items():
+             logger = logging.getLogger(logger_name)
+             logger.setLevel(level)
++        self.handler.setLevel(logging.NOTSET)  # restore handler level to default
+ 
+     @property
+     def handler(self) -> LogCaptureHandler:
+2025-08-26 05:11:49,140 - INFO - Grading answer for pytest-dev__pytest-7571...
+2025-08-26 05:11:49,143 - INFO - report: {'pytest-dev__pytest-7571': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['testing/logging/test_fixture.py::test_change_level_undos_handler_level'], 'failure': []}, 'PASS_TO_PASS': {'success': ['testing/logging/test_fixture.py::test_change_level', 'testing/logging/test_fixture.py::test_with_statement', 'testing/logging/test_fixture.py::test_log_access', 'testing/logging/test_fixture.py::test_messages', 'testing/logging/test_fixture.py::test_record_tuples', 'testing/logging/test_fixture.py::test_unicode', 'testing/logging/test_fixture.py::test_clear', 'testing/logging/test_fixture.py::test_caplog_captures_for_all_stages', 'testing/logging/test_fixture.py::test_fixture_help', 'testing/logging/test_fixture.py::test_change_level_undo', 'testing/logging/test_fixture.py::test_ini_controls_global_log_level', 'testing/logging/test_fixture.py::test_caplog_can_override_global_log_level', 'testing/logging/test_fixture.py::test_caplog_captures_despite_exception', 'testing/logging/test_fixture.py::test_log_report_captures_according_to_config_option_upon_failure'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for pytest-dev__pytest-7571: resolved: True
+2025-08-26 05:11:49,143 - INFO - Attempting to stop container sweb.eval.pytest-dev__pytest-7571.verified_gpt4o_all2...
+2025-08-26 05:12:39,461 - INFO - Attempting to remove container sweb.eval.pytest-dev__pytest-7571.verified_gpt4o_all2...
+2025-08-26 05:12:39,501 - INFO - Container sweb.eval.pytest-dev__pytest-7571.verified_gpt4o_all2 removed.
+2025-08-26 05:12:39,501 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-7571:latest...
+2025-08-26 05:12:39,575 - INFO - Image swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-7571:latest removed.

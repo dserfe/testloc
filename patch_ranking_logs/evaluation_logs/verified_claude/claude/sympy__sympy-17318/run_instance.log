@@ -1,0 +1,63 @@
+2025-08-25 03:04:01,771 - INFO - Creating container for sympy__sympy-17318...
+2025-08-25 03:04:01,968 - INFO - Container for sympy__sympy-17318 created: 9b30de08cba9e5c059fe2db50f10e04e6a5d35afaaaeaed07a42bf27a1730799
+2025-08-25 03:04:03,440 - INFO - Container for sympy__sympy-17318 started: 9b30de08cba9e5c059fe2db50f10e04e6a5d35afaaaeaed07a42bf27a1730799
+2025-08-25 03:04:03,469 - INFO - Intermediate patch for sympy__sympy-17318 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-17318/patch.diff, now applying to container...
+2025-08-25 03:04:04,087 - INFO - >>>>> Applied Patch:
+Checking patch sympy/simplify/sqrtdenest.py...
+Applied patch sympy/simplify/sqrtdenest.py cleanly.
+
+2025-08-25 03:04:04,985 - INFO - Git diff before:
+diff --git a/sympy/simplify/sqrtdenest.py b/sympy/simplify/sqrtdenest.py
+index f0b7653ea8..2430b9833d 100644
+--- a/sympy/simplify/sqrtdenest.py
++++ b/sympy/simplify/sqrtdenest.py
+@@ -157,9 +157,13 @@ def _sqrt_match(p):
+     elif p.is_Add:
+         pargs = sorted(p.args, key=default_sort_key)
+         if all((x**2).is_Rational for x in pargs):
+-            r, b, a = split_surds(p)
+-            res = a, b, r
+-            return list(res)
++            try:
++                r, b, a = split_surds(p)
++                res = a, b, r
++                return list(res)
++            except IndexError:
++                # If split_surds fails, continue with normal processing
++                pass
+         # to make the process canonical, the argument is included in the tuple
+         # so when the max is selected, it will be the largest arg having a
+         # given depth
+2025-08-25 03:04:04,986 - INFO - Eval script for sympy__sympy-17318 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-17318/eval.sh; copying to container...
+2025-08-25 03:04:27,256 - INFO - Test runtime: 22.09 seconds
+2025-08-25 03:04:27,256 - INFO - Test output for sympy__sympy-17318 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-17318/test_output.txt
+2025-08-25 03:04:27,434 - INFO - Git diff after:
+diff --git a/sympy/simplify/sqrtdenest.py b/sympy/simplify/sqrtdenest.py
+index f0b7653ea8..2430b9833d 100644
+--- a/sympy/simplify/sqrtdenest.py
++++ b/sympy/simplify/sqrtdenest.py
+@@ -157,9 +157,13 @@ def _sqrt_match(p):
+     elif p.is_Add:
+         pargs = sorted(p.args, key=default_sort_key)
+         if all((x**2).is_Rational for x in pargs):
+-            r, b, a = split_surds(p)
+-            res = a, b, r
+-            return list(res)
++            try:
++                r, b, a = split_surds(p)
++                res = a, b, r
++                return list(res)
++            except IndexError:
++                # If split_surds fails, continue with normal processing
++                pass
+         # to make the process canonical, the argument is included in the tuple
+         # so when the max is selected, it will be the largest arg having a
+         # given depth
+2025-08-25 03:04:27,434 - INFO - Grading answer for sympy__sympy-17318...
+2025-08-25 03:04:27,434 - INFO - report: {'sympy__sympy-17318': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_issue_12420'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_sqrtdenest', 'test_sqrtdenest2', 'test_sqrtdenest_rec', 'test_issue_6241', 'test_sqrtdenest3', 'test_sqrtdenest4', 'test_sqrt_symbolic_denest', 'test_issue_5857', 'test_subsets', 'test_issue_5653'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-17318: resolved: True
+2025-08-25 03:04:27,435 - INFO - Attempting to stop container sweb.eval.sympy__sympy-17318.verified_claude_new...
+2025-08-25 03:04:43,438 - INFO - Attempting to remove container sweb.eval.sympy__sympy-17318.verified_claude_new...
+2025-08-25 03:04:43,470 - INFO - Container sweb.eval.sympy__sympy-17318.verified_claude_new removed.
+2025-08-25 03:04:43,470 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-17318:latest...
+2025-08-25 03:04:43,627 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-17318:latest removed.

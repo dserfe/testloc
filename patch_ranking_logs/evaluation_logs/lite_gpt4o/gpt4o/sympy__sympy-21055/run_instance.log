@@ -1,0 +1,135 @@
+2025-08-22 02:56:57,038 - INFO - Creating container for sympy__sympy-21055...
+2025-08-22 02:56:57,740 - INFO - Container for sympy__sympy-21055 created: 10c5bcf9475a775ac7f55ce4b2be0ed3e489345611f38ca8fdb3de8b8bfd6951
+2025-08-22 02:57:01,641 - INFO - Container for sympy__sympy-21055 started: 10c5bcf9475a775ac7f55ce4b2be0ed3e489345611f38ca8fdb3de8b8bfd6951
+2025-08-22 02:57:01,641 - INFO - Intermediate patch for sympy__sympy-21055 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-21055/patch.diff, now applying to container...
+2025-08-22 02:57:02,544 - INFO - >>>>> Applied Patch:
+Checking patch sympy/assumptions/refine.py...
+Applied patch sympy/assumptions/refine.py cleanly.
+
+2025-08-22 02:57:03,810 - INFO - Git diff before:
+diff --git a/sympy/assumptions/refine.py b/sympy/assumptions/refine.py
+index e1f97190c0..a21f735c0e 100644
+--- a/sympy/assumptions/refine.py
++++ b/sympy/assumptions/refine.py
+@@ -1,3 +1,4 @@
++
+ from typing import Dict, Callable
+ 
+ from sympy.core import S, Add, Expr, Basic, Mul
+@@ -55,7 +56,7 @@ def refine(expr, assumptions=True):
+         if ref_expr is not None:
+             return ref_expr
+     name = expr.__class__.__name__
+-    handler = handlers_dict.get(name, None)
++    handler = handlers_dict.get(name, None) or globals().get(f'refine_{name.lower()}', None)
+     if handler is None:
+         return expr
+     new_expr = handler(expr, assumptions)
+@@ -206,6 +207,38 @@ def refine_Pow(expr, assumptions):
+                     return expr
+ 
+ 
++def refine_arg(expr, assumptions):
++    """
++    Handler for the argument function.
++
++    Examples
++    ========
++
++    >>> from sympy import Q, arg, exp
++    >>> from sympy.assumptions.refine import refine_arg
++    >>> from sympy.abc import x
++    >>> refine_arg(arg(x), Q.positive(x))
++    0
++    >>> refine_arg(arg(x), Q.negative(x))
++    pi
++    >>> refine_arg(arg(exp(x)), Q.real(x))
++    0
++
++    """
++    from sympy import arg, pi, I
++    if isinstance(expr, arg):
++        arg_expr = expr.args[0]
++        if ask(Q.positive(arg_expr), assumptions):
++            return S.Zero
++        elif ask(Q.negative(arg_expr), assumptions):
++            return pi
++        elif ask(Q.real(arg_expr), assumptions):
++            return Piecewise(
++                (0, arg_expr > 0),
++                (pi, arg_expr < 0),
++                (arg_expr, True))
++    return expr
++
+ def refine_atan2(expr, assumptions):
+     """
+     Handler for the atan2 function.
+2025-08-22 02:57:03,810 - INFO - Eval script for sympy__sympy-21055 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-21055/eval.sh; copying to container...
+2025-08-22 02:57:17,513 - INFO - Test runtime: 12.99 seconds
+2025-08-22 02:57:17,514 - INFO - Test output for sympy__sympy-21055 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-21055/test_output.txt
+2025-08-22 02:57:17,780 - INFO - Git diff after:
+diff --git a/sympy/assumptions/refine.py b/sympy/assumptions/refine.py
+index e1f97190c0..a21f735c0e 100644
+--- a/sympy/assumptions/refine.py
++++ b/sympy/assumptions/refine.py
+@@ -1,3 +1,4 @@
++
+ from typing import Dict, Callable
+ 
+ from sympy.core import S, Add, Expr, Basic, Mul
+@@ -55,7 +56,7 @@ def refine(expr, assumptions=True):
+         if ref_expr is not None:
+             return ref_expr
+     name = expr.__class__.__name__
+-    handler = handlers_dict.get(name, None)
++    handler = handlers_dict.get(name, None) or globals().get(f'refine_{name.lower()}', None)
+     if handler is None:
+         return expr
+     new_expr = handler(expr, assumptions)
+@@ -206,6 +207,38 @@ def refine_Pow(expr, assumptions):
+                     return expr
+ 
+ 
++def refine_arg(expr, assumptions):
++    """
++    Handler for the argument function.
++
++    Examples
++    ========
++
++    >>> from sympy import Q, arg, exp
++    >>> from sympy.assumptions.refine import refine_arg
++    >>> from sympy.abc import x
++    >>> refine_arg(arg(x), Q.positive(x))
++    0
++    >>> refine_arg(arg(x), Q.negative(x))
++    pi
++    >>> refine_arg(arg(exp(x)), Q.real(x))
++    0
++
++    """
++    from sympy import arg, pi, I
++    if isinstance(expr, arg):
++        arg_expr = expr.args[0]
++        if ask(Q.positive(arg_expr), assumptions):
++            return S.Zero
++        elif ask(Q.negative(arg_expr), assumptions):
++            return pi
++        elif ask(Q.real(arg_expr), assumptions):
++            return Piecewise(
++                (0, arg_expr > 0),
++                (pi, arg_expr < 0),
++                (arg_expr, True))
++    return expr
++
+ def refine_atan2(expr, assumptions):
+     """
+     Handler for the atan2 function.
+2025-08-22 02:57:17,781 - INFO - Grading answer for sympy__sympy-21055...
+2025-08-22 02:57:17,781 - INFO - report: {'sympy__sympy-21055': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_arg'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_Abs', 'test_pow1', 'test_pow2', 'test_exp', 'test_Piecewise', 'test_atan2', 'test_re', 'test_im', 'test_complex', 'test_sign', 'test_func_args', 'test_eval_refine', 'test_refine_issue_12724'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-21055: resolved: True
+2025-08-22 02:57:17,781 - INFO - Attempting to stop container sweb.eval.sympy__sympy-21055.lite_gpt_all...
+2025-08-22 02:57:33,415 - INFO - Attempting to remove container sweb.eval.sympy__sympy-21055.lite_gpt_all...
+2025-08-22 02:57:36,009 - INFO - Container sweb.eval.sympy__sympy-21055.lite_gpt_all removed.
+2025-08-22 02:57:36,009 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-21055:latest...
+2025-08-22 02:57:37,099 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-21055:latest removed.

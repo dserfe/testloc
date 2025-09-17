@@ -1,0 +1,49 @@
+2025-08-22 02:48:29,686 - INFO - Creating container for django__django-12983...
+2025-08-22 02:48:38,691 - INFO - Container for django__django-12983 created: 61c6825f646d48693e0e2cd4eafd169498cb55f2cc72b33b16a6de337cdb5e99
+2025-08-22 02:48:44,457 - INFO - Container for django__django-12983 started: 61c6825f646d48693e0e2cd4eafd169498cb55f2cc72b33b16a6de337cdb5e99
+2025-08-22 02:48:44,460 - INFO - Intermediate patch for django__django-12983 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-12983/patch.diff, now applying to container...
+2025-08-22 02:48:44,712 - INFO - >>>>> Applied Patch:
+Checking patch django/utils/text.py...
+Applied patch django/utils/text.py cleanly.
+
+2025-08-22 02:48:46,362 - INFO - Git diff before:
+diff --git a/django/utils/text.py b/django/utils/text.py
+index fb5f6298c4..5aefb80f9d 100644
+--- a/django/utils/text.py
++++ b/django/utils/text.py
+@@ -403,7 +403,8 @@ def slugify(value, allow_unicode=False):
+     else:
+         value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
+     value = re.sub(r'[^\w\s-]', '', value.lower()).strip()
+-    return re.sub(r'[-\s]+', '-', value)
++    value = re.sub(r'[-\s]+', '-', value)
++    return value.strip('-_')
+ 
+ 
+ def camel_case_to_spaces(value):
+2025-08-22 02:48:46,364 - INFO - Eval script for django__django-12983 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-12983/eval.sh; copying to container...
+2025-08-22 02:49:03,331 - INFO - Test runtime: 16.69 seconds
+2025-08-22 02:49:03,331 - INFO - Test output for django__django-12983 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-12983/test_output.txt
+2025-08-22 02:49:03,587 - INFO - Git diff after:
+diff --git a/django/utils/text.py b/django/utils/text.py
+index fb5f6298c4..5aefb80f9d 100644
+--- a/django/utils/text.py
++++ b/django/utils/text.py
+@@ -403,7 +403,8 @@ def slugify(value, allow_unicode=False):
+     else:
+         value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
+     value = re.sub(r'[^\w\s-]', '', value.lower()).strip()
+-    return re.sub(r'[-\s]+', '-', value)
++    value = re.sub(r'[-\s]+', '-', value)
++    return value.strip('-_')
+ 
+ 
+ def camel_case_to_spaces(value):
+2025-08-22 02:49:03,588 - INFO - Grading answer for django__django-12983...
+2025-08-22 02:49:03,588 - INFO - report: {'django__django-12983': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_slugify (utils_tests.test_text.TestUtilsText)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_compress_sequence (utils_tests.test_text.TestUtilsText)', 'test_format_lazy (utils_tests.test_text.TestUtilsText)', 'test_get_text_list (utils_tests.test_text.TestUtilsText)', 'test_get_valid_filename (utils_tests.test_text.TestUtilsText)', 'test_normalize_newlines (utils_tests.test_text.TestUtilsText)', 'test_phone2numeric (utils_tests.test_text.TestUtilsText)', 'test_smart_split (utils_tests.test_text.TestUtilsText)', 'test_truncate_chars (utils_tests.test_text.TestUtilsText)', 'test_truncate_chars_html (utils_tests.test_text.TestUtilsText)', 'test_truncate_html_words (utils_tests.test_text.TestUtilsText)', 'test_truncate_words (utils_tests.test_text.TestUtilsText)', 'test_unescape_entities (utils_tests.test_text.TestUtilsText)', 'test_unescape_entities_deprecated (utils_tests.test_text.TestUtilsText)', 'test_unescape_string_literal (utils_tests.test_text.TestUtilsText)', 'test_wrap (utils_tests.test_text.TestUtilsText)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-12983: resolved: True
+2025-08-22 02:49:03,589 - INFO - Attempting to stop container sweb.eval.django__django-12983.lite_gpt_all...
+2025-08-22 02:49:19,702 - INFO - Attempting to remove container sweb.eval.django__django-12983.lite_gpt_all...
+2025-08-22 02:49:20,181 - INFO - Container sweb.eval.django__django-12983.lite_gpt_all removed.
+2025-08-22 02:49:20,181 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-12983:latest...
+2025-08-22 02:49:26,086 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-12983:latest removed.

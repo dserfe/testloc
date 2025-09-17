@@ -1,0 +1,45 @@
+2025-08-25 02:59:02,104 - INFO - Creating container for pylint-dev__pylint-6903...
+2025-08-25 02:59:02,359 - INFO - Container for pylint-dev__pylint-6903 created: d60fa33121b85ef94fc85149427301ccd6f1003556649171d759eadd6b79a0c0
+2025-08-25 02:59:03,844 - INFO - Container for pylint-dev__pylint-6903 started: d60fa33121b85ef94fc85149427301ccd6f1003556649171d759eadd6b79a0c0
+2025-08-25 02:59:03,846 - INFO - Intermediate patch for pylint-dev__pylint-6903 written to logs/run_evaluation/verified_claude_new/agentless_claude/pylint-dev__pylint-6903/patch.diff, now applying to container...
+2025-08-25 02:59:04,233 - INFO - >>>>> Applied Patch:
+Checking patch pylint/lint/run.py...
+Applied patch pylint/lint/run.py cleanly.
+
+2025-08-25 02:59:04,753 - INFO - Git diff before:
+diff --git a/pylint/lint/run.py b/pylint/lint/run.py
+index a7e5d557..53790c4d 100644
+--- a/pylint/lint/run.py
++++ b/pylint/lint/run.py
+@@ -57,7 +57,8 @@ def _query_cpu() -> int | None:
+         with open("/sys/fs/cgroup/cpu/cpu.shares", encoding="utf-8") as file:
+             cpu_shares = int(file.read().rstrip())
+         # For AWS, gives correct value * 1024.
+-        avail_cpu = int(cpu_shares / 1024)
++        # Ensure at least 1 CPU is returned to avoid multiprocessing errors
++        avail_cpu = max(1, int(cpu_shares / 1024))
+     return avail_cpu
+2025-08-25 02:59:04,753 - INFO - Eval script for pylint-dev__pylint-6903 written to logs/run_evaluation/verified_claude_new/agentless_claude/pylint-dev__pylint-6903/eval.sh; copying to container...
+2025-08-25 02:59:24,062 - INFO - Test runtime: 19.16 seconds
+2025-08-25 02:59:24,062 - INFO - Test output for pylint-dev__pylint-6903 written to logs/run_evaluation/verified_claude_new/agentless_claude/pylint-dev__pylint-6903/test_output.txt
+2025-08-25 02:59:24,139 - INFO - Git diff after:
+diff --git a/pylint/lint/run.py b/pylint/lint/run.py
+index a7e5d557..53790c4d 100644
+--- a/pylint/lint/run.py
++++ b/pylint/lint/run.py
+@@ -57,7 +57,8 @@ def _query_cpu() -> int | None:
+         with open("/sys/fs/cgroup/cpu/cpu.shares", encoding="utf-8") as file:
+             cpu_shares = int(file.read().rstrip())
+         # For AWS, gives correct value * 1024.
+-        avail_cpu = int(cpu_shares / 1024)
++        # Ensure at least 1 CPU is returned to avoid multiprocessing errors
++        avail_cpu = max(1, int(cpu_shares / 1024))
+     return avail_cpu
+2025-08-25 02:59:24,140 - INFO - Grading answer for pylint-dev__pylint-6903...
+2025-08-25 02:59:24,140 - INFO - report: {'pylint-dev__pylint-6903': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/test_pylint_runners.py::test_pylint_run_jobs_equal_zero_dont_crash_with_cpu_fraction'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/test_pylint_runners.py::test_runner[run_epylint]', 'tests/test_pylint_runners.py::test_runner[run_pylint]', 'tests/test_pylint_runners.py::test_runner[run_pyreverse]', 'tests/test_pylint_runners.py::test_runner[run_symilar]', 'tests/test_pylint_runners.py::test_runner_with_arguments[run_epylint]', 'tests/test_pylint_runners.py::test_runner_with_arguments[run_pylint]', 'tests/test_pylint_runners.py::test_runner_with_arguments[run_pyreverse]', 'tests/test_pylint_runners.py::test_runner_with_arguments[run_symilar]'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for pylint-dev__pylint-6903: resolved: True
+2025-08-25 02:59:24,140 - INFO - Attempting to stop container sweb.eval.pylint-dev__pylint-6903.verified_claude_new...
+2025-08-25 02:59:40,790 - INFO - Attempting to remove container sweb.eval.pylint-dev__pylint-6903.verified_claude_new...
+2025-08-25 02:59:43,177 - INFO - Container sweb.eval.pylint-dev__pylint-6903.verified_claude_new removed.
+2025-08-25 02:59:43,177 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-6903:latest...
+2025-08-25 03:00:10,239 - INFO - Image swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-6903:latest removed.

@@ -1,0 +1,55 @@
+2025-08-26 05:14:12,251 - INFO - Creating container for sphinx-doc__sphinx-8269...
+2025-08-26 05:14:13,177 - INFO - Container for sphinx-doc__sphinx-8269 created: a94bc91f51599f115a0559dea4b4fb94b40f18455e38899bb64caac519a3eb3e
+2025-08-26 05:14:15,190 - INFO - Container for sphinx-doc__sphinx-8269 started: a94bc91f51599f115a0559dea4b4fb94b40f18455e38899bb64caac519a3eb3e
+2025-08-26 05:14:15,191 - INFO - Intermediate patch for sphinx-doc__sphinx-8269 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sphinx-doc__sphinx-8269/patch.diff, now applying to container...
+2025-08-26 05:14:15,640 - INFO - >>>>> Applied Patch:
+Checking patch sphinx/builders/linkcheck.py...
+Applied patch sphinx/builders/linkcheck.py cleanly.
+
+2025-08-26 05:14:16,155 - INFO - Git diff before:
+diff --git a/sphinx/builders/linkcheck.py b/sphinx/builders/linkcheck.py
+index 9b54afc7c..887fccffe 100644
+--- a/sphinx/builders/linkcheck.py
++++ b/sphinx/builders/linkcheck.py
+@@ -166,10 +166,11 @@ class CheckExternalLinksBuilder(Builder):
+                     # Read the whole document and see if #anchor exists
+                     response = requests.get(req_url, stream=True, config=self.app.config,
+                                             auth=auth_info, **kwargs)
++                    response.raise_for_status()
+                     found = check_anchor(response, unquote(anchor))
+ 
+                     if not found:
+-                        raise Exception(__("Anchor '%s' not found") % anchor)
++                        return 'broken', __("Anchor '%s' not found") % anchor, 0
+                 else:
+                     try:
+                         # try a HEAD request first, which should be easier on
+2025-08-26 05:14:16,196 - INFO - Eval script for sphinx-doc__sphinx-8269 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sphinx-doc__sphinx-8269/eval.sh; copying to container...
+2025-08-26 05:14:22,691 - INFO - Test runtime: 6.24 seconds
+2025-08-26 05:14:22,691 - INFO - Test output for sphinx-doc__sphinx-8269 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sphinx-doc__sphinx-8269/test_output.txt
+2025-08-26 05:14:22,902 - INFO - Git diff after:
+diff --git a/sphinx/builders/linkcheck.py b/sphinx/builders/linkcheck.py
+index 9b54afc7c..887fccffe 100644
+--- a/sphinx/builders/linkcheck.py
++++ b/sphinx/builders/linkcheck.py
+@@ -166,10 +166,11 @@ class CheckExternalLinksBuilder(Builder):
+                     # Read the whole document and see if #anchor exists
+                     response = requests.get(req_url, stream=True, config=self.app.config,
+                                             auth=auth_info, **kwargs)
++                    response.raise_for_status()
+                     found = check_anchor(response, unquote(anchor))
+ 
+                     if not found:
+-                        raise Exception(__("Anchor '%s' not found") % anchor)
++                        return 'broken', __("Anchor '%s' not found") % anchor, 0
+                 else:
+                     try:
+                         # try a HEAD request first, which should be easier on
+2025-08-26 05:14:22,902 - INFO - Grading answer for sphinx-doc__sphinx-8269...
+2025-08-26 05:14:22,911 - INFO - report: {'sphinx-doc__sphinx-8269': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/test_build_linkcheck.py::test_raises_for_invalid_status'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/test_build_linkcheck.py::test_defaults', 'tests/test_build_linkcheck.py::test_defaults_json', 'tests/test_build_linkcheck.py::test_anchors_ignored', 'tests/test_build_linkcheck.py::test_auth', 'tests/test_build_linkcheck.py::test_linkcheck_request_headers'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sphinx-doc__sphinx-8269: resolved: True
+2025-08-26 05:14:22,923 - INFO - Attempting to stop container sweb.eval.sphinx-doc__sphinx-8269.verified_gpt4o_all2...
+2025-08-26 05:14:45,674 - INFO - Attempting to remove container sweb.eval.sphinx-doc__sphinx-8269.verified_gpt4o_all2...
+2025-08-26 05:14:45,719 - INFO - Container sweb.eval.sphinx-doc__sphinx-8269.verified_gpt4o_all2 removed.
+2025-08-26 05:14:45,720 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8269:latest...
+2025-08-26 05:14:50,707 - INFO - Image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8269:latest removed.

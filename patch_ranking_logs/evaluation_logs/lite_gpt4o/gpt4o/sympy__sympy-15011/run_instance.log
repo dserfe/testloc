@@ -1,0 +1,65 @@
+2025-08-22 02:56:11,426 - INFO - Creating container for sympy__sympy-15011...
+2025-08-22 02:56:12,518 - INFO - Container for sympy__sympy-15011 created: c93bf4f828f8190e249f2da5e525f597e65309556d6e061e4839765e454159f9
+2025-08-22 02:56:14,763 - INFO - Container for sympy__sympy-15011 started: c93bf4f828f8190e249f2da5e525f597e65309556d6e061e4839765e454159f9
+2025-08-22 02:56:14,764 - INFO - Intermediate patch for sympy__sympy-15011 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-15011/patch.diff, now applying to container...
+2025-08-22 02:56:15,076 - INFO - >>>>> Applied Patch:
+Checking patch sympy/utilities/lambdify.py...
+Applied patch sympy/utilities/lambdify.py cleanly.
+
+2025-08-22 02:56:15,574 - INFO - Git diff before:
+diff --git a/sympy/utilities/lambdify.py b/sympy/utilities/lambdify.py
+index f71bea25f5..ac02d51751 100644
+--- a/sympy/utilities/lambdify.py
++++ b/sympy/utilities/lambdify.py
+@@ -707,7 +707,7 @@ def _preprocess(self, args, expr):
+ 
+         Returns string form of args, and updated expr.
+         """
+-        from sympy import Dummy, Symbol, Function, flatten
++        from sympy import Dummy, Symbol, Function, MatrixSymbol, flatten
+         from sympy.matrices import DeferredVector
+ 
+         dummify = self._dummify
+@@ -725,7 +725,7 @@ def _preprocess(self, args, expr):
+                 argstrs.append(nested_argstrs)
+             elif isinstance(arg, DeferredVector):
+                 argstrs.append(str(arg))
+-            elif isinstance(arg, Symbol):
++            elif isinstance(arg, (Symbol, MatrixSymbol)):
+                 argrep = self._argrepr(arg)
+ 
+                 if dummify or not self._is_safe_ident(argrep):
+2025-08-22 02:56:15,575 - INFO - Eval script for sympy__sympy-15011 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-15011/eval.sh; copying to container...
+2025-08-22 02:56:25,455 - INFO - Test runtime: 9.77 seconds
+2025-08-22 02:56:25,456 - INFO - Test output for sympy__sympy-15011 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-15011/test_output.txt
+2025-08-22 02:56:26,295 - INFO - Git diff after:
+diff --git a/sympy/utilities/lambdify.py b/sympy/utilities/lambdify.py
+index f71bea25f5..ac02d51751 100644
+--- a/sympy/utilities/lambdify.py
++++ b/sympy/utilities/lambdify.py
+@@ -707,7 +707,7 @@ def _preprocess(self, args, expr):
+ 
+         Returns string form of args, and updated expr.
+         """
+-        from sympy import Dummy, Symbol, Function, flatten
++        from sympy import Dummy, Symbol, Function, MatrixSymbol, flatten
+         from sympy.matrices import DeferredVector
+ 
+         dummify = self._dummify
+@@ -725,7 +725,7 @@ def _preprocess(self, args, expr):
+                 argstrs.append(nested_argstrs)
+             elif isinstance(arg, DeferredVector):
+                 argstrs.append(str(arg))
+-            elif isinstance(arg, Symbol):
++            elif isinstance(arg, (Symbol, MatrixSymbol)):
+                 argrep = self._argrepr(arg)
+ 
+                 if dummify or not self._is_safe_ident(argrep):
+2025-08-22 02:56:26,298 - INFO - Grading answer for sympy__sympy-15011...
+2025-08-22 02:56:26,380 - INFO - report: {'sympy__sympy-15011': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_curly_matrix_symbol'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_no_args', 'test_single_arg', 'test_list_args', 'test_nested_args', 'test_str_args', 'test_own_namespace_1', 'test_own_namespace_2', 'test_own_module', 'test_bad_args', 'test_atoms', 'test_sympy_lambda', 'test_math_lambda', 'test_mpmath_lambda', 'test_number_precision', 'test_mpmath_precision', 'test_math_transl', 'test_mpmath_transl', 'test_exponentiation', 'test_sqrt', 'test_trig', 'test_vector_simple', 'test_vector_discontinuous', 'test_trig_symbolic', 'test_trig_float', 'test_docs', 'test_math', 'test_sin', 'test_matrix', 'test_issue9474', 'test_integral', 'test_sym_single_arg', 'test_sym_list_args', 'test_sym_integral', 'test_namespace_order', 'test_namespace_type', 'test_imps', 'test_imps_errors', 'test_imps_wrong_args', 'test_lambdify_imps', 'test_dummification', 'test_python_keywords', 'test_lambdify_docstring', 'test_special_printers', 'test_true_false', 'test_issue_2790', 'test_issue_12092', 'test_ITE', 'test_Min_Max', 'test_issue_12173', 'test_sinc_mpmath', 'test_lambdify_dummy_arg', 'test_lambdify_mixed_symbol_dummy_args', 'test_lambdify_inspect'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-15011: resolved: True
+2025-08-22 02:56:26,380 - INFO - Attempting to stop container sweb.eval.sympy__sympy-15011.lite_gpt_all...
+2025-08-22 02:56:43,101 - INFO - Attempting to remove container sweb.eval.sympy__sympy-15011.lite_gpt_all...
+2025-08-22 02:56:43,987 - INFO - Container sweb.eval.sympy__sympy-15011.lite_gpt_all removed.
+2025-08-22 02:56:43,987 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-15011:latest...
+2025-08-22 02:56:45,598 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-15011:latest removed.

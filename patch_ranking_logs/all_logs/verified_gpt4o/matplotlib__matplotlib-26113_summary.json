@@ -1,0 +1,52 @@
+{
+  "instance_id": "matplotlib__matplotlib-26113",
+  "container_id": "fc79984e76a5a43b48e093f49cdde3fccb658f5d2fe9fd172023f4bd4b7af52e",
+  "regression": {
+    "results": [
+      {
+        "patch_file": "all_patches/verified_gpt4o_all_unique_patches/matplotlib__matplotlib-26113/dedup_patch_0.jsonl",
+        "inst": "matplotlib__matplotlib-26113",
+        "passed": 4,
+        "failed": 0
+      }
+    ],
+    "top_passed": 4,
+    "top_subset_size": 1
+  },
+  "reproduction": {
+    "lib/matplotlib/tests/test_axes.py::test_hexbin_log#1": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "lib/matplotlib/tests/test_axes.py::test_hexbin_log_clim#2": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "lib/matplotlib/tests/test_axes.py::test_hexbin_log#3": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "lib/reproduce_bug.py#4": {
+      "repro_fails_on_clean": true,
+      "outcomes": [
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/matplotlib__matplotlib-26113/dedup_patch_0.jsonl",
+          "inst": "matplotlib__matplotlib-26113",
+          "passed": false
+        }
+      ]
+    },
+    "lib/matplotlib/tests/test_axes.py::test_hexbin_linear#5": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "lib/matplotlib/tests/test_axes.py::test_hexbin_log_clim#6": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "lib/matplotlib/tests/test_axes.py::test_hexbin_log_clim#7": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    }
+  }
+}

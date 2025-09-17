@@ -1,0 +1,54 @@
+2025-09-04 06:27:17,911 - INFO - Creating container for matplotlib__matplotlib-24265...
+2025-09-04 06:27:22,091 - INFO - Container for matplotlib__matplotlib-24265 created: 56ab4b55c56c276ef9558201e737030b2ca8a1d7db7951e5b6c8ce6989fb5cbd
+2025-09-04 06:27:22,853 - INFO - Container for matplotlib__matplotlib-24265 started: 56ab4b55c56c276ef9558201e737030b2ca8a1d7db7951e5b6c8ce6989fb5cbd
+2025-09-04 06:27:22,853 - INFO - Intermediate patch for matplotlib__matplotlib-24265 written to logs/run_evaluation/lite_claude_all/agentless_claude/matplotlib__matplotlib-24265/patch.diff, now applying to container...
+2025-09-04 06:27:22,964 - INFO - >>>>> Applied Patch:
+/tmp/patch.diff:9: trailing whitespace.
+    
+/tmp/patch.diff:13: trailing whitespace.
+    
+Checking patch lib/matplotlib/style/core.py...
+Applied patch lib/matplotlib/style/core.py cleanly.
+warning: 2 lines add whitespace errors.
+
+2025-09-04 06:27:24,121 - INFO - Git diff before:
+diff --git a/lib/matplotlib/style/core.py b/lib/matplotlib/style/core.py
+index fb0a5426e6..4bf6a41fda 100644
+--- a/lib/matplotlib/style/core.py
++++ b/lib/matplotlib/style/core.py
+@@ -255,6 +255,11 @@ def reload_library():
+     """Reload the style library."""
+     global library
+     library = update_user_library(_base_library)
++    
++    # Add backwards compatibility aliases for seaborn styles
++    if 'seaborn-v0_8-colorblind' in library:
++        library['seaborn-colorblind'] = library['seaborn-v0_8-colorblind']
++    
+     available[:] = sorted(library.keys())
+2025-09-04 06:27:24,121 - INFO - Eval script for matplotlib__matplotlib-24265 written to logs/run_evaluation/lite_claude_all/agentless_claude/matplotlib__matplotlib-24265/eval.sh; copying to container...
+2025-09-04 06:28:29,529 - INFO - Test runtime: 65.33 seconds
+2025-09-04 06:28:29,530 - INFO - Test output for matplotlib__matplotlib-24265 written to logs/run_evaluation/lite_claude_all/agentless_claude/matplotlib__matplotlib-24265/test_output.txt
+2025-09-04 06:28:29,597 - INFO - Git diff after:
+diff --git a/lib/matplotlib/style/core.py b/lib/matplotlib/style/core.py
+index fb0a5426e6..4bf6a41fda 100644
+--- a/lib/matplotlib/style/core.py
++++ b/lib/matplotlib/style/core.py
+@@ -255,6 +255,11 @@ def reload_library():
+     """Reload the style library."""
+     global library
+     library = update_user_library(_base_library)
++    
++    # Add backwards compatibility aliases for seaborn styles
++    if 'seaborn-v0_8-colorblind' in library:
++        library['seaborn-colorblind'] = library['seaborn-v0_8-colorblind']
++    
+     available[:] = sorted(library.keys())
+2025-09-04 06:28:29,597 - INFO - Grading answer for matplotlib__matplotlib-24265...
+2025-09-04 06:28:29,598 - INFO - report: {'matplotlib__matplotlib-24265': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['lib/matplotlib/tests/test_style.py::test_deprecated_seaborn_styles']}, 'PASS_TO_PASS': {'success': ['lib/matplotlib/tests/test_style.py::test_invalid_rc_warning_includes_filename', 'lib/matplotlib/tests/test_style.py::test_available', 'lib/matplotlib/tests/test_style.py::test_use', 'lib/matplotlib/tests/test_style.py::test_use_url', 'lib/matplotlib/tests/test_style.py::test_single_path', 'lib/matplotlib/tests/test_style.py::test_context', 'lib/matplotlib/tests/test_style.py::test_context_with_dict', 'lib/matplotlib/tests/test_style.py::test_context_with_dict_after_namedstyle', 'lib/matplotlib/tests/test_style.py::test_context_with_dict_before_namedstyle', 'lib/matplotlib/tests/test_style.py::test_context_with_union_of_dict_and_namedstyle', 'lib/matplotlib/tests/test_style.py::test_context_with_badparam', 'lib/matplotlib/tests/test_style.py::test_alias[mpl20]', 'lib/matplotlib/tests/test_style.py::test_alias[mpl15]', 'lib/matplotlib/tests/test_style.py::test_xkcd_no_cm', 'lib/matplotlib/tests/test_style.py::test_xkcd_cm', 'lib/matplotlib/tests/test_style.py::test_up_to_date_blacklist'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for matplotlib__matplotlib-24265: resolved: False
+2025-09-04 06:28:29,598 - INFO - Attempting to stop container sweb.eval.matplotlib__matplotlib-24265.lite_claude_all...
+2025-09-04 06:28:47,607 - INFO - Attempting to remove container sweb.eval.matplotlib__matplotlib-24265.lite_claude_all...
+2025-09-04 06:28:47,659 - INFO - Container sweb.eval.matplotlib__matplotlib-24265.lite_claude_all removed.
+2025-09-04 06:28:47,660 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-24265:latest...
+2025-09-04 06:28:51,057 - INFO - Image swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-24265:latest removed.

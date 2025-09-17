@@ -1,0 +1,49 @@
+2025-08-25 02:57:36,275 - INFO - Creating container for pydata__xarray-3677...
+2025-08-25 02:57:36,392 - INFO - Container for pydata__xarray-3677 created: b606acf9833978286f6c4dff1687c4a4b5c56b5c7d7e3762844682d4a963a075
+2025-08-25 02:57:39,586 - INFO - Container for pydata__xarray-3677 started: b606acf9833978286f6c4dff1687c4a4b5c56b5c7d7e3762844682d4a963a075
+2025-08-25 02:57:39,587 - INFO - Intermediate patch for pydata__xarray-3677 written to logs/run_evaluation/verified_claude_new/agentless_claude/pydata__xarray-3677/patch.diff, now applying to container...
+2025-08-25 02:57:39,777 - INFO - >>>>> Applied Patch:
+Checking patch xarray/core/merge.py...
+Applied patch xarray/core/merge.py cleanly.
+
+2025-08-25 02:57:39,961 - INFO - Git diff before:
+diff --git a/xarray/core/merge.py b/xarray/core/merge.py
+index 10c7804d..d0d4e7a7 100644
+--- a/xarray/core/merge.py
++++ b/xarray/core/merge.py
+@@ -387,6 +387,9 @@ def coerce_pandas_values(objects: Iterable["CoercibleMapping"]) -> List["Dataset
+     for obj in objects:
+         if isinstance(obj, Dataset):
+             variables: "DatasetLike" = obj
++        elif isinstance(obj, DataArray):
++            # Convert DataArray to Dataset
++            variables = obj._to_dataset_whole(obj.name)
+         else:
+             variables = {}
+             if isinstance(obj, PANDAS_TYPES):
+2025-08-25 02:57:39,961 - INFO - Eval script for pydata__xarray-3677 written to logs/run_evaluation/verified_claude_new/agentless_claude/pydata__xarray-3677/eval.sh; copying to container...
+2025-08-25 02:57:50,401 - INFO - Test runtime: 9.98 seconds
+2025-08-25 02:57:50,402 - INFO - Test output for pydata__xarray-3677 written to logs/run_evaluation/verified_claude_new/agentless_claude/pydata__xarray-3677/test_output.txt
+2025-08-25 02:57:50,553 - INFO - Git diff after:
+diff --git a/xarray/core/merge.py b/xarray/core/merge.py
+index 10c7804d..d0d4e7a7 100644
+--- a/xarray/core/merge.py
++++ b/xarray/core/merge.py
+@@ -387,6 +387,9 @@ def coerce_pandas_values(objects: Iterable["CoercibleMapping"]) -> List["Dataset
+     for obj in objects:
+         if isinstance(obj, Dataset):
+             variables: "DatasetLike" = obj
++        elif isinstance(obj, DataArray):
++            # Convert DataArray to Dataset
++            variables = obj._to_dataset_whole(obj.name)
+         else:
+             variables = {}
+             if isinstance(obj, PANDAS_TYPES):
+2025-08-25 02:57:50,553 - INFO - Grading answer for pydata__xarray-3677...
+2025-08-25 02:57:50,554 - INFO - report: {'pydata__xarray-3677': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['xarray/tests/test_merge.py::TestMergeMethod::test_merge_dataarray'], 'failure': []}, 'PASS_TO_PASS': {'success': ['xarray/tests/test_merge.py::TestMergeInternals::test_broadcast_dimension_size', 'xarray/tests/test_merge.py::TestMergeFunction::test_merge_arrays', 'xarray/tests/test_merge.py::TestMergeFunction::test_merge_datasets', 'xarray/tests/test_merge.py::TestMergeFunction::test_merge_dataarray_unnamed', 'xarray/tests/test_merge.py::TestMergeFunction::test_merge_dicts_simple', 'xarray/tests/test_merge.py::TestMergeFunction::test_merge_dicts_dims', 'xarray/tests/test_merge.py::TestMergeFunction::test_merge_error', 'xarray/tests/test_merge.py::TestMergeFunction::test_merge_alignment_error', 'xarray/tests/test_merge.py::TestMergeFunction::test_merge_wrong_input_error', 'xarray/tests/test_merge.py::TestMergeFunction::test_merge_no_conflicts_single_var', 'xarray/tests/test_merge.py::TestMergeFunction::test_merge_no_conflicts_multi_var', 'xarray/tests/test_merge.py::TestMergeFunction::test_merge_no_conflicts_preserve_attrs', 'xarray/tests/test_merge.py::TestMergeFunction::test_merge_no_conflicts_broadcast', 'xarray/tests/test_merge.py::TestMergeMethod::test_merge', 'xarray/tests/test_merge.py::TestMergeMethod::test_merge_broadcast_equals', 'xarray/tests/test_merge.py::TestMergeMethod::test_merge_compat', 'xarray/tests/test_merge.py::TestMergeMethod::test_merge_auto_align', 'xarray/tests/test_merge.py::TestMergeMethod::test_merge_fill_value[fill_value0]', 'xarray/tests/test_merge.py::TestMergeMethod::test_merge_fill_value[2]', 'xarray/tests/test_merge.py::TestMergeMethod::test_merge_fill_value[2.0]', 'xarray/tests/test_merge.py::TestMergeMethod::test_merge_no_conflicts'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for pydata__xarray-3677: resolved: True
+2025-08-25 02:57:50,554 - INFO - Attempting to stop container sweb.eval.pydata__xarray-3677.verified_claude_new...
+2025-08-25 02:58:06,973 - INFO - Attempting to remove container sweb.eval.pydata__xarray-3677.verified_claude_new...
+2025-08-25 02:58:13,535 - INFO - Container sweb.eval.pydata__xarray-3677.verified_claude_new removed.
+2025-08-25 02:58:13,537 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.pydata_1776_xarray-3677:latest...
+2025-08-25 02:58:13,965 - INFO - Image swebench/sweb.eval.x86_64.pydata_1776_xarray-3677:latest removed.

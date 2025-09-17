@@ -1,0 +1,77 @@
+2025-08-25 03:03:26,965 - INFO - Creating container for sympy__sympy-15976...
+2025-08-25 03:03:27,159 - INFO - Container for sympy__sympy-15976 created: d0c1cb0a7f5d53be60f5553589cf696fa2dd50a8b5b188f2a453f205e5c93346
+2025-08-25 03:03:30,986 - INFO - Container for sympy__sympy-15976 started: d0c1cb0a7f5d53be60f5553589cf696fa2dd50a8b5b188f2a453f205e5c93346
+2025-08-25 03:03:30,987 - INFO - Intermediate patch for sympy__sympy-15976 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-15976/patch.diff, now applying to container...
+2025-08-25 03:03:31,497 - INFO - >>>>> Applied Patch:
+Checking patch sympy/printing/mathml.py...
+Applied patch sympy/printing/mathml.py cleanly.
+
+2025-08-25 03:03:32,033 - INFO - Git diff before:
+diff --git a/sympy/printing/mathml.py b/sympy/printing/mathml.py
+index 3f8b8d49e..7c3da7e2a 100644
+--- a/sympy/printing/mathml.py
++++ b/sympy/printing/mathml.py
+@@ -772,10 +772,19 @@ def translate(s):
+             else:
+                 return s
+ 
+-        name, supers, subs = split_super_sub(sym.name)
+-        name = translate(name)
+-        supers = [translate(sup) for sup in supers]
+-        subs = [translate(sub) for sub in subs]
++        # Check if the symbol name ends with digits
++        import re
++        if re.match(r'^[a-zA-Z]+\d+$', sym.name):
++            # If it's a simple symbol with numeric suffix, treat it as a single name
++            name = sym.name
++            supers = []
++            subs = []
++        else:
++            # Otherwise split as usual
++            name, supers, subs = split_super_sub(sym.name)
++            name = translate(name)
++            supers = [translate(sup) for sup in supers]
++            subs = [translate(sub) for sub in subs]
+ 
+         mname = self.dom.createElement('mi')
+         mname.appendChild(self.dom.createTextNode(name))
+2025-08-25 03:03:32,034 - INFO - Eval script for sympy__sympy-15976 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-15976/eval.sh; copying to container...
+2025-08-25 03:03:37,778 - INFO - Test runtime: 5.53 seconds
+2025-08-25 03:03:37,778 - INFO - Test output for sympy__sympy-15976 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-15976/test_output.txt
+2025-08-25 03:03:38,468 - INFO - Git diff after:
+diff --git a/sympy/printing/mathml.py b/sympy/printing/mathml.py
+index 3f8b8d49e..7c3da7e2a 100644
+--- a/sympy/printing/mathml.py
++++ b/sympy/printing/mathml.py
+@@ -772,10 +772,19 @@ def translate(s):
+             else:
+                 return s
+ 
+-        name, supers, subs = split_super_sub(sym.name)
+-        name = translate(name)
+-        supers = [translate(sup) for sup in supers]
+-        subs = [translate(sub) for sub in subs]
++        # Check if the symbol name ends with digits
++        import re
++        if re.match(r'^[a-zA-Z]+\d+$', sym.name):
++            # If it's a simple symbol with numeric suffix, treat it as a single name
++            name = sym.name
++            supers = []
++            subs = []
++        else:
++            # Otherwise split as usual
++            name, supers, subs = split_super_sub(sym.name)
++            name = translate(name)
++            supers = [translate(sup) for sup in supers]
++            subs = [translate(sub) for sub in subs]
+ 
+         mname = self.dom.createElement('mi')
+         mname.appendChild(self.dom.createTextNode(name))
+2025-08-25 03:03:38,468 - INFO - Grading answer for sympy__sympy-15976...
+2025-08-25 03:03:38,470 - INFO - report: {'sympy__sympy-15976': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_presentation_symbol']}, 'PASS_TO_PASS': {'success': ['test_mathml_printer', 'test_content_printmethod', 'test_content_mathml_core', 'test_content_mathml_functions', 'test_content_mathml_limits', 'test_content_mathml_integrals', 'test_content_mathml_matrices', 'test_content_mathml_sums', 'test_content_mathml_tuples', 'test_content_mathml_add', 'test_content_mathml_Rational', 'test_content_mathml_constants', 'test_content_mathml_trig', 'test_content_mathml_relational', 'test_content_symbol', 'test_content_mathml_greek', 'test_content_mathml_order', 'test_content_settings', 'test_presentation_printmethod', 'test_presentation_mathml_core', 'test_presentation_mathml_functions', 'test_presentation_mathml_limits', 'test_presentation_mathml_integrals', 'test_presentation_mathml_matrices', 'test_presentation_mathml_sums', 'test_presentation_mathml_add', 'test_presentation_mathml_Rational', 'test_presentation_mathml_constants', 'test_presentation_mathml_trig', 'test_presentation_mathml_relational', 'test_presentation_mathml_greek', 'test_presentation_mathml_order', 'test_presentation_settings', 'test_toprettyxml_hooking', 'test_print_basic', 'test_root_notation_print', 'test_print_matrix_symbol'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-15976: resolved: False
+2025-08-25 03:03:38,470 - INFO - Attempting to stop container sweb.eval.sympy__sympy-15976.verified_claude_new...
+2025-08-25 03:03:54,371 - INFO - Attempting to remove container sweb.eval.sympy__sympy-15976.verified_claude_new...
+2025-08-25 03:03:54,443 - INFO - Container sweb.eval.sympy__sympy-15976.verified_claude_new removed.
+2025-08-25 03:03:54,443 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-15976:latest...
+2025-08-25 03:03:54,713 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-15976:latest removed.

@@ -1,0 +1,154 @@
+{
+  "instance_id": "psf__requests-1766",
+  "container_id": "e8ccc28383ae6052926534d47178eda577e3365e164c295dbe46b238ba39d3bc",
+  "regression": {
+    "results": [
+      {
+        "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_0.jsonl",
+        "inst": "psf__requests-1766",
+        "passed": 2,
+        "failed": 0
+      },
+      {
+        "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_1.jsonl",
+        "inst": "psf__requests-1766",
+        "passed": 2,
+        "failed": 0
+      },
+      {
+        "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_2.jsonl",
+        "inst": "psf__requests-1766",
+        "passed": 2,
+        "failed": 0
+      }
+    ],
+    "top_passed": 2,
+    "top_subset_size": 3
+  },
+  "reproduction": {
+    "test_requests.py::RequestsTestCase::test_digest_auth_qop_options_quoted#1": {
+      "repro_fails_on_clean": true,
+      "outcomes": [
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_0.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": false
+        },
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_1.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": false
+        },
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_2.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": false
+        }
+      ]
+    },
+    "test_requests.py::RequestsTestCase::test_DIGEST_AUTH_QOP_OPTIONS_QUOTED#2": {
+      "repro_fails_on_clean": true,
+      "outcomes": [
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_0.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": true
+        },
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_1.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": true
+        },
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_2.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": false
+        }
+      ]
+    },
+    "test_requests.py::RequestsTestCase::test_digest_auth_qop_options_quoted#3": {
+      "repro_fails_on_clean": true,
+      "outcomes": [
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_0.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": true
+        },
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_1.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": true
+        },
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_2.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": true
+        }
+      ]
+    },
+    "test_requests.py::RequestsTestCase::test_digest_auth_qop_options_quoted#4": {
+      "repro_fails_on_clean": true,
+      "outcomes": [
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_0.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": false
+        },
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_1.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": false
+        },
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_2.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": false
+        }
+      ]
+    },
+    "reproduce_bug.py#5": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "test_requests.py::RequestsTestCase::test_digest_auth_qop_options_quoted#6": {
+      "repro_fails_on_clean": true,
+      "outcomes": [
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_0.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": false
+        },
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_1.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": false
+        },
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_2.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": false
+        }
+      ]
+    },
+    "test_requests.py::RequestsTestCase::test_DIGEST_AUTH_QOP_OPTIONS_QUOTED#7": {
+      "repro_fails_on_clean": true,
+      "outcomes": [
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_0.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": true
+        },
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_1.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": true
+        },
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/psf__requests-1766/dedup_patch_2.jsonl",
+          "inst": "psf__requests-1766",
+          "passed": false
+        }
+      ]
+    }
+  }
+}

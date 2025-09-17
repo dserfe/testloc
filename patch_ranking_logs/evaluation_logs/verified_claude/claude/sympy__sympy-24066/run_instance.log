@@ -1,0 +1,49 @@
+2025-08-25 03:04:39,310 - INFO - Creating container for sympy__sympy-24066...
+2025-08-25 03:04:39,408 - INFO - Container for sympy__sympy-24066 created: 3fc9ee2b5a8d6780efa27897f56fc93e44a0526c3eb28d00b4b63f2736ee69fc
+2025-08-25 03:04:46,450 - INFO - Container for sympy__sympy-24066 started: 3fc9ee2b5a8d6780efa27897f56fc93e44a0526c3eb28d00b4b63f2736ee69fc
+2025-08-25 03:04:46,450 - INFO - Intermediate patch for sympy__sympy-24066 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-24066/patch.diff, now applying to container...
+2025-08-25 03:04:47,166 - INFO - >>>>> Applied Patch:
+Checking patch sympy/physics/units/dimensions.py...
+Applied patch sympy/physics/units/dimensions.py cleanly.
+
+2025-08-25 03:04:47,792 - INFO - Git diff before:
+diff --git a/sympy/physics/units/dimensions.py b/sympy/physics/units/dimensions.py
+index 0ff7e4fd0a..f4727354bc 100644
+--- a/sympy/physics/units/dimensions.py
++++ b/sympy/physics/units/dimensions.py
+@@ -410,7 +410,8 @@ def _get_dimensional_dependencies_for_name(self, dimension):
+                     else:
+                         raise TypeError("The input argument for the function {} must be dimensionless or have dimensions of angle.".format(dimension.func))
+                 else:
+-                    if all(item == {} for item in dicts):
++                    # For functions like exp, all arguments must reduce to dimensionless quantities
++                    if all(self.is_dimensionless(Dimension._from_dimensional_dependencies(item)) for item in dicts):
+                         return {}
+                     else:
+                         raise TypeError("The input arguments for the function {} must be dimensionless.".format(dimension.func))
+2025-08-25 03:04:47,792 - INFO - Eval script for sympy__sympy-24066 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-24066/eval.sh; copying to container...
+2025-08-25 03:04:56,311 - INFO - Test runtime: 7.63 seconds
+2025-08-25 03:04:56,311 - INFO - Test output for sympy__sympy-24066 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-24066/test_output.txt
+2025-08-25 03:04:56,516 - INFO - Git diff after:
+diff --git a/sympy/physics/units/dimensions.py b/sympy/physics/units/dimensions.py
+index 0ff7e4fd0a..f4727354bc 100644
+--- a/sympy/physics/units/dimensions.py
++++ b/sympy/physics/units/dimensions.py
+@@ -410,7 +410,8 @@ def _get_dimensional_dependencies_for_name(self, dimension):
+                     else:
+                         raise TypeError("The input argument for the function {} must be dimensionless or have dimensions of angle.".format(dimension.func))
+                 else:
+-                    if all(item == {} for item in dicts):
++                    # For functions like exp, all arguments must reduce to dimensionless quantities
++                    if all(self.is_dimensionless(Dimension._from_dimensional_dependencies(item)) for item in dicts):
+                         return {}
+                     else:
+                         raise TypeError("The input arguments for the function {} must be dimensionless.".format(dimension.func))
+2025-08-25 03:04:56,516 - INFO - Grading answer for sympy__sympy-24066...
+2025-08-25 03:04:56,517 - INFO - report: {'sympy__sympy-24066': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_issue_24062']}, 'PASS_TO_PASS': {'success': ['test_str_repr', 'test_eq', 'test_convert_to', 'test_Quantity_definition', 'test_abbrev', 'test_print', 'test_Quantity_eq', 'test_add_sub', 'test_quantity_abs', 'test_check_unit_consistency', 'test_mul_div', 'test_units', 'test_issue_quart', 'test_issue_5565', 'test_find_unit', 'test_Quantity_derivative', 'test_quantity_postprocessing', 'test_factor_and_dimension', 'test_dimensional_expr_of_derivative', 'test_get_dimensional_expr_with_function', 'test_binary_information', 'test_conversion_with_2_nonstandard_dimensions', 'test_eval_subs', 'test_issue_14932', 'test_issue_14547', 'test_deprecated_quantity_methods', 'test_issue_22164', 'test_issue_22819', 'test_issue_20288', 'test_prefixed_property'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-24066: resolved: False
+2025-08-25 03:04:56,517 - INFO - Attempting to stop container sweb.eval.sympy__sympy-24066.verified_claude_new...
+2025-08-25 03:05:12,035 - INFO - Attempting to remove container sweb.eval.sympy__sympy-24066.verified_claude_new...
+2025-08-25 03:05:12,108 - INFO - Container sweb.eval.sympy__sympy-24066.verified_claude_new removed.
+2025-08-25 03:05:12,109 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-24066:latest...
+2025-08-25 03:05:12,249 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-24066:latest removed.

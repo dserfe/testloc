@@ -1,0 +1,47 @@
+2025-08-25 03:02:23,656 - INFO - Creating container for sphinx-doc__sphinx-7440...
+2025-08-25 03:02:24,304 - INFO - Container for sphinx-doc__sphinx-7440 created: 6931c7a8af86ed36df5d32eeda806b1b492df0fac0acf5ed0b79c02f21511543
+2025-08-25 03:02:27,912 - INFO - Container for sphinx-doc__sphinx-7440 started: 6931c7a8af86ed36df5d32eeda806b1b492df0fac0acf5ed0b79c02f21511543
+2025-08-25 03:02:27,913 - INFO - Intermediate patch for sphinx-doc__sphinx-7440 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-7440/patch.diff, now applying to container...
+2025-08-25 03:02:29,011 - INFO - >>>>> Applied Patch:
+Checking patch sphinx/domains/std.py...
+Applied patch sphinx/domains/std.py cleanly.
+
+2025-08-25 03:02:29,655 - INFO - Git diff before:
+diff --git a/sphinx/domains/std.py b/sphinx/domains/std.py
+index d820cfe5c..edc110d2a 100644
+--- a/sphinx/domains/std.py
++++ b/sphinx/domains/std.py
+@@ -305,7 +305,7 @@ def make_glossary_term(env: "BuildEnvironment", textnodes: Iterable[Node], index
+         term['ids'].append(node_id)
+ 
+     std = cast(StandardDomain, env.get_domain('std'))
+-    std.note_object('term', termtext.lower(), node_id, location=term)
++    std.note_object('term', termtext, node_id, location=term)
+ 
+     # add an index entry too
+     indexnode = addnodes.index()
+2025-08-25 03:02:29,655 - INFO - Eval script for sphinx-doc__sphinx-7440 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-7440/eval.sh; copying to container...
+2025-08-25 03:02:36,023 - INFO - Test runtime: 6.01 seconds
+2025-08-25 03:02:36,024 - INFO - Test output for sphinx-doc__sphinx-7440 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-7440/test_output.txt
+2025-08-25 03:02:36,205 - INFO - Git diff after:
+diff --git a/sphinx/domains/std.py b/sphinx/domains/std.py
+index d820cfe5c..edc110d2a 100644
+--- a/sphinx/domains/std.py
++++ b/sphinx/domains/std.py
+@@ -305,7 +305,7 @@ def make_glossary_term(env: "BuildEnvironment", textnodes: Iterable[Node], index
+         term['ids'].append(node_id)
+ 
+     std = cast(StandardDomain, env.get_domain('std'))
+-    std.note_object('term', termtext.lower(), node_id, location=term)
++    std.note_object('term', termtext, node_id, location=term)
+ 
+     # add an index entry too
+     indexnode = addnodes.index()
+2025-08-25 03:02:36,211 - INFO - Grading answer for sphinx-doc__sphinx-7440...
+2025-08-25 03:02:36,225 - INFO - report: {'sphinx-doc__sphinx-7440': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/test_domain_std.py::test_glossary'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/test_domain_std.py::test_process_doc_handle_figure_caption', 'tests/test_domain_std.py::test_process_doc_handle_table_title', 'tests/test_domain_std.py::test_get_full_qualified_name', 'tests/test_domain_std.py::test_glossary_warning', 'tests/test_domain_std.py::test_glossary_comment', 'tests/test_domain_std.py::test_glossary_comment2', 'tests/test_domain_std.py::test_glossary_sorted', 'tests/test_domain_std.py::test_glossary_alphanumeric', 'tests/test_domain_std.py::test_glossary_conflicted_labels', 'tests/test_domain_std.py::test_cmdoption', 'tests/test_domain_std.py::test_multiple_cmdoptions', 'tests/test_domain_std.py::test_disabled_docref'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sphinx-doc__sphinx-7440: resolved: True
+2025-08-25 03:02:36,225 - INFO - Attempting to stop container sweb.eval.sphinx-doc__sphinx-7440.verified_claude_new...
+2025-08-25 03:02:52,876 - INFO - Attempting to remove container sweb.eval.sphinx-doc__sphinx-7440.verified_claude_new...
+2025-08-25 03:02:52,922 - INFO - Container sweb.eval.sphinx-doc__sphinx-7440.verified_claude_new removed.
+2025-08-25 03:02:52,922 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-7440:latest...
+2025-08-25 03:02:53,164 - INFO - Image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-7440:latest removed.

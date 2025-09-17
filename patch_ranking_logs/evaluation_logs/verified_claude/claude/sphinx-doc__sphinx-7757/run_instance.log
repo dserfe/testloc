@@ -1,0 +1,53 @@
+2025-08-25 03:02:23,544 - INFO - Creating container for sphinx-doc__sphinx-7757...
+2025-08-25 03:02:24,310 - INFO - Container for sphinx-doc__sphinx-7757 created: 27a990ac62e085aff554999202d5cdf4a8e30253802238523f6408b4a0032a84
+2025-08-25 03:02:30,068 - INFO - Container for sphinx-doc__sphinx-7757 started: 27a990ac62e085aff554999202d5cdf4a8e30253802238523f6408b4a0032a84
+2025-08-25 03:02:30,069 - INFO - Intermediate patch for sphinx-doc__sphinx-7757 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-7757/patch.diff, now applying to container...
+2025-08-25 03:02:30,326 - INFO - >>>>> Applied Patch:
+Checking patch sphinx/domains/python.py...
+Applied patch sphinx/domains/python.py cleanly.
+
+2025-08-25 03:02:30,741 - INFO - Git diff before:
+diff --git a/sphinx/domains/python.py b/sphinx/domains/python.py
+index fc1136ae2..b8ad04636 100644
+--- a/sphinx/domains/python.py
++++ b/sphinx/domains/python.py
+@@ -174,10 +174,9 @@ def _parse_arglist(arglist: str) -> addnodes.desc_parameterlist:
+         if param.default is not param.empty:
+             if param.annotation is not param.empty:
+                 node += nodes.Text(' ')
+-                node += addnodes.desc_sig_operator('', '=')
++            node += addnodes.desc_sig_operator('', '=')
++            if param.annotation is not param.empty:
+                 node += nodes.Text(' ')
+-            else:
+-                node += addnodes.desc_sig_operator('', '=')
+             node += nodes.inline('', param.default, classes=['default_value'],
+                                  support_smartquotes=False)
+2025-08-25 03:02:30,763 - INFO - Eval script for sphinx-doc__sphinx-7757 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-7757/eval.sh; copying to container...
+2025-08-25 03:02:37,565 - INFO - Test runtime: 6.29 seconds
+2025-08-25 03:02:37,566 - INFO - Test output for sphinx-doc__sphinx-7757 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-7757/test_output.txt
+2025-08-25 03:02:37,742 - INFO - Git diff after:
+diff --git a/sphinx/domains/python.py b/sphinx/domains/python.py
+index fc1136ae2..b8ad04636 100644
+--- a/sphinx/domains/python.py
++++ b/sphinx/domains/python.py
+@@ -174,10 +174,9 @@ def _parse_arglist(arglist: str) -> addnodes.desc_parameterlist:
+         if param.default is not param.empty:
+             if param.annotation is not param.empty:
+                 node += nodes.Text(' ')
+-                node += addnodes.desc_sig_operator('', '=')
++            node += addnodes.desc_sig_operator('', '=')
++            if param.annotation is not param.empty:
+                 node += nodes.Text(' ')
+-            else:
+-                node += addnodes.desc_sig_operator('', '=')
+             node += nodes.inline('', param.default, classes=['default_value'],
+                                  support_smartquotes=False)
+2025-08-25 03:02:37,742 - INFO - Grading answer for sphinx-doc__sphinx-7757...
+2025-08-25 03:02:37,745 - INFO - report: {'sphinx-doc__sphinx-7757': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['tests/test_util_inspect.py::test_signature_from_str_positionaly_only_args']}, 'PASS_TO_PASS': {'success': ['tests/test_util_inspect.py::test_signature', 'tests/test_util_inspect.py::test_signature_partial', 'tests/test_util_inspect.py::test_signature_methods', 'tests/test_util_inspect.py::test_signature_partialmethod', 'tests/test_util_inspect.py::test_signature_annotations', 'tests/test_util_inspect.py::test_signature_annotations_py38', 'tests/test_util_inspect.py::test_signature_from_str_basic', 'tests/test_util_inspect.py::test_signature_from_str_default_values', 'tests/test_util_inspect.py::test_signature_from_str_annotations', 'tests/test_util_inspect.py::test_signature_from_str_complex_annotations', 'tests/test_util_inspect.py::test_signature_from_str_kwonly_args', 'tests/test_util_inspect.py::test_signature_from_str_invalid', 'tests/test_util_inspect.py::test_safe_getattr_with_default', 'tests/test_util_inspect.py::test_safe_getattr_with_exception', 'tests/test_util_inspect.py::test_safe_getattr_with_property_exception', 'tests/test_util_inspect.py::test_safe_getattr_with___dict___override', 'tests/test_util_inspect.py::test_dictionary_sorting', 'tests/test_util_inspect.py::test_set_sorting', 'tests/test_util_inspect.py::test_set_sorting_fallback', 'tests/test_util_inspect.py::test_frozenset_sorting', 'tests/test_util_inspect.py::test_frozenset_sorting_fallback', 'tests/test_util_inspect.py::test_dict_customtype', 'tests/test_util_inspect.py::test_isclassmethod', 'tests/test_util_inspect.py::test_isstaticmethod', 'tests/test_util_inspect.py::test_iscoroutinefunction', 'tests/test_util_inspect.py::test_isfunction', 'tests/test_util_inspect.py::test_isbuiltin', 'tests/test_util_inspect.py::test_isdescriptor', 'tests/test_util_inspect.py::test_isattributedescriptor', 'tests/test_util_inspect.py::test_isproperty', 'tests/test_util_inspect.py::test_unpartial', 'tests/test_util_inspect.py::test_getdoc_inherited_decorated_method', 'tests/test_util_inspect.py::test_is_builtin_class_method'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sphinx-doc__sphinx-7757: resolved: False
+2025-08-25 03:02:37,746 - INFO - Attempting to stop container sweb.eval.sphinx-doc__sphinx-7757.verified_claude_new...
+2025-08-25 03:02:53,403 - INFO - Attempting to remove container sweb.eval.sphinx-doc__sphinx-7757.verified_claude_new...
+2025-08-25 03:02:53,457 - INFO - Container sweb.eval.sphinx-doc__sphinx-7757.verified_claude_new removed.
+2025-08-25 03:02:53,457 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-7757:latest...
+2025-08-25 03:02:53,627 - INFO - Image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-7757:latest removed.

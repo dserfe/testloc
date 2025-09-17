@@ -1,0 +1,63 @@
+2025-08-22 02:56:15,448 - INFO - Creating container for sympy__sympy-17655...
+2025-08-22 02:56:16,312 - INFO - Container for sympy__sympy-17655 created: 51b24d38b449b54d5a73b4f643001b408679f9988cc94618641494493590bbc9
+2025-08-22 02:56:23,678 - INFO - Container for sympy__sympy-17655 started: 51b24d38b449b54d5a73b4f643001b408679f9988cc94618641494493590bbc9
+2025-08-22 02:56:23,678 - INFO - Intermediate patch for sympy__sympy-17655 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-17655/patch.diff, now applying to container...
+2025-08-22 02:56:24,129 - INFO - >>>>> Applied Patch:
+Checking patch sympy/geometry/point.py...
+Applied patch sympy/geometry/point.py cleanly.
+
+2025-08-22 02:56:25,001 - INFO - Git diff before:
+diff --git a/sympy/geometry/point.py b/sympy/geometry/point.py
+index 7c978c47be..eb57c6a9f6 100644
+--- a/sympy/geometry/point.py
++++ b/sympy/geometry/point.py
+@@ -213,6 +213,16 @@ def __add__(self, other):
+         sympy.geometry.point.Point.translate
+ 
+         """
++        from sympy.core.mul import Mul
++        if isinstance(other, Mul):
++            coeff, pt = None, None
++            for arg in other.args:
++                if isinstance(arg, Point):
++                    pt = arg
++                else:
++                    coeff = arg
++            if coeff is not None and pt is not None:
++                other = Point([simplify(coeff * x) for x in pt.args], evaluate=False)
+         try:
+             s, o = Point._normalize_dimension(self, Point(other, evaluate=False))
+         except TypeError:
+2025-08-22 02:56:25,031 - INFO - Eval script for sympy__sympy-17655 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-17655/eval.sh; copying to container...
+2025-08-22 02:56:55,465 - INFO - Test runtime: 30.06 seconds
+2025-08-22 02:56:55,466 - INFO - Test output for sympy__sympy-17655 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-17655/test_output.txt
+2025-08-22 02:56:55,681 - INFO - Git diff after:
+diff --git a/sympy/geometry/point.py b/sympy/geometry/point.py
+index 7c978c47be..eb57c6a9f6 100644
+--- a/sympy/geometry/point.py
++++ b/sympy/geometry/point.py
+@@ -213,6 +213,16 @@ def __add__(self, other):
+         sympy.geometry.point.Point.translate
+ 
+         """
++        from sympy.core.mul import Mul
++        if isinstance(other, Mul):
++            coeff, pt = None, None
++            for arg in other.args:
++                if isinstance(arg, Point):
++                    pt = arg
++                else:
++                    coeff = arg
++            if coeff is not None and pt is not None:
++                other = Point([simplify(coeff * x) for x in pt.args], evaluate=False)
+         try:
+             s, o = Point._normalize_dimension(self, Point(other, evaluate=False))
+         except TypeError:
+2025-08-22 02:56:55,681 - INFO - Grading answer for sympy__sympy-17655...
+2025-08-22 02:56:55,682 - INFO - report: {'sympy__sympy-17655': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_point', 'test_point3D']}, 'PASS_TO_PASS': {'success': ['test_Point2D', 'test_issue_9214', 'test_issue_11617', 'test_transform', 'test_concyclic_doctest_bug', 'test_arguments', 'test_unit', 'test_dot', 'test__normalize_dimension'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-17655: resolved: False
+2025-08-22 02:56:55,682 - INFO - Attempting to stop container sweb.eval.sympy__sympy-17655.lite_gpt_all...
+2025-08-22 02:57:12,708 - INFO - Attempting to remove container sweb.eval.sympy__sympy-17655.lite_gpt_all...
+2025-08-22 02:57:26,442 - INFO - Container sweb.eval.sympy__sympy-17655.lite_gpt_all removed.
+2025-08-22 02:57:26,442 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-17655:latest...
+2025-08-22 02:57:36,317 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-17655:latest removed.

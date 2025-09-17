@@ -1,0 +1,53 @@
+2025-08-25 03:03:27,524 - INFO - Creating container for sympy__sympy-15809...
+2025-08-25 03:03:27,601 - INFO - Container for sympy__sympy-15809 created: 8660bb69f9b4f4999b2adb7e20839543ac70d23e02e5512c17df960809ff71a1
+2025-08-25 03:03:33,751 - INFO - Container for sympy__sympy-15809 started: 8660bb69f9b4f4999b2adb7e20839543ac70d23e02e5512c17df960809ff71a1
+2025-08-25 03:03:33,751 - INFO - Intermediate patch for sympy__sympy-15809 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-15809/patch.diff, now applying to container...
+2025-08-25 03:03:35,114 - INFO - >>>>> Applied Patch:
+Checking patch sympy/functions/elementary/miscellaneous.py...
+Applied patch sympy/functions/elementary/miscellaneous.py cleanly.
+
+2025-08-25 03:03:36,409 - INFO - Git diff before:
+diff --git a/sympy/functions/elementary/miscellaneous.py b/sympy/functions/elementary/miscellaneous.py
+index 5f9fe73c5..824fafc73 100644
+--- a/sympy/functions/elementary/miscellaneous.py
++++ b/sympy/functions/elementary/miscellaneous.py
+@@ -340,7 +340,11 @@ def real_root(arg, n=None, evaluate=None):
+ class MinMaxBase(Expr, LatticeOp):
+     def __new__(cls, *args, **assumptions):
+         if not args:
+-            raise ValueError("The Max/Min functions must have arguments.")
++            from sympy import oo
++            if cls == Max:
++                return -oo
++            else:  # cls == Min
++                return oo
+ 
+         args = (sympify(arg) for arg in args)
+2025-08-25 03:03:36,409 - INFO - Eval script for sympy__sympy-15809 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-15809/eval.sh; copying to container...
+2025-08-25 03:03:58,288 - INFO - Test runtime: 21.21 seconds
+2025-08-25 03:03:58,289 - INFO - Test output for sympy__sympy-15809 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-15809/test_output.txt
+2025-08-25 03:03:58,672 - INFO - Git diff after:
+diff --git a/sympy/functions/elementary/miscellaneous.py b/sympy/functions/elementary/miscellaneous.py
+index 5f9fe73c5..824fafc73 100644
+--- a/sympy/functions/elementary/miscellaneous.py
++++ b/sympy/functions/elementary/miscellaneous.py
+@@ -340,7 +340,11 @@ def real_root(arg, n=None, evaluate=None):
+ class MinMaxBase(Expr, LatticeOp):
+     def __new__(cls, *args, **assumptions):
+         if not args:
+-            raise ValueError("The Max/Min functions must have arguments.")
++            from sympy import oo
++            if cls == Max:
++                return -oo
++            else:  # cls == Min
++                return oo
+ 
+         args = (sympify(arg) for arg in args)
+2025-08-25 03:03:58,672 - INFO - Grading answer for sympy__sympy-15809...
+2025-08-25 03:03:58,672 - INFO - report: {'sympy__sympy-15809': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_Min', 'test_Max'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_minmax_assumptions', 'test_issue_8413', 'test_root', 'test_real_root', 'test_rewrite_MaxMin_as_Heaviside', 'test_rewrite_MaxMin_as_Piecewise', 'test_issue_11099', 'test_issue_12638', 'test_instantiation_evaluation', 'test_rewrite_as_Abs'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-15809: resolved: True
+2025-08-25 03:03:58,673 - INFO - Attempting to stop container sweb.eval.sympy__sympy-15809.verified_claude_new...
+2025-08-25 03:04:14,936 - INFO - Attempting to remove container sweb.eval.sympy__sympy-15809.verified_claude_new...
+2025-08-25 03:04:15,030 - INFO - Container sweb.eval.sympy__sympy-15809.verified_claude_new removed.
+2025-08-25 03:04:15,030 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-15809:latest...
+2025-08-25 03:04:15,271 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-15809:latest removed.

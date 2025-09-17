@@ -1,0 +1,60 @@
+2025-08-26 05:09:53,260 - INFO - Creating container for django__django-13933...
+2025-08-26 05:09:54,881 - INFO - Container for django__django-13933 created: 42046608eaa6998aa9d69f8b61e8dde0b4ee50983279b1001cb970a1ee2f241e
+2025-08-26 05:09:55,579 - INFO - Container for django__django-13933 started: 42046608eaa6998aa9d69f8b61e8dde0b4ee50983279b1001cb970a1ee2f241e
+2025-08-26 05:09:55,579 - INFO - Intermediate patch for django__django-13933 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-13933/patch.diff, now applying to container...
+2025-08-26 05:09:55,716 - INFO - >>>>> Applied Patch:
+/tmp/patch.diff:11: trailing whitespace.
+                self.error_messages['invalid_choice'], 
+/tmp/patch.diff:12: trailing whitespace.
+                code='invalid_choice', 
+Checking patch django/forms/models.py...
+Applied patch django/forms/models.py cleanly.
+warning: 2 lines add whitespace errors.
+
+2025-08-26 05:09:56,761 - INFO - Git diff before:
+diff --git a/django/forms/models.py b/django/forms/models.py
+index 422bc5d178..578f272656 100644
+--- a/django/forms/models.py
++++ b/django/forms/models.py
+@@ -1284,7 +1284,11 @@ class ModelChoiceField(ChoiceField):
+                 value = getattr(value, key)
+             value = self.queryset.get(**{key: value})
+         except (ValueError, TypeError, self.queryset.model.DoesNotExist):
+-            raise ValidationError(self.error_messages['invalid_choice'], code='invalid_choice')
++            raise ValidationError(
++                self.error_messages['invalid_choice'], 
++                code='invalid_choice', 
++                params={'value': value}
++            )
+         return value
+ 
+     def validate(self, value):
+2025-08-26 05:09:56,761 - INFO - Eval script for django__django-13933 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-13933/eval.sh; copying to container...
+2025-08-26 05:10:01,804 - INFO - Test runtime: 4.96 seconds
+2025-08-26 05:10:01,804 - INFO - Test output for django__django-13933 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-13933/test_output.txt
+2025-08-26 05:10:01,885 - INFO - Git diff after:
+diff --git a/django/forms/models.py b/django/forms/models.py
+index 422bc5d178..578f272656 100644
+--- a/django/forms/models.py
++++ b/django/forms/models.py
+@@ -1284,7 +1284,11 @@ class ModelChoiceField(ChoiceField):
+                 value = getattr(value, key)
+             value = self.queryset.get(**{key: value})
+         except (ValueError, TypeError, self.queryset.model.DoesNotExist):
+-            raise ValidationError(self.error_messages['invalid_choice'], code='invalid_choice')
++            raise ValidationError(
++                self.error_messages['invalid_choice'], 
++                code='invalid_choice', 
++                params={'value': value}
++            )
+         return value
+ 
+     def validate(self, value):
+2025-08-26 05:10:01,885 - INFO - Grading answer for django__django-13933...
+2025-08-26 05:10:01,886 - INFO - report: {'django__django-13933': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_modelchoicefield_value_placeholder (forms_tests.tests.test_error_messages.ModelChoiceFieldErrorMessagesTestCase)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_modelchoicefield (forms_tests.tests.test_error_messages.ModelChoiceFieldErrorMessagesTestCase)', 'test_booleanfield (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)', 'test_charfield (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)', 'test_choicefield (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)', 'test_datefield (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)', 'test_datetimefield (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)', 'test_decimalfield (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)', 'test_emailfield (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)', 'test_error_messages_escaping (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)', 'test_filefield (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)', 'test_floatfield (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)', 'test_generic_ipaddressfield (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)', 'test_integerfield (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)', 'test_multiplechoicefield (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)', 'test_regexfield (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)', 'test_splitdatetimefield (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)', 'test_subclassing_errorlist (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)', 'test_timefield (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)', 'test_urlfield (forms_tests.tests.test_error_messages.FormsErrorMessagesTestCase)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-13933: resolved: True
+2025-08-26 05:10:01,886 - INFO - Attempting to stop container sweb.eval.django__django-13933.verified_gpt4o_all2...
+2025-08-26 05:10:20,022 - INFO - Attempting to remove container sweb.eval.django__django-13933.verified_gpt4o_all2...
+2025-08-26 05:10:20,107 - INFO - Container sweb.eval.django__django-13933.verified_gpt4o_all2 removed.
+2025-08-26 05:10:20,107 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-13933:latest...
+2025-08-26 05:10:20,985 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-13933:latest removed.

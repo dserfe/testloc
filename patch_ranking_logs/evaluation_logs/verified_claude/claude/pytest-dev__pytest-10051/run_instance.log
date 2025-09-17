@@ -1,0 +1,47 @@
+2025-08-25 02:59:00,553 - INFO - Creating container for pytest-dev__pytest-10051...
+2025-08-25 02:59:01,270 - INFO - Container for pytest-dev__pytest-10051 created: 859de776841b2bf70750d173822e63753c06aaa1019f11b02885ed26c2209f4c
+2025-08-25 02:59:02,971 - INFO - Container for pytest-dev__pytest-10051 started: 859de776841b2bf70750d173822e63753c06aaa1019f11b02885ed26c2209f4c
+2025-08-25 02:59:02,972 - INFO - Intermediate patch for pytest-dev__pytest-10051 written to logs/run_evaluation/verified_claude_new/agentless_claude/pytest-dev__pytest-10051/patch.diff, now applying to container...
+2025-08-25 02:59:03,172 - INFO - >>>>> Applied Patch:
+Checking patch src/_pytest/logging.py...
+Applied patch src/_pytest/logging.py cleanly.
+
+2025-08-25 02:59:03,456 - INFO - Git diff before:
+diff --git a/src/_pytest/logging.py b/src/_pytest/logging.py
+index a4f4214b1..3ea57544b 100644
+--- a/src/_pytest/logging.py
++++ b/src/_pytest/logging.py
+@@ -396,6 +396,8 @@ class LogCaptureFixture:
+ 
+         .. versionadded:: 3.4
+         """
++        if when == "call":
++            return self.handler.records
+         return self._item.stash[caplog_records_key].get(when, [])
+ 
+     @property
+2025-08-25 02:59:03,456 - INFO - Eval script for pytest-dev__pytest-10051 written to logs/run_evaluation/verified_claude_new/agentless_claude/pytest-dev__pytest-10051/eval.sh; copying to container...
+2025-08-25 02:59:10,449 - INFO - Test runtime: 6.91 seconds
+2025-08-25 02:59:10,450 - INFO - Test output for pytest-dev__pytest-10051 written to logs/run_evaluation/verified_claude_new/agentless_claude/pytest-dev__pytest-10051/test_output.txt
+2025-08-25 02:59:10,536 - INFO - Git diff after:
+diff --git a/src/_pytest/logging.py b/src/_pytest/logging.py
+index a4f4214b1..3ea57544b 100644
+--- a/src/_pytest/logging.py
++++ b/src/_pytest/logging.py
+@@ -396,6 +396,8 @@ class LogCaptureFixture:
+ 
+         .. versionadded:: 3.4
+         """
++        if when == "call":
++            return self.handler.records
+         return self._item.stash[caplog_records_key].get(when, [])
+ 
+     @property
+2025-08-25 02:59:10,536 - INFO - Grading answer for pytest-dev__pytest-10051...
+2025-08-25 02:59:10,538 - INFO - report: {'pytest-dev__pytest-10051': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['testing/logging/test_fixture.py::test_clear_for_call_stage'], 'failure': []}, 'PASS_TO_PASS': {'success': ['testing/logging/test_fixture.py::test_change_level', 'testing/logging/test_fixture.py::test_with_statement', 'testing/logging/test_fixture.py::test_log_access', 'testing/logging/test_fixture.py::test_messages', 'testing/logging/test_fixture.py::test_record_tuples', 'testing/logging/test_fixture.py::test_unicode', 'testing/logging/test_fixture.py::test_clear', 'testing/logging/test_fixture.py::test_caplog_captures_for_all_stages', 'testing/logging/test_fixture.py::test_fixture_help', 'testing/logging/test_fixture.py::test_change_level_undo', 'testing/logging/test_fixture.py::test_change_level_undos_handler_level', 'testing/logging/test_fixture.py::test_ini_controls_global_log_level', 'testing/logging/test_fixture.py::test_caplog_can_override_global_log_level', 'testing/logging/test_fixture.py::test_caplog_captures_despite_exception', 'testing/logging/test_fixture.py::test_log_report_captures_according_to_config_option_upon_failure'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for pytest-dev__pytest-10051: resolved: True
+2025-08-25 02:59:10,539 - INFO - Attempting to stop container sweb.eval.pytest-dev__pytest-10051.verified_claude_new...
+2025-08-25 02:59:27,237 - INFO - Attempting to remove container sweb.eval.pytest-dev__pytest-10051.verified_claude_new...
+2025-08-25 02:59:27,467 - INFO - Container sweb.eval.pytest-dev__pytest-10051.verified_claude_new removed.
+2025-08-25 02:59:27,468 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-10051:latest...
+2025-08-25 02:59:39,087 - INFO - Image swebench/sweb.eval.x86_64.pytest-dev_1776_pytest-10051:latest removed.

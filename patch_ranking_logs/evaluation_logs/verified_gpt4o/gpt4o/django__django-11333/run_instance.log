@@ -1,0 +1,47 @@
+2025-08-26 05:08:58,535 - INFO - Creating container for django__django-11333...
+2025-08-26 05:08:59,329 - INFO - Container for django__django-11333 created: e10ca1a0651084dc99e2d337705f2e3c918d2185dbb7feded7caaf41706ca6f6
+2025-08-26 05:09:06,844 - INFO - Container for django__django-11333 started: e10ca1a0651084dc99e2d337705f2e3c918d2185dbb7feded7caaf41706ca6f6
+2025-08-26 05:09:06,845 - INFO - Intermediate patch for django__django-11333 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-11333/patch.diff, now applying to container...
+2025-08-26 05:09:07,227 - INFO - >>>>> Applied Patch:
+Checking patch django/urls/resolvers.py...
+Applied patch django/urls/resolvers.py cleanly.
+
+2025-08-26 05:09:08,608 - INFO - Git diff before:
+diff --git a/django/urls/resolvers.py b/django/urls/resolvers.py
+index 247e3680c0..704a3c56e0 100644
+--- a/django/urls/resolvers.py
++++ b/django/urls/resolvers.py
+@@ -67,6 +67,10 @@ class ResolverMatch:
+ def get_resolver(urlconf=None):
+     if urlconf is None:
+         urlconf = settings.ROOT_URLCONF
++    return _get_resolver(urlconf)
++
++@functools.lru_cache(maxsize=None)
++def _get_resolver(urlconf):
+     return URLResolver(RegexPattern(r'^/'), urlconf)
+2025-08-26 05:09:08,608 - INFO - Eval script for django__django-11333 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-11333/eval.sh; copying to container...
+2025-08-26 05:09:23,453 - INFO - Test runtime: 14.68 seconds
+2025-08-26 05:09:23,453 - INFO - Test output for django__django-11333 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-11333/test_output.txt
+2025-08-26 05:09:23,601 - INFO - Git diff after:
+diff --git a/django/urls/resolvers.py b/django/urls/resolvers.py
+index 247e3680c0..704a3c56e0 100644
+--- a/django/urls/resolvers.py
++++ b/django/urls/resolvers.py
+@@ -67,6 +67,10 @@ class ResolverMatch:
+ def get_resolver(urlconf=None):
+     if urlconf is None:
+         urlconf = settings.ROOT_URLCONF
++    return _get_resolver(urlconf)
++
++@functools.lru_cache(maxsize=None)
++def _get_resolver(urlconf):
+     return URLResolver(RegexPattern(r'^/'), urlconf)
+2025-08-26 05:09:23,604 - INFO - Grading answer for django__django-11333...
+2025-08-26 05:09:23,605 - INFO - report: {'django__django-11333': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_resolver_cache_default__root_urlconf (urlpatterns.test_resolvers.ResolverCacheTests)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_str (urlpatterns.test_resolvers.RegexPatternTests)', 'test_str (urlpatterns.test_resolvers.RoutePatternTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-11333: resolved: True
+2025-08-26 05:09:23,605 - INFO - Attempting to stop container sweb.eval.django__django-11333.verified_gpt4o_all2...
+2025-08-26 05:09:39,547 - INFO - Attempting to remove container sweb.eval.django__django-11333.verified_gpt4o_all2...
+2025-08-26 05:09:40,698 - INFO - Container sweb.eval.django__django-11333.verified_gpt4o_all2 removed.
+2025-08-26 05:09:40,698 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-11333:latest...
+2025-08-26 05:09:49,977 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-11333:latest removed.

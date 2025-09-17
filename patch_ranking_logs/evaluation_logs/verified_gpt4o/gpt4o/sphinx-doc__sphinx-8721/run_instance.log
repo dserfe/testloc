@@ -1,0 +1,47 @@
+2025-08-26 05:14:03,331 - INFO - Creating container for sphinx-doc__sphinx-8721...
+2025-08-26 05:14:09,014 - INFO - Container for sphinx-doc__sphinx-8721 created: 01b7e8f50ae30b73921549fd05a8fe284289c3ff5c4a2b77a77443761fbca2a1
+2025-08-26 05:14:12,537 - INFO - Container for sphinx-doc__sphinx-8721 started: 01b7e8f50ae30b73921549fd05a8fe284289c3ff5c4a2b77a77443761fbca2a1
+2025-08-26 05:14:12,537 - INFO - Intermediate patch for sphinx-doc__sphinx-8721 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sphinx-doc__sphinx-8721/patch.diff, now applying to container...
+2025-08-26 05:14:12,812 - INFO - >>>>> Applied Patch:
+Checking patch sphinx/ext/viewcode.py...
+Applied patch sphinx/ext/viewcode.py cleanly.
+
+2025-08-26 05:14:13,265 - INFO - Git diff before:
+diff --git a/sphinx/ext/viewcode.py b/sphinx/ext/viewcode.py
+index a7d52a91c..892b9dc89 100644
+--- a/sphinx/ext/viewcode.py
++++ b/sphinx/ext/viewcode.py
+@@ -179,6 +179,8 @@ def should_generate_module_page(app: Sphinx, modname: str) -> bool:
+ 
+ 
+ def collect_pages(app: Sphinx) -> Generator[Tuple[str, Dict[str, Any], str], None, None]:
++    if app.builder.name == 'epub' and not app.config.viewcode_enable_epub:
++        return
+     env = app.builder.env
+     if not hasattr(env, '_viewcode_modules'):
+         return
+2025-08-26 05:14:13,265 - INFO - Eval script for sphinx-doc__sphinx-8721 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sphinx-doc__sphinx-8721/eval.sh; copying to container...
+2025-08-26 05:14:21,284 - INFO - Test runtime: 7.70 seconds
+2025-08-26 05:14:21,284 - INFO - Test output for sphinx-doc__sphinx-8721 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sphinx-doc__sphinx-8721/test_output.txt
+2025-08-26 05:14:21,424 - INFO - Git diff after:
+diff --git a/sphinx/ext/viewcode.py b/sphinx/ext/viewcode.py
+index a7d52a91c..892b9dc89 100644
+--- a/sphinx/ext/viewcode.py
++++ b/sphinx/ext/viewcode.py
+@@ -179,6 +179,8 @@ def should_generate_module_page(app: Sphinx, modname: str) -> bool:
+ 
+ 
+ def collect_pages(app: Sphinx) -> Generator[Tuple[str, Dict[str, Any], str], None, None]:
++    if app.builder.name == 'epub' and not app.config.viewcode_enable_epub:
++        return
+     env = app.builder.env
+     if not hasattr(env, '_viewcode_modules'):
+         return
+2025-08-26 05:14:21,424 - INFO - Grading answer for sphinx-doc__sphinx-8721...
+2025-08-26 05:14:21,438 - INFO - report: {'sphinx-doc__sphinx-8721': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/test_ext_viewcode.py::test_viewcode_epub_default'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/test_ext_viewcode.py::test_viewcode_epub_enabled', 'tests/test_ext_viewcode.py::test_linkcode', 'tests/test_ext_viewcode.py::test_local_source_files'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sphinx-doc__sphinx-8721: resolved: True
+2025-08-26 05:14:21,438 - INFO - Attempting to stop container sweb.eval.sphinx-doc__sphinx-8721.verified_gpt4o_all2...
+2025-08-26 05:14:45,463 - INFO - Attempting to remove container sweb.eval.sphinx-doc__sphinx-8721.verified_gpt4o_all2...
+2025-08-26 05:14:45,535 - INFO - Container sweb.eval.sphinx-doc__sphinx-8721.verified_gpt4o_all2 removed.
+2025-08-26 05:14:45,535 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8721:latest...
+2025-08-26 05:14:49,947 - INFO - Image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8721:latest removed.

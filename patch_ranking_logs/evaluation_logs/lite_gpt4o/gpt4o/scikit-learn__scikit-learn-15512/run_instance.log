@@ -1,0 +1,69 @@
+2025-08-22 02:53:29,324 - INFO - Creating container for scikit-learn__scikit-learn-15512...
+2025-08-22 02:53:57,540 - INFO - Container for scikit-learn__scikit-learn-15512 created: 8189605865dfd325bce203d043add94e8beee29c2623213968a5794dd246ab06
+2025-08-22 02:54:00,316 - INFO - Container for scikit-learn__scikit-learn-15512 started: 8189605865dfd325bce203d043add94e8beee29c2623213968a5794dd246ab06
+2025-08-22 02:54:00,317 - INFO - Intermediate patch for scikit-learn__scikit-learn-15512 written to logs/run_evaluation/lite_gpt_all/agentless/scikit-learn__scikit-learn-15512/patch.diff, now applying to container...
+2025-08-22 02:54:00,569 - INFO - >>>>> Applied Patch:
+Checking patch sklearn/cluster/_affinity_propagation.py...
+Applied patch sklearn/cluster/_affinity_propagation.py cleanly.
+
+2025-08-22 02:54:01,044 - INFO - Git diff before:
+diff --git a/sklearn/cluster/_affinity_propagation.py b/sklearn/cluster/_affinity_propagation.py
+index 4806afee9..c3eb402d2 100644
+--- a/sklearn/cluster/_affinity_propagation.py
++++ b/sklearn/cluster/_affinity_propagation.py
+@@ -193,13 +193,15 @@ def affinity_propagation(S, preference=None, convergence_iter=15, max_iter=200,
+             se = np.sum(e, axis=1)
+             unconverged = (np.sum((se == convergence_iter) + (se == 0))
+                            != n_samples)
+-            if (not unconverged and (K > 0)) or (it == max_iter):
++            if not unconverged and K > 0:
+                 if verbose:
+                     print("Converged after %d iterations." % it)
+                 break
+-    else:
+-        if verbose:
+-            print("Did not converge")
++        elif it == max_iter - 1:
++            if verbose:
++                print("Did not converge")
++            E[:] = False  # Mark that the algorithm did not converge
++            break
+ 
+     I = np.flatnonzero(E)
+     K = I.size  # Identify exemplars
+2025-08-22 02:54:01,048 - INFO - Eval script for scikit-learn__scikit-learn-15512 written to logs/run_evaluation/lite_gpt_all/agentless/scikit-learn__scikit-learn-15512/eval.sh; copying to container...
+2025-08-22 02:54:11,060 - INFO - Test runtime: 9.82 seconds
+2025-08-22 02:54:11,061 - INFO - Test output for scikit-learn__scikit-learn-15512 written to logs/run_evaluation/lite_gpt_all/agentless/scikit-learn__scikit-learn-15512/test_output.txt
+2025-08-22 02:54:11,697 - INFO - Git diff after:
+diff --git a/sklearn/cluster/_affinity_propagation.py b/sklearn/cluster/_affinity_propagation.py
+index 4806afee9..c3eb402d2 100644
+--- a/sklearn/cluster/_affinity_propagation.py
++++ b/sklearn/cluster/_affinity_propagation.py
+@@ -193,13 +193,15 @@ def affinity_propagation(S, preference=None, convergence_iter=15, max_iter=200,
+             se = np.sum(e, axis=1)
+             unconverged = (np.sum((se == convergence_iter) + (se == 0))
+                            != n_samples)
+-            if (not unconverged and (K > 0)) or (it == max_iter):
++            if not unconverged and K > 0:
+                 if verbose:
+                     print("Converged after %d iterations." % it)
+                 break
+-    else:
+-        if verbose:
+-            print("Did not converge")
++        elif it == max_iter - 1:
++            if verbose:
++                print("Did not converge")
++            E[:] = False  # Mark that the algorithm did not converge
++            break
+ 
+     I = np.flatnonzero(E)
+     K = I.size  # Identify exemplars
+2025-08-22 02:54:11,697 - INFO - Grading answer for scikit-learn__scikit-learn-15512...
+2025-08-22 02:54:11,698 - INFO - report: {'scikit-learn__scikit-learn-15512': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['sklearn/cluster/tests/test_affinity_propagation.py::test_affinity_propagation_non_convergence_regressiontest'], 'failure': []}, 'PASS_TO_PASS': {'success': ['sklearn/cluster/tests/test_affinity_propagation.py::test_affinity_propagation', 'sklearn/cluster/tests/test_affinity_propagation.py::test_affinity_propagation_predict', 'sklearn/cluster/tests/test_affinity_propagation.py::test_affinity_propagation_predict_error', 'sklearn/cluster/tests/test_affinity_propagation.py::test_affinity_propagation_fit_non_convergence', 'sklearn/cluster/tests/test_affinity_propagation.py::test_affinity_propagation_equal_mutual_similarities', 'sklearn/cluster/tests/test_affinity_propagation.py::test_affinity_propagation_predict_non_convergence', 'sklearn/cluster/tests/test_affinity_propagation.py::test_equal_similarities_and_preferences', 'sklearn/cluster/tests/test_affinity_propagation.py::test_affinity_propagation_convergence_warning_dense_sparse[centers0]', 'sklearn/cluster/tests/test_affinity_propagation.py::test_affinity_propagation_convergence_warning_dense_sparse[centers1]'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for scikit-learn__scikit-learn-15512: resolved: True
+2025-08-22 02:54:11,698 - INFO - Attempting to stop container sweb.eval.scikit-learn__scikit-learn-15512.lite_gpt_all...
+2025-08-22 02:54:31,228 - INFO - Attempting to remove container sweb.eval.scikit-learn__scikit-learn-15512.lite_gpt_all...
+2025-08-22 02:54:32,601 - INFO - Container sweb.eval.scikit-learn__scikit-learn-15512.lite_gpt_all removed.
+2025-08-22 02:54:32,602 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-15512:latest...
+2025-08-22 02:54:40,345 - INFO - Image swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-15512:latest removed.

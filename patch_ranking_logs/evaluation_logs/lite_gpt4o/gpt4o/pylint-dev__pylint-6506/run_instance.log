@@ -1,0 +1,51 @@
+2025-08-22 02:52:00,053 - INFO - Creating container for pylint-dev__pylint-6506...
+2025-08-22 02:52:04,696 - INFO - Container for pylint-dev__pylint-6506 created: 89e7d3c06f48b42cc4964d3500a2bbf6419ee9530f0729609c1eeeb0ad349560
+2025-08-22 02:52:06,637 - INFO - Container for pylint-dev__pylint-6506 started: 89e7d3c06f48b42cc4964d3500a2bbf6419ee9530f0729609c1eeeb0ad349560
+2025-08-22 02:52:06,638 - INFO - Intermediate patch for pylint-dev__pylint-6506 written to logs/run_evaluation/lite_gpt_all/agentless/pylint-dev__pylint-6506/patch.diff, now applying to container...
+2025-08-22 02:52:06,926 - INFO - >>>>> Applied Patch:
+Checking patch pylint/config/config_initialization.py...
+Applied patch pylint/config/config_initialization.py cleanly.
+
+2025-08-22 02:52:07,387 - INFO - Git diff before:
+diff --git a/pylint/config/config_initialization.py b/pylint/config/config_initialization.py
+index 24e453a73..13e137160 100644
+--- a/pylint/config/config_initialization.py
++++ b/pylint/config/config_initialization.py
+@@ -82,7 +82,9 @@ def _config_initialization(
+     if unrecognized_options:
+         msg = ", ".join(unrecognized_options)
+         linter.add_message("unrecognized-option", line=0, args=msg)
+-        raise _UnrecognizedOptionError(options=unrecognized_options)
++        print(f"Error: Unrecognized option(s) found: {msg}", file=sys.stderr)
++        print(linter.help())
++        sys.exit(32)
+ 
+     # Set the current module to configuration as we don't know where
+     # the --load-plugins key is coming from
+2025-08-22 02:52:07,388 - INFO - Eval script for pylint-dev__pylint-6506 written to logs/run_evaluation/lite_gpt_all/agentless/pylint-dev__pylint-6506/eval.sh; copying to container...
+2025-08-22 02:52:14,066 - INFO - Test runtime: 6.56 seconds
+2025-08-22 02:52:14,066 - INFO - Test output for pylint-dev__pylint-6506 written to logs/run_evaluation/lite_gpt_all/agentless/pylint-dev__pylint-6506/test_output.txt
+2025-08-22 02:52:15,083 - INFO - Git diff after:
+diff --git a/pylint/config/config_initialization.py b/pylint/config/config_initialization.py
+index 24e453a73..13e137160 100644
+--- a/pylint/config/config_initialization.py
++++ b/pylint/config/config_initialization.py
+@@ -82,7 +82,9 @@ def _config_initialization(
+     if unrecognized_options:
+         msg = ", ".join(unrecognized_options)
+         linter.add_message("unrecognized-option", line=0, args=msg)
+-        raise _UnrecognizedOptionError(options=unrecognized_options)
++        print(f"Error: Unrecognized option(s) found: {msg}", file=sys.stderr)
++        print(linter.help())
++        sys.exit(32)
+ 
+     # Set the current module to configuration as we don't know where
+     # the --load-plugins key is coming from
+2025-08-22 02:52:15,084 - INFO - Grading answer for pylint-dev__pylint-6506...
+2025-08-22 02:52:15,085 - INFO - report: {'pylint-dev__pylint-6506': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['tests/config/test_config.py::test_unknown_option_name', 'tests/config/test_config.py::test_unknown_short_option_name']}, 'PASS_TO_PASS': {'success': ['tests/config/test_config.py::test_can_read_toml_env_variable', 'tests/config/test_config.py::test_unknown_message_id', 'tests/config/test_config.py::test_unknown_confidence', 'tests/config/test_config.py::test_unknown_yes_no', 'tests/config/test_config.py::test_unknown_py_version', 'tests/config/test_config.py::test_short_verbose'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for pylint-dev__pylint-6506: resolved: False
+2025-08-22 02:52:15,085 - INFO - Attempting to stop container sweb.eval.pylint-dev__pylint-6506.lite_gpt_all...
+2025-08-22 02:52:55,397 - INFO - Attempting to remove container sweb.eval.pylint-dev__pylint-6506.lite_gpt_all...
+2025-08-22 02:52:55,541 - INFO - Container sweb.eval.pylint-dev__pylint-6506.lite_gpt_all removed.
+2025-08-22 02:52:55,541 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-6506:latest...
+2025-08-22 02:52:59,139 - INFO - Image swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-6506:latest removed.

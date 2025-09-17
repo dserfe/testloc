@@ -1,0 +1,81 @@
+2025-08-22 02:56:15,822 - INFO - Creating container for sympy__sympy-17630...
+2025-08-22 02:56:16,350 - INFO - Container for sympy__sympy-17630 created: 5b15de63d17207ddc1238f7fad781c86d6c9567ea6484198d36fcc71d002afa5
+2025-08-22 02:56:18,166 - INFO - Container for sympy__sympy-17630 started: 5b15de63d17207ddc1238f7fad781c86d6c9567ea6484198d36fcc71d002afa5
+2025-08-22 02:56:18,167 - INFO - Intermediate patch for sympy__sympy-17630 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-17630/patch.diff, now applying to container...
+2025-08-22 02:56:18,485 - INFO - >>>>> Applied Patch:
+Checking patch sympy/matrices/expressions/blockmatrix.py...
+Applied patch sympy/matrices/expressions/blockmatrix.py cleanly.
+
+2025-08-22 02:56:19,170 - INFO - Git diff before:
+diff --git a/sympy/matrices/expressions/blockmatrix.py b/sympy/matrices/expressions/blockmatrix.py
+index 95302a05ca..8fb8e66711 100644
+--- a/sympy/matrices/expressions/blockmatrix.py
++++ b/sympy/matrices/expressions/blockmatrix.py
+@@ -162,9 +162,23 @@ def structurally_equal(self, other):
+             and self.colblocksizes == other.colblocksizes)
+ 
+     def _blockmul(self, other):
+-        if (isinstance(other, BlockMatrix) and
+-                self.colblocksizes == other.rowblocksizes):
+-            return BlockMatrix(self.blocks*other.blocks)
++        if isinstance(other, BlockMatrix) and self.colblocksizes == other.rowblocksizes:
++            new_blocks = []
++            for i in range(self.blockshape[0]):
++                new_row = []
++                for j in range(other.blockshape[1]):
++                    sum_block = ZeroMatrix(self.rowblocksizes[i], other.colblocksizes[j])
++                    for k in range(self.blockshape[1]):
++                        prod_block = self.blocks[i, k] * other.blocks[k, j]
++                        if isinstance(prod_block, ZeroMatrix):
++                            continue
++                        if isinstance(sum_block, ZeroMatrix):
++                            sum_block = prod_block
++                        else:
++                            sum_block += prod_block
++                    new_row.append(sum_block)
++                new_blocks.append(new_row)
++            return BlockMatrix(new_blocks)
+ 
+         return self * other
+2025-08-22 02:56:19,171 - INFO - Eval script for sympy__sympy-17630 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-17630/eval.sh; copying to container...
+2025-08-22 02:56:28,851 - INFO - Test runtime: 9.31 seconds
+2025-08-22 02:56:28,852 - INFO - Test output for sympy__sympy-17630 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-17630/test_output.txt
+2025-08-22 02:56:29,568 - INFO - Git diff after:
+diff --git a/sympy/matrices/expressions/blockmatrix.py b/sympy/matrices/expressions/blockmatrix.py
+index 95302a05ca..8fb8e66711 100644
+--- a/sympy/matrices/expressions/blockmatrix.py
++++ b/sympy/matrices/expressions/blockmatrix.py
+@@ -162,9 +162,23 @@ def structurally_equal(self, other):
+             and self.colblocksizes == other.colblocksizes)
+ 
+     def _blockmul(self, other):
+-        if (isinstance(other, BlockMatrix) and
+-                self.colblocksizes == other.rowblocksizes):
+-            return BlockMatrix(self.blocks*other.blocks)
++        if isinstance(other, BlockMatrix) and self.colblocksizes == other.rowblocksizes:
++            new_blocks = []
++            for i in range(self.blockshape[0]):
++                new_row = []
++                for j in range(other.blockshape[1]):
++                    sum_block = ZeroMatrix(self.rowblocksizes[i], other.colblocksizes[j])
++                    for k in range(self.blockshape[1]):
++                        prod_block = self.blocks[i, k] * other.blocks[k, j]
++                        if isinstance(prod_block, ZeroMatrix):
++                            continue
++                        if isinstance(sum_block, ZeroMatrix):
++                            sum_block = prod_block
++                        else:
++                            sum_block += prod_block
++                    new_row.append(sum_block)
++                new_blocks.append(new_row)
++            return BlockMatrix(new_blocks)
+ 
+         return self * other
+2025-08-22 02:56:29,568 - INFO - Grading answer for sympy__sympy-17630...
+2025-08-22 02:56:29,569 - INFO - report: {'sympy__sympy-17630': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_issue_17624'], 'failure': ['test_zero_matrix_add']}, 'PASS_TO_PASS': {'success': ['test_bc_matmul', 'test_bc_matadd', 'test_bc_transpose', 'test_bc_dist_diag', 'test_block_plus_ident', 'test_BlockMatrix', 'test_block_collapse_explicit_matrices', 'test_BlockMatrix_trace', 'test_BlockMatrix_Determinant', 'test_squareBlockMatrix', 'test_BlockDiagMatrix', 'test_blockcut', 'test_reblock_2x2', 'test_deblock', 'test_sort_key', 'test_matadd_sympify', 'test_matadd_of_matrices', 'test_doit_args', 'test_generic_identity'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-17630: resolved: False
+2025-08-22 02:56:29,569 - INFO - Attempting to stop container sweb.eval.sympy__sympy-17630.lite_gpt_all...
+2025-08-22 02:56:47,568 - INFO - Attempting to remove container sweb.eval.sympy__sympy-17630.lite_gpt_all...
+2025-08-22 02:56:47,985 - INFO - Container sweb.eval.sympy__sympy-17630.lite_gpt_all removed.
+2025-08-22 02:56:47,985 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-17630:latest...
+2025-08-22 02:56:48,837 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-17630:latest removed.

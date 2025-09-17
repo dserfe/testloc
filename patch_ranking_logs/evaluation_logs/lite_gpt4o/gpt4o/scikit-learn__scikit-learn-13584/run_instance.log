@@ -1,0 +1,49 @@
+2025-08-22 02:53:28,099 - INFO - Creating container for scikit-learn__scikit-learn-13584...
+2025-08-22 02:53:57,816 - INFO - Container for scikit-learn__scikit-learn-13584 created: f9ffc2f3a66e98dbaeafebc622bbc23893b4ab02ce6f5086b3c0ff47422ea967
+2025-08-22 02:54:11,078 - INFO - Container for scikit-learn__scikit-learn-13584 started: f9ffc2f3a66e98dbaeafebc622bbc23893b4ab02ce6f5086b3c0ff47422ea967
+2025-08-22 02:54:11,078 - INFO - Intermediate patch for scikit-learn__scikit-learn-13584 written to logs/run_evaluation/lite_gpt_all/agentless/scikit-learn__scikit-learn-13584/patch.diff, now applying to container...
+2025-08-22 02:54:12,062 - INFO - >>>>> Applied Patch:
+Checking patch sklearn/utils/_pprint.py...
+Applied patch sklearn/utils/_pprint.py cleanly.
+
+2025-08-22 02:54:12,685 - INFO - Git diff before:
+diff --git a/sklearn/utils/_pprint.py b/sklearn/utils/_pprint.py
+index b8686dba5..85de73e60 100644
+--- a/sklearn/utils/_pprint.py
++++ b/sklearn/utils/_pprint.py
+@@ -401,6 +401,9 @@ def _safe_repr(object, context, maxlevels, level, changed_only=False):
+         return format % ", ".join(components), readable, recursive
+ 
+     if issubclass(typ, BaseEstimator):
++        import numpy as np
++        if isinstance(object, np.ndarray):
++            return repr(object), True, False
+         objid = id(object)
+         if maxlevels and level >= maxlevels:
+             return "{...}", False, objid in context
+2025-08-22 02:54:12,685 - INFO - Eval script for scikit-learn__scikit-learn-13584 written to logs/run_evaluation/lite_gpt_all/agentless/scikit-learn__scikit-learn-13584/eval.sh; copying to container...
+2025-08-22 02:54:22,792 - INFO - Test runtime: 9.69 seconds
+2025-08-22 02:54:22,793 - INFO - Test output for scikit-learn__scikit-learn-13584 written to logs/run_evaluation/lite_gpt_all/agentless/scikit-learn__scikit-learn-13584/test_output.txt
+2025-08-22 02:54:22,955 - INFO - Git diff after:
+diff --git a/sklearn/utils/_pprint.py b/sklearn/utils/_pprint.py
+index b8686dba5..85de73e60 100644
+--- a/sklearn/utils/_pprint.py
++++ b/sklearn/utils/_pprint.py
+@@ -401,6 +401,9 @@ def _safe_repr(object, context, maxlevels, level, changed_only=False):
+         return format % ", ".join(components), readable, recursive
+ 
+     if issubclass(typ, BaseEstimator):
++        import numpy as np
++        if isinstance(object, np.ndarray):
++            return repr(object), True, False
+         objid = id(object)
+         if maxlevels and level >= maxlevels:
+             return "{...}", False, objid in context
+2025-08-22 02:54:22,956 - INFO - Grading answer for scikit-learn__scikit-learn-13584...
+2025-08-22 02:54:22,962 - INFO - report: {'scikit-learn__scikit-learn-13584': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['sklearn/utils/tests/test_pprint.py::test_changed_only', 'sklearn/utils/tests/test_pprint.py::test_pipeline', 'sklearn/utils/tests/test_pprint.py::test_deeply_nested', 'sklearn/utils/tests/test_pprint.py::test_gridsearch', 'sklearn/utils/tests/test_pprint.py::test_gridsearch_pipeline', 'sklearn/utils/tests/test_pprint.py::test_n_max_elements_to_show']}, 'PASS_TO_PASS': {'success': ['sklearn/utils/tests/test_pprint.py::test_basic', 'sklearn/utils/tests/test_pprint.py::test_length_constraint', 'sklearn/utils/tests/test_pprint.py::test_builtin_prettyprinter'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for scikit-learn__scikit-learn-13584: resolved: False
+2025-08-22 02:54:22,962 - INFO - Attempting to stop container sweb.eval.scikit-learn__scikit-learn-13584.lite_gpt_all...
+2025-08-22 02:54:39,543 - INFO - Attempting to remove container sweb.eval.scikit-learn__scikit-learn-13584.lite_gpt_all...
+2025-08-22 02:54:39,712 - INFO - Container sweb.eval.scikit-learn__scikit-learn-13584.lite_gpt_all removed.
+2025-08-22 02:54:39,713 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-13584:latest...
+2025-08-22 02:54:45,339 - INFO - Image swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-13584:latest removed.

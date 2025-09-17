@@ -1,0 +1,72 @@
+2025-08-22 02:57:06,058 - INFO - Creating container for sympy__sympy-23191...
+2025-08-22 02:57:06,553 - INFO - Container for sympy__sympy-23191 created: cee14b0728d51547168acae392577b65eff72f701063e7ec1a33b1442dd096bf
+2025-08-22 02:57:09,240 - INFO - Container for sympy__sympy-23191 started: cee14b0728d51547168acae392577b65eff72f701063e7ec1a33b1442dd096bf
+2025-08-22 02:57:09,241 - INFO - Intermediate patch for sympy__sympy-23191 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-23191/patch.diff, now applying to container...
+2025-08-22 02:57:10,796 - INFO - >>>>> Applied Patch:
+/tmp/patch.diff:10: trailing whitespace.
+                                        '\N{RIGHT PARENTHESIS LOWER HOOK}' 
+/tmp/patch.diff:17: trailing whitespace.
+                                        '\N{RIGHT PARENTHESIS UPPER HOOK}' 
+Checking patch sympy/printing/pretty/pretty.py...
+Applied patch sympy/printing/pretty/pretty.py cleanly.
+warning: 2 lines add whitespace errors.
+
+2025-08-22 02:57:12,435 - INFO - Git diff before:
+diff --git a/sympy/printing/pretty/pretty.py b/sympy/printing/pretty/pretty.py
+index 66461181d0..8d64ca4ccb 100644
+--- a/sympy/printing/pretty/pretty.py
++++ b/sympy/printing/pretty/pretty.py
+@@ -1154,12 +1154,15 @@ def _print_BasisDependent(self, expr):
+                 elif '\N{RIGHT PARENTHESIS LOWER HOOK}' in tempstr:
+                     flag[i] = 1
+                     tempstr = tempstr.replace('\N{RIGHT PARENTHESIS LOWER HOOK}',
+-                                        '\N{RIGHT PARENTHESIS LOWER HOOK}'
++                                        '\N{RIGHT PARENTHESIS LOWER HOOK}' 
+                                         + ' ' + vectstrs[i])
+-                else:
++                elif '\N{RIGHT PARENTHESIS UPPER HOOK}' in tempstr:
++                    flag[i] = 1
+                     tempstr = tempstr.replace('\N{RIGHT PARENTHESIS UPPER HOOK}',
+-                                        '\N{RIGHT PARENTHESIS UPPER HOOK}'
++                                        '\N{RIGHT PARENTHESIS UPPER HOOK}' 
+                                         + ' ' + vectstrs[i])
++                else:
++                    tempstr += ' ' + vectstrs[i]
+                 o1[i] = tempstr
+ 
+         o1 = [x.split('\n') for x in o1]
+2025-08-22 02:57:12,435 - INFO - Eval script for sympy__sympy-23191 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-23191/eval.sh; copying to container...
+2025-08-22 02:57:20,545 - INFO - Test runtime: 7.87 seconds
+2025-08-22 02:57:20,545 - INFO - Test output for sympy__sympy-23191 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-23191/test_output.txt
+2025-08-22 02:57:20,637 - INFO - Git diff after:
+diff --git a/sympy/printing/pretty/pretty.py b/sympy/printing/pretty/pretty.py
+index 66461181d0..8d64ca4ccb 100644
+--- a/sympy/printing/pretty/pretty.py
++++ b/sympy/printing/pretty/pretty.py
+@@ -1154,12 +1154,15 @@ def _print_BasisDependent(self, expr):
+                 elif '\N{RIGHT PARENTHESIS LOWER HOOK}' in tempstr:
+                     flag[i] = 1
+                     tempstr = tempstr.replace('\N{RIGHT PARENTHESIS LOWER HOOK}',
+-                                        '\N{RIGHT PARENTHESIS LOWER HOOK}'
++                                        '\N{RIGHT PARENTHESIS LOWER HOOK}' 
+                                         + ' ' + vectstrs[i])
+-                else:
++                elif '\N{RIGHT PARENTHESIS UPPER HOOK}' in tempstr:
++                    flag[i] = 1
+                     tempstr = tempstr.replace('\N{RIGHT PARENTHESIS UPPER HOOK}',
+-                                        '\N{RIGHT PARENTHESIS UPPER HOOK}'
++                                        '\N{RIGHT PARENTHESIS UPPER HOOK}' 
+                                         + ' ' + vectstrs[i])
++                else:
++                    tempstr += ' ' + vectstrs[i]
+                 o1[i] = tempstr
+ 
+         o1 = [x.split('\n') for x in o1]
+2025-08-22 02:57:20,637 - INFO - Grading answer for sympy__sympy-23191...
+2025-08-22 02:57:20,637 - INFO - report: {'sympy__sympy-23191': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_issue_23058']}, 'PASS_TO_PASS': {'success': ['test_str_printing', 'test_pretty_print_unicode_v', 'test_latex_printing'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-23191: resolved: False
+2025-08-22 02:57:20,638 - INFO - Attempting to stop container sweb.eval.sympy__sympy-23191.lite_gpt_all...
+2025-08-22 02:57:36,128 - INFO - Attempting to remove container sweb.eval.sympy__sympy-23191.lite_gpt_all...
+2025-08-22 02:57:36,193 - INFO - Container sweb.eval.sympy__sympy-23191.lite_gpt_all removed.
+2025-08-22 02:57:36,193 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-23191:latest...
+2025-08-22 02:57:37,966 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-23191:latest removed.

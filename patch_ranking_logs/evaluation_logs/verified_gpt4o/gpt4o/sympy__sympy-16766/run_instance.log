@@ -1,0 +1,51 @@
+2025-08-26 05:14:39,846 - INFO - Creating container for sympy__sympy-16766...
+2025-08-26 05:14:42,695 - INFO - Container for sympy__sympy-16766 created: 35ad0b346a4f42929a230238aa4f4da4e9bc935cf066bbd4f50cd7e706056b18
+2025-08-26 05:14:48,947 - INFO - Container for sympy__sympy-16766 started: 35ad0b346a4f42929a230238aa4f4da4e9bc935cf066bbd4f50cd7e706056b18
+2025-08-26 05:14:48,947 - INFO - Intermediate patch for sympy__sympy-16766 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sympy__sympy-16766/patch.diff, now applying to container...
+2025-08-26 05:14:49,165 - INFO - >>>>> Applied Patch:
+Checking patch sympy/printing/pycode.py...
+Applied patch sympy/printing/pycode.py cleanly.
+
+2025-08-26 05:14:49,673 - INFO - Git diff before:
+diff --git a/sympy/printing/pycode.py b/sympy/printing/pycode.py
+index a3f031073..a284707d6 100644
+--- a/sympy/printing/pycode.py
++++ b/sympy/printing/pycode.py
+@@ -357,6 +357,10 @@ def _print_Not(self, expr):
+         PREC = precedence(expr)
+         return self._operators['not'] + self.parenthesize(expr.args[0], PREC)
+ 
++    def _print_Indexed(self, expr):
++        base, *index = expr.args
++        return "{}[{}]".format(str(base), ", ".join([self._print(ind) for ind in index]))
++
+ 
+ for k in PythonCodePrinter._kf:
+     setattr(PythonCodePrinter, '_print_%s' % k, _print_known_func)
+2025-08-26 05:14:49,681 - INFO - Eval script for sympy__sympy-16766 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sympy__sympy-16766/eval.sh; copying to container...
+2025-08-26 05:14:55,998 - INFO - Test runtime: 6.22 seconds
+2025-08-26 05:14:55,998 - INFO - Test output for sympy__sympy-16766 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sympy__sympy-16766/test_output.txt
+2025-08-26 05:14:56,283 - INFO - Git diff after:
+diff --git a/sympy/printing/pycode.py b/sympy/printing/pycode.py
+index a3f031073..a284707d6 100644
+--- a/sympy/printing/pycode.py
++++ b/sympy/printing/pycode.py
+@@ -357,6 +357,10 @@ def _print_Not(self, expr):
+         PREC = precedence(expr)
+         return self._operators['not'] + self.parenthesize(expr.args[0], PREC)
+ 
++    def _print_Indexed(self, expr):
++        base, *index = expr.args
++        return "{}[{}]".format(str(base), ", ".join([self._print(ind) for ind in index]))
++
+ 
+ for k in PythonCodePrinter._kf:
+     setattr(PythonCodePrinter, '_print_%s' % k, _print_known_func)
+2025-08-26 05:14:56,283 - INFO - Grading answer for sympy__sympy-16766...
+2025-08-26 05:14:56,284 - INFO - report: {'sympy__sympy-16766': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_PythonCodePrinter'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_MpmathPrinter', 'test_NumPyPrinter', 'test_SciPyPrinter', 'test_pycode_reserved_words', 'test_printmethod', 'test_codegen_ast_nodes', 'test_issue_14283'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-16766: resolved: True
+2025-08-26 05:14:56,284 - INFO - Attempting to stop container sweb.eval.sympy__sympy-16766.verified_gpt4o_all2...
+2025-08-26 05:15:12,138 - INFO - Attempting to remove container sweb.eval.sympy__sympy-16766.verified_gpt4o_all2...
+2025-08-26 05:15:13,777 - INFO - Container sweb.eval.sympy__sympy-16766.verified_gpt4o_all2 removed.
+2025-08-26 05:15:13,777 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-16766:latest...
+2025-08-26 05:15:36,038 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-16766:latest removed.

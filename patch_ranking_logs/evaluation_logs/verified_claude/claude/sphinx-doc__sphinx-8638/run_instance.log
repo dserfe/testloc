@@ -1,0 +1,67 @@
+2025-08-25 03:02:28,558 - INFO - Creating container for sphinx-doc__sphinx-8638...
+2025-08-25 03:02:28,854 - INFO - Container for sphinx-doc__sphinx-8638 created: 35f59b0ecf1975a0a0ccdd2c661e501901a1eef6408df5c0210ecc392b9b51e2
+2025-08-25 03:02:34,198 - INFO - Container for sphinx-doc__sphinx-8638 started: 35f59b0ecf1975a0a0ccdd2c661e501901a1eef6408df5c0210ecc392b9b51e2
+2025-08-25 03:02:34,198 - INFO - Intermediate patch for sphinx-doc__sphinx-8638 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-8638/patch.diff, now applying to container...
+2025-08-25 03:02:34,769 - INFO - >>>>> Applied Patch:
+Checking patch sphinx/domains/python.py...
+Applied patch sphinx/domains/python.py cleanly.
+
+2025-08-25 03:02:35,504 - INFO - Git diff before:
+diff --git a/sphinx/domains/python.py b/sphinx/domains/python.py
+index 000e2e8d3..b2e5f38a3 100644
+--- a/sphinx/domains/python.py
++++ b/sphinx/domains/python.py
+@@ -1155,11 +1155,13 @@ class PythonDomain(Domain):
+                     elif name in self.objects and self.objects[name].objtype in objtypes:
+                         newname = name
+                     else:
+-                        # "fuzzy" searching mode
+-                        searchname = '.' + name
+-                        matches = [(oname, self.objects[oname]) for oname in self.objects
+-                                   if oname.endswith(searchname) and
+-                                   self.objects[oname].objtype in objtypes]
++                        # Only do fuzzy matching for non-attributes
++                        if type != 'attr':
++                            # "fuzzy" searching mode
++                            searchname = '.' + name
++                            matches = [(oname, self.objects[oname]) for oname in self.objects
++                                       if oname.endswith(searchname) and
++                                       self.objects[oname].objtype in objtypes]
+         else:
+             # NOTE: searching for exact match, object type is not considered
+             if name in self.objects:
+2025-08-25 03:02:35,504 - INFO - Eval script for sphinx-doc__sphinx-8638 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-8638/eval.sh; copying to container...
+2025-08-25 03:02:43,371 - INFO - Test runtime: 7.66 seconds
+2025-08-25 03:02:43,372 - INFO - Test output for sphinx-doc__sphinx-8638 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-8638/test_output.txt
+2025-08-25 03:02:43,529 - INFO - Git diff after:
+diff --git a/sphinx/domains/python.py b/sphinx/domains/python.py
+index 000e2e8d3..b2e5f38a3 100644
+--- a/sphinx/domains/python.py
++++ b/sphinx/domains/python.py
+@@ -1155,11 +1155,13 @@ class PythonDomain(Domain):
+                     elif name in self.objects and self.objects[name].objtype in objtypes:
+                         newname = name
+                     else:
+-                        # "fuzzy" searching mode
+-                        searchname = '.' + name
+-                        matches = [(oname, self.objects[oname]) for oname in self.objects
+-                                   if oname.endswith(searchname) and
+-                                   self.objects[oname].objtype in objtypes]
++                        # Only do fuzzy matching for non-attributes
++                        if type != 'attr':
++                            # "fuzzy" searching mode
++                            searchname = '.' + name
++                            matches = [(oname, self.objects[oname]) for oname in self.objects
++                                       if oname.endswith(searchname) and
++                                       self.objects[oname].objtype in objtypes]
+         else:
+             # NOTE: searching for exact match, object type is not considered
+             if name in self.objects:
+2025-08-25 03:02:43,529 - INFO - Grading answer for sphinx-doc__sphinx-8638...
+2025-08-25 03:02:43,542 - INFO - report: {'sphinx-doc__sphinx-8638': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['tests/test_domain_py.py::test_info_field_list_var']}, 'PASS_TO_PASS': {'success': ['tests/test_domain_py.py::test_function_signatures', 'tests/test_domain_py.py::test_domain_py_xrefs', 'tests/test_domain_py.py::test_domain_py_objects', 'tests/test_domain_py.py::test_resolve_xref_for_properties', 'tests/test_domain_py.py::test_domain_py_find_obj', 'tests/test_domain_py.py::test_get_full_qualified_name', 'tests/test_domain_py.py::test_parse_annotation', 'tests/test_domain_py.py::test_pyfunction_signature', 'tests/test_domain_py.py::test_pyfunction_signature_full', 'tests/test_domain_py.py::test_pyfunction_signature_full_py38', 'tests/test_domain_py.py::test_pyfunction_with_number_literals', 'tests/test_domain_py.py::test_optional_pyfunction_signature', 'tests/test_domain_py.py::test_pyexception_signature', 'tests/test_domain_py.py::test_exceptions_module_is_ignored', 'tests/test_domain_py.py::test_pydata_signature', 'tests/test_domain_py.py::test_pydata_signature_old', 'tests/test_domain_py.py::test_pyobject_prefix', 'tests/test_domain_py.py::test_pydata', 'tests/test_domain_py.py::test_pyfunction', 'tests/test_domain_py.py::test_pyclass_options', 'tests/test_domain_py.py::test_pymethod_options', 'tests/test_domain_py.py::test_pyclassmethod', 'tests/test_domain_py.py::test_pystaticmethod', 'tests/test_domain_py.py::test_pyattribute', 'tests/test_domain_py.py::test_pydecorator_signature', 'tests/test_domain_py.py::test_pydecoratormethod_signature', 'tests/test_domain_py.py::test_canonical', 'tests/test_domain_py.py::test_info_field_list', 'tests/test_domain_py.py::test_module_index', 'tests/test_domain_py.py::test_module_index_submodule', 'tests/test_domain_py.py::test_module_index_not_collapsed', 'tests/test_domain_py.py::test_modindex_common_prefix', 'tests/test_domain_py.py::test_noindexentry', 'tests/test_domain_py.py::test_warn_missing_reference'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sphinx-doc__sphinx-8638: resolved: False
+2025-08-25 03:02:43,542 - INFO - Attempting to stop container sweb.eval.sphinx-doc__sphinx-8638.verified_claude_new...
+2025-08-25 03:02:59,154 - INFO - Attempting to remove container sweb.eval.sphinx-doc__sphinx-8638.verified_claude_new...
+2025-08-25 03:02:59,307 - INFO - Container sweb.eval.sphinx-doc__sphinx-8638.verified_claude_new removed.
+2025-08-25 03:02:59,307 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8638:latest...
+2025-08-25 03:02:59,751 - INFO - Image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8638:latest removed.

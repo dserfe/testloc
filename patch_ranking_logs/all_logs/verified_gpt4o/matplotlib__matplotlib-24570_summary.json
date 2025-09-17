@@ -1,0 +1,52 @@
+{
+  "instance_id": "matplotlib__matplotlib-24570",
+  "container_id": "61b39da2ca94a1d83cd60bc71d57e4b350ec76463e8181d6063e8bf35a3fe15d",
+  "regression": {
+    "results": [
+      {
+        "patch_file": "all_patches/verified_gpt4o_all_unique_patches/matplotlib__matplotlib-24570/dedup_patch_0.jsonl",
+        "inst": "matplotlib__matplotlib-24570",
+        "passed": 2,
+        "failed": 0
+      }
+    ],
+    "top_passed": 2,
+    "top_subset_size": 1
+  },
+  "reproduction": {
+    "lib/matplotlib/tests/test_offsetbox.py::test_offsetbox_clipping#1": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "lib/matplotlib/tests/test_offsetbox.py::test_anchoredtext_horizontal_alignment#2": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "lib/reproduce_bug.py#3": {
+      "repro_fails_on_clean": true,
+      "outcomes": [
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/matplotlib__matplotlib-24570/dedup_patch_0.jsonl",
+          "inst": "matplotlib__matplotlib-24570",
+          "passed": false
+        }
+      ]
+    },
+    "lib/matplotlib/tests/test_offsetbox.py::test_anchoredtext_horizontal_alignment#4": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "lib/matplotlib/tests/test_offsetbox.py::test_offsetbox_clipping#5": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "lib/matplotlib/tests/test_offsetbox.py::test_arrowprops_copied#6": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "lib/matplotlib/tests/test_offsetbox.py::test_arrowprops_copied#7": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    }
+  }
+}

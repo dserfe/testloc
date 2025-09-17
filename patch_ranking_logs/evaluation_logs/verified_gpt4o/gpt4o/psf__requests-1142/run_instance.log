@@ -1,0 +1,73 @@
+2025-08-26 05:11:53,020 - INFO - Creating container for psf__requests-1142...
+2025-08-26 05:12:39,504 - INFO - Container for psf__requests-1142 created: e3465fd71a2983fee74aa16932e1fb864170d4ceb9b608e7215b2dc6cc3563b8
+2025-08-26 05:12:41,538 - INFO - Container for psf__requests-1142 started: e3465fd71a2983fee74aa16932e1fb864170d4ceb9b608e7215b2dc6cc3563b8
+2025-08-26 05:12:41,538 - INFO - Intermediate patch for psf__requests-1142 written to logs/run_evaluation/verified_gpt4o_all2/agentless/psf__requests-1142/patch.diff, now applying to container...
+2025-08-26 05:12:41,843 - INFO - >>>>> Applied Patch:
+Checking patch requests/models.py...
+Applied patch requests/models.py cleanly.
+
+2025-08-26 05:12:41,984 - INFO - Git diff before:
+diff --git a/requests/models.py b/requests/models.py
+index 9926045..5db2058 100644
+--- a/requests/models.py
++++ b/requests/models.py
+@@ -386,13 +386,14 @@ class PreparedRequest(RequestEncodingMixin, RequestHooksMixin):
+         self.body = body
+ 
+     def prepare_content_length(self, body):
+-        self.headers['Content-Length'] = '0'
+-        if hasattr(body, 'seek') and hasattr(body, 'tell'):
+-            body.seek(0, 2)
+-            self.headers['Content-Length'] = str(body.tell())
+-            body.seek(0, 0)
+-        elif body is not None:
+-            self.headers['Content-Length'] = str(len(body))
++        if self.method not in ('GET', 'HEAD'):
++            self.headers['Content-Length'] = '0'
++            if hasattr(body, 'seek') and hasattr(body, 'tell'):
++                body.seek(0, 2)
++                self.headers['Content-Length'] = str(body.tell())
++                body.seek(0, 0)
++            elif body is not None:
++                self.headers['Content-Length'] = str(len(body))
+ 
+     def prepare_auth(self, auth):
+         """Prepares the given HTTP auth data."""
+2025-08-26 05:12:41,999 - INFO - Eval script for psf__requests-1142 written to logs/run_evaluation/verified_gpt4o_all2/agentless/psf__requests-1142/eval.sh; copying to container...
+2025-08-26 05:12:45,671 - INFO - Test runtime: 3.58 seconds
+2025-08-26 05:12:45,672 - INFO - Test output for psf__requests-1142 written to logs/run_evaluation/verified_gpt4o_all2/agentless/psf__requests-1142/test_output.txt
+2025-08-26 05:12:45,731 - INFO - Git diff after:
+diff --git a/requests/models.py b/requests/models.py
+index 9926045..5db2058 100644
+--- a/requests/models.py
++++ b/requests/models.py
+@@ -386,13 +386,14 @@ class PreparedRequest(RequestEncodingMixin, RequestHooksMixin):
+         self.body = body
+ 
+     def prepare_content_length(self, body):
+-        self.headers['Content-Length'] = '0'
+-        if hasattr(body, 'seek') and hasattr(body, 'tell'):
+-            body.seek(0, 2)
+-            self.headers['Content-Length'] = str(body.tell())
+-            body.seek(0, 0)
+-        elif body is not None:
+-            self.headers['Content-Length'] = str(len(body))
++        if self.method not in ('GET', 'HEAD'):
++            self.headers['Content-Length'] = '0'
++            if hasattr(body, 'seek') and hasattr(body, 'tell'):
++                body.seek(0, 2)
++                self.headers['Content-Length'] = str(body.tell())
++                body.seek(0, 0)
++            elif body is not None:
++                self.headers['Content-Length'] = str(len(body))
+ 
+     def prepare_auth(self, auth):
+         """Prepares the given HTTP auth data."""
+2025-08-26 05:12:45,732 - INFO - Grading answer for psf__requests-1142...
+2025-08-26 05:12:45,738 - INFO - report: {'psf__requests-1142': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_requests.py::RequestsTestCase::test_no_content_length'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_requests.py::RequestsTestCase::test_basic_building', 'test_requests.py::RequestsTestCase::test_entry_points', 'test_requests.py::RequestsTestCase::test_invalid_url', 'test_requests.py::RequestsTestCase::test_params_are_added_before_fragment', 'test_requests.py::RequestsTestCase::test_path_is_not_double_encoded'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for psf__requests-1142: resolved: True
+2025-08-26 05:12:45,738 - INFO - Attempting to stop container sweb.eval.psf__requests-1142.verified_gpt4o_all2...
+2025-08-26 05:13:03,173 - INFO - Attempting to remove container sweb.eval.psf__requests-1142.verified_gpt4o_all2...
+2025-08-26 05:13:08,231 - INFO - Container sweb.eval.psf__requests-1142.verified_gpt4o_all2 removed.
+2025-08-26 05:13:08,231 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.psf_1776_requests-1142:latest...
+2025-08-26 05:13:17,604 - INFO - Image swebench/sweb.eval.x86_64.psf_1776_requests-1142:latest removed.

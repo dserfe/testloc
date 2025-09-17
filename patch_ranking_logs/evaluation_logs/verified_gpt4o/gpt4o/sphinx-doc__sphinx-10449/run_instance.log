@@ -1,0 +1,47 @@
+2025-08-26 05:14:13,121 - INFO - Creating container for sphinx-doc__sphinx-10449...
+2025-08-26 05:14:13,459 - INFO - Container for sphinx-doc__sphinx-10449 created: c3df98fe08c5d8f275f61a054ab6505d2b5235ede8af2620de8fef08979d3237
+2025-08-26 05:14:15,652 - INFO - Container for sphinx-doc__sphinx-10449 started: c3df98fe08c5d8f275f61a054ab6505d2b5235ede8af2620de8fef08979d3237
+2025-08-26 05:14:15,652 - INFO - Intermediate patch for sphinx-doc__sphinx-10449 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sphinx-doc__sphinx-10449/patch.diff, now applying to container...
+2025-08-26 05:14:15,982 - INFO - >>>>> Applied Patch:
+Checking patch sphinx/ext/autodoc/typehints.py...
+Applied patch sphinx/ext/autodoc/typehints.py cleanly.
+
+2025-08-26 05:14:16,600 - INFO - Git diff before:
+diff --git a/sphinx/ext/autodoc/typehints.py b/sphinx/ext/autodoc/typehints.py
+index 06768168e..4491e1ce2 100644
+--- a/sphinx/ext/autodoc/typehints.py
++++ b/sphinx/ext/autodoc/typehints.py
+@@ -28,7 +28,7 @@ def record_typehints(app: Sphinx, objtype: str, name: str, obj: Any,
+             for param in sig.parameters.values():
+                 if param.annotation is not param.empty:
+                     annotation[param.name] = typing.stringify(param.annotation, mode)
+-            if sig.return_annotation is not sig.empty:
++            if sig.return_annotation is not sig.empty and objtype != 'class':
+                 annotation['return'] = typing.stringify(sig.return_annotation, mode)
+     except (TypeError, ValueError):
+         pass
+2025-08-26 05:14:16,600 - INFO - Eval script for sphinx-doc__sphinx-10449 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sphinx-doc__sphinx-10449/eval.sh; copying to container...
+2025-08-26 05:14:24,900 - INFO - Test runtime: 8.20 seconds
+2025-08-26 05:14:24,901 - INFO - Test output for sphinx-doc__sphinx-10449 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sphinx-doc__sphinx-10449/test_output.txt
+2025-08-26 05:14:24,967 - INFO - Git diff after:
+diff --git a/sphinx/ext/autodoc/typehints.py b/sphinx/ext/autodoc/typehints.py
+index 06768168e..4491e1ce2 100644
+--- a/sphinx/ext/autodoc/typehints.py
++++ b/sphinx/ext/autodoc/typehints.py
+@@ -28,7 +28,7 @@ def record_typehints(app: Sphinx, objtype: str, name: str, obj: Any,
+             for param in sig.parameters.values():
+                 if param.annotation is not param.empty:
+                     annotation[param.name] = typing.stringify(param.annotation, mode)
+-            if sig.return_annotation is not sig.empty:
++            if sig.return_annotation is not sig.empty and objtype != 'class':
+                 annotation['return'] = typing.stringify(sig.return_annotation, mode)
+     except (TypeError, ValueError):
+         pass
+2025-08-26 05:14:24,967 - INFO - Grading answer for sphinx-doc__sphinx-10449...
+2025-08-26 05:14:24,975 - INFO - report: {'sphinx-doc__sphinx-10449': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/test_ext_autodoc_configs.py::test_autodoc_typehints_description_with_documented_init'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/test_ext_autodoc_configs.py::test_autoclass_content_class', 'tests/test_ext_autodoc_configs.py::test_autoclass_content_init', 'tests/test_ext_autodoc_configs.py::test_autodoc_class_signature_mixed', 'tests/test_ext_autodoc_configs.py::test_autodoc_class_signature_separated_init', 'tests/test_ext_autodoc_configs.py::test_autodoc_class_signature_separated_new', 'tests/test_ext_autodoc_configs.py::test_autoclass_content_both', 'tests/test_ext_autodoc_configs.py::test_autodoc_inherit_docstrings', 'tests/test_ext_autodoc_configs.py::test_autodoc_docstring_signature', 'tests/test_ext_autodoc_configs.py::test_autoclass_content_and_docstring_signature_class', 'tests/test_ext_autodoc_configs.py::test_autoclass_content_and_docstring_signature_init', 'tests/test_ext_autodoc_configs.py::test_autoclass_content_and_docstring_signature_both', 'tests/test_ext_autodoc_configs.py::test_mocked_module_imports', 'tests/test_ext_autodoc_configs.py::test_autodoc_typehints_signature', 'tests/test_ext_autodoc_configs.py::test_autodoc_typehints_none', 'tests/test_ext_autodoc_configs.py::test_autodoc_typehints_none_for_overload', 'tests/test_ext_autodoc_configs.py::test_autodoc_typehints_description', 'tests/test_ext_autodoc_configs.py::test_autodoc_typehints_description_no_undoc', 'tests/test_ext_autodoc_configs.py::test_autodoc_typehints_description_no_undoc_doc_rtype', 'tests/test_ext_autodoc_configs.py::test_autodoc_typehints_description_with_documented_init_no_undoc', 'tests/test_ext_autodoc_configs.py::test_autodoc_typehints_description_with_documented_init_no_undoc_doc_rtype', 'tests/test_ext_autodoc_configs.py::test_autodoc_typehints_description_for_invalid_node', 'tests/test_ext_autodoc_configs.py::test_autodoc_typehints_both', 'tests/test_ext_autodoc_configs.py::test_autodoc_type_aliases', 'tests/test_ext_autodoc_configs.py::test_autodoc_typehints_description_and_type_aliases', 'tests/test_ext_autodoc_configs.py::test_autodoc_typehints_format_fully_qualified', 'tests/test_ext_autodoc_configs.py::test_autodoc_typehints_format_fully_qualified_for_class_alias', 'tests/test_ext_autodoc_configs.py::test_autodoc_typehints_format_fully_qualified_for_generic_alias', 'tests/test_ext_autodoc_configs.py::test_autodoc_typehints_format_fully_qualified_for_newtype_alias', 'tests/test_ext_autodoc_configs.py::test_autodoc_default_options', 'tests/test_ext_autodoc_configs.py::test_autodoc_default_options_with_values'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sphinx-doc__sphinx-10449: resolved: True
+2025-08-26 05:14:24,975 - INFO - Attempting to stop container sweb.eval.sphinx-doc__sphinx-10449.verified_gpt4o_all2...
+2025-08-26 05:14:45,500 - INFO - Attempting to remove container sweb.eval.sphinx-doc__sphinx-10449.verified_gpt4o_all2...
+2025-08-26 05:14:45,719 - INFO - Container sweb.eval.sphinx-doc__sphinx-10449.verified_gpt4o_all2 removed.
+2025-08-26 05:14:45,720 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-10449:latest...
+2025-08-26 05:14:59,707 - INFO - Image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-10449:latest removed.

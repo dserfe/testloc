@@ -1,0 +1,79 @@
+2025-08-26 05:10:35,190 - INFO - Creating container for django__django-15863...
+2025-08-26 05:10:35,613 - INFO - Container for django__django-15863 created: 2366b6f60c6fbff1ebdd42e1b7d01affca0bb9381e1660dea70b120ef71d5d52
+2025-08-26 05:10:38,532 - INFO - Container for django__django-15863 started: 2366b6f60c6fbff1ebdd42e1b7d01affca0bb9381e1660dea70b120ef71d5d52
+2025-08-26 05:10:38,532 - INFO - Intermediate patch for django__django-15863 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-15863/patch.diff, now applying to container...
+2025-08-26 05:10:38,856 - INFO - >>>>> Applied Patch:
+Checking patch django/template/defaultfilters.py...
+Applied patch django/template/defaultfilters.py cleanly.
+
+2025-08-26 05:10:40,606 - INFO - Git diff before:
+diff --git a/django/template/defaultfilters.py b/django/template/defaultfilters.py
+index 7a5b28d159..602d56e075 100644
+--- a/django/template/defaultfilters.py
++++ b/django/template/defaultfilters.py
+@@ -150,14 +150,17 @@ def floatformat(text, arg=-1):
+         elif last_char == "u":
+             use_l10n = False
+             arg = arg[:-1] or -1
+-    try:
+-        input_val = repr(text)
+-        d = Decimal(input_val)
+-    except InvalidOperation:
++    if isinstance(text, Decimal):
++        d = text
++    else:
+         try:
+-            d = Decimal(str(float(text)))
+-        except (ValueError, InvalidOperation, TypeError):
+-            return ""
++            input_val = repr(text)
++            d = Decimal(input_val)
++        except InvalidOperation:
++            try:
++                d = Decimal(str(float(text)))
++            except (ValueError, InvalidOperation, TypeError):
++                return ""
+     try:
+         p = int(arg)
+     except ValueError:
+2025-08-26 05:10:40,606 - INFO - Eval script for django__django-15863 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-15863/eval.sh; copying to container...
+2025-08-26 05:10:54,608 - INFO - Test runtime: 13.69 seconds
+2025-08-26 05:10:54,608 - INFO - Test output for django__django-15863 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-15863/test_output.txt
+2025-08-26 05:10:54,873 - INFO - Git diff after:
+diff --git a/django/template/defaultfilters.py b/django/template/defaultfilters.py
+index 7a5b28d159..602d56e075 100644
+--- a/django/template/defaultfilters.py
++++ b/django/template/defaultfilters.py
+@@ -150,14 +150,17 @@ def floatformat(text, arg=-1):
+         elif last_char == "u":
+             use_l10n = False
+             arg = arg[:-1] or -1
+-    try:
+-        input_val = repr(text)
+-        d = Decimal(input_val)
+-    except InvalidOperation:
++    if isinstance(text, Decimal):
++        d = text
++    else:
+         try:
+-            d = Decimal(str(float(text)))
+-        except (ValueError, InvalidOperation, TypeError):
+-            return ""
++            input_val = repr(text)
++            d = Decimal(input_val)
++        except InvalidOperation:
++            try:
++                d = Decimal(str(float(text)))
++            except (ValueError, InvalidOperation, TypeError):
++                return ""
+     try:
+         p = int(arg)
+     except ValueError:
+2025-08-26 05:10:54,874 - INFO - Grading answer for django__django-15863...
+2025-08-26 05:10:54,874 - INFO - report: {'django__django-15863': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_inputs (template_tests.filter_tests.test_floatformat.FunctionTests)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_floatformat01 (template_tests.filter_tests.test_floatformat.FloatformatTests)', 'test_floatformat02 (template_tests.filter_tests.test_floatformat.FloatformatTests)', 'test_float_dunder_method (template_tests.filter_tests.test_floatformat.FunctionTests)', 'test_force_grouping (template_tests.filter_tests.test_floatformat.FunctionTests)', 'test_infinity (template_tests.filter_tests.test_floatformat.FunctionTests)', '#15789', 'test_negative_zero_values (template_tests.filter_tests.test_floatformat.FunctionTests)', 'test_unlocalize (template_tests.filter_tests.test_floatformat.FunctionTests)', 'test_zero_values (template_tests.filter_tests.test_floatformat.FunctionTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-15863: resolved: True
+2025-08-26 05:10:54,874 - INFO - Attempting to stop container sweb.eval.django__django-15863.verified_gpt4o_all2...
+2025-08-26 05:11:11,042 - INFO - Attempting to remove container sweb.eval.django__django-15863.verified_gpt4o_all2...
+2025-08-26 05:11:11,362 - INFO - Container sweb.eval.django__django-15863.verified_gpt4o_all2 removed.
+2025-08-26 05:11:11,362 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-15863:latest...
+2025-08-26 05:11:16,841 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-15863:latest removed.

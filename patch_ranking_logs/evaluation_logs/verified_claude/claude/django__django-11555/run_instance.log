@@ -1,0 +1,49 @@
+2025-08-25 02:49:07,882 - INFO - Creating container for django__django-11555...
+2025-08-25 02:49:07,970 - INFO - Container for django__django-11555 created: d144c7f8a584783eb14ae32827260ed82bd38ed81ea1ed83e0adc53849ddc9e4
+2025-08-25 02:49:08,261 - INFO - Container for django__django-11555 started: d144c7f8a584783eb14ae32827260ed82bd38ed81ea1ed83e0adc53849ddc9e4
+2025-08-25 02:49:08,261 - INFO - Intermediate patch for django__django-11555 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-11555/patch.diff, now applying to container...
+2025-08-25 02:49:08,396 - INFO - >>>>> Applied Patch:
+Checking patch django/db/models/sql/compiler.py...
+Applied patch django/db/models/sql/compiler.py cleanly.
+
+2025-08-25 02:49:09,293 - INFO - Git diff before:
+diff --git a/django/db/models/sql/compiler.py b/django/db/models/sql/compiler.py
+index eaccc96d7d..00f2881190 100644
+--- a/django/db/models/sql/compiler.py
++++ b/django/db/models/sql/compiler.py
+@@ -293,6 +293,10 @@ class SQLCompiler:
+                 order_by.append((OrderBy(Random()), False))
+                 continue
+ 
++            if isinstance(field, OrderBy):
++                order_by.append((field, False))
++                continue
++
+             col, order = get_order_dir(field, asc)
+             descending = order == 'DESC'
+2025-08-25 02:49:09,293 - INFO - Eval script for django__django-11555 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-11555/eval.sh; copying to container...
+2025-08-25 02:49:16,063 - INFO - Test runtime: 6.72 seconds
+2025-08-25 02:49:16,064 - INFO - Test output for django__django-11555 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-11555/test_output.txt
+2025-08-25 02:49:16,281 - INFO - Git diff after:
+diff --git a/django/db/models/sql/compiler.py b/django/db/models/sql/compiler.py
+index eaccc96d7d..00f2881190 100644
+--- a/django/db/models/sql/compiler.py
++++ b/django/db/models/sql/compiler.py
+@@ -293,6 +293,10 @@ class SQLCompiler:
+                 order_by.append((OrderBy(Random()), False))
+                 continue
+ 
++            if isinstance(field, OrderBy):
++                order_by.append((field, False))
++                continue
++
+             col, order = get_order_dir(field, asc)
+             descending = order == 'DESC'
+2025-08-25 02:49:16,282 - INFO - Grading answer for django__django-11555...
+2025-08-25 02:49:16,283 - INFO - report: {'django__django-11555': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_order_by_ptr_field_with_default_ordering_by_expression (ordering.tests.OrderingTests)']}, 'PASS_TO_PASS': {'success': ['test_default_ordering (ordering.tests.OrderingTests)', 'F expressions can be used in Meta.ordering.', 'test_default_ordering_override (ordering.tests.OrderingTests)', 'test_deprecated_values_annotate (ordering.tests.OrderingTests)', 'test_extra_ordering (ordering.tests.OrderingTests)', 'test_extra_ordering_quoting (ordering.tests.OrderingTests)', 'test_extra_ordering_with_table_name (ordering.tests.OrderingTests)', 'test_no_reordering_after_slicing (ordering.tests.OrderingTests)', 'test_order_by_constant_value (ordering.tests.OrderingTests)', 'test_order_by_constant_value_without_output_field (ordering.tests.OrderingTests)', 'test_order_by_f_expression (ordering.tests.OrderingTests)', 'test_order_by_f_expression_duplicates (ordering.tests.OrderingTests)', 'test_order_by_fk_attname (ordering.tests.OrderingTests)', 'test_order_by_nulls_first (ordering.tests.OrderingTests)', 'test_order_by_nulls_first_and_last (ordering.tests.OrderingTests)', 'test_order_by_nulls_last (ordering.tests.OrderingTests)', 'test_order_by_override (ordering.tests.OrderingTests)', 'test_order_by_pk (ordering.tests.OrderingTests)', 'test_orders_nulls_first_on_filtered_subquery (ordering.tests.OrderingTests)', 'test_random_ordering (ordering.tests.OrderingTests)', 'test_related_ordering_duplicate_table_reference (ordering.tests.OrderingTests)', 'test_reverse_meta_ordering_pure (ordering.tests.OrderingTests)', 'test_reverse_ordering_pure (ordering.tests.OrderingTests)', 'test_reversed_ordering (ordering.tests.OrderingTests)', 'test_stop_slicing (ordering.tests.OrderingTests)', 'test_stop_start_slicing (ordering.tests.OrderingTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-11555: resolved: False
+2025-08-25 02:49:16,283 - INFO - Attempting to stop container sweb.eval.django__django-11555.verified_claude_new...
+2025-08-25 02:49:32,300 - INFO - Attempting to remove container sweb.eval.django__django-11555.verified_claude_new...
+2025-08-25 02:49:32,578 - INFO - Container sweb.eval.django__django-11555.verified_claude_new removed.
+2025-08-25 02:49:32,578 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-11555:latest...
+2025-08-25 02:49:33,545 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-11555:latest removed.

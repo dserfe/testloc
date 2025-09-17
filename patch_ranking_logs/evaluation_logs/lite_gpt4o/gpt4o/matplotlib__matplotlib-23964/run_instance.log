@@ -1,0 +1,47 @@
+2025-08-22 02:53:38,953 - INFO - Creating container for matplotlib__matplotlib-23964...
+2025-08-22 02:53:57,704 - INFO - Container for matplotlib__matplotlib-23964 created: a4b459d1121047d78bee062892d420a741c505c4f2e794a483769addd5157fb0
+2025-08-22 02:54:00,770 - INFO - Container for matplotlib__matplotlib-23964 started: a4b459d1121047d78bee062892d420a741c505c4f2e794a483769addd5157fb0
+2025-08-22 02:54:00,770 - INFO - Intermediate patch for matplotlib__matplotlib-23964 written to logs/run_evaluation/lite_gpt_all/agentless/matplotlib__matplotlib-23964/patch.diff, now applying to container...
+2025-08-22 02:54:01,111 - INFO - >>>>> Applied Patch:
+Checking patch lib/matplotlib/backends/backend_ps.py...
+Applied patch lib/matplotlib/backends/backend_ps.py cleanly.
+
+2025-08-22 02:54:02,969 - INFO - Git diff before:
+diff --git a/lib/matplotlib/backends/backend_ps.py b/lib/matplotlib/backends/backend_ps.py
+index f209e811f1..bd996b7509 100644
+--- a/lib/matplotlib/backends/backend_ps.py
++++ b/lib/matplotlib/backends/backend_ps.py
+@@ -666,7 +666,8 @@ grestore
+                     (item.x, item.ft_object.get_glyph_name(item.glyph_idx))
+                 )
+             # append the last entry
+-            stream.append(curr_stream)
++            if curr_stream:
++                stream.append(curr_stream)
+ 
+         self.set_color(*gc.get_rgb())
+2025-08-22 02:54:02,990 - INFO - Eval script for matplotlib__matplotlib-23964 written to logs/run_evaluation/lite_gpt_all/agentless/matplotlib__matplotlib-23964/eval.sh; copying to container...
+2025-08-22 02:54:55,563 - INFO - Test runtime: 52.36 seconds
+2025-08-22 02:54:55,564 - INFO - Test output for matplotlib__matplotlib-23964 written to logs/run_evaluation/lite_gpt_all/agentless/matplotlib__matplotlib-23964/test_output.txt
+2025-08-22 02:54:55,669 - INFO - Git diff after:
+diff --git a/lib/matplotlib/backends/backend_ps.py b/lib/matplotlib/backends/backend_ps.py
+index f209e811f1..bd996b7509 100644
+--- a/lib/matplotlib/backends/backend_ps.py
++++ b/lib/matplotlib/backends/backend_ps.py
+@@ -666,7 +666,8 @@ grestore
+                     (item.x, item.ft_object.get_glyph_name(item.glyph_idx))
+                 )
+             # append the last entry
+-            stream.append(curr_stream)
++            if curr_stream:
++                stream.append(curr_stream)
+ 
+         self.set_color(*gc.get_rgb())
+2025-08-22 02:54:55,669 - INFO - Grading answer for matplotlib__matplotlib-23964...
+2025-08-22 02:54:55,670 - INFO - report: {'matplotlib__matplotlib-23964': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['lib/matplotlib/tests/test_backend_ps.py::test_empty_line'], 'failure': []}, 'PASS_TO_PASS': {'success': ['lib/matplotlib/tests/test_backend_ps.py::test_savefig_to_stringio[ps-portrait]', 'lib/matplotlib/tests/test_backend_ps.py::test_savefig_to_stringio[ps-landscape]', 'lib/matplotlib/tests/test_backend_ps.py::test_savefig_to_stringio[ps', 'lib/matplotlib/tests/test_backend_ps.py::test_savefig_to_stringio[eps-portrait]', 'lib/matplotlib/tests/test_backend_ps.py::test_savefig_to_stringio[eps-landscape]', 'lib/matplotlib/tests/test_backend_ps.py::test_savefig_to_stringio[eps', 'lib/matplotlib/tests/test_backend_ps.py::test_patheffects', 'lib/matplotlib/tests/test_backend_ps.py::test_transparency[eps]', 'lib/matplotlib/tests/test_backend_ps.py::test_bbox', 'lib/matplotlib/tests/test_backend_ps.py::test_failing_latex', 'lib/matplotlib/tests/test_backend_ps.py::test_text_clip[eps]', 'lib/matplotlib/tests/test_backend_ps.py::test_d_glyph', 'lib/matplotlib/tests/test_backend_ps.py::test_fonttype[3]', 'lib/matplotlib/tests/test_backend_ps.py::test_fonttype[42]', 'lib/matplotlib/tests/test_backend_ps.py::test_linedash', 'lib/matplotlib/tests/test_backend_ps.py::test_no_duplicate_definition'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for matplotlib__matplotlib-23964: resolved: True
+2025-08-22 02:54:55,671 - INFO - Attempting to stop container sweb.eval.matplotlib__matplotlib-23964.lite_gpt_all...
+2025-08-22 02:55:11,517 - INFO - Attempting to remove container sweb.eval.matplotlib__matplotlib-23964.lite_gpt_all...
+2025-08-22 02:55:18,542 - INFO - Container sweb.eval.matplotlib__matplotlib-23964.lite_gpt_all removed.
+2025-08-22 02:55:18,543 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-23964:latest...
+2025-08-22 02:55:48,434 - INFO - Image swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-23964:latest removed.

@@ -1,0 +1,51 @@
+2025-08-25 03:03:25,293 - INFO - Creating container for sympy__sympy-13031...
+2025-08-25 03:03:26,904 - INFO - Container for sympy__sympy-13031 created: dd47526e99479af21d392737f006ce538b5f9bd3b5d0f3b4e8af3e342f5d2be8
+2025-08-25 03:03:28,861 - INFO - Container for sympy__sympy-13031 started: dd47526e99479af21d392737f006ce538b5f9bd3b5d0f3b4e8af3e342f5d2be8
+2025-08-25 03:03:28,861 - INFO - Intermediate patch for sympy__sympy-13031 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-13031/patch.diff, now applying to container...
+2025-08-25 03:03:29,484 - INFO - >>>>> Applied Patch:
+Checking patch sympy/matrices/common.py...
+Applied patch sympy/matrices/common.py cleanly.
+
+2025-08-25 03:03:30,228 - INFO - Git diff before:
+diff --git a/sympy/matrices/common.py b/sympy/matrices/common.py
+index 7ef51bc84..8fa0d7354 100644
+--- a/sympy/matrices/common.py
++++ b/sympy/matrices/common.py
+@@ -476,8 +476,8 @@ def row_join(self, other):
+         col_join
+         """
+         # A null matrix can always be stacked (see  #10770)
+-        if self.cols == 0 and self.rows != other.rows:
+-            return self._new(other.rows, 0, []).row_join(other)
++        if self.rows == 0:
++            return self._new(0, self.cols + other.cols, [])
+ 
+         if self.rows != other.rows:
+             raise ShapeError(
+2025-08-25 03:03:30,228 - INFO - Eval script for sympy__sympy-13031 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-13031/eval.sh; copying to container...
+2025-08-25 03:03:34,997 - INFO - Test runtime: 4.63 seconds
+2025-08-25 03:03:34,997 - INFO - Test output for sympy__sympy-13031 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-13031/test_output.txt
+2025-08-25 03:03:36,071 - INFO - Git diff after:
+diff --git a/sympy/matrices/common.py b/sympy/matrices/common.py
+index 7ef51bc84..8fa0d7354 100644
+--- a/sympy/matrices/common.py
++++ b/sympy/matrices/common.py
+@@ -476,8 +476,8 @@ def row_join(self, other):
+         col_join
+         """
+         # A null matrix can always be stacked (see  #10770)
+-        if self.cols == 0 and self.rows != other.rows:
+-            return self._new(other.rows, 0, []).row_join(other)
++        if self.rows == 0:
++            return self._new(0, self.cols + other.cols, [])
+ 
+         if self.rows != other.rows:
+             raise ShapeError(
+2025-08-25 03:03:36,071 - INFO - Grading answer for sympy__sympy-13031...
+2025-08-25 03:03:36,072 - INFO - report: {'sympy__sympy-13031': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_sparse_matrix']}, 'PASS_TO_PASS': {'success': ['test_transpose', 'test_trace', 'test_CL_RL', 'test_add', 'test_errors', 'test_len', 'test_sparse_zeros_sparse_eye', 'test_copyin', 'test_sparse_solve'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-13031: resolved: False
+2025-08-25 03:03:36,073 - INFO - Attempting to stop container sweb.eval.sympy__sympy-13031.verified_claude_new...
+2025-08-25 03:03:52,085 - INFO - Attempting to remove container sweb.eval.sympy__sympy-13031.verified_claude_new...
+2025-08-25 03:03:52,192 - INFO - Container sweb.eval.sympy__sympy-13031.verified_claude_new removed.
+2025-08-25 03:03:52,192 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-13031:latest...
+2025-08-25 03:03:52,539 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-13031:latest removed.

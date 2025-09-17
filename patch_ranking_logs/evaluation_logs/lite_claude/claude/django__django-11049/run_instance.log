@@ -1,0 +1,45 @@
+2025-09-04 06:23:00,712 - INFO - Creating container for django__django-11049...
+2025-09-04 06:23:03,493 - INFO - Container for django__django-11049 created: 510dd6d84ce1a96e83be4688a49b230b79e1902e409c8ba2a2b873374eb06e38
+2025-09-04 06:23:10,087 - INFO - Container for django__django-11049 started: 510dd6d84ce1a96e83be4688a49b230b79e1902e409c8ba2a2b873374eb06e38
+2025-09-04 06:23:10,087 - INFO - Intermediate patch for django__django-11049 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-11049/patch.diff, now applying to container...
+2025-09-04 06:23:10,422 - INFO - >>>>> Applied Patch:
+Checking patch django/forms/fields.py...
+Applied patch django/forms/fields.py cleanly.
+
+2025-09-04 06:23:11,880 - INFO - Git diff before:
+diff --git a/django/forms/fields.py b/django/forms/fields.py
+index a977256525..517b0bea3d 100644
+--- a/django/forms/fields.py
++++ b/django/forms/fields.py
+@@ -468,7 +468,7 @@ class DateTimeField(BaseTemporalField):
+ 
+ class DurationField(Field):
+     default_error_messages = {
+-        'invalid': _('Enter a valid duration.'),
++        'invalid': _('Enter a valid duration in the format: "[DD] [[HH:]MM:]ss[.uuuuuu]".'),
+         'overflow': _('The number of days must be between {min_days} and {max_days}.')
+     }
+2025-09-04 06:23:11,881 - INFO - Eval script for django__django-11049 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-11049/eval.sh; copying to container...
+2025-09-04 06:23:26,616 - INFO - Test runtime: 14.53 seconds
+2025-09-04 06:23:26,616 - INFO - Test output for django__django-11049 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-11049/test_output.txt
+2025-09-04 06:23:26,716 - INFO - Git diff after:
+diff --git a/django/forms/fields.py b/django/forms/fields.py
+index a977256525..517b0bea3d 100644
+--- a/django/forms/fields.py
++++ b/django/forms/fields.py
+@@ -468,7 +468,7 @@ class DateTimeField(BaseTemporalField):
+ 
+ class DurationField(Field):
+     default_error_messages = {
+-        'invalid': _('Enter a valid duration.'),
++        'invalid': _('Enter a valid duration in the format: "[DD] [[HH:]MM:]ss[.uuuuuu]".'),
+         'overflow': _('The number of days must be between {min_days} and {max_days}.')
+     }
+2025-09-04 06:23:26,716 - INFO - Grading answer for django__django-11049...
+2025-09-04 06:23:26,717 - INFO - report: {'django__django-11049': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_invalid_string (model_fields.test_durationfield.TestValidation)']}, 'PASS_TO_PASS': {'success': ['test_dumping (model_fields.test_durationfield.TestSerialization)', 'test_loading (model_fields.test_durationfield.TestSerialization)', 'test_formfield (model_fields.test_durationfield.TestFormField)', 'test_exact (model_fields.test_durationfield.TestQuerying)', 'test_gt (model_fields.test_durationfield.TestQuerying)', 'test_create_empty (model_fields.test_durationfield.TestSaveLoad)', 'test_fractional_seconds (model_fields.test_durationfield.TestSaveLoad)', 'test_simple_roundtrip (model_fields.test_durationfield.TestSaveLoad)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-11049: resolved: False
+2025-09-04 06:23:26,717 - INFO - Attempting to stop container sweb.eval.django__django-11049.lite_claude_all...
+2025-09-04 06:23:42,439 - INFO - Attempting to remove container sweb.eval.django__django-11049.lite_claude_all...
+2025-09-04 06:23:42,705 - INFO - Container sweb.eval.django__django-11049.lite_claude_all removed.
+2025-09-04 06:23:42,705 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-11049:latest...
+2025-09-04 06:23:46,844 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-11049:latest removed.

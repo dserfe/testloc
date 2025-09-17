@@ -1,0 +1,47 @@
+2025-08-22 02:57:26,760 - INFO - Creating container for sympy__sympy-24102...
+2025-08-22 02:57:27,004 - INFO - Container for sympy__sympy-24102 created: 626cbdd0e31ff30e3968c7747f6f6f02703b5ca9146ce343a04f5658b04fbdab
+2025-08-22 02:57:28,242 - INFO - Container for sympy__sympy-24102 started: 626cbdd0e31ff30e3968c7747f6f6f02703b5ca9146ce343a04f5658b04fbdab
+2025-08-22 02:57:28,244 - INFO - Intermediate patch for sympy__sympy-24102 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-24102/patch.diff, now applying to container...
+2025-08-22 02:57:28,472 - INFO - >>>>> Applied Patch:
+Checking patch sympy/parsing/mathematica.py...
+Applied patch sympy/parsing/mathematica.py cleanly.
+
+2025-08-22 02:57:29,009 - INFO - Git diff before:
+diff --git a/sympy/parsing/mathematica.py b/sympy/parsing/mathematica.py
+index 7ea14ce33a..83016a527d 100644
+--- a/sympy/parsing/mathematica.py
++++ b/sympy/parsing/mathematica.py
+@@ -586,7 +586,7 @@ def parse(self, s):
+         "##": lambda: ["SlotSequence", "1"],
+     }
+ 
+-    _literal = r"[A-Za-z][A-Za-z0-9]*"
++    _literal = r"[A-Za-z\u0370-\u03FF][A-Za-z0-9\u0370-\u03FF]*"
+     _number = r"(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)"
+ 
+     _enclosure_open = ["(", "[", "[[", "{"]
+2025-08-22 02:57:29,010 - INFO - Eval script for sympy__sympy-24102 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-24102/eval.sh; copying to container...
+2025-08-22 02:57:34,913 - INFO - Test runtime: 5.73 seconds
+2025-08-22 02:57:34,914 - INFO - Test output for sympy__sympy-24102 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-24102/test_output.txt
+2025-08-22 02:57:35,010 - INFO - Git diff after:
+diff --git a/sympy/parsing/mathematica.py b/sympy/parsing/mathematica.py
+index 7ea14ce33a..83016a527d 100644
+--- a/sympy/parsing/mathematica.py
++++ b/sympy/parsing/mathematica.py
+@@ -586,7 +586,7 @@ def parse(self, s):
+         "##": lambda: ["SlotSequence", "1"],
+     }
+ 
+-    _literal = r"[A-Za-z][A-Za-z0-9]*"
++    _literal = r"[A-Za-z\u0370-\u03FF][A-Za-z0-9\u0370-\u03FF]*"
+     _number = r"(?:[0-9]+(?:\.[0-9]*)?|\.[0-9]+)"
+ 
+     _enclosure_open = ["(", "[", "[[", "{"]
+2025-08-22 02:57:35,010 - INFO - Grading answer for sympy__sympy-24102...
+2025-08-22 02:57:35,011 - INFO - report: {'sympy__sympy-24102': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_parser_mathematica_tokenizer'], 'failure': ['test_mathematica']}, 'PASS_TO_PASS': {'success': [], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-24102: resolved: False
+2025-08-22 02:57:35,011 - INFO - Attempting to stop container sweb.eval.sympy__sympy-24102.lite_gpt_all...
+2025-08-22 02:57:50,557 - INFO - Attempting to remove container sweb.eval.sympy__sympy-24102.lite_gpt_all...
+2025-08-22 02:57:54,396 - INFO - Container sweb.eval.sympy__sympy-24102.lite_gpt_all removed.
+2025-08-22 02:57:54,398 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-24102:latest...
+2025-08-22 02:57:54,845 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-24102:latest removed.

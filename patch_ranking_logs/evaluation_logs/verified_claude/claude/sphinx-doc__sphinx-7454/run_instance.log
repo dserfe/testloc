@@ -1,0 +1,51 @@
+2025-08-25 03:02:23,475 - INFO - Creating container for sphinx-doc__sphinx-7454...
+2025-08-25 03:02:24,310 - INFO - Container for sphinx-doc__sphinx-7454 created: fede2d9aa9940b662b490f7101ca5a5c6c35ec1ed22290c209705999d9724643
+2025-08-25 03:02:27,889 - INFO - Container for sphinx-doc__sphinx-7454 started: fede2d9aa9940b662b490f7101ca5a5c6c35ec1ed22290c209705999d9724643
+2025-08-25 03:02:27,893 - INFO - Intermediate patch for sphinx-doc__sphinx-7454 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-7454/patch.diff, now applying to container...
+2025-08-25 03:02:28,370 - INFO - >>>>> Applied Patch:
+Checking patch sphinx/domains/python.py...
+Applied patch sphinx/domains/python.py cleanly.
+
+2025-08-25 03:02:29,278 - INFO - Git diff before:
+diff --git a/sphinx/domains/python.py b/sphinx/domains/python.py
+index 893bb0a22..8b971ecb0 100644
+--- a/sphinx/domains/python.py
++++ b/sphinx/domains/python.py
+@@ -71,8 +71,9 @@ pairindextypes = {
+ def _parse_annotation(annotation: str) -> List[Node]:
+     """Parse type annotation."""
+     def make_xref(text: str) -> addnodes.pending_xref:
++        reftype = 'obj' if text == 'None' else 'class'
+         return pending_xref('', nodes.Text(text),
+-                            refdomain='py', reftype='class', reftarget=text)
++                            refdomain='py', reftype=reftype, reftarget=text)
+ 
+     def unparse(node: ast.AST) -> List[Node]:
+         if isinstance(node, ast.Attribute):
+2025-08-25 03:02:29,278 - INFO - Eval script for sphinx-doc__sphinx-7454 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-7454/eval.sh; copying to container...
+2025-08-25 03:02:36,603 - INFO - Test runtime: 7.00 seconds
+2025-08-25 03:02:36,604 - INFO - Test output for sphinx-doc__sphinx-7454 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-7454/test_output.txt
+2025-08-25 03:02:36,729 - INFO - Git diff after:
+diff --git a/sphinx/domains/python.py b/sphinx/domains/python.py
+index 893bb0a22..8b971ecb0 100644
+--- a/sphinx/domains/python.py
++++ b/sphinx/domains/python.py
+@@ -71,8 +71,9 @@ pairindextypes = {
+ def _parse_annotation(annotation: str) -> List[Node]:
+     """Parse type annotation."""
+     def make_xref(text: str) -> addnodes.pending_xref:
++        reftype = 'obj' if text == 'None' else 'class'
+         return pending_xref('', nodes.Text(text),
+-                            refdomain='py', reftype='class', reftarget=text)
++                            refdomain='py', reftype=reftype, reftarget=text)
+ 
+     def unparse(node: ast.AST) -> List[Node]:
+         if isinstance(node, ast.Attribute):
+2025-08-25 03:02:36,729 - INFO - Grading answer for sphinx-doc__sphinx-7454...
+2025-08-25 03:02:36,740 - INFO - report: {'sphinx-doc__sphinx-7454': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/test_domain_py.py::test_parse_annotation'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/test_domain_py.py::test_function_signatures', 'tests/test_domain_py.py::test_domain_py_xrefs', 'tests/test_domain_py.py::test_domain_py_objects', 'tests/test_domain_py.py::test_resolve_xref_for_properties', 'tests/test_domain_py.py::test_domain_py_find_obj', 'tests/test_domain_py.py::test_get_full_qualified_name', 'tests/test_domain_py.py::test_pyfunction_signature', 'tests/test_domain_py.py::test_pyfunction_signature_full', 'tests/test_domain_py.py::test_pyfunction_signature_full_py38', 'tests/test_domain_py.py::test_optional_pyfunction_signature', 'tests/test_domain_py.py::test_pyexception_signature', 'tests/test_domain_py.py::test_exceptions_module_is_ignored', 'tests/test_domain_py.py::test_pydata_signature', 'tests/test_domain_py.py::test_pydata_signature_old', 'tests/test_domain_py.py::test_pyobject_prefix', 'tests/test_domain_py.py::test_pydata', 'tests/test_domain_py.py::test_pyfunction', 'tests/test_domain_py.py::test_pymethod_options', 'tests/test_domain_py.py::test_pyclassmethod', 'tests/test_domain_py.py::test_pystaticmethod', 'tests/test_domain_py.py::test_pyattribute', 'tests/test_domain_py.py::test_pydecorator_signature', 'tests/test_domain_py.py::test_pydecoratormethod_signature', 'tests/test_domain_py.py::test_module_index', 'tests/test_domain_py.py::test_module_index_submodule', 'tests/test_domain_py.py::test_module_index_not_collapsed', 'tests/test_domain_py.py::test_modindex_common_prefix'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sphinx-doc__sphinx-7454: resolved: True
+2025-08-25 03:02:36,740 - INFO - Attempting to stop container sweb.eval.sphinx-doc__sphinx-7454.verified_claude_new...
+2025-08-25 03:02:52,951 - INFO - Attempting to remove container sweb.eval.sphinx-doc__sphinx-7454.verified_claude_new...
+2025-08-25 03:02:53,167 - INFO - Container sweb.eval.sphinx-doc__sphinx-7454.verified_claude_new removed.
+2025-08-25 03:02:53,167 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-7454:latest...
+2025-08-25 03:02:53,453 - INFO - Image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-7454:latest removed.

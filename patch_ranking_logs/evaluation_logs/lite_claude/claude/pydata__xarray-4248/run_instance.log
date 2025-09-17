@@ -1,0 +1,83 @@
+2025-09-04 06:30:55,445 - INFO - Creating container for pydata__xarray-4248...
+2025-09-04 06:30:55,759 - INFO - Container for pydata__xarray-4248 created: c119c4710959c08be6d6026bdfb61468b8ad0b6bcf2e0bec991965e09d6fa472
+2025-09-04 06:30:56,355 - INFO - Container for pydata__xarray-4248 started: c119c4710959c08be6d6026bdfb61468b8ad0b6bcf2e0bec991965e09d6fa472
+2025-09-04 06:30:56,356 - INFO - Intermediate patch for pydata__xarray-4248 written to logs/run_evaluation/lite_claude_all/agentless_claude/pydata__xarray-4248/patch.diff, now applying to container...
+2025-09-04 06:30:56,514 - INFO - >>>>> Applied Patch:
+Checking patch xarray/core/formatting.py...
+Applied patch xarray/core/formatting.py cleanly.
+
+2025-09-04 06:30:56,668 - INFO - Git diff before:
+diff --git a/xarray/core/formatting.py b/xarray/core/formatting.py
+index 28eaae5f..d6a2ec61 100644
+--- a/xarray/core/formatting.py
++++ b/xarray/core/formatting.py
+@@ -306,12 +306,17 @@ def _summarize_coord_levels(coord, col_width, marker="-"):
+ 
+ 
+ def summarize_datavar(name, var, col_width):
++    if 'units' in var.attrs:
++        name = f"{name}, in {var.attrs['units']}"
+     return summarize_variable(name, var.variable, col_width)
+ 
+ 
+ def summarize_coord(name: Hashable, var, col_width: int):
+     is_index = name in var.dims
+     marker = "*" if is_index else " "
++    display_name = name
++    if 'units' in var.attrs:
++        display_name = f"{name}, in {var.attrs['units']}"
+     if is_index:
+         coord = var.variable.to_index_variable()
+         if coord.level_names is not None:
+@@ -321,7 +326,7 @@ def summarize_coord(name: Hashable, var, col_width: int):
+                     _summarize_coord_levels(coord, col_width),
+                 ]
+             )
+-    return summarize_variable(name, var.variable, col_width, marker)
++    return summarize_variable(display_name, var.variable, col_width, marker)
+ 
+ 
+ def summarize_attr(key, value, col_width=None):
+2025-09-04 06:30:56,669 - INFO - Eval script for pydata__xarray-4248 written to logs/run_evaluation/lite_claude_all/agentless_claude/pydata__xarray-4248/eval.sh; copying to container...
+2025-09-04 06:31:06,078 - INFO - Test runtime: 9.34 seconds
+2025-09-04 06:31:06,078 - INFO - Test output for pydata__xarray-4248 written to logs/run_evaluation/lite_claude_all/agentless_claude/pydata__xarray-4248/test_output.txt
+2025-09-04 06:31:06,204 - INFO - Git diff after:
+diff --git a/xarray/core/formatting.py b/xarray/core/formatting.py
+index 28eaae5f..d6a2ec61 100644
+--- a/xarray/core/formatting.py
++++ b/xarray/core/formatting.py
+@@ -306,12 +306,17 @@ def _summarize_coord_levels(coord, col_width, marker="-"):
+ 
+ 
+ def summarize_datavar(name, var, col_width):
++    if 'units' in var.attrs:
++        name = f"{name}, in {var.attrs['units']}"
+     return summarize_variable(name, var.variable, col_width)
+ 
+ 
+ def summarize_coord(name: Hashable, var, col_width: int):
+     is_index = name in var.dims
+     marker = "*" if is_index else " "
++    display_name = name
++    if 'units' in var.attrs:
++        display_name = f"{name}, in {var.attrs['units']}"
+     if is_index:
+         coord = var.variable.to_index_variable()
+         if coord.level_names is not None:
+@@ -321,7 +326,7 @@ def summarize_coord(name: Hashable, var, col_width: int):
+                     _summarize_coord_levels(coord, col_width),
+                 ]
+             )
+-    return summarize_variable(name, var.variable, col_width, marker)
++    return summarize_variable(display_name, var.variable, col_width, marker)
+ 
+ 
+ def summarize_attr(key, value, col_width=None):
+2025-09-04 06:31:06,205 - INFO - Grading answer for pydata__xarray-4248...
+2025-09-04 06:31:06,206 - INFO - report: {'pydata__xarray-4248': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['xarray/tests/test_formatting.py::test_inline_variable_array_repr_custom_repr']}, 'PASS_TO_PASS': {'success': ['xarray/tests/test_formatting.py::TestFormatting::test_get_indexer_at_least_n_items', 'xarray/tests/test_formatting.py::TestFormatting::test_first_n_items', 'xarray/tests/test_formatting.py::TestFormatting::test_last_n_items', 'xarray/tests/test_formatting.py::TestFormatting::test_last_item', 'xarray/tests/test_formatting.py::TestFormatting::test_format_item', 'xarray/tests/test_formatting.py::TestFormatting::test_format_items', 'xarray/tests/test_formatting.py::TestFormatting::test_format_array_flat', 'xarray/tests/test_formatting.py::TestFormatting::test_pretty_print', 'xarray/tests/test_formatting.py::TestFormatting::test_maybe_truncate', 'xarray/tests/test_formatting.py::TestFormatting::test_format_timestamp_out_of_bounds', 'xarray/tests/test_formatting.py::TestFormatting::test_attribute_repr', 'xarray/tests/test_formatting.py::TestFormatting::test_diff_array_repr', 'xarray/tests/test_formatting.py::TestFormatting::test_diff_attrs_repr_with_array', 'xarray/tests/test_formatting.py::TestFormatting::test_diff_dataset_repr', 'xarray/tests/test_formatting.py::TestFormatting::test_array_repr', 'xarray/tests/test_formatting.py::test_set_numpy_options', 'xarray/tests/test_formatting.py::test_short_numpy_repr', 'xarray/tests/test_formatting.py::test_large_array_repr_length'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for pydata__xarray-4248: resolved: False
+2025-09-04 06:31:06,208 - INFO - Attempting to stop container sweb.eval.pydata__xarray-4248.lite_claude_all...
+2025-09-04 06:31:23,520 - INFO - Attempting to remove container sweb.eval.pydata__xarray-4248.lite_claude_all...
+2025-09-04 06:31:26,864 - INFO - Container sweb.eval.pydata__xarray-4248.lite_claude_all removed.
+2025-09-04 06:31:26,867 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.pydata_1776_xarray-4248:latest...
+2025-09-04 06:31:38,622 - INFO - Image swebench/sweb.eval.x86_64.pydata_1776_xarray-4248:latest removed.

@@ -1,0 +1,97 @@
+2025-08-22 02:52:03,626 - INFO - Creating container for pylint-dev__pylint-7228...
+2025-08-22 02:52:04,692 - INFO - Container for pylint-dev__pylint-7228 created: ca23a89f740bfac6cdc14e6b5d69cd3fdd73c5370fdbf97b996ed852395be6c4
+2025-08-22 02:52:05,922 - INFO - Container for pylint-dev__pylint-7228 started: ca23a89f740bfac6cdc14e6b5d69cd3fdd73c5370fdbf97b996ed852395be6c4
+2025-08-22 02:52:05,922 - INFO - Intermediate patch for pylint-dev__pylint-7228 written to logs/run_evaluation/lite_gpt_all/agentless/pylint-dev__pylint-7228/patch.diff, now applying to container...
+2025-08-22 02:52:06,435 - INFO - >>>>> Applied Patch:
+Checking patch pylint/lint/run.py...
+Applied patch pylint/lint/run.py cleanly.
+
+2025-08-22 02:52:06,972 - INFO - Git diff before:
+diff --git a/pylint/lint/run.py b/pylint/lint/run.py
+index b8923aac5..b500a7582 100644
+--- a/pylint/lint/run.py
++++ b/pylint/lint/run.py
+@@ -158,9 +158,13 @@ group are mutually exclusive.",
+         if self._is_pylint_config:
+             _register_generate_config_options(linter._arg_parser)
+ 
+-        args = _config_initialization(
+-            linter, args, reporter, config_file=self._rcfile, verbose_mode=self.verbose
+-        )
++        try:
++            args = _config_initialization(
++                linter, args, reporter, config_file=self._rcfile, verbose_mode=self.verbose
++            )
++        except re.error as e:
++            print(f"Regex error in configuration: {e}")
++            sys.exit(1)
+ 
+         # Handle the 'pylint-config' command
+         if self._is_pylint_config:
+2025-08-22 02:52:06,973 - INFO - Eval script for pylint-dev__pylint-7228 written to logs/run_evaluation/lite_gpt_all/agentless/pylint-dev__pylint-7228/eval.sh; copying to container...
+2025-08-22 02:52:24,135 - INFO - Test runtime: 17.01 seconds
+2025-08-22 02:52:24,136 - INFO - Test output for pylint-dev__pylint-7228 written to logs/run_evaluation/lite_gpt_all/agentless/pylint-dev__pylint-7228/test_output.txt
+2025-08-22 02:52:24,259 - INFO - Git diff after:
+diff --git a/pylint/lint/run.py b/pylint/lint/run.py
+index b8923aac5..b500a7582 100644
+--- a/pylint/lint/run.py
++++ b/pylint/lint/run.py
+@@ -158,9 +158,13 @@ group are mutually exclusive.",
+         if self._is_pylint_config:
+             _register_generate_config_options(linter._arg_parser)
+ 
+-        args = _config_initialization(
+-            linter, args, reporter, config_file=self._rcfile, verbose_mode=self.verbose
+-        )
++        try:
++            args = _config_initialization(
++                linter, args, reporter, config_file=self._rcfile, verbose_mode=self.verbose
++            )
++        except re.error as e:
++            print(f"Regex error in configuration: {e}")
++            sys.exit(1)
+ 
+         # Handle the 'pylint-config' command
+         if self._is_pylint_config:
+2025-08-22 02:52:24,269 - INFO - Grading answer for pylint-dev__pylint-7228...
+2025-08-22 02:52:24,284 - INFO - report: {'pylint-dev__pylint-7228': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['tests/config/test_config.py::test_regex_error', 'tests/config/test_config.py::test_csv_regex_error']}, 'PASS_TO_PASS': {'success': ['tests/config/test_config.py::test_can_read_toml_env_variable', 'tests/config/test_config.py::test_unknown_message_id', 'tests/config/test_config.py::test_empty_confidence', 'tests/config/test_config.py::test_short_verbose', 'tests/config/test_config.py::test_argument_separator'], 'failure': ['tests/config/test_config.py::test_unknown_option_name', 'tests/config/test_config.py::test_unknown_short_option_name', 'tests/config/test_config.py::test_unknown_confidence', 'tests/config/test_config.py::test_unknown_yes_no', 'tests/config/test_config.py::test_unknown_py_version']}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for pylint-dev__pylint-7228: resolved: False
+2025-08-22 02:52:24,285 - INFO - Attempting to stop container sweb.eval.pylint-dev__pylint-7228.lite_gpt_all...
+2025-08-22 02:52:53,441 - INFO - Failed to stop container sweb.eval.pylint-dev__pylint-7228.lite_gpt_all: 500 Server Error for http+docker://localhost/v1.47/containers/ca23a89f740bfac6cdc14e6b5d69cd3fdd73c5370fdbf97b996ed852395be6c4/stop?t=15: Internal Server Error ("cannot stop container: ca23a89f740bfac6cdc14e6b5d69cd3fdd73c5370fdbf97b996ed852395be6c4: tried to kill container, but did not receive an exit event"). Trying to forcefully kill...
+2025-08-22 02:52:53,448 - INFO - Forcefully killing container sweb.eval.pylint-dev__pylint-7228.lite_gpt_all with PID 3386067...
+2025-08-22 02:52:53,450 - INFO - Failed to forcefully kill container sweb.eval.pylint-dev__pylint-7228.lite_gpt_all: [Errno 1] Operation not permitted
+Traceback (most recent call last):
+  File "/home/ubuntu/SWE-bench/venv/lib/python3.10/site-packages/docker/api/client.py", line 275, in _raise_for_status
+    response.raise_for_status()
+  File "/home/ubuntu/SWE-bench/venv/lib/python3.10/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http+docker://localhost/v1.47/containers/ca23a89f740bfac6cdc14e6b5d69cd3fdd73c5370fdbf97b996ed852395be6c4/stop?t=15
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/SWE-bench/swebench/harness/docker_utils.py", line 135, in cleanup_container
+    container.stop(timeout=15)
+  File "/home/ubuntu/SWE-bench/venv/lib/python3.10/site-packages/docker/models/containers.py", line 452, in stop
+    return self.client.api.stop(self.id, **kwargs)
+  File "/home/ubuntu/SWE-bench/venv/lib/python3.10/site-packages/docker/utils/decorators.py", line 19, in wrapped
+    return f(self, resource_id, *args, **kwargs)
+  File "/home/ubuntu/SWE-bench/venv/lib/python3.10/site-packages/docker/api/container.py", line 1212, in stop
+    self._raise_for_status(res)
+  File "/home/ubuntu/SWE-bench/venv/lib/python3.10/site-packages/docker/api/client.py", line 277, in _raise_for_status
+    raise create_api_error_from_http_exception(e) from e
+  File "/home/ubuntu/SWE-bench/venv/lib/python3.10/site-packages/docker/errors.py", line 39, in create_api_error_from_http_exception
+    raise cls(e, response=response, explanation=explanation) from e
+docker.errors.APIError: 500 Server Error for http+docker://localhost/v1.47/containers/ca23a89f740bfac6cdc14e6b5d69cd3fdd73c5370fdbf97b996ed852395be6c4/stop?t=15: Internal Server Error ("cannot stop container: ca23a89f740bfac6cdc14e6b5d69cd3fdd73c5370fdbf97b996ed852395be6c4: tried to kill container, but did not receive an exit event")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/SWE-bench/swebench/harness/docker_utils.py", line 150, in cleanup_container
+    os.kill(pid, signal.SIGKILL)
+PermissionError: [Errno 1] Operation not permitted
+
+2025-08-22 02:52:53,451 - INFO - Attempting to remove container sweb.eval.pylint-dev__pylint-7228.lite_gpt_all...
+2025-08-22 02:53:01,071 - INFO - Container sweb.eval.pylint-dev__pylint-7228.lite_gpt_all removed.
+2025-08-22 02:53:01,072 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-7228:latest...
+2025-08-22 02:53:05,415 - INFO - Image swebench/sweb.eval.x86_64.pylint-dev_1776_pylint-7228:latest removed.

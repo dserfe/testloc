@@ -1,0 +1,47 @@
+2025-08-25 02:50:56,488 - INFO - Creating container for django__django-14011...
+2025-08-25 02:50:57,528 - INFO - Container for django__django-14011 created: 1f1b8230dba33ad4526f2655f5d408f88dd3d4007a48af8cfd18f89d690efd27
+2025-08-25 02:50:58,452 - INFO - Container for django__django-14011 started: 1f1b8230dba33ad4526f2655f5d408f88dd3d4007a48af8cfd18f89d690efd27
+2025-08-25 02:50:58,454 - INFO - Intermediate patch for django__django-14011 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-14011/patch.diff, now applying to container...
+2025-08-25 02:50:58,661 - INFO - >>>>> Applied Patch:
+Checking patch django/core/servers/basehttp.py...
+Applied patch django/core/servers/basehttp.py cleanly.
+
+2025-08-25 02:50:59,845 - INFO - Git diff before:
+diff --git a/django/core/servers/basehttp.py b/django/core/servers/basehttp.py
+index 14dab517c9..0984a7d02a 100644
+--- a/django/core/servers/basehttp.py
++++ b/django/core/servers/basehttp.py
+@@ -79,7 +79,7 @@ class WSGIServer(simple_server.WSGIServer):
+ 
+ class ThreadedWSGIServer(socketserver.ThreadingMixIn, WSGIServer):
+     """A threaded version of the WSGIServer"""
+-    daemon_threads = True
++    daemon_threads = False  # Allow threads to clean up properly
+ 
+ 
+ class ServerHandler(simple_server.ServerHandler):
+2025-08-25 02:50:59,848 - INFO - Eval script for django__django-14011 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-14011/eval.sh; copying to container...
+2025-08-25 02:51:10,321 - INFO - Test runtime: 10.37 seconds
+2025-08-25 02:51:10,322 - INFO - Test output for django__django-14011 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-14011/test_output.txt
+2025-08-25 02:51:10,507 - INFO - Git diff after:
+diff --git a/django/core/servers/basehttp.py b/django/core/servers/basehttp.py
+index 14dab517c9..0984a7d02a 100644
+--- a/django/core/servers/basehttp.py
++++ b/django/core/servers/basehttp.py
+@@ -79,7 +79,7 @@ class WSGIServer(simple_server.WSGIServer):
+ 
+ class ThreadedWSGIServer(socketserver.ThreadingMixIn, WSGIServer):
+     """A threaded version of the WSGIServer"""
+-    daemon_threads = True
++    daemon_threads = False  # Allow threads to clean up properly
+ 
+ 
+ class ServerHandler(simple_server.ServerHandler):
+2025-08-25 02:51:10,511 - INFO - Grading answer for django__django-14011...
+2025-08-25 02:51:10,525 - INFO - report: {'django__django-14011': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_live_server_url_is_class_property (servers.tests.LiveServerAddress)', 'Data written to the database by a view can be read.', 'Fixtures are properly loaded and visible to the live server thread.', 'test_check_model_instance_from_subview (servers.tests.LiveServerThreadedTests)', 'test_view_calls_subview (servers.tests.LiveServerThreadedTests)', 'test_404 (servers.tests.LiveServerViews)', 'A HTTP 1.1 server is supposed to support keep-alive. Since our', 'test_environ (servers.tests.LiveServerViews)', 'test_keep_alive_connection_clears_previous_request_data (servers.tests.LiveServerViews)', 'See `test_closes_connection_without_content_length` for details. This', 'test_media_files (servers.tests.LiveServerViews)', 'LiveServerTestCase reports a 404 status code when HTTP client', 'Launched server serves with HTTP 1.1.', 'test_static_files (servers.tests.LiveServerViews)', 'test_view (servers.tests.LiveServerViews)', 'Each LiveServerTestCase binds to a unique port or fails to start a', "LiveServerTestCase.port customizes the server's port."]}, 'PASS_TO_PASS': {'success': ['test_set_up_class (servers.tests.LiveServerTestCaseSetupTest)', 'Contrast to'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-14011: resolved: False
+2025-08-25 02:51:10,528 - INFO - Attempting to stop container sweb.eval.django__django-14011.verified_claude_new...
+2025-08-25 02:51:26,045 - INFO - Attempting to remove container sweb.eval.django__django-14011.verified_claude_new...
+2025-08-25 02:51:26,076 - INFO - Container sweb.eval.django__django-14011.verified_claude_new removed.
+2025-08-25 02:51:26,076 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-14011:latest...
+2025-08-25 02:51:26,462 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-14011:latest removed.

@@ -1,0 +1,121 @@
+2025-08-22 02:49:30,915 - INFO - Creating container for django__django-15202...
+2025-08-22 02:49:32,957 - INFO - Container for django__django-15202 created: 9ca950d28e502d8d585c842b381010b62e9f6c43ed28a1d02da5cdaa2708dab0
+2025-08-22 02:49:34,339 - INFO - Container for django__django-15202 started: 9ca950d28e502d8d585c842b381010b62e9f6c43ed28a1d02da5cdaa2708dab0
+2025-08-22 02:49:34,340 - INFO - Intermediate patch for django__django-15202 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-15202/patch.diff, now applying to container...
+2025-08-22 02:49:34,651 - INFO - >>>>> Applied Patch:
+Checking patch django/core/validators.py...
+Applied patch django/core/validators.py cleanly.
+
+2025-08-22 02:49:36,705 - INFO - Git diff before:
+diff --git a/django/core/validators.py b/django/core/validators.py
+index 72fbe15551..ec6bb021a8 100644
+--- a/django/core/validators.py
++++ b/django/core/validators.py
+@@ -108,15 +108,16 @@ class URLValidator(RegexValidator):
+             raise ValidationError(self.message, code=self.code, params={'value': value})
+ 
+         # Then check full URL
++        try:
++            scheme, netloc, path, query, fragment = urlsplit(value)
++        except ValueError:  # for example, "Invalid IPv6 URL"
++            raise ValidationError(self.message, code=self.code, params={'value': value})
++
+         try:
+             super().__call__(value)
+         except ValidationError as e:
+             # Trivial case failed. Try for possible IDN domain
+             if value:
+-                try:
+-                    scheme, netloc, path, query, fragment = urlsplit(value)
+-                except ValueError:  # for example, "Invalid IPv6 URL"
+-                    raise ValidationError(self.message, code=self.code, params={'value': value})
+                 try:
+                     netloc = punycode(netloc)  # IDN -> ACE
+                 except UnicodeError:  # invalid domain part
+@@ -125,15 +126,15 @@ class URLValidator(RegexValidator):
+                 super().__call__(url)
+             else:
+                 raise
+-        else:
+-            # Now verify IPv6 in the netloc part
+-            host_match = re.search(r'^\[(.+)\](?::\d{1,5})?$', urlsplit(value).netloc)
+-            if host_match:
+-                potential_ip = host_match[1]
+-                try:
+-                    validate_ipv6_address(potential_ip)
+-                except ValidationError:
+-                    raise ValidationError(self.message, code=self.code, params={'value': value})
++
++        # Now verify IPv6 in the netloc part
++        host_match = re.search(r'^\[(.+)\](?::\d{1,5})?$', netloc)
++        if host_match:
++            potential_ip = host_match[1]
++            try:
++                validate_ipv6_address(potential_ip)
++            except ValidationError:
++                raise ValidationError(self.message, code=self.code, params={'value': value})
+ 
+         # The maximum length of a full host name is 253 characters per RFC 1034
+         # section 3.1. It's defined to be 255 bytes or less, but this includes
+2025-08-22 02:49:36,706 - INFO - Eval script for django__django-15202 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-15202/eval.sh; copying to container...
+2025-08-22 02:49:48,973 - INFO - Test runtime: 12.08 seconds
+2025-08-22 02:49:48,974 - INFO - Test output for django__django-15202 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-15202/test_output.txt
+2025-08-22 02:49:49,083 - INFO - Git diff after:
+diff --git a/django/core/validators.py b/django/core/validators.py
+index 72fbe15551..ec6bb021a8 100644
+--- a/django/core/validators.py
++++ b/django/core/validators.py
+@@ -108,15 +108,16 @@ class URLValidator(RegexValidator):
+             raise ValidationError(self.message, code=self.code, params={'value': value})
+ 
+         # Then check full URL
++        try:
++            scheme, netloc, path, query, fragment = urlsplit(value)
++        except ValueError:  # for example, "Invalid IPv6 URL"
++            raise ValidationError(self.message, code=self.code, params={'value': value})
++
+         try:
+             super().__call__(value)
+         except ValidationError as e:
+             # Trivial case failed. Try for possible IDN domain
+             if value:
+-                try:
+-                    scheme, netloc, path, query, fragment = urlsplit(value)
+-                except ValueError:  # for example, "Invalid IPv6 URL"
+-                    raise ValidationError(self.message, code=self.code, params={'value': value})
+                 try:
+                     netloc = punycode(netloc)  # IDN -> ACE
+                 except UnicodeError:  # invalid domain part
+@@ -125,15 +126,15 @@ class URLValidator(RegexValidator):
+                 super().__call__(url)
+             else:
+                 raise
+-        else:
+-            # Now verify IPv6 in the netloc part
+-            host_match = re.search(r'^\[(.+)\](?::\d{1,5})?$', urlsplit(value).netloc)
+-            if host_match:
+-                potential_ip = host_match[1]
+-                try:
+-                    validate_ipv6_address(potential_ip)
+-                except ValidationError:
+-                    raise ValidationError(self.message, code=self.code, params={'value': value})
++
++        # Now verify IPv6 in the netloc part
++        host_match = re.search(r'^\[(.+)\](?::\d{1,5})?$', netloc)
++        if host_match:
++            potential_ip = host_match[1]
++            try:
++                validate_ipv6_address(potential_ip)
++            except ValidationError:
++                raise ValidationError(self.message, code=self.code, params={'value': value})
+ 
+         # The maximum length of a full host name is 253 characters per RFC 1034
+         # section 3.1. It's defined to be 255 bytes or less, but this includes
+2025-08-22 02:49:49,083 - INFO - Grading answer for django__django-15202...
+2025-08-22 02:49:49,084 - INFO - report: {'django__django-15202': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_urlfield_clean_invalid (forms_tests.field_tests.test_urlfield.URLFieldTest)', 'test_urlfield_clean_not_required (forms_tests.field_tests.test_urlfield.URLFieldTest)']}, 'PASS_TO_PASS': {'success': ['test_urlfield_clean (forms_tests.field_tests.test_urlfield.URLFieldTest)', 'test_urlfield_clean_required (forms_tests.field_tests.test_urlfield.URLFieldTest)', 'test_urlfield_strip_on_none_value (forms_tests.field_tests.test_urlfield.URLFieldTest)', 'test_urlfield_unable_to_set_strip_kwarg (forms_tests.field_tests.test_urlfield.URLFieldTest)', 'test_urlfield_widget (forms_tests.field_tests.test_urlfield.URLFieldTest)', 'test_urlfield_widget_max_min_length (forms_tests.field_tests.test_urlfield.URLFieldTest)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-15202: resolved: False
+2025-08-22 02:49:49,085 - INFO - Attempting to stop container sweb.eval.django__django-15202.lite_gpt_all...
+2025-08-22 02:50:05,877 - INFO - Attempting to remove container sweb.eval.django__django-15202.lite_gpt_all...
+2025-08-22 02:50:06,907 - INFO - Container sweb.eval.django__django-15202.lite_gpt_all removed.
+2025-08-22 02:50:06,909 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-15202:latest...
+2025-08-22 02:50:13,356 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-15202:latest removed.

@@ -1,0 +1,73 @@
+2025-08-26 05:15:40,804 - INFO - Creating container for sympy__sympy-24443...
+2025-08-26 05:15:40,953 - INFO - Container for sympy__sympy-24443 created: 355dbd77f58f55281b423ef72cd118cc46a3008b5ca22b6d8d3e8f0e88b20017
+2025-08-26 05:15:41,392 - INFO - Container for sympy__sympy-24443 started: 355dbd77f58f55281b423ef72cd118cc46a3008b5ca22b6d8d3e8f0e88b20017
+2025-08-26 05:15:41,392 - INFO - Intermediate patch for sympy__sympy-24443 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sympy__sympy-24443/patch.diff, now applying to container...
+2025-08-26 05:15:41,489 - INFO - >>>>> Applied Patch:
+Checking patch sympy/combinatorics/homomorphisms.py...
+Applied patch sympy/combinatorics/homomorphisms.py cleanly.
+
+2025-08-26 05:15:41,910 - INFO - Git diff before:
+diff --git a/sympy/combinatorics/homomorphisms.py b/sympy/combinatorics/homomorphisms.py
+index bb7bdf32ba..557c23a863 100644
+--- a/sympy/combinatorics/homomorphisms.py
++++ b/sympy/combinatorics/homomorphisms.py
+@@ -333,14 +333,17 @@ def _image(r):
+             # both indices
+             while i < len(r):
+                 power = r_arr[j][1]
+-                if isinstance(domain, PermutationGroup) and r[i] in gens:
+-                    s = domain.generators[gens.index(r[i])]
++                if isinstance(domain, PermutationGroup):
++                    if r[i] in gens:
++                        s = domain.generators[gens.index(r[i])]
++                    elif r[i]**-1 in gens:
++                        s = domain.generators[gens.index(r[i]**-1)]**-1
++                    else:
++                        s = r[i]
+                 else:
+                     s = r[i]
+                 if s in images:
+                     w = w*images[s]**power
+-                elif s**-1 in images:
+-                    w = w*images[s**-1]**power
+                 i += abs(power)
+                 j += 1
+             return w
+2025-08-26 05:15:41,910 - INFO - Eval script for sympy__sympy-24443 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sympy__sympy-24443/eval.sh; copying to container...
+2025-08-26 05:15:46,564 - INFO - Test runtime: 4.60 seconds
+2025-08-26 05:15:46,564 - INFO - Test output for sympy__sympy-24443 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sympy__sympy-24443/test_output.txt
+2025-08-26 05:15:47,190 - INFO - Git diff after:
+diff --git a/sympy/combinatorics/homomorphisms.py b/sympy/combinatorics/homomorphisms.py
+index bb7bdf32ba..557c23a863 100644
+--- a/sympy/combinatorics/homomorphisms.py
++++ b/sympy/combinatorics/homomorphisms.py
+@@ -333,14 +333,17 @@ def _image(r):
+             # both indices
+             while i < len(r):
+                 power = r_arr[j][1]
+-                if isinstance(domain, PermutationGroup) and r[i] in gens:
+-                    s = domain.generators[gens.index(r[i])]
++                if isinstance(domain, PermutationGroup):
++                    if r[i] in gens:
++                        s = domain.generators[gens.index(r[i])]
++                    elif r[i]**-1 in gens:
++                        s = domain.generators[gens.index(r[i]**-1)]**-1
++                    else:
++                        s = r[i]
+                 else:
+                     s = r[i]
+                 if s in images:
+                     w = w*images[s]**power
+-                elif s**-1 in images:
+-                    w = w*images[s**-1]**power
+                 i += abs(power)
+                 j += 1
+             return w
+2025-08-26 05:15:47,190 - INFO - Grading answer for sympy__sympy-24443...
+2025-08-26 05:15:47,191 - INFO - report: {'sympy__sympy-24443': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_homomorphism'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_isomorphisms'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-24443: resolved: True
+2025-08-26 05:15:47,191 - INFO - Attempting to stop container sweb.eval.sympy__sympy-24443.verified_gpt4o_all2...
+2025-08-26 05:16:02,683 - INFO - Attempting to remove container sweb.eval.sympy__sympy-24443.verified_gpt4o_all2...
+2025-08-26 05:16:02,712 - INFO - Container sweb.eval.sympy__sympy-24443.verified_gpt4o_all2 removed.
+2025-08-26 05:16:02,712 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-24443:latest...
+2025-08-26 05:16:03,473 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-24443:latest removed.

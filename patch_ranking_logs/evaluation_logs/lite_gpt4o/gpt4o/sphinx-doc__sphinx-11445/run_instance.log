@@ -1,0 +1,45 @@
+2025-08-22 02:54:03,183 - INFO - Creating container for sphinx-doc__sphinx-11445...
+2025-08-22 02:54:06,044 - INFO - Container for sphinx-doc__sphinx-11445 created: 670c3ce6f2799ac3b530d88c0720147eca667cfaa3cea8e73d59ad91863941a0
+2025-08-22 02:54:11,071 - INFO - Container for sphinx-doc__sphinx-11445 started: 670c3ce6f2799ac3b530d88c0720147eca667cfaa3cea8e73d59ad91863941a0
+2025-08-22 02:54:11,072 - INFO - Intermediate patch for sphinx-doc__sphinx-11445 written to logs/run_evaluation/lite_gpt_all/agentless/sphinx-doc__sphinx-11445/patch.diff, now applying to container...
+2025-08-22 02:54:11,673 - INFO - >>>>> Applied Patch:
+Checking patch sphinx/parsers.py...
+Applied patch sphinx/parsers.py cleanly.
+
+2025-08-22 02:54:12,290 - INFO - Git diff before:
+diff --git a/sphinx/parsers.py b/sphinx/parsers.py
+index 3bcd69f52..08e9405cf 100644
+--- a/sphinx/parsers.py
++++ b/sphinx/parsers.py
+@@ -82,7 +82,8 @@ class RSTParser(docutils.parsers.rst.Parser, Parser):
+ 
+     def decorate(self, content: StringList) -> None:
+         """Preprocess reST content before parsing."""
+-        prepend_prolog(content, self.config.rst_prolog)
++        if not content[0].startswith(':'):
++            prepend_prolog(content, self.config.rst_prolog)
+         append_epilog(content, self.config.rst_epilog)
+2025-08-22 02:54:12,291 - INFO - Eval script for sphinx-doc__sphinx-11445 written to logs/run_evaluation/lite_gpt_all/agentless/sphinx-doc__sphinx-11445/eval.sh; copying to container...
+2025-08-22 02:54:22,912 - INFO - Test runtime: 10.43 seconds
+2025-08-22 02:54:22,912 - INFO - Test output for sphinx-doc__sphinx-11445 written to logs/run_evaluation/lite_gpt_all/agentless/sphinx-doc__sphinx-11445/test_output.txt
+2025-08-22 02:54:23,219 - INFO - Git diff after:
+diff --git a/sphinx/parsers.py b/sphinx/parsers.py
+index 3bcd69f52..08e9405cf 100644
+--- a/sphinx/parsers.py
++++ b/sphinx/parsers.py
+@@ -82,7 +82,8 @@ class RSTParser(docutils.parsers.rst.Parser, Parser):
+ 
+     def decorate(self, content: StringList) -> None:
+         """Preprocess reST content before parsing."""
+-        prepend_prolog(content, self.config.rst_prolog)
++        if not content[0].startswith(':'):
++            prepend_prolog(content, self.config.rst_prolog)
+         append_epilog(content, self.config.rst_epilog)
+2025-08-22 02:54:23,220 - INFO - Grading answer for sphinx-doc__sphinx-11445...
+2025-08-22 02:54:23,223 - INFO - report: {'sphinx-doc__sphinx-11445': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['tests/test_util_rst.py::test_prepend_prolog_with_roles_in_sections_with_newline', 'tests/test_util_rst.py::test_prepend_prolog_with_roles_in_sections_without_newline']}, 'PASS_TO_PASS': {'success': ['tests/test_util_rst.py::test_escape', 'tests/test_util_rst.py::test_append_epilog', 'tests/test_util_rst.py::test_prepend_prolog', 'tests/test_util_rst.py::test_prepend_prolog_with_CR', 'tests/test_util_rst.py::test_prepend_prolog_without_CR', 'tests/test_util_rst.py::test_prepend_prolog_with_roles_in_sections', 'tests/test_util_rst.py::test_textwidth', 'tests/test_util_rst.py::test_heading'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sphinx-doc__sphinx-11445: resolved: False
+2025-08-22 02:54:23,223 - INFO - Attempting to stop container sweb.eval.sphinx-doc__sphinx-11445.lite_gpt_all...
+2025-08-22 02:54:39,961 - INFO - Attempting to remove container sweb.eval.sphinx-doc__sphinx-11445.lite_gpt_all...
+2025-08-22 02:54:40,349 - INFO - Container sweb.eval.sphinx-doc__sphinx-11445.lite_gpt_all removed.
+2025-08-22 02:54:40,350 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-11445:latest...
+2025-08-22 02:55:03,071 - INFO - Image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-11445:latest removed.

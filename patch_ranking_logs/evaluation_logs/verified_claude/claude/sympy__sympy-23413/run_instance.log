@@ -1,0 +1,159 @@
+2025-08-25 03:04:38,618 - INFO - Creating container for sympy__sympy-23413...
+2025-08-25 03:04:39,059 - INFO - Container for sympy__sympy-23413 created: 8165b3acb6e76dc627c6fcc41a7c1f2655345e00a88dafcc20f609a8fd4d96ea
+2025-08-25 03:04:42,764 - INFO - Container for sympy__sympy-23413 started: 8165b3acb6e76dc627c6fcc41a7c1f2655345e00a88dafcc20f609a8fd4d96ea
+2025-08-25 03:04:42,764 - INFO - Intermediate patch for sympy__sympy-23413 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-23413/patch.diff, now applying to container...
+2025-08-25 03:04:43,301 - INFO - >>>>> Applied Patch:
+Checking patch sympy/matrices/normalforms.py...
+Applied patch sympy/matrices/normalforms.py cleanly.
+
+2025-08-25 03:04:44,065 - INFO - Git diff before:
+diff --git a/sympy/matrices/normalforms.py b/sympy/matrices/normalforms.py
+index 7bce95d230..db3d6558fc 100644
+--- a/sympy/matrices/normalforms.py
++++ b/sympy/matrices/normalforms.py
+@@ -67,61 +67,11 @@ def invariant_factors(m, domain=None):
+     return factors
+ 
+ 
+-def hermite_normal_form(A, *, D=None, check_rank=False):
+-    r"""
+-    Compute the Hermite Normal Form of a Matrix *A* of integers.
+ 
+-    Examples
+-    ========
+-
+-    >>> from sympy import Matrix
+-    >>> from sympy.matrices.normalforms import hermite_normal_form
+-    >>> m = Matrix([[12, 6, 4], [3, 9, 6], [2, 16, 14]])
+-    >>> print(hermite_normal_form(m))
+-    Matrix([[10, 0, 2], [0, 15, 3], [0, 0, 2]])
+-
+-    Parameters
+-    ==========
+-
+-    A : $m \times n$ ``Matrix`` of integers.
+-
+-    D : int, optional
+-        Let $W$ be the HNF of *A*. If known in advance, a positive integer *D*
+-        being any multiple of $\det(W)$ may be provided. In this case, if *A*
+-        also has rank $m$, then we may use an alternative algorithm that works
+-        mod *D* in order to prevent coefficient explosion.
+-
+-    check_rank : boolean, optional (default=False)
+-        The basic assumption is that, if you pass a value for *D*, then
+-        you already believe that *A* has rank $m$, so we do not waste time
+-        checking it for you. If you do want this to be checked (and the
+-        ordinary, non-modulo *D* algorithm to be used if the check fails), then
+-        set *check_rank* to ``True``.
+-
+-    Returns
+-    =======
+-
+-    ``Matrix``
+-        The HNF of matrix *A*.
+-
+-    Raises
+-    ======
+-
+-    DMDomainError
+-        If the domain of the matrix is not :ref:`ZZ`.
+-
+-    DMShapeError
+-        If the mod *D* algorithm is used but the matrix has more rows than
+-        columns.
+-
+-    References
+-    ==========
+-
+-    .. [1] Cohen, H. *A Course in Computational Algebraic Number Theory.*
+-       (See Algorithms 2.4.5 and 2.4.8.)
+-
+-    """
+     # Accept any of Python int, SymPy Integer, and ZZ itself:
+     if D is not None and not ZZ.of_type(D):
+         D = ZZ(int(D))
++    # Force check_rank=False when using transpose method to avoid row removal
++    if isinstance(A._rep, DomainMatrix) and A._rep.shape[0] < A._rep.shape[1]:
++        check_rank = False
+     return _hnf(A._rep, D=D, check_rank=check_rank).to_Matrix()
+2025-08-25 03:04:44,066 - INFO - Eval script for sympy__sympy-23413 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-23413/eval.sh; copying to container...
+2025-08-25 03:04:49,875 - INFO - Test runtime: 5.33 seconds
+2025-08-25 03:04:49,876 - INFO - Test output for sympy__sympy-23413 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-23413/test_output.txt
+2025-08-25 03:04:50,416 - INFO - Git diff after:
+diff --git a/sympy/matrices/normalforms.py b/sympy/matrices/normalforms.py
+index 7bce95d230..db3d6558fc 100644
+--- a/sympy/matrices/normalforms.py
++++ b/sympy/matrices/normalforms.py
+@@ -67,61 +67,11 @@ def invariant_factors(m, domain=None):
+     return factors
+ 
+ 
+-def hermite_normal_form(A, *, D=None, check_rank=False):
+-    r"""
+-    Compute the Hermite Normal Form of a Matrix *A* of integers.
+ 
+-    Examples
+-    ========
+-
+-    >>> from sympy import Matrix
+-    >>> from sympy.matrices.normalforms import hermite_normal_form
+-    >>> m = Matrix([[12, 6, 4], [3, 9, 6], [2, 16, 14]])
+-    >>> print(hermite_normal_form(m))
+-    Matrix([[10, 0, 2], [0, 15, 3], [0, 0, 2]])
+-
+-    Parameters
+-    ==========
+-
+-    A : $m \times n$ ``Matrix`` of integers.
+-
+-    D : int, optional
+-        Let $W$ be the HNF of *A*. If known in advance, a positive integer *D*
+-        being any multiple of $\det(W)$ may be provided. In this case, if *A*
+-        also has rank $m$, then we may use an alternative algorithm that works
+-        mod *D* in order to prevent coefficient explosion.
+-
+-    check_rank : boolean, optional (default=False)
+-        The basic assumption is that, if you pass a value for *D*, then
+-        you already believe that *A* has rank $m$, so we do not waste time
+-        checking it for you. If you do want this to be checked (and the
+-        ordinary, non-modulo *D* algorithm to be used if the check fails), then
+-        set *check_rank* to ``True``.
+-
+-    Returns
+-    =======
+-
+-    ``Matrix``
+-        The HNF of matrix *A*.
+-
+-    Raises
+-    ======
+-
+-    DMDomainError
+-        If the domain of the matrix is not :ref:`ZZ`.
+-
+-    DMShapeError
+-        If the mod *D* algorithm is used but the matrix has more rows than
+-        columns.
+-
+-    References
+-    ==========
+-
+-    .. [1] Cohen, H. *A Course in Computational Algebraic Number Theory.*
+-       (See Algorithms 2.4.5 and 2.4.8.)
+-
+-    """
+     # Accept any of Python int, SymPy Integer, and ZZ itself:
+     if D is not None and not ZZ.of_type(D):
+         D = ZZ(int(D))
++    # Force check_rank=False when using transpose method to avoid row removal
++    if isinstance(A._rep, DomainMatrix) and A._rep.shape[0] < A._rep.shape[1]:
++        check_rank = False
+     return _hnf(A._rep, D=D, check_rank=check_rank).to_Matrix()
+2025-08-25 03:04:50,416 - INFO - Grading answer for sympy__sympy-23413...
+2025-08-25 03:04:50,417 - INFO - report: {'sympy__sympy-23413': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_hermite_normal']}, 'PASS_TO_PASS': {'success': ['test_smith_normal'], 'failure': ['test_smith_normal_deprecated']}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-23413: resolved: False
+2025-08-25 03:04:50,417 - INFO - Attempting to stop container sweb.eval.sympy__sympy-23413.verified_claude_new...
+2025-08-25 03:05:05,862 - INFO - Attempting to remove container sweb.eval.sympy__sympy-23413.verified_claude_new...
+2025-08-25 03:05:05,890 - INFO - Container sweb.eval.sympy__sympy-23413.verified_claude_new removed.
+2025-08-25 03:05:05,890 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-23413:latest...
+2025-08-25 03:05:06,001 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-23413:latest removed.

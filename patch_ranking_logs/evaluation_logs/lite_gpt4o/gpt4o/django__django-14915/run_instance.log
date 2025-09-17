@@ -1,0 +1,47 @@
+2025-08-22 02:49:30,930 - INFO - Creating container for django__django-14915...
+2025-08-22 02:49:32,966 - INFO - Container for django__django-14915 created: ab0055bd55a65def67a09bd2dfef5d6a29f9de7823ebf48a7dbf8050418cf42a
+2025-08-22 02:49:34,822 - INFO - Container for django__django-14915 started: ab0055bd55a65def67a09bd2dfef5d6a29f9de7823ebf48a7dbf8050418cf42a
+2025-08-22 02:49:34,822 - INFO - Intermediate patch for django__django-14915 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-14915/patch.diff, now applying to container...
+2025-08-22 02:49:35,101 - INFO - >>>>> Applied Patch:
+Checking patch django/forms/models.py...
+Applied patch django/forms/models.py cleanly.
+
+2025-08-22 02:49:37,065 - INFO - Git diff before:
+diff --git a/django/forms/models.py b/django/forms/models.py
+index 5dcf923c12..4b86809551 100644
+--- a/django/forms/models.py
++++ b/django/forms/models.py
+@@ -1159,6 +1159,8 @@ class InlineForeignKeyField(Field):
+ 
+ 
+ class ModelChoiceIteratorValue:
++    def __hash__(self):
++        return hash(self.value)
+     def __init__(self, value, instance):
+         self.value = value
+         self.instance = instance
+2025-08-22 02:49:37,085 - INFO - Eval script for django__django-14915 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-14915/eval.sh; copying to container...
+2025-08-22 02:49:49,704 - INFO - Test runtime: 12.41 seconds
+2025-08-22 02:49:49,706 - INFO - Test output for django__django-14915 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-14915/test_output.txt
+2025-08-22 02:49:49,825 - INFO - Git diff after:
+diff --git a/django/forms/models.py b/django/forms/models.py
+index 5dcf923c12..4b86809551 100644
+--- a/django/forms/models.py
++++ b/django/forms/models.py
+@@ -1159,6 +1159,8 @@ class InlineForeignKeyField(Field):
+ 
+ 
+ class ModelChoiceIteratorValue:
++    def __hash__(self):
++        return hash(self.value)
+     def __init__(self, value, instance):
+         self.value = value
+         self.instance = instance
+2025-08-22 02:49:49,825 - INFO - Grading answer for django__django-14915...
+2025-08-22 02:49:49,827 - INFO - report: {'django__django-14915': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_choice_value_hash (model_forms.test_modelchoicefield.ModelChoiceFieldTests)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_basics (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_choice_iterator_passes_model_to_widget (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_choices (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_choices_bool (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_choices_bool_empty_label (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_choices_freshness (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_choices_not_fetched_when_not_rendering (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_choices_radio_blank (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_clean_model_instance (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_clean_to_field_name (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_custom_choice_iterator_passes_model_to_widget (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_deepcopies_widget (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_disabled_modelchoicefield (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_disabled_modelchoicefield_has_changed (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_disabled_modelchoicefield_initial_model_instance (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_disabled_modelmultiplechoicefield_has_changed (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_disabled_multiplemodelchoicefield (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', "ModelChoiceField with RadioSelect widget doesn't produce unnecessary", "Widgets that render multiple subwidgets shouldn't make more than one", 'Iterator defaults to ModelChoiceIterator and can be overridden with', 'test_queryset_manager (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_queryset_none (model_forms.test_modelchoicefield.ModelChoiceFieldTests)', 'test_result_cache_not_shared (model_forms.test_modelchoicefield.ModelChoiceFieldTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-14915: resolved: True
+2025-08-22 02:49:49,828 - INFO - Attempting to stop container sweb.eval.django__django-14915.lite_gpt_all...
+2025-08-22 02:50:07,113 - INFO - Attempting to remove container sweb.eval.django__django-14915.lite_gpt_all...
+2025-08-22 02:50:07,949 - INFO - Container sweb.eval.django__django-14915.lite_gpt_all removed.
+2025-08-22 02:50:07,953 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-14915:latest...
+2025-08-22 02:50:14,316 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-14915:latest removed.

@@ -1,0 +1,85 @@
+2025-09-04 06:30:09,152 - INFO - Creating container for scikit-learn__scikit-learn-13584...
+2025-09-04 06:30:17,373 - INFO - Container for scikit-learn__scikit-learn-13584 created: 3c46f2896846f9140595c5e7fc523097be4d5d3439ca7532e057abfceedce96c
+2025-09-04 06:30:20,018 - INFO - Container for scikit-learn__scikit-learn-13584 started: 3c46f2896846f9140595c5e7fc523097be4d5d3439ca7532e057abfceedce96c
+2025-09-04 06:30:20,018 - INFO - Intermediate patch for scikit-learn__scikit-learn-13584 written to logs/run_evaluation/lite_claude_all/agentless_claude/scikit-learn__scikit-learn-13584/patch.diff, now applying to container...
+2025-09-04 06:30:20,174 - INFO - >>>>> Applied Patch:
+Checking patch sklearn/base.py...
+Applied patch sklearn/base.py cleanly.
+
+2025-09-04 06:30:20,610 - INFO - Git diff before:
+diff --git a/sklearn/base.py b/sklearn/base.py
+index 167baaf2b..961354f35 100644
+--- a/sklearn/base.py
++++ b/sklearn/base.py
+@@ -235,16 +235,26 @@ class BaseEstimator:
+ 
+     def __repr__(self):
+         from .utils._pprint import _EstimatorPrettyPrinter
++        import numpy as np
+ 
+         N_CHAR_MAX = 700  # number of non-whitespace or newline chars
+         N_MAX_ELEMENTS_TO_SHOW = 30  # number of elements to show in sequences
+ 
++        # Create a copy of self to avoid modifying the original object
++        class _SafeRepr:
++            def __init__(self, estimator):
++                self.__dict__ = {
++                    k: v.tolist() if isinstance(v, np.ndarray) else v
++                    for k, v in estimator.__dict__.items()
++                }
++                self.__class__ = estimator.__class__
++
+         # use ellipsis for sequences with a lot of elements
+         pp = _EstimatorPrettyPrinter(
+             compact=True, indent=1, indent_at_name=True,
+             n_max_elements_to_show=N_MAX_ELEMENTS_TO_SHOW)
+ 
+-        repr_ = pp.pformat(self)
++        repr_ = pp.pformat(_SafeRepr(self))
+ 
+         # Use bruteforce ellipsis if string is very long
+         if len(''.join(repr_.split())) > N_CHAR_MAX:  # check non-blank chars
+2025-09-04 06:30:20,610 - INFO - Eval script for scikit-learn__scikit-learn-13584 written to logs/run_evaluation/lite_claude_all/agentless_claude/scikit-learn__scikit-learn-13584/eval.sh; copying to container...
+2025-09-04 06:30:26,772 - INFO - Test runtime: 6.09 seconds
+2025-09-04 06:30:26,772 - INFO - Test output for scikit-learn__scikit-learn-13584 written to logs/run_evaluation/lite_claude_all/agentless_claude/scikit-learn__scikit-learn-13584/test_output.txt
+2025-09-04 06:30:26,890 - INFO - Git diff after:
+diff --git a/sklearn/base.py b/sklearn/base.py
+index 167baaf2b..961354f35 100644
+--- a/sklearn/base.py
++++ b/sklearn/base.py
+@@ -235,16 +235,26 @@ class BaseEstimator:
+ 
+     def __repr__(self):
+         from .utils._pprint import _EstimatorPrettyPrinter
++        import numpy as np
+ 
+         N_CHAR_MAX = 700  # number of non-whitespace or newline chars
+         N_MAX_ELEMENTS_TO_SHOW = 30  # number of elements to show in sequences
+ 
++        # Create a copy of self to avoid modifying the original object
++        class _SafeRepr:
++            def __init__(self, estimator):
++                self.__dict__ = {
++                    k: v.tolist() if isinstance(v, np.ndarray) else v
++                    for k, v in estimator.__dict__.items()
++                }
++                self.__class__ = estimator.__class__
++
+         # use ellipsis for sequences with a lot of elements
+         pp = _EstimatorPrettyPrinter(
+             compact=True, indent=1, indent_at_name=True,
+             n_max_elements_to_show=N_MAX_ELEMENTS_TO_SHOW)
+ 
+-        repr_ = pp.pformat(self)
++        repr_ = pp.pformat(_SafeRepr(self))
+ 
+         # Use bruteforce ellipsis if string is very long
+         if len(''.join(repr_.split())) > N_CHAR_MAX:  # check non-blank chars
+2025-09-04 06:30:26,890 - INFO - Grading answer for scikit-learn__scikit-learn-13584...
+2025-09-04 06:30:26,891 - INFO - report: {'scikit-learn__scikit-learn-13584': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['sklearn/utils/tests/test_pprint.py::test_changed_only', 'sklearn/utils/tests/test_pprint.py::test_pipeline', 'sklearn/utils/tests/test_pprint.py::test_deeply_nested', 'sklearn/utils/tests/test_pprint.py::test_gridsearch', 'sklearn/utils/tests/test_pprint.py::test_gridsearch_pipeline', 'sklearn/utils/tests/test_pprint.py::test_n_max_elements_to_show'], 'failure': []}, 'PASS_TO_PASS': {'success': ['sklearn/utils/tests/test_pprint.py::test_basic', 'sklearn/utils/tests/test_pprint.py::test_length_constraint', 'sklearn/utils/tests/test_pprint.py::test_builtin_prettyprinter'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for scikit-learn__scikit-learn-13584: resolved: True
+2025-09-04 06:30:26,891 - INFO - Attempting to stop container sweb.eval.scikit-learn__scikit-learn-13584.lite_claude_all...
+2025-09-04 06:30:43,164 - INFO - Attempting to remove container sweb.eval.scikit-learn__scikit-learn-13584.lite_claude_all...
+2025-09-04 06:30:44,327 - INFO - Container sweb.eval.scikit-learn__scikit-learn-13584.lite_claude_all removed.
+2025-09-04 06:30:44,329 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-13584:latest...
+2025-09-04 06:30:47,812 - INFO - Image swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-13584:latest removed.

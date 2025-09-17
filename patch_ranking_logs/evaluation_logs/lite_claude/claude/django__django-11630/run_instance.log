@@ -1,0 +1,131 @@
+2025-09-04 06:22:59,466 - INFO - Creating container for django__django-11630...
+2025-09-04 06:23:03,412 - INFO - Container for django__django-11630 created: 092e21dbb9be0d2c8eb3125100b2bd7411a19acb0a3e2c876972e412513f8f99
+2025-09-04 06:23:04,213 - INFO - Container for django__django-11630 started: 092e21dbb9be0d2c8eb3125100b2bd7411a19acb0a3e2c876972e412513f8f99
+2025-09-04 06:23:04,213 - INFO - Intermediate patch for django__django-11630 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-11630/patch.diff, now applying to container...
+2025-09-04 06:23:04,320 - INFO - >>>>> Applied Patch:
+Checking patch django/core/checks/model_checks.py...
+Applied patch django/core/checks/model_checks.py cleanly.
+
+2025-09-04 06:23:05,295 - INFO - Git diff before:
+diff --git a/django/core/checks/model_checks.py b/django/core/checks/model_checks.py
+index 5c2266ca1d..2e1919f50a 100644
+--- a/django/core/checks/model_checks.py
++++ b/django/core/checks/model_checks.py
+@@ -1,3 +1,4 @@
++
+ import inspect
+ import types
+ from collections import defaultdict
+@@ -9,7 +10,8 @@ from django.core.checks import Error, Tags, register
+ 
+ @register(Tags.models)
+ def check_all_models(app_configs=None, **kwargs):
+-    db_table_models = defaultdict(list)
++    # Track models by their database and table name
++    db_table_models = defaultdict(lambda: defaultdict(list))
+     indexes = defaultdict(list)
+     constraints = defaultdict(list)
+     errors = []
+@@ -19,7 +21,9 @@ def check_all_models(app_configs=None, **kwargs):
+         models = chain.from_iterable(app_config.get_models() for app_config in app_configs)
+     for model in models:
+         if model._meta.managed and not model._meta.proxy:
+-            db_table_models[model._meta.db_table].append(model._meta.label)
++            # Get the database for this model
++            db_name = getattr(model._meta, 'using', 'default')
++            db_table_models[db_name][model._meta.db_table].append(model._meta.label)
+         if not inspect.ismethod(model.check):
+             errors.append(
+                 Error(
+@@ -35,14 +39,16 @@ def check_all_models(app_configs=None, **kwargs):
+             indexes[model_index.name].append(model._meta.label)
+         for model_constraint in model._meta.constraints:
+             constraints[model_constraint.name].append(model._meta.label)
+-    for db_table, model_labels in db_table_models.items():
+-        if len(model_labels) != 1:
+-            errors.append(
+-                Error(
+-                    "db_table '%s' is used by multiple models: %s."
+-                    % (db_table, ', '.join(db_table_models[db_table])),
+-                    obj=db_table,
+-                    id='models.E028',
++    # Check for duplicate table names within the same database
++    for db_name, tables in db_table_models.items():
++        for db_table, model_labels in tables.items():
++            if len(model_labels) != 1:
++                errors.append(
++                    Error(
++                        "db_table '%s' is used by multiple models in database '%s': %s."
++                        % (db_table, db_name, ', '.join(model_labels)),
++                        obj=db_table,
++                        id='models.E028',
+                 )
+             )
+     for index_name, model_labels in indexes.items():
+2025-09-04 06:23:05,295 - INFO - Eval script for django__django-11630 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-11630/eval.sh; copying to container...
+2025-09-04 06:23:15,446 - INFO - Test runtime: 10.07 seconds
+2025-09-04 06:23:15,446 - INFO - Test output for django__django-11630 written to logs/run_evaluation/lite_claude_all/agentless_claude/django__django-11630/test_output.txt
+2025-09-04 06:23:15,572 - INFO - Git diff after:
+diff --git a/django/core/checks/model_checks.py b/django/core/checks/model_checks.py
+index 5c2266ca1d..2e1919f50a 100644
+--- a/django/core/checks/model_checks.py
++++ b/django/core/checks/model_checks.py
+@@ -1,3 +1,4 @@
++
+ import inspect
+ import types
+ from collections import defaultdict
+@@ -9,7 +10,8 @@ from django.core.checks import Error, Tags, register
+ 
+ @register(Tags.models)
+ def check_all_models(app_configs=None, **kwargs):
+-    db_table_models = defaultdict(list)
++    # Track models by their database and table name
++    db_table_models = defaultdict(lambda: defaultdict(list))
+     indexes = defaultdict(list)
+     constraints = defaultdict(list)
+     errors = []
+@@ -19,7 +21,9 @@ def check_all_models(app_configs=None, **kwargs):
+         models = chain.from_iterable(app_config.get_models() for app_config in app_configs)
+     for model in models:
+         if model._meta.managed and not model._meta.proxy:
+-            db_table_models[model._meta.db_table].append(model._meta.label)
++            # Get the database for this model
++            db_name = getattr(model._meta, 'using', 'default')
++            db_table_models[db_name][model._meta.db_table].append(model._meta.label)
+         if not inspect.ismethod(model.check):
+             errors.append(
+                 Error(
+@@ -35,14 +39,16 @@ def check_all_models(app_configs=None, **kwargs):
+             indexes[model_index.name].append(model._meta.label)
+         for model_constraint in model._meta.constraints:
+             constraints[model_constraint.name].append(model._meta.label)
+-    for db_table, model_labels in db_table_models.items():
+-        if len(model_labels) != 1:
+-            errors.append(
+-                Error(
+-                    "db_table '%s' is used by multiple models: %s."
+-                    % (db_table, ', '.join(db_table_models[db_table])),
+-                    obj=db_table,
+-                    id='models.E028',
++    # Check for duplicate table names within the same database
++    for db_name, tables in db_table_models.items():
++        for db_table, model_labels in tables.items():
++            if len(model_labels) != 1:
++                errors.append(
++                    Error(
++                        "db_table '%s' is used by multiple models in database '%s': %s."
++                        % (db_table, db_name, ', '.join(model_labels)),
++                        obj=db_table,
++                        id='models.E028',
+                 )
+             )
+     for index_name, model_labels in indexes.items():
+2025-09-04 06:23:15,575 - INFO - Grading answer for django__django-11630...
+2025-09-04 06:23:15,576 - INFO - report: {'django__django-11630': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_collision_across_apps_database_routers_installed (check_framework.test_model_checks.DuplicateDBTableTests)', 'test_collision_in_same_app_database_routers_installed (check_framework.test_model_checks.DuplicateDBTableTests)']}, 'PASS_TO_PASS': {'success': ['test_collision_abstract_model (check_framework.test_model_checks.IndexNameTests)', 'test_collision_across_apps (check_framework.test_model_checks.IndexNameTests)', 'test_collision_in_different_models (check_framework.test_model_checks.IndexNameTests)', 'test_collision_in_same_model (check_framework.test_model_checks.IndexNameTests)', 'test_no_collision_abstract_model_interpolation (check_framework.test_model_checks.IndexNameTests)', 'test_no_collision_across_apps_interpolation (check_framework.test_model_checks.IndexNameTests)', 'test_collision_abstract_model (check_framework.test_model_checks.ConstraintNameTests)', 'test_collision_across_apps (check_framework.test_model_checks.ConstraintNameTests)', 'test_collision_in_different_models (check_framework.test_model_checks.ConstraintNameTests)', 'test_collision_in_same_model (check_framework.test_model_checks.ConstraintNameTests)', 'test_no_collision_abstract_model_interpolation (check_framework.test_model_checks.ConstraintNameTests)', 'test_no_collision_across_apps_interpolation (check_framework.test_model_checks.ConstraintNameTests)', 'test_no_collision_for_proxy_models (check_framework.test_model_checks.DuplicateDBTableTests)', 'test_no_collision_for_unmanaged_models (check_framework.test_model_checks.DuplicateDBTableTests)'], 'failure': ['test_collision_across_apps (check_framework.test_model_checks.DuplicateDBTableTests)', 'test_collision_in_same_app (check_framework.test_model_checks.DuplicateDBTableTests)']}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-11630: resolved: False
+2025-09-04 06:23:15,577 - INFO - Attempting to stop container sweb.eval.django__django-11630.lite_claude_all...
+2025-09-04 06:23:30,937 - INFO - Attempting to remove container sweb.eval.django__django-11630.lite_claude_all...
+2025-09-04 06:23:30,980 - INFO - Container sweb.eval.django__django-11630.lite_claude_all removed.
+2025-09-04 06:23:30,980 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-11630:latest...
+2025-09-04 06:23:31,459 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-11630:latest removed.

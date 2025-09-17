@@ -1,0 +1,103 @@
+2025-08-22 02:48:34,982 - INFO - Creating container for django__django-13447...
+2025-08-22 02:48:38,689 - INFO - Container for django__django-13447 created: f67453a64be18074b747da8ac325f8ef1aa1fc6692aa791d0d5b990cf5a3fd19
+2025-08-22 02:48:44,272 - INFO - Container for django__django-13447 started: f67453a64be18074b747da8ac325f8ef1aa1fc6692aa791d0d5b990cf5a3fd19
+2025-08-22 02:48:44,274 - INFO - Intermediate patch for django__django-13447 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-13447/patch.diff, now applying to container...
+2025-08-22 02:48:44,569 - INFO - >>>>> Applied Patch:
+Checking patch django/contrib/admin/options.py...
+Applied patch django/contrib/admin/options.py cleanly.
+
+2025-08-22 02:48:46,209 - INFO - Git diff before:
+diff --git a/django/contrib/admin/options.py b/django/contrib/admin/options.py
+index 33c86d2ba9..6cd64f1dbe 100644
+--- a/django/contrib/admin/options.py
++++ b/django/contrib/admin/options.py
+@@ -98,6 +98,36 @@ csrf_protect_m = method_decorator(csrf_protect)
+ 
+ 
+ class BaseModelAdmin(metaclass=forms.MediaDefiningClass):
++    def build_app_dict(self, request, app_label=None):
++        """
++        Return a dictionary of the app's information.
++        """
++        app_dict = {}
++        user = request.user
++        models = self.get_model_list(request, app_label)
++        for model, model_admin in models:
++            if not model_admin.has_view_permission(request):
++                continue
++            perms = model_admin.get_model_perms(request)
++            if True not in perms.values():
++                continue
++            info = (model._meta.app_label, model._meta.model_name)
++            app_dict[info] = {
++                'name': capfirst(model._meta.verbose_name_plural),
++                'object_name': model._meta.object_name,
++                'perms': perms,
++                'admin_url': reverse(
++                    'admin:%s_%s_changelist' % info,
++                    current_app=self.admin_site.name,
++                ),
++                'add_url': reverse(
++                    'admin:%s_%s_add' % info,
++                    current_app=self.admin_site.name,
++                ),
++                'view_only': not perms['change'],
++                'model': model  # Include the model class in the context
++            }
++        return app_dict
+     """Functionality common to both ModelAdmin and InlineAdmin."""
+ 
+     autocomplete_fields = ()
+2025-08-22 02:48:46,227 - INFO - Eval script for django__django-13447 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-13447/eval.sh; copying to container...
+2025-08-22 02:48:59,781 - INFO - Test runtime: 13.28 seconds
+2025-08-22 02:48:59,781 - INFO - Test output for django__django-13447 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-13447/test_output.txt
+2025-08-22 02:49:00,195 - INFO - Git diff after:
+diff --git a/django/contrib/admin/options.py b/django/contrib/admin/options.py
+index 33c86d2ba9..6cd64f1dbe 100644
+--- a/django/contrib/admin/options.py
++++ b/django/contrib/admin/options.py
+@@ -98,6 +98,36 @@ csrf_protect_m = method_decorator(csrf_protect)
+ 
+ 
+ class BaseModelAdmin(metaclass=forms.MediaDefiningClass):
++    def build_app_dict(self, request, app_label=None):
++        """
++        Return a dictionary of the app's information.
++        """
++        app_dict = {}
++        user = request.user
++        models = self.get_model_list(request, app_label)
++        for model, model_admin in models:
++            if not model_admin.has_view_permission(request):
++                continue
++            perms = model_admin.get_model_perms(request)
++            if True not in perms.values():
++                continue
++            info = (model._meta.app_label, model._meta.model_name)
++            app_dict[info] = {
++                'name': capfirst(model._meta.verbose_name_plural),
++                'object_name': model._meta.object_name,
++                'perms': perms,
++                'admin_url': reverse(
++                    'admin:%s_%s_changelist' % info,
++                    current_app=self.admin_site.name,
++                ),
++                'add_url': reverse(
++                    'admin:%s_%s_add' % info,
++                    current_app=self.admin_site.name,
++                ),
++                'view_only': not perms['change'],
++                'model': model  # Include the model class in the context
++            }
++        return app_dict
+     """Functionality common to both ModelAdmin and InlineAdmin."""
+ 
+     autocomplete_fields = ()
+2025-08-22 02:49:00,197 - INFO - Grading answer for django__django-13447...
+2025-08-22 02:49:00,199 - INFO - report: {'django__django-13447': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_available_apps (admin_views.test_adminsite.SiteEachContextTest)']}, 'PASS_TO_PASS': {'success': ['test_add_action (admin_views.test_adminsite.SiteActionsTests)', 'test_disable_action (admin_views.test_adminsite.SiteActionsTests)', "AdminSite.get_action() returns an action even if it's disabled.", 'test_each_context (admin_views.test_adminsite.SiteEachContextTest)', 'test_each_context_site_url_with_script_name (admin_views.test_adminsite.SiteEachContextTest)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-13447: resolved: False
+2025-08-22 02:49:00,202 - INFO - Attempting to stop container sweb.eval.django__django-13447.lite_gpt_all...
+2025-08-22 02:49:16,898 - INFO - Attempting to remove container sweb.eval.django__django-13447.lite_gpt_all...
+2025-08-22 02:49:17,117 - INFO - Container sweb.eval.django__django-13447.lite_gpt_all removed.
+2025-08-22 02:49:17,118 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-13447:latest...
+2025-08-22 02:49:21,434 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-13447:latest removed.

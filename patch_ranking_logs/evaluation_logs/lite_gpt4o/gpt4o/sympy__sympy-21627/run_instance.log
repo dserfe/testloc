@@ -1,0 +1,51 @@
+2025-08-22 02:56:57,015 - INFO - Creating container for sympy__sympy-21627...
+2025-08-22 02:56:57,738 - INFO - Container for sympy__sympy-21627 created: 0b5e468f69da46a8f2e317ab26fb2f95740975281a96a566d60fa8599f2e84a3
+2025-08-22 02:57:01,927 - INFO - Container for sympy__sympy-21627 started: 0b5e468f69da46a8f2e317ab26fb2f95740975281a96a566d60fa8599f2e84a3
+2025-08-22 02:57:01,927 - INFO - Intermediate patch for sympy__sympy-21627 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-21627/patch.diff, now applying to container...
+2025-08-22 02:57:02,988 - INFO - >>>>> Applied Patch:
+Checking patch sympy/functions/elementary/hyperbolic.py...
+Applied patch sympy/functions/elementary/hyperbolic.py cleanly.
+
+2025-08-22 02:57:03,952 - INFO - Git diff before:
+diff --git a/sympy/functions/elementary/hyperbolic.py b/sympy/functions/elementary/hyperbolic.py
+index 892e19cabb..e7c63844d1 100644
+--- a/sympy/functions/elementary/hyperbolic.py
++++ b/sympy/functions/elementary/hyperbolic.py
+@@ -266,8 +266,8 @@ def _eval_is_finite(self):
+ 
+     def _eval_is_zero(self):
+         arg = self.args[0]
+-        if arg.is_zero:
+-            return True
++        if arg.is_zero is not None:
++            return arg.is_zero
+ 
+ 
+ class cosh(HyperbolicFunction):
+2025-08-22 02:57:03,952 - INFO - Eval script for sympy__sympy-21627 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-21627/eval.sh; copying to container...
+2025-08-22 02:57:28,908 - INFO - Test runtime: 24.60 seconds
+2025-08-22 02:57:28,908 - INFO - Test output for sympy__sympy-21627 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-21627/test_output.txt
+2025-08-22 02:57:28,987 - INFO - Git diff after:
+diff --git a/sympy/functions/elementary/hyperbolic.py b/sympy/functions/elementary/hyperbolic.py
+index 892e19cabb..e7c63844d1 100644
+--- a/sympy/functions/elementary/hyperbolic.py
++++ b/sympy/functions/elementary/hyperbolic.py
+@@ -266,8 +266,8 @@ def _eval_is_finite(self):
+ 
+     def _eval_is_zero(self):
+         arg = self.args[0]
+-        if arg.is_zero:
+-            return True
++        if arg.is_zero is not None:
++            return arg.is_zero
+ 
+ 
+ class cosh(HyperbolicFunction):
+2025-08-22 02:57:28,987 - INFO - Grading answer for sympy__sympy-21627...
+2025-08-22 02:57:28,996 - INFO - report: {'sympy__sympy-21627': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_Abs']}, 'PASS_TO_PASS': {'success': ['test_re', 'test_im', 'test_sign', 'test_as_real_imag', 'test_Abs_rewrite', 'test_Abs_real', 'test_Abs_properties', 'test_abs', 'test_arg', 'test_arg_rewrite', 'test_adjoint', 'test_conjugate', 'test_conjugate_transpose', 'test_transpose', 'test_polarify', 'test_unpolarify', 'test_issue_4035', 'test_issue_3206', 'test_issue_4754_derivative_conjugate', 'test_derivatives_issue_4757', 'test_issue_11413', 'test_periodic_argument', 'test_principal_branch', 'test_issue_14216', 'test_issue_14238', 'test_zero_assumptions'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-21627: resolved: False
+2025-08-22 02:57:29,003 - INFO - Attempting to stop container sweb.eval.sympy__sympy-21627.lite_gpt_all...
+2025-08-22 02:57:44,535 - INFO - Attempting to remove container sweb.eval.sympy__sympy-21627.lite_gpt_all...
+2025-08-22 02:57:44,570 - INFO - Container sweb.eval.sympy__sympy-21627.lite_gpt_all removed.
+2025-08-22 02:57:44,570 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-21627:latest...
+2025-08-22 02:57:44,743 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-21627:latest removed.

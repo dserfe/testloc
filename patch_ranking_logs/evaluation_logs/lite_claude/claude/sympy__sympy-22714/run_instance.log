@@ -1,0 +1,67 @@
+2025-09-04 06:32:31,045 - INFO - Creating container for sympy__sympy-22714...
+2025-09-04 06:32:31,160 - INFO - Container for sympy__sympy-22714 created: 0288a8a1644b4ad932eeca7ddef0ca333bd45278d92d0ed3540970e7d995b6ff
+2025-09-04 06:32:31,813 - INFO - Container for sympy__sympy-22714 started: 0288a8a1644b4ad932eeca7ddef0ca333bd45278d92d0ed3540970e7d995b6ff
+2025-09-04 06:32:31,813 - INFO - Intermediate patch for sympy__sympy-22714 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-22714/patch.diff, now applying to container...
+2025-09-04 06:32:31,953 - INFO - >>>>> Applied Patch:
+Checking patch sympy/geometry/point.py...
+Applied patch sympy/geometry/point.py cleanly.
+
+2025-09-04 06:32:32,496 - INFO - Git diff before:
+diff --git a/sympy/geometry/point.py b/sympy/geometry/point.py
+index 73c20334d0..e1566ca1a4 100644
+--- a/sympy/geometry/point.py
++++ b/sympy/geometry/point.py
+@@ -152,8 +152,6 @@ def __new__(cls, *args, **kwargs):
+                         'warn' or 'ignore'.'''))
+         if any(coords[dim:]):
+             raise ValueError('Nonzero coordinates cannot be removed.')
+-        if any(a.is_number and im(a) for a in coords):
+-            raise ValueError('Imaginary coordinates are not permitted.')
+         if not all(isinstance(a, Expr) for a in coords):
+             raise TypeError('Coordinates must be valid SymPy expressions.')
+ 
+@@ -163,6 +161,9 @@ def __new__(cls, *args, **kwargs):
+         # Turn any Floats into rationals and simplify
+         # any expressions before we instantiate
+         if evaluate:
++            # Check for imaginary coordinates only when evaluating
++            if any(a.is_number and im(a) for a in coords):
++                raise ValueError('Imaginary coordinates are not permitted.')
+             coords = coords.xreplace({
+                 f: simplify(nsimplify(f, rational=True))
+                  for f in coords.atoms(Float)})
+2025-09-04 06:32:32,497 - INFO - Eval script for sympy__sympy-22714 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-22714/eval.sh; copying to container...
+2025-09-04 06:32:44,377 - INFO - Test runtime: 11.77 seconds
+2025-09-04 06:32:44,378 - INFO - Test output for sympy__sympy-22714 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-22714/test_output.txt
+2025-09-04 06:32:44,428 - INFO - Git diff after:
+diff --git a/sympy/geometry/point.py b/sympy/geometry/point.py
+index 73c20334d0..e1566ca1a4 100644
+--- a/sympy/geometry/point.py
++++ b/sympy/geometry/point.py
+@@ -152,8 +152,6 @@ def __new__(cls, *args, **kwargs):
+                         'warn' or 'ignore'.'''))
+         if any(coords[dim:]):
+             raise ValueError('Nonzero coordinates cannot be removed.')
+-        if any(a.is_number and im(a) for a in coords):
+-            raise ValueError('Imaginary coordinates are not permitted.')
+         if not all(isinstance(a, Expr) for a in coords):
+             raise TypeError('Coordinates must be valid SymPy expressions.')
+ 
+@@ -163,6 +161,9 @@ def __new__(cls, *args, **kwargs):
+         # Turn any Floats into rationals and simplify
+         # any expressions before we instantiate
+         if evaluate:
++            # Check for imaginary coordinates only when evaluating
++            if any(a.is_number and im(a) for a in coords):
++                raise ValueError('Imaginary coordinates are not permitted.')
+             coords = coords.xreplace({
+                 f: simplify(nsimplify(f, rational=True))
+                  for f in coords.atoms(Float)})
+2025-09-04 06:32:44,429 - INFO - Grading answer for sympy__sympy-22714...
+2025-09-04 06:32:44,429 - INFO - report: {'sympy__sympy-22714': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_issue_22684'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_point', 'test_point3D', 'test_Point2D', 'test_issue_9214', 'test_issue_11617', 'test_transform', 'test_concyclic_doctest_bug', 'test_arguments', 'test_unit', 'test_dot', 'test__normalize_dimension'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-22714: resolved: True
+2025-09-04 06:32:44,429 - INFO - Attempting to stop container sweb.eval.sympy__sympy-22714.lite_claude_all...
+2025-09-04 06:32:59,710 - INFO - Attempting to remove container sweb.eval.sympy__sympy-22714.lite_claude_all...
+2025-09-04 06:32:59,742 - INFO - Container sweb.eval.sympy__sympy-22714.lite_claude_all removed.
+2025-09-04 06:32:59,742 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-22714:latest...
+2025-09-04 06:32:59,849 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-22714:latest removed.

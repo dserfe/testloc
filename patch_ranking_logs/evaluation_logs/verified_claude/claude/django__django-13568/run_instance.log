@@ -1,0 +1,92 @@
+2025-08-25 02:50:32,707 - INFO - Creating container for django__django-13568...
+2025-08-25 02:50:32,942 - INFO - Container for django__django-13568 created: 0c7233ded7ee72d590787820f33884bfe8dafdb62cff31a958ee2c5d047de0d9
+2025-08-25 02:50:33,357 - INFO - Container for django__django-13568 started: 0c7233ded7ee72d590787820f33884bfe8dafdb62cff31a958ee2c5d047de0d9
+2025-08-25 02:50:33,358 - INFO - Intermediate patch for django__django-13568 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-13568/patch.diff, now applying to container...
+2025-08-25 02:50:33,494 - INFO - >>>>> Applied Patch:
+/tmp/patch.diff:30: trailing whitespace.
+    
+Checking patch django/contrib/auth/checks.py...
+Applied patch django/contrib/auth/checks.py cleanly.
+warning: 1 line adds whitespace errors.
+
+2025-08-25 02:50:34,681 - INFO - Git diff before:
+diff --git a/django/contrib/auth/checks.py b/django/contrib/auth/checks.py
+index 65fc266f7e..574f3c73f2 100644
+--- a/django/contrib/auth/checks.py
++++ b/django/contrib/auth/checks.py
+@@ -1,9 +1,11 @@
++
+ from itertools import chain
+ from types import MethodType
+ 
+ from django.apps import apps
+ from django.conf import settings
+ from django.core import checks
++from django.db.models import UniqueConstraint
+ 
+ from .management import _get_builtin_permissions
+ 
+@@ -51,8 +53,15 @@ def check_user_model(app_configs=None, **kwargs):
+             )
+         )
+ 
+-    # Check that the username field is unique
+-    if not cls._meta.get_field(cls.USERNAME_FIELD).unique:
++    # Check that the username field is unique (either via field or constraints)
++    field_is_unique = cls._meta.get_field(cls.USERNAME_FIELD).unique
++    has_unique_constraint = any(
++        isinstance(constraint, UniqueConstraint) and
++        cls.USERNAME_FIELD in constraint.fields
++        for constraint in cls._meta.constraints
++    )
++    
++    if not (field_is_unique or has_unique_constraint):
+         if (settings.AUTHENTICATION_BACKENDS ==
+                 ['django.contrib.auth.backends.ModelBackend']):
+             errors.append(
+2025-08-25 02:50:34,682 - INFO - Eval script for django__django-13568 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-13568/eval.sh; copying to container...
+2025-08-25 02:50:43,287 - INFO - Test runtime: 8.54 seconds
+2025-08-25 02:50:43,288 - INFO - Test output for django__django-13568 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-13568/test_output.txt
+2025-08-25 02:50:43,490 - INFO - Git diff after:
+diff --git a/django/contrib/auth/checks.py b/django/contrib/auth/checks.py
+index 65fc266f7e..574f3c73f2 100644
+--- a/django/contrib/auth/checks.py
++++ b/django/contrib/auth/checks.py
+@@ -1,9 +1,11 @@
++
+ from itertools import chain
+ from types import MethodType
+ 
+ from django.apps import apps
+ from django.conf import settings
+ from django.core import checks
++from django.db.models import UniqueConstraint
+ 
+ from .management import _get_builtin_permissions
+ 
+@@ -51,8 +53,15 @@ def check_user_model(app_configs=None, **kwargs):
+             )
+         )
+ 
+-    # Check that the username field is unique
+-    if not cls._meta.get_field(cls.USERNAME_FIELD).unique:
++    # Check that the username field is unique (either via field or constraints)
++    field_is_unique = cls._meta.get_field(cls.USERNAME_FIELD).unique
++    has_unique_constraint = any(
++        isinstance(constraint, UniqueConstraint) and
++        cls.USERNAME_FIELD in constraint.fields
++        for constraint in cls._meta.constraints
++    )
++    
++    if not (field_is_unique or has_unique_constraint):
+         if (settings.AUTHENTICATION_BACKENDS ==
+                 ['django.contrib.auth.backends.ModelBackend']):
+             errors.append(
+2025-08-25 02:50:43,490 - INFO - Grading answer for django__django-13568...
+2025-08-25 02:50:43,490 - INFO - report: {'django__django-13568': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_username_unique_with_model_constraint (auth_tests.test_checks.UserModelChecksTests)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_clashing_custom_permissions (auth_tests.test_checks.ModelsPermissionsChecksTests)', 'test_clashing_default_permissions (auth_tests.test_checks.ModelsPermissionsChecksTests)', 'test_custom_permission_codename_max_length (auth_tests.test_checks.ModelsPermissionsChecksTests)', 'test_custom_permission_name_max_length (auth_tests.test_checks.ModelsPermissionsChecksTests)', 'test_empty_default_permissions (auth_tests.test_checks.ModelsPermissionsChecksTests)', 'test_model_name_max_length (auth_tests.test_checks.ModelsPermissionsChecksTests)', 'test_non_clashing_custom_permissions (auth_tests.test_checks.ModelsPermissionsChecksTests)', 'test_verbose_name_max_length (auth_tests.test_checks.ModelsPermissionsChecksTests)', 'test_is_anonymous_authenticated_methods (auth_tests.test_checks.UserModelChecksTests)', 'REQUIRED_FIELDS should be a list.', 'test_username_non_unique (auth_tests.test_checks.UserModelChecksTests)', 'USERNAME_FIELD should not appear in REQUIRED_FIELDS.'], 'failure': ['test_username_partially_unique (auth_tests.test_checks.UserModelChecksTests)']}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-13568: resolved: False
+2025-08-25 02:50:43,491 - INFO - Attempting to stop container sweb.eval.django__django-13568.verified_claude_new...
+2025-08-25 02:50:59,696 - INFO - Attempting to remove container sweb.eval.django__django-13568.verified_claude_new...
+2025-08-25 02:50:59,803 - INFO - Container sweb.eval.django__django-13568.verified_claude_new removed.
+2025-08-25 02:50:59,803 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-13568:latest...
+2025-08-25 02:51:00,583 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-13568:latest removed.

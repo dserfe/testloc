@@ -1,0 +1,47 @@
+2025-08-26 05:14:40,790 - INFO - Creating container for sympy__sympy-15349...
+2025-08-26 05:14:42,661 - INFO - Container for sympy__sympy-15349 created: 18d1d5ba1b8ec81875053c91cc5c91e98a1631e49a95a9c4b6e03eda8ad3922d
+2025-08-26 05:14:47,888 - INFO - Container for sympy__sympy-15349 started: 18d1d5ba1b8ec81875053c91cc5c91e98a1631e49a95a9c4b6e03eda8ad3922d
+2025-08-26 05:14:47,889 - INFO - Intermediate patch for sympy__sympy-15349 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sympy__sympy-15349/patch.diff, now applying to container...
+2025-08-26 05:14:48,051 - INFO - >>>>> Applied Patch:
+Checking patch sympy/algebras/quaternion.py...
+Applied patch sympy/algebras/quaternion.py cleanly.
+
+2025-08-26 05:14:48,464 - INFO - Git diff before:
+diff --git a/sympy/algebras/quaternion.py b/sympy/algebras/quaternion.py
+index b84e7cb95..7eae8d73d 100644
+--- a/sympy/algebras/quaternion.py
++++ b/sympy/algebras/quaternion.py
+@@ -529,7 +529,7 @@ def to_rotation_matrix(self, v=None):
+ 
+         m10 = 2*s*(q.b*q.c + q.d*q.a)
+         m11 = 1 - 2*s*(q.b**2 + q.d**2)
+-        m12 = 2*s*(q.c*q.d + q.b*q.a)
++        m12 = 2*s*(q.c*q.d - q.b*q.a)
+ 
+         m20 = 2*s*(q.b*q.d - q.c*q.a)
+         m21 = 2*s*(q.c*q.d + q.b*q.a)
+2025-08-26 05:14:48,465 - INFO - Eval script for sympy__sympy-15349 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sympy__sympy-15349/eval.sh; copying to container...
+2025-08-26 05:14:56,333 - INFO - Test runtime: 7.82 seconds
+2025-08-26 05:14:56,336 - INFO - Test output for sympy__sympy-15349 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sympy__sympy-15349/test_output.txt
+2025-08-26 05:14:56,524 - INFO - Git diff after:
+diff --git a/sympy/algebras/quaternion.py b/sympy/algebras/quaternion.py
+index b84e7cb95..7eae8d73d 100644
+--- a/sympy/algebras/quaternion.py
++++ b/sympy/algebras/quaternion.py
+@@ -529,7 +529,7 @@ def to_rotation_matrix(self, v=None):
+ 
+         m10 = 2*s*(q.b*q.c + q.d*q.a)
+         m11 = 1 - 2*s*(q.b**2 + q.d**2)
+-        m12 = 2*s*(q.c*q.d + q.b*q.a)
++        m12 = 2*s*(q.c*q.d - q.b*q.a)
+ 
+         m20 = 2*s*(q.b*q.d - q.c*q.a)
+         m21 = 2*s*(q.c*q.d + q.b*q.a)
+2025-08-26 05:14:56,532 - INFO - Grading answer for sympy__sympy-15349...
+2025-08-26 05:14:56,533 - INFO - report: {'sympy__sympy-15349': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_quaternion_conversions'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_quaternion_construction', 'test_quaternion_complex_real_addition', 'test_quaternion_functions'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-15349: resolved: True
+2025-08-26 05:14:56,534 - INFO - Attempting to stop container sweb.eval.sympy__sympy-15349.verified_gpt4o_all2...
+2025-08-26 05:15:12,743 - INFO - Attempting to remove container sweb.eval.sympy__sympy-15349.verified_gpt4o_all2...
+2025-08-26 05:15:13,782 - INFO - Container sweb.eval.sympy__sympy-15349.verified_gpt4o_all2 removed.
+2025-08-26 05:15:13,786 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-15349:latest...
+2025-08-26 05:15:35,602 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-15349:latest removed.

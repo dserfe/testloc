@@ -1,0 +1,55 @@
+2025-08-26 05:14:40,399 - INFO - Creating container for sympy__sympy-11618...
+2025-08-26 05:14:42,698 - INFO - Container for sympy__sympy-11618 created: a38e78235ea8ed5f4934b8ebbbfde4f8175cedb6cf0f8c393fdcfa7929a62a1a
+2025-08-26 05:14:49,684 - INFO - Container for sympy__sympy-11618 started: a38e78235ea8ed5f4934b8ebbbfde4f8175cedb6cf0f8c393fdcfa7929a62a1a
+2025-08-26 05:14:49,685 - INFO - Intermediate patch for sympy__sympy-11618 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sympy__sympy-11618/patch.diff, now applying to container...
+2025-08-26 05:14:49,874 - INFO - >>>>> Applied Patch:
+Checking patch sympy/geometry/point.py...
+Applied patch sympy/geometry/point.py cleanly.
+
+2025-08-26 05:14:50,285 - INFO - Git diff before:
+diff --git a/sympy/geometry/point.py b/sympy/geometry/point.py
+index 593048464..e86259f5c 100644
+--- a/sympy/geometry/point.py
++++ b/sympy/geometry/point.py
+@@ -266,8 +266,10 @@ def distance(self, p):
+         sqrt(x**2 + y**2)
+ 
+         """
+-        return sqrt(sum([(a - b)**2 for a, b in zip(
+-            self.args, p.args if isinstance(p, Point) else p)]))
++        max_len = max(len(self.args), len(p.args if isinstance(p, Point) else p))
++        self_args = list(self.args) + [0] * (max_len - len(self.args))
++        p_args = list(p.args if isinstance(p, Point) else p) + [0] * (max_len - len(p.args if isinstance(p, Point) else p))
++        return sqrt(sum([(a - b)**2 for a, b in zip(self_args, p_args)]))
+ 
+     def taxicab_distance(self, p):
+         """The Taxicab Distance from self to point p.
+2025-08-26 05:14:50,285 - INFO - Eval script for sympy__sympy-11618 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sympy__sympy-11618/eval.sh; copying to container...
+2025-08-26 05:14:55,981 - INFO - Test runtime: 5.51 seconds
+2025-08-26 05:14:55,983 - INFO - Test output for sympy__sympy-11618 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sympy__sympy-11618/test_output.txt
+2025-08-26 05:14:56,306 - INFO - Git diff after:
+diff --git a/sympy/geometry/point.py b/sympy/geometry/point.py
+index 593048464..e86259f5c 100644
+--- a/sympy/geometry/point.py
++++ b/sympy/geometry/point.py
+@@ -266,8 +266,10 @@ def distance(self, p):
+         sqrt(x**2 + y**2)
+ 
+         """
+-        return sqrt(sum([(a - b)**2 for a, b in zip(
+-            self.args, p.args if isinstance(p, Point) else p)]))
++        max_len = max(len(self.args), len(p.args if isinstance(p, Point) else p))
++        self_args = list(self.args) + [0] * (max_len - len(self.args))
++        p_args = list(p.args if isinstance(p, Point) else p) + [0] * (max_len - len(p.args if isinstance(p, Point) else p))
++        return sqrt(sum([(a - b)**2 for a, b in zip(self_args, p_args)]))
+ 
+     def taxicab_distance(self, p):
+         """The Taxicab Distance from self to point p.
+2025-08-26 05:14:56,310 - INFO - Grading answer for sympy__sympy-11618...
+2025-08-26 05:14:56,324 - INFO - report: {'sympy__sympy-11618': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_issue_11617'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_point3D', 'test_Point2D', 'test_issue_9214', 'test_transform'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-11618: resolved: True
+2025-08-26 05:14:56,324 - INFO - Attempting to stop container sweb.eval.sympy__sympy-11618.verified_gpt4o_all2...
+2025-08-26 05:15:12,474 - INFO - Attempting to remove container sweb.eval.sympy__sympy-11618.verified_gpt4o_all2...
+2025-08-26 05:15:13,786 - INFO - Container sweb.eval.sympy__sympy-11618.verified_gpt4o_all2 removed.
+2025-08-26 05:15:13,786 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-11618:latest...
+2025-08-26 05:15:35,830 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-11618:latest removed.

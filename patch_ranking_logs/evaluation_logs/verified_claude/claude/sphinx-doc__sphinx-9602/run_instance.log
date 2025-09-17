@@ -1,0 +1,47 @@
+2025-08-25 03:03:29,696 - INFO - Creating container for sphinx-doc__sphinx-9602...
+2025-08-25 03:03:29,845 - INFO - Container for sphinx-doc__sphinx-9602 created: a07fad50defc6ff6ab5b4bd7a18da16a42fe39f1f84139335de87dc1a997ba0d
+2025-08-25 03:03:39,272 - INFO - Container for sphinx-doc__sphinx-9602 started: a07fad50defc6ff6ab5b4bd7a18da16a42fe39f1f84139335de87dc1a997ba0d
+2025-08-25 03:03:39,272 - INFO - Intermediate patch for sphinx-doc__sphinx-9602 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-9602/patch.diff, now applying to container...
+2025-08-25 03:03:40,227 - INFO - >>>>> Applied Patch:
+Checking patch sphinx/domains/python.py...
+Applied patch sphinx/domains/python.py cleanly.
+
+2025-08-25 03:03:41,168 - INFO - Git diff before:
+diff --git a/sphinx/domains/python.py b/sphinx/domains/python.py
+index 9875a9f4b..a7d916fc9 100644
+--- a/sphinx/domains/python.py
++++ b/sphinx/domains/python.py
+@@ -84,6 +84,9 @@ def type_to_xref(text: str, env: BuildEnvironment = None) -> addnodes.pending_xr
+     """Convert a type string to a cross reference node."""
+     if text == 'None':
+         reftype = 'obj'
++    elif text in ('True', 'False') or text[0] in ('"', "'") or text.isdigit():
++        # Handle literal values (booleans, strings, numbers) as objects rather than classes
++        reftype = 'obj'
+     else:
+         reftype = 'class'
+2025-08-25 03:03:41,168 - INFO - Eval script for sphinx-doc__sphinx-9602 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-9602/eval.sh; copying to container...
+2025-08-25 03:03:51,240 - INFO - Test runtime: 9.30 seconds
+2025-08-25 03:03:51,240 - INFO - Test output for sphinx-doc__sphinx-9602 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-9602/test_output.txt
+2025-08-25 03:03:51,682 - INFO - Git diff after:
+diff --git a/sphinx/domains/python.py b/sphinx/domains/python.py
+index 9875a9f4b..a7d916fc9 100644
+--- a/sphinx/domains/python.py
++++ b/sphinx/domains/python.py
+@@ -84,6 +84,9 @@ def type_to_xref(text: str, env: BuildEnvironment = None) -> addnodes.pending_xr
+     """Convert a type string to a cross reference node."""
+     if text == 'None':
+         reftype = 'obj'
++    elif text in ('True', 'False') or text[0] in ('"', "'") or text.isdigit():
++        # Handle literal values (booleans, strings, numbers) as objects rather than classes
++        reftype = 'obj'
+     else:
+         reftype = 'class'
+2025-08-25 03:03:51,682 - INFO - Grading answer for sphinx-doc__sphinx-9602...
+2025-08-25 03:03:51,694 - INFO - report: {'sphinx-doc__sphinx-9602': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['tests/test_domain_py.py::test_parse_annotation_Literal']}, 'PASS_TO_PASS': {'success': ['tests/test_domain_py.py::test_function_signatures', 'tests/test_domain_py.py::test_domain_py_xrefs', 'tests/test_domain_py.py::test_domain_py_xrefs_abbreviations', 'tests/test_domain_py.py::test_domain_py_objects', 'tests/test_domain_py.py::test_resolve_xref_for_properties', 'tests/test_domain_py.py::test_domain_py_find_obj', 'tests/test_domain_py.py::test_domain_py_canonical', 'tests/test_domain_py.py::test_get_full_qualified_name', 'tests/test_domain_py.py::test_parse_annotation', 'tests/test_domain_py.py::test_pyfunction_signature', 'tests/test_domain_py.py::test_pyfunction_signature_full', 'tests/test_domain_py.py::test_pyfunction_signature_full_py38', 'tests/test_domain_py.py::test_pyfunction_with_number_literals', 'tests/test_domain_py.py::test_pyfunction_with_union_type_operator', 'tests/test_domain_py.py::test_optional_pyfunction_signature', 'tests/test_domain_py.py::test_pyexception_signature', 'tests/test_domain_py.py::test_pydata_signature', 'tests/test_domain_py.py::test_pydata_signature_old', 'tests/test_domain_py.py::test_pydata_with_union_type_operator', 'tests/test_domain_py.py::test_pyobject_prefix', 'tests/test_domain_py.py::test_pydata', 'tests/test_domain_py.py::test_pyfunction', 'tests/test_domain_py.py::test_pyclass_options', 'tests/test_domain_py.py::test_pymethod_options', 'tests/test_domain_py.py::test_pyclassmethod', 'tests/test_domain_py.py::test_pystaticmethod', 'tests/test_domain_py.py::test_pyattribute', 'tests/test_domain_py.py::test_pyproperty', 'tests/test_domain_py.py::test_pydecorator_signature', 'tests/test_domain_py.py::test_pydecoratormethod_signature', 'tests/test_domain_py.py::test_canonical', 'tests/test_domain_py.py::test_canonical_definition_overrides', 'tests/test_domain_py.py::test_canonical_definition_skip', 'tests/test_domain_py.py::test_canonical_duplicated', 'tests/test_domain_py.py::test_info_field_list', 'tests/test_domain_py.py::test_info_field_list_piped_type', 'tests/test_domain_py.py::test_info_field_list_var', 'tests/test_domain_py.py::test_module_index', 'tests/test_domain_py.py::test_module_index_submodule', 'tests/test_domain_py.py::test_module_index_not_collapsed', 'tests/test_domain_py.py::test_modindex_common_prefix', 'tests/test_domain_py.py::test_noindexentry', 'tests/test_domain_py.py::test_python_python_use_unqualified_type_names', 'tests/test_domain_py.py::test_python_python_use_unqualified_type_names_disabled', 'tests/test_domain_py.py::test_warn_missing_reference'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sphinx-doc__sphinx-9602: resolved: False
+2025-08-25 03:03:51,694 - INFO - Attempting to stop container sweb.eval.sphinx-doc__sphinx-9602.verified_claude_new...
+2025-08-25 03:04:07,911 - INFO - Attempting to remove container sweb.eval.sphinx-doc__sphinx-9602.verified_claude_new...
+2025-08-25 03:04:09,041 - INFO - Container sweb.eval.sphinx-doc__sphinx-9602.verified_claude_new removed.
+2025-08-25 03:04:09,042 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9602:latest...
+2025-08-25 03:04:10,167 - INFO - Image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9602:latest removed.

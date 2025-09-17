@@ -1,0 +1,65 @@
+2025-08-25 02:50:07,743 - INFO - Creating container for django__django-13023...
+2025-08-25 02:50:10,846 - INFO - Container for django__django-13023 created: e47942a7192737ebfae6a954b2a3a1803d5652a4685c2d8465976b3520b70479
+2025-08-25 02:50:11,465 - INFO - Container for django__django-13023 started: e47942a7192737ebfae6a954b2a3a1803d5652a4685c2d8465976b3520b70479
+2025-08-25 02:50:11,465 - INFO - Intermediate patch for django__django-13023 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-13023/patch.diff, now applying to container...
+2025-08-25 02:50:11,577 - INFO - >>>>> Applied Patch:
+Checking patch django/db/models/fields/__init__.py...
+Applied patch django/db/models/fields/__init__.py cleanly.
+
+2025-08-25 02:50:12,629 - INFO - Git diff before:
+diff --git a/django/db/models/fields/__init__.py b/django/db/models/fields/__init__.py
+index 0fd69059ee..2e6fa9f2fa 100644
+--- a/django/db/models/fields/__init__.py
++++ b/django/db/models/fields/__init__.py
+@@ -1499,9 +1499,16 @@ class DecimalField(Field):
+             return value
+         if isinstance(value, float):
+             return self.context.create_decimal_from_float(value)
++        # Handle non-string/numeric values
++        if not isinstance(value, (str, int, decimal.Decimal)):
++            raise exceptions.ValidationError(
++                self.error_messages['invalid'],
++                code='invalid',
++                params={'value': value},
++            )
+         try:
+             return decimal.Decimal(value)
+-        except decimal.InvalidOperation:
++        except (decimal.InvalidOperation, TypeError):
+             raise exceptions.ValidationError(
+                 self.error_messages['invalid'],
+                 code='invalid',
+2025-08-25 02:50:12,630 - INFO - Eval script for django__django-13023 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-13023/eval.sh; copying to container...
+2025-08-25 02:50:21,545 - INFO - Test runtime: 8.84 seconds
+2025-08-25 02:50:21,545 - INFO - Test output for django__django-13023 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-13023/test_output.txt
+2025-08-25 02:50:21,629 - INFO - Git diff after:
+diff --git a/django/db/models/fields/__init__.py b/django/db/models/fields/__init__.py
+index 0fd69059ee..2e6fa9f2fa 100644
+--- a/django/db/models/fields/__init__.py
++++ b/django/db/models/fields/__init__.py
+@@ -1499,9 +1499,16 @@ class DecimalField(Field):
+             return value
+         if isinstance(value, float):
+             return self.context.create_decimal_from_float(value)
++        # Handle non-string/numeric values
++        if not isinstance(value, (str, int, decimal.Decimal)):
++            raise exceptions.ValidationError(
++                self.error_messages['invalid'],
++                code='invalid',
++                params={'value': value},
++            )
+         try:
+             return decimal.Decimal(value)
+-        except decimal.InvalidOperation:
++        except (decimal.InvalidOperation, TypeError):
+             raise exceptions.ValidationError(
+                 self.error_messages['invalid'],
+                 code='invalid',
+2025-08-25 02:50:21,629 - INFO - Grading answer for django__django-13023...
+2025-08-25 02:50:21,630 - INFO - report: {'django__django-13023': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_invalid_value (model_fields.test_decimalfield.DecimalFieldTests)', 'test_lookup_really_big_value (model_fields.test_decimalfield.DecimalFieldTests)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_default (model_fields.test_decimalfield.DecimalFieldTests)', 'test_filter_with_strings (model_fields.test_decimalfield.DecimalFieldTests)', 'test_get_prep_value (model_fields.test_decimalfield.DecimalFieldTests)', 'test_max_decimal_places_validation (model_fields.test_decimalfield.DecimalFieldTests)', 'test_max_digits_validation (model_fields.test_decimalfield.DecimalFieldTests)', 'test_max_whole_digits_validation (model_fields.test_decimalfield.DecimalFieldTests)', "Trailing zeros in the fractional part aren't truncated.", 'test_save_without_float_conversion (model_fields.test_decimalfield.DecimalFieldTests)', 'test_to_python (model_fields.test_decimalfield.DecimalFieldTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-13023: resolved: True
+2025-08-25 02:50:21,630 - INFO - Attempting to stop container sweb.eval.django__django-13023.verified_claude_new...
+2025-08-25 02:50:37,156 - INFO - Attempting to remove container sweb.eval.django__django-13023.verified_claude_new...
+2025-08-25 02:50:37,206 - INFO - Container sweb.eval.django__django-13023.verified_claude_new removed.
+2025-08-25 02:50:37,206 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-13023:latest...
+2025-08-25 02:50:37,610 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-13023:latest removed.

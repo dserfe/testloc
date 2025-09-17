@@ -1,0 +1,52 @@
+2025-08-26 05:13:43,637 - INFO - Creating container for scikit-learn__scikit-learn-13328...
+2025-08-26 05:14:01,297 - INFO - Container for scikit-learn__scikit-learn-13328 created: fd3d7f268ccb1c8feabb3cd3f3be4d5c3d00d572aa5ef047670f6a73e7435b3e
+2025-08-26 05:14:03,452 - INFO - Container for scikit-learn__scikit-learn-13328 started: fd3d7f268ccb1c8feabb3cd3f3be4d5c3d00d572aa5ef047670f6a73e7435b3e
+2025-08-26 05:14:03,478 - INFO - Intermediate patch for scikit-learn__scikit-learn-13328 written to logs/run_evaluation/verified_gpt4o_all2/agentless/scikit-learn__scikit-learn-13328/patch.diff, now applying to container...
+2025-08-26 05:14:03,734 - INFO - >>>>> Applied Patch:
+/tmp/patch.diff:11: trailing whitespace.
+    
+Checking patch sklearn/linear_model/huber.py...
+Applied patch sklearn/linear_model/huber.py cleanly.
+warning: 1 line adds whitespace errors.
+
+2025-08-26 05:14:04,096 - INFO - Git diff before:
+diff --git a/sklearn/linear_model/huber.py b/sklearn/linear_model/huber.py
+index 65c686400..ee2b51b59 100644
+--- a/sklearn/linear_model/huber.py
++++ b/sklearn/linear_model/huber.py
+@@ -56,6 +56,9 @@ def _huber_loss_and_gradient(w, X, y, epsilon, alpha, sample_weight=None):
+     w = w[:n_features]
+     n_samples = np.sum(sample_weight)
+ 
++    # Ensure X is of float type to avoid TypeError with boolean arrays
++    X = X.astype(float)
++    
+     # Calculate the values where |y - X'w -c / sigma| > epsilon
+     # The values above this threshold are outliers.
+     linear_loss = y - safe_sparse_dot(X, w)
+2025-08-26 05:14:04,113 - INFO - Eval script for scikit-learn__scikit-learn-13328 written to logs/run_evaluation/verified_gpt4o_all2/agentless/scikit-learn__scikit-learn-13328/eval.sh; copying to container...
+2025-08-26 05:14:10,589 - INFO - Test runtime: 6.26 seconds
+2025-08-26 05:14:10,590 - INFO - Test output for scikit-learn__scikit-learn-13328 written to logs/run_evaluation/verified_gpt4o_all2/agentless/scikit-learn__scikit-learn-13328/test_output.txt
+2025-08-26 05:14:10,773 - INFO - Git diff after:
+diff --git a/sklearn/linear_model/huber.py b/sklearn/linear_model/huber.py
+index 65c686400..ee2b51b59 100644
+--- a/sklearn/linear_model/huber.py
++++ b/sklearn/linear_model/huber.py
+@@ -56,6 +56,9 @@ def _huber_loss_and_gradient(w, X, y, epsilon, alpha, sample_weight=None):
+     w = w[:n_features]
+     n_samples = np.sum(sample_weight)
+ 
++    # Ensure X is of float type to avoid TypeError with boolean arrays
++    X = X.astype(float)
++    
+     # Calculate the values where |y - X'w -c / sigma| > epsilon
+     # The values above this threshold are outliers.
+     linear_loss = y - safe_sparse_dot(X, w)
+2025-08-26 05:14:10,773 - INFO - Grading answer for scikit-learn__scikit-learn-13328...
+2025-08-26 05:14:10,773 - INFO - report: {'scikit-learn__scikit-learn-13328': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['sklearn/linear_model/tests/test_huber.py::test_huber_bool'], 'failure': []}, 'PASS_TO_PASS': {'success': ['sklearn/linear_model/tests/test_huber.py::test_huber_equals_lr_for_high_epsilon', 'sklearn/linear_model/tests/test_huber.py::test_huber_max_iter', 'sklearn/linear_model/tests/test_huber.py::test_huber_gradient', 'sklearn/linear_model/tests/test_huber.py::test_huber_sample_weights', 'sklearn/linear_model/tests/test_huber.py::test_huber_sparse', 'sklearn/linear_model/tests/test_huber.py::test_huber_scaling_invariant', 'sklearn/linear_model/tests/test_huber.py::test_huber_and_sgd_same_results', 'sklearn/linear_model/tests/test_huber.py::test_huber_warm_start', 'sklearn/linear_model/tests/test_huber.py::test_huber_better_r2_score'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for scikit-learn__scikit-learn-13328: resolved: True
+2025-08-26 05:14:10,774 - INFO - Attempting to stop container sweb.eval.scikit-learn__scikit-learn-13328.verified_gpt4o_all2...
+2025-08-26 05:14:26,958 - INFO - Attempting to remove container sweb.eval.scikit-learn__scikit-learn-13328.verified_gpt4o_all2...
+2025-08-26 05:14:29,805 - INFO - Container sweb.eval.scikit-learn__scikit-learn-13328.verified_gpt4o_all2 removed.
+2025-08-26 05:14:29,806 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-13328:latest...
+2025-08-26 05:14:30,044 - INFO - Image swebench/sweb.eval.x86_64.scikit-learn_1776_scikit-learn-13328:latest removed.

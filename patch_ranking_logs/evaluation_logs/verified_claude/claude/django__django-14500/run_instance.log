@@ -1,0 +1,59 @@
+2025-08-25 02:51:06,563 - INFO - Creating container for django__django-14500...
+2025-08-25 02:51:07,390 - INFO - Container for django__django-14500 created: 07b4cda23207cde0da25f85bacd63cb100b2e40898eeddbf42f6e8d3cb53acd6
+2025-08-25 02:51:08,110 - INFO - Container for django__django-14500 started: 07b4cda23207cde0da25f85bacd63cb100b2e40898eeddbf42f6e8d3cb53acd6
+2025-08-25 02:51:08,110 - INFO - Intermediate patch for django__django-14500 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-14500/patch.diff, now applying to container...
+2025-08-25 02:51:08,430 - INFO - >>>>> Applied Patch:
+Checking patch django/db/migrations/loader.py...
+Applied patch django/db/migrations/loader.py cleanly.
+
+2025-08-25 02:51:10,635 - INFO - Git diff before:
+diff --git a/django/db/migrations/loader.py b/django/db/migrations/loader.py
+index eb370164f3..594009caa8 100644
+--- a/django/db/migrations/loader.py
++++ b/django/db/migrations/loader.py
+@@ -239,11 +239,11 @@ class MigrationLoader:
+                 # Get applied status of each of this migration's replacement
+                 # targets.
+                 applied_statuses = [(target in self.applied_migrations) for target in migration.replaces]
+-                # The replacing migration is only marked as applied if all of
+-                # its replacement targets are.
++                # The replacing migration is marked as applied if all of its
++                # replacement targets are applied, and removed only if none are applied
+                 if all(applied_statuses):
+                     self.applied_migrations[key] = migration
+-                else:
++                elif not any(applied_statuses):
+                     self.applied_migrations.pop(key, None)
+                 # A replacing migration can be used if either all or none of
+                 # its replacement targets have been applied.
+2025-08-25 02:51:10,639 - INFO - Eval script for django__django-14500 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-14500/eval.sh; copying to container...
+2025-08-25 02:51:20,579 - INFO - Test runtime: 9.84 seconds
+2025-08-25 02:51:20,580 - INFO - Test output for django__django-14500 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-14500/test_output.txt
+2025-08-25 02:51:20,759 - INFO - Git diff after:
+diff --git a/django/db/migrations/loader.py b/django/db/migrations/loader.py
+index eb370164f3..594009caa8 100644
+--- a/django/db/migrations/loader.py
++++ b/django/db/migrations/loader.py
+@@ -239,11 +239,11 @@ class MigrationLoader:
+                 # Get applied status of each of this migration's replacement
+                 # targets.
+                 applied_statuses = [(target in self.applied_migrations) for target in migration.replaces]
+-                # The replacing migration is only marked as applied if all of
+-                # its replacement targets are.
++                # The replacing migration is marked as applied if all of its
++                # replacement targets are applied, and removed only if none are applied
+                 if all(applied_statuses):
+                     self.applied_migrations[key] = migration
+-                else:
++                elif not any(applied_statuses):
+                     self.applied_migrations.pop(key, None)
+                 # A replacing migration can be used if either all or none of
+                 # its replacement targets have been applied.
+2025-08-25 02:51:20,759 - INFO - Grading answer for django__django-14500...
+2025-08-25 02:51:20,760 - INFO - report: {'django__django-14500': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_migrate_marks_replacement_unapplied (migrations.test_executor.ExecutorTests)']}, 'PASS_TO_PASS': {'success': ['If the current state satisfies the given target, do nothing.', 'Minimize unnecessary rollbacks in connected apps.', 'Minimize rollbacks when target has multiple in-app children.', 'test_alter_id_type_with_fk (migrations.test_executor.ExecutorTests)', 'Applying all replaced migrations marks replacement as applied (#24628).', 'An atomic operation is properly rolled back inside a non-atomic', 'Regression test for #22325 - references to a custom user model defined in the', 'executor.detect_soft_applied() detects ManyToManyField tables from an', "Re-planning a full migration of a fully-migrated set doesn't", 'A new squash migration will be marked as applied even if all its', 'Migrations are applied and recorded atomically.', 'Migrations are not recorded if deferred SQL application fails.', 'Although the MigrationExecutor interfaces allows for mixed migration', 'Applying a non-atomic migration works as expected.', '#24129 - Tests callback process', 'Tests running a simple set of migrations.', 'Tests running a squashed migration from zero (should ignore what it replaces)', 'Tests detection of initial migrations already having been applied.', '#26647 - Unrelated applied migrations should be part of the final', '#24123 - All models of apps being unapplied which are', '#24123 - All models of apps already applied which are'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-14500: resolved: False
+2025-08-25 02:51:20,760 - INFO - Attempting to stop container sweb.eval.django__django-14500.verified_claude_new...
+2025-08-25 02:51:36,304 - INFO - Attempting to remove container sweb.eval.django__django-14500.verified_claude_new...
+2025-08-25 02:51:36,360 - INFO - Container sweb.eval.django__django-14500.verified_claude_new removed.
+2025-08-25 02:51:36,361 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-14500:latest...
+2025-08-25 02:51:37,827 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-14500:latest removed.

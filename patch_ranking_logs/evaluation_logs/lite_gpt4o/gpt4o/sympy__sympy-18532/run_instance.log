@@ -1,0 +1,71 @@
+2025-08-22 02:56:37,564 - INFO - Creating container for sympy__sympy-18532...
+2025-08-22 02:56:38,396 - INFO - Container for sympy__sympy-18532 created: 018b6c67c4d4720628c2b8633bbe308c81f6d483ac5756f472af872ccf8874b9
+2025-08-22 02:56:40,700 - INFO - Container for sympy__sympy-18532 started: 018b6c67c4d4720628c2b8633bbe308c81f6d483ac5756f472af872ccf8874b9
+2025-08-22 02:56:40,701 - INFO - Intermediate patch for sympy__sympy-18532 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-18532/patch.diff, now applying to container...
+2025-08-22 02:56:41,329 - INFO - >>>>> Applied Patch:
+Checking patch sympy/core/basic.py...
+Applied patch sympy/core/basic.py cleanly.
+
+2025-08-22 02:56:42,011 - INFO - Git diff before:
+diff --git a/sympy/core/basic.py b/sympy/core/basic.py
+index 6866648d4e..d16e64ff8d 100644
+--- a/sympy/core/basic.py
++++ b/sympy/core/basic.py
+@@ -503,12 +503,15 @@ def atoms(self, *types):
+         if types:
+             types = tuple(
+                 [t if isinstance(t, type) else type(t) for t in types])
++            result = set()
++            for expr in preorder_traversal(self):
++                if isinstance(expr, types):
++                    result.add(expr)
+         else:
+-            types = (Atom,)
+-        result = set()
+-        for expr in preorder_traversal(self):
+-            if isinstance(expr, types):
+-                result.add(expr)
++            result = set()
++            for expr in preorder_traversal(self):
++                if not expr.args:
++                    result.add(expr)
+         return result
+ 
+     @property
+2025-08-22 02:56:42,012 - INFO - Eval script for sympy__sympy-18532 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-18532/eval.sh; copying to container...
+2025-08-22 02:56:48,178 - INFO - Test runtime: 5.92 seconds
+2025-08-22 02:56:48,178 - INFO - Test output for sympy__sympy-18532 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-18532/test_output.txt
+2025-08-22 02:56:48,441 - INFO - Git diff after:
+diff --git a/sympy/core/basic.py b/sympy/core/basic.py
+index 6866648d4e..d16e64ff8d 100644
+--- a/sympy/core/basic.py
++++ b/sympy/core/basic.py
+@@ -503,12 +503,15 @@ def atoms(self, *types):
+         if types:
+             types = tuple(
+                 [t if isinstance(t, type) else type(t) for t in types])
++            result = set()
++            for expr in preorder_traversal(self):
++                if isinstance(expr, types):
++                    result.add(expr)
+         else:
+-            types = (Atom,)
+-        result = set()
+-        for expr in preorder_traversal(self):
+-            if isinstance(expr, types):
+-                result.add(expr)
++            result = set()
++            for expr in preorder_traversal(self):
++                if not expr.args:
++                    result.add(expr)
+         return result
+ 
+     @property
+2025-08-22 02:56:48,443 - INFO - Grading answer for sympy__sympy-18532...
+2025-08-22 02:56:48,444 - INFO - report: {'sympy__sympy-18532': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_sizeof', 'test_atoms'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_alignof', 'test_CommaOperator', 'test_goto_Label', 'test_PreDecrement', 'test_PostDecrement', 'test_PreIncrement', 'test_PostIncrement', 'test_struct', 'test__aresame', 'test_structure', 'test_equality', 'test_matches_basic', 'test_has', 'test_subs', 'test_subs_with_unicode_symbols', 'test_free_symbols_empty', 'test_doit', 'test_S', 'test_xreplace', 'test_preorder_traversal', 'test_sorted_args', 'test_call', 'test_rewrite', 'test_literal_evalf_is_number_is_zero_is_comparable', 'test_as_Basic', 'test_atomic', 'test_as_dummy', 'test_canonical_variables'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-18532: resolved: True
+2025-08-22 02:56:48,444 - INFO - Attempting to stop container sweb.eval.sympy__sympy-18532.lite_gpt_all...
+2025-08-22 02:57:04,942 - INFO - Attempting to remove container sweb.eval.sympy__sympy-18532.lite_gpt_all...
+2025-08-22 02:57:05,272 - INFO - Container sweb.eval.sympy__sympy-18532.lite_gpt_all removed.
+2025-08-22 02:57:05,272 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-18532:latest...
+2025-08-22 02:57:05,876 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-18532:latest removed.

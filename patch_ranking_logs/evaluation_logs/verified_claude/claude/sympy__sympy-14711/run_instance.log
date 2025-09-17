@@ -1,0 +1,45 @@
+2025-08-25 03:03:23,641 - INFO - Creating container for sympy__sympy-14711...
+2025-08-25 03:03:23,805 - INFO - Container for sympy__sympy-14711 created: 203e92c593c2e3cc75219b46c6592e0c815f01314ba0eb8f162ebb8f392462d5
+2025-08-25 03:03:26,204 - INFO - Container for sympy__sympy-14711 started: 203e92c593c2e3cc75219b46c6592e0c815f01314ba0eb8f162ebb8f392462d5
+2025-08-25 03:03:26,207 - INFO - Intermediate patch for sympy__sympy-14711 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-14711/patch.diff, now applying to container...
+2025-08-25 03:03:27,267 - INFO - >>>>> Applied Patch:
+Checking patch sympy/physics/vector/vector.py...
+Applied patch sympy/physics/vector/vector.py cleanly.
+
+2025-08-25 03:03:27,778 - INFO - Git diff before:
+diff --git a/sympy/physics/vector/vector.py b/sympy/physics/vector/vector.py
+index a048ee57f..884911921 100644
+--- a/sympy/physics/vector/vector.py
++++ b/sympy/physics/vector/vector.py
+@@ -57,6 +57,8 @@ def __hash__(self):
+ 
+     def __add__(self, other):
+         """The add operator for Vector. """
++        if other == 0:
++            return self
+         other = _check_vector(other)
+         return Vector(self.args + other.args)
+2025-08-25 03:03:27,779 - INFO - Eval script for sympy__sympy-14711 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-14711/eval.sh; copying to container...
+2025-08-25 03:03:35,744 - INFO - Test runtime: 7.84 seconds
+2025-08-25 03:03:35,744 - INFO - Test output for sympy__sympy-14711 written to logs/run_evaluation/verified_claude_new/agentless_claude/sympy__sympy-14711/test_output.txt
+2025-08-25 03:03:36,160 - INFO - Git diff after:
+diff --git a/sympy/physics/vector/vector.py b/sympy/physics/vector/vector.py
+index a048ee57f..884911921 100644
+--- a/sympy/physics/vector/vector.py
++++ b/sympy/physics/vector/vector.py
+@@ -57,6 +57,8 @@ def __hash__(self):
+ 
+     def __add__(self, other):
+         """The add operator for Vector. """
++        if other == 0:
++            return self
+         other = _check_vector(other)
+         return Vector(self.args + other.args)
+2025-08-25 03:03:36,161 - INFO - Grading answer for sympy__sympy-14711...
+2025-08-25 03:03:36,161 - INFO - report: {'sympy__sympy-14711': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_Vector'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_Vector_diffs', 'test_vector_var_in_dcm'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-14711: resolved: True
+2025-08-25 03:03:36,161 - INFO - Attempting to stop container sweb.eval.sympy__sympy-14711.verified_claude_new...
+2025-08-25 03:03:52,125 - INFO - Attempting to remove container sweb.eval.sympy__sympy-14711.verified_claude_new...
+2025-08-25 03:03:52,170 - INFO - Container sweb.eval.sympy__sympy-14711.verified_claude_new removed.
+2025-08-25 03:03:52,170 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-14711:latest...
+2025-08-25 03:03:53,030 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-14711:latest removed.

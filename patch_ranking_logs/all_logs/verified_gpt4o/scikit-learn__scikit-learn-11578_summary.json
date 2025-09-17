@@ -1,0 +1,52 @@
+{
+  "instance_id": "scikit-learn__scikit-learn-11578",
+  "container_id": "d77ff173709e381e63a4c05adb02bc48797a492f8773dc02d244de1d8e240bf0",
+  "regression": {
+    "results": [
+      {
+        "patch_file": "all_patches/verified_gpt4o_all_unique_patches/scikit-learn__scikit-learn-11578/dedup_patch_0.jsonl",
+        "inst": "scikit-learn__scikit-learn-11578",
+        "passed": 13,
+        "failed": 0
+      },
+      {
+        "patch_file": "all_patches/verified_gpt4o_all_unique_patches/scikit-learn__scikit-learn-11578/dedup_patch_1.jsonl",
+        "inst": "scikit-learn__scikit-learn-11578",
+        "passed": 13,
+        "failed": 0
+      }
+    ],
+    "top_passed": 13,
+    "top_subset_size": 2
+  },
+  "reproduction": {
+    "sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_multinomial#1": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "sklearn/linear_model/tests/test_logistic.py::test_logreg_predict_proba_multinomial#2": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "reproduce_bug.py#3": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "sklearn/linear_model/tests/test_logistic.py::test_logreg_predict_proba_multinomial#4": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_multinomial#5": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_class_weights#6": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "sklearn/linear_model/tests/test_logistic.py::test_logreg_predict_proba_multinomial#7": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    }
+  }
+}

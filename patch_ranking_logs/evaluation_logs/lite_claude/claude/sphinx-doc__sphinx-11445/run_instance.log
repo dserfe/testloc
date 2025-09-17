@@ -1,0 +1,55 @@
+2025-09-04 06:30:55,698 - INFO - Creating container for sphinx-doc__sphinx-11445...
+2025-09-04 06:30:56,961 - INFO - Container for sphinx-doc__sphinx-11445 created: 4f9384834d57480c8056440f07c9683758016bbcaf8e6f0140bd6195fc63a603
+2025-09-04 06:30:58,107 - INFO - Container for sphinx-doc__sphinx-11445 started: 4f9384834d57480c8056440f07c9683758016bbcaf8e6f0140bd6195fc63a603
+2025-09-04 06:30:58,107 - INFO - Intermediate patch for sphinx-doc__sphinx-11445 written to logs/run_evaluation/lite_claude_all/agentless_claude/sphinx-doc__sphinx-11445/patch.diff, now applying to container...
+2025-09-04 06:30:58,265 - INFO - >>>>> Applied Patch:
+Checking patch sphinx/environment/collectors/title.py...
+Applied patch sphinx/environment/collectors/title.py cleanly.
+
+2025-09-04 06:30:58,681 - INFO - Git diff before:
+diff --git a/sphinx/environment/collectors/title.py b/sphinx/environment/collectors/title.py
+index 45dfbd095..1b1b39611 100644
+--- a/sphinx/environment/collectors/title.py
++++ b/sphinx/environment/collectors/title.py
+@@ -38,9 +38,9 @@ class TitleCollector(EnvironmentCollector):
+             longtitlenode += nodes.Text(doctree['title'])
+         # look for first section title and use that as the title
+         for node in doctree.findall(nodes.section):
+-            visitor = SphinxContentsFilter(doctree)
+-            node[0].walkabout(visitor)
+-            titlenode += visitor.get_entry_text()
++            # Handle domain directives in titles by getting raw astext
++            title = node[0]
++            titlenode += nodes.Text(title.astext())
+             break
+         else:
+             # document has no title
+2025-09-04 06:30:58,681 - INFO - Eval script for sphinx-doc__sphinx-11445 written to logs/run_evaluation/lite_claude_all/agentless_claude/sphinx-doc__sphinx-11445/eval.sh; copying to container...
+2025-09-04 06:31:04,660 - INFO - Test runtime: 5.91 seconds
+2025-09-04 06:31:04,660 - INFO - Test output for sphinx-doc__sphinx-11445 written to logs/run_evaluation/lite_claude_all/agentless_claude/sphinx-doc__sphinx-11445/test_output.txt
+2025-09-04 06:31:04,777 - INFO - Git diff after:
+diff --git a/sphinx/environment/collectors/title.py b/sphinx/environment/collectors/title.py
+index 45dfbd095..1b1b39611 100644
+--- a/sphinx/environment/collectors/title.py
++++ b/sphinx/environment/collectors/title.py
+@@ -38,9 +38,9 @@ class TitleCollector(EnvironmentCollector):
+             longtitlenode += nodes.Text(doctree['title'])
+         # look for first section title and use that as the title
+         for node in doctree.findall(nodes.section):
+-            visitor = SphinxContentsFilter(doctree)
+-            node[0].walkabout(visitor)
+-            titlenode += visitor.get_entry_text()
++            # Handle domain directives in titles by getting raw astext
++            title = node[0]
++            titlenode += nodes.Text(title.astext())
+             break
+         else:
+             # document has no title
+2025-09-04 06:31:04,777 - INFO - Grading answer for sphinx-doc__sphinx-11445...
+2025-09-04 06:31:04,780 - INFO - report: {'sphinx-doc__sphinx-11445': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['tests/test_util_rst.py::test_prepend_prolog_with_roles_in_sections_with_newline', 'tests/test_util_rst.py::test_prepend_prolog_with_roles_in_sections_without_newline']}, 'PASS_TO_PASS': {'success': ['tests/test_util_rst.py::test_escape', 'tests/test_util_rst.py::test_append_epilog', 'tests/test_util_rst.py::test_prepend_prolog', 'tests/test_util_rst.py::test_prepend_prolog_with_CR', 'tests/test_util_rst.py::test_prepend_prolog_without_CR', 'tests/test_util_rst.py::test_prepend_prolog_with_roles_in_sections', 'tests/test_util_rst.py::test_textwidth', 'tests/test_util_rst.py::test_heading'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sphinx-doc__sphinx-11445: resolved: False
+2025-09-04 06:31:04,780 - INFO - Attempting to stop container sweb.eval.sphinx-doc__sphinx-11445.lite_claude_all...
+2025-09-04 06:31:22,231 - INFO - Attempting to remove container sweb.eval.sphinx-doc__sphinx-11445.lite_claude_all...
+2025-09-04 06:31:26,858 - INFO - Container sweb.eval.sphinx-doc__sphinx-11445.lite_claude_all removed.
+2025-09-04 06:31:26,861 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-11445:latest...
+2025-09-04 06:31:38,492 - INFO - Image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-11445:latest removed.

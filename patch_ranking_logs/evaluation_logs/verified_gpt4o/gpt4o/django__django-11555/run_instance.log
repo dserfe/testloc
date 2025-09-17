@@ -1,0 +1,47 @@
+2025-08-26 05:08:57,093 - INFO - Creating container for django__django-11555...
+2025-08-26 05:08:59,311 - INFO - Container for django__django-11555 created: 1948aa1e4266046527b048ca5fe42a0aa739996c480a6b4a91454e2684b52b5e
+2025-08-26 05:09:03,075 - INFO - Container for django__django-11555 started: 1948aa1e4266046527b048ca5fe42a0aa739996c480a6b4a91454e2684b52b5e
+2025-08-26 05:09:03,076 - INFO - Intermediate patch for django__django-11555 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-11555/patch.diff, now applying to container...
+2025-08-26 05:09:03,348 - INFO - >>>>> Applied Patch:
+Checking patch django/db/models/sql/query.py...
+Applied patch django/db/models/sql/query.py cleanly.
+
+2025-08-26 05:09:04,548 - INFO - Git diff before:
+diff --git a/django/db/models/sql/query.py b/django/db/models/sql/query.py
+index e15e64cde4..0967cd5334 100644
+--- a/django/db/models/sql/query.py
++++ b/django/db/models/sql/query.py
+@@ -2218,6 +2218,8 @@ def get_order_dir(field, default='ASC'):
+     prefix) should sort. The '-' prefix always sorts the opposite way.
+     """
+     dirn = ORDER_DIR[default]
++    if hasattr(field, 'expression'):
++        field = field.expression.name
+     if field[0] == '-':
+         return field[1:], dirn[1]
+     return field, dirn[0]
+2025-08-26 05:09:04,550 - INFO - Eval script for django__django-11555 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-11555/eval.sh; copying to container...
+2025-08-26 05:09:19,404 - INFO - Test runtime: 14.61 seconds
+2025-08-26 05:09:19,405 - INFO - Test output for django__django-11555 written to logs/run_evaluation/verified_gpt4o_all2/agentless/django__django-11555/test_output.txt
+2025-08-26 05:09:19,680 - INFO - Git diff after:
+diff --git a/django/db/models/sql/query.py b/django/db/models/sql/query.py
+index e15e64cde4..0967cd5334 100644
+--- a/django/db/models/sql/query.py
++++ b/django/db/models/sql/query.py
+@@ -2218,6 +2218,8 @@ def get_order_dir(field, default='ASC'):
+     prefix) should sort. The '-' prefix always sorts the opposite way.
+     """
+     dirn = ORDER_DIR[default]
++    if hasattr(field, 'expression'):
++        field = field.expression.name
+     if field[0] == '-':
+         return field[1:], dirn[1]
+     return field, dirn[0]
+2025-08-26 05:09:19,687 - INFO - Grading answer for django__django-11555...
+2025-08-26 05:09:19,688 - INFO - report: {'django__django-11555': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_order_by_ptr_field_with_default_ordering_by_expression (ordering.tests.OrderingTests)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_default_ordering (ordering.tests.OrderingTests)', 'F expressions can be used in Meta.ordering.', 'test_default_ordering_override (ordering.tests.OrderingTests)', 'test_deprecated_values_annotate (ordering.tests.OrderingTests)', 'test_extra_ordering (ordering.tests.OrderingTests)', 'test_extra_ordering_quoting (ordering.tests.OrderingTests)', 'test_extra_ordering_with_table_name (ordering.tests.OrderingTests)', 'test_no_reordering_after_slicing (ordering.tests.OrderingTests)', 'test_order_by_constant_value (ordering.tests.OrderingTests)', 'test_order_by_constant_value_without_output_field (ordering.tests.OrderingTests)', 'test_order_by_f_expression (ordering.tests.OrderingTests)', 'test_order_by_f_expression_duplicates (ordering.tests.OrderingTests)', 'test_order_by_fk_attname (ordering.tests.OrderingTests)', 'test_order_by_nulls_first (ordering.tests.OrderingTests)', 'test_order_by_nulls_first_and_last (ordering.tests.OrderingTests)', 'test_order_by_nulls_last (ordering.tests.OrderingTests)', 'test_order_by_override (ordering.tests.OrderingTests)', 'test_order_by_pk (ordering.tests.OrderingTests)', 'test_orders_nulls_first_on_filtered_subquery (ordering.tests.OrderingTests)', 'test_random_ordering (ordering.tests.OrderingTests)', 'test_related_ordering_duplicate_table_reference (ordering.tests.OrderingTests)', 'test_reverse_meta_ordering_pure (ordering.tests.OrderingTests)', 'test_reverse_ordering_pure (ordering.tests.OrderingTests)', 'test_reversed_ordering (ordering.tests.OrderingTests)', 'test_stop_slicing (ordering.tests.OrderingTests)', 'test_stop_start_slicing (ordering.tests.OrderingTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-11555: resolved: True
+2025-08-26 05:09:19,693 - INFO - Attempting to stop container sweb.eval.django__django-11555.verified_gpt4o_all2...
+2025-08-26 05:09:35,307 - INFO - Attempting to remove container sweb.eval.django__django-11555.verified_gpt4o_all2...
+2025-08-26 05:09:35,643 - INFO - Container sweb.eval.django__django-11555.verified_gpt4o_all2 removed.
+2025-08-26 05:09:35,644 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-11555:latest...
+2025-08-26 05:09:40,085 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-11555:latest removed.

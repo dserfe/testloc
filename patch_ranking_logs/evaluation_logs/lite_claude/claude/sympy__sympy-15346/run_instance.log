@@ -1,0 +1,78 @@
+2025-09-04 06:31:45,802 - INFO - Creating container for sympy__sympy-15346...
+2025-09-04 06:31:46,194 - INFO - Container for sympy__sympy-15346 created: a6b867cb24ef8101e9b01c93247aeacdec816808e2dcb92773a04ad42d5161c6
+2025-09-04 06:31:47,151 - INFO - Container for sympy__sympy-15346 started: a6b867cb24ef8101e9b01c93247aeacdec816808e2dcb92773a04ad42d5161c6
+2025-09-04 06:31:47,151 - INFO - Intermediate patch for sympy__sympy-15346 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-15346/patch.diff, now applying to container...
+2025-09-04 06:31:47,537 - INFO - >>>>> Applied Patch:
+/tmp/patch.diff:9: trailing whitespace.
+    
+Checking patch sympy/simplify/trigsimp.py...
+Applied patch sympy/simplify/trigsimp.py cleanly.
+warning: 1 line adds whitespace errors.
+
+2025-09-04 06:31:48,094 - INFO - Git diff before:
+diff --git a/sympy/simplify/trigsimp.py b/sympy/simplify/trigsimp.py
+index 8ba346adbe..f19a9357d1 100644
+--- a/sympy/simplify/trigsimp.py
++++ b/sympy/simplify/trigsimp.py
+@@ -509,6 +509,23 @@ def traverse(e):
+                                polynomial=True, hints=[2, tan]))),
+         'old': lambda x: trigsimp_old(x, **opts),
+                    }[method]
++    
++    # Convert any rational numbers in trigonometric functions to symbolic expressions for simplification
++    def convert_rationals(expr):
++        from sympy import Symbol, Wild
++        w = Wild('w')
++        if expr.has(TrigonometricFunction):
++            matches = expr.find(lambda x: isinstance(x, TrigonometricFunction) and x.args[0].is_Rational)
++            for m in matches:
++                rat = m.args[0]
++                sym = Symbol('_temp')
++                expr = expr.subs(rat, sym)
++                expr = trigsimpfunc(expr)
++                expr = expr.subs(sym, rat)
++            return expr
++        return expr
++
++    expr = convert_rationals(expr)
+ 
+     return trigsimpfunc(expr)
+2025-09-04 06:31:48,095 - INFO - Eval script for sympy__sympy-15346 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-15346/eval.sh; copying to container...
+2025-09-04 06:32:47,077 - INFO - Test runtime: 58.70 seconds
+2025-09-04 06:32:47,077 - INFO - Test output for sympy__sympy-15346 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-15346/test_output.txt
+2025-09-04 06:32:47,129 - INFO - Git diff after:
+diff --git a/sympy/simplify/trigsimp.py b/sympy/simplify/trigsimp.py
+index 8ba346adbe..f19a9357d1 100644
+--- a/sympy/simplify/trigsimp.py
++++ b/sympy/simplify/trigsimp.py
+@@ -509,6 +509,23 @@ def traverse(e):
+                                polynomial=True, hints=[2, tan]))),
+         'old': lambda x: trigsimp_old(x, **opts),
+                    }[method]
++    
++    # Convert any rational numbers in trigonometric functions to symbolic expressions for simplification
++    def convert_rationals(expr):
++        from sympy import Symbol, Wild
++        w = Wild('w')
++        if expr.has(TrigonometricFunction):
++            matches = expr.find(lambda x: isinstance(x, TrigonometricFunction) and x.args[0].is_Rational)
++            for m in matches:
++                rat = m.args[0]
++                sym = Symbol('_temp')
++                expr = expr.subs(rat, sym)
++                expr = trigsimpfunc(expr)
++                expr = expr.subs(sym, rat)
++            return expr
++        return expr
++
++    expr = convert_rationals(expr)
+ 
+     return trigsimpfunc(expr)
+2025-09-04 06:32:47,129 - INFO - Grading answer for sympy__sympy-15346...
+2025-09-04 06:32:47,130 - INFO - report: {'sympy__sympy-15346': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_issue_15129_trigsimp_methods'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_trigsimp1', 'test_trigsimp1a', 'test_trigsimp2', 'test_issue_4373', 'test_trigsimp3', 'test_issue_4661', 'test_issue_4494', 'test_issue_5948', 'test_issue_4775', 'test_issue_4280', 'test_issue_3210', 'test_trigsimp_issues', 'test_trigsimp_issue_2515', 'test_trigsimp_issue_3826', 'test_trigsimp_issue_4032', 'test_trigsimp_issue_7761', 'test_trigsimp_noncommutative', 'test_hyperbolic_simp', 'test_trigsimp_groebner', 'test_issue_2827_trigsimp_methods', 'test_exptrigsimp', 'test_powsimp_on_numbers'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-15346: resolved: True
+2025-09-04 06:32:47,130 - INFO - Attempting to stop container sweb.eval.sympy__sympy-15346.lite_claude_all...
+2025-09-04 06:33:02,370 - INFO - Attempting to remove container sweb.eval.sympy__sympy-15346.lite_claude_all...
+2025-09-04 06:33:02,393 - INFO - Container sweb.eval.sympy__sympy-15346.lite_claude_all removed.
+2025-09-04 06:33:02,393 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-15346:latest...
+2025-09-04 06:33:02,514 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-15346:latest removed.

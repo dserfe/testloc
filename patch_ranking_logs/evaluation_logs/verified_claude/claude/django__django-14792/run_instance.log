@@ -1,0 +1,47 @@
+2025-08-25 02:51:18,668 - INFO - Creating container for django__django-14792...
+2025-08-25 02:51:18,861 - INFO - Container for django__django-14792 created: 2e5e4d6b854c9beb00c24d7c2b576de2736cbfba1a2c2faa66e4ea368ea19594
+2025-08-25 02:51:19,439 - INFO - Container for django__django-14792 started: 2e5e4d6b854c9beb00c24d7c2b576de2736cbfba1a2c2faa66e4ea368ea19594
+2025-08-25 02:51:19,440 - INFO - Intermediate patch for django__django-14792 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-14792/patch.diff, now applying to container...
+2025-08-25 02:51:19,590 - INFO - >>>>> Applied Patch:
+Checking patch django/db/backends/postgresql/operations.py...
+Applied patch django/db/backends/postgresql/operations.py cleanly.
+
+2025-08-25 02:51:21,105 - INFO - Git diff before:
+diff --git a/django/db/backends/postgresql/operations.py b/django/db/backends/postgresql/operations.py
+index 8d19872bea..5cf6ceed2b 100644
+--- a/django/db/backends/postgresql/operations.py
++++ b/django/db/backends/postgresql/operations.py
+@@ -44,6 +44,8 @@ class DatabaseOperations(BaseDatabaseOperations):
+         return "DATE_TRUNC('%s', %s)" % (lookup_type, field_name)
+ 
+     def _prepare_tzname_delta(self, tzname):
++        if tzname.startswith('Etc/GMT'):
++            return tzname
+         if '+' in tzname:
+             return tzname.replace('+', '-')
+         elif '-' in tzname:
+2025-08-25 02:51:21,105 - INFO - Eval script for django__django-14792 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-14792/eval.sh; copying to container...
+2025-08-25 02:51:28,581 - INFO - Test runtime: 7.42 seconds
+2025-08-25 02:51:28,581 - INFO - Test output for django__django-14792 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-14792/test_output.txt
+2025-08-25 02:51:28,704 - INFO - Git diff after:
+diff --git a/django/db/backends/postgresql/operations.py b/django/db/backends/postgresql/operations.py
+index 8d19872bea..5cf6ceed2b 100644
+--- a/django/db/backends/postgresql/operations.py
++++ b/django/db/backends/postgresql/operations.py
+@@ -44,6 +44,8 @@ class DatabaseOperations(BaseDatabaseOperations):
+         return "DATE_TRUNC('%s', %s)" % (lookup_type, field_name)
+ 
+     def _prepare_tzname_delta(self, tzname):
++        if tzname.startswith('Etc/GMT'):
++            return tzname
+         if '+' in tzname:
+             return tzname.replace('+', '-')
+         elif '-' in tzname:
+2025-08-25 02:51:28,704 - INFO - Grading answer for django__django-14792...
+2025-08-25 02:51:28,705 - INFO - report: {'django__django-14792': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['The _get_timezone_name() helper must return the offset for fixed offset', 'test_is_aware (utils_tests.test_timezone.TimezoneTests)']}, 'PASS_TO_PASS': {'success': ['test_activate_invalid_timezone (utils_tests.test_timezone.TimezoneTests)', 'test_fixedoffset_negative_timedelta (utils_tests.test_timezone.TimezoneTests)', 'test_fixedoffset_timedelta (utils_tests.test_timezone.TimezoneTests)', 'test_get_default_timezone (utils_tests.test_timezone.TimezoneTests)', 'test_get_default_timezone_utc (utils_tests.test_timezone.TimezoneTests)', 'test_is_naive (utils_tests.test_timezone.TimezoneTests)', 'test_localdate (utils_tests.test_timezone.TimezoneTests)', 'test_make_aware (utils_tests.test_timezone.TimezoneTests)', 'test_make_aware2 (utils_tests.test_timezone.TimezoneTests)', 'test_make_aware_no_tz (utils_tests.test_timezone.TimezoneTests)', 'test_make_aware_pytz_ambiguous (utils_tests.test_timezone.TimezoneTests)', 'test_make_aware_pytz_non_existent (utils_tests.test_timezone.TimezoneTests)', 'test_make_aware_zoneinfo_ambiguous (utils_tests.test_timezone.TimezoneTests)', 'test_make_aware_zoneinfo_non_existent (utils_tests.test_timezone.TimezoneTests)', 'test_make_naive (utils_tests.test_timezone.TimezoneTests)', 'test_make_naive_no_tz (utils_tests.test_timezone.TimezoneTests)', 'test_make_naive_pytz (utils_tests.test_timezone.TimezoneTests)', 'test_make_naive_zoneinfo (utils_tests.test_timezone.TimezoneTests)', 'test_now (utils_tests.test_timezone.TimezoneTests)', 'test_override (utils_tests.test_timezone.TimezoneTests)', 'test_override_decorator (utils_tests.test_timezone.TimezoneTests)', 'test_override_fixed_offset (utils_tests.test_timezone.TimezoneTests)', 'test_override_string_tz (utils_tests.test_timezone.TimezoneTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-14792: resolved: False
+2025-08-25 02:51:28,705 - INFO - Attempting to stop container sweb.eval.django__django-14792.verified_claude_new...
+2025-08-25 02:51:45,848 - INFO - Attempting to remove container sweb.eval.django__django-14792.verified_claude_new...
+2025-08-25 02:51:46,065 - INFO - Container sweb.eval.django__django-14792.verified_claude_new removed.
+2025-08-25 02:51:46,066 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-14792:latest...
+2025-08-25 02:51:50,771 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-14792:latest removed.

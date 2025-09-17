@@ -1,0 +1,68 @@
+{
+  "instance_id": "django__django-12155",
+  "container_id": "4ece91629b8a707f0b96dbcb10373a13cc55dc9e606c4c0f722e57e3c98a586c",
+  "regression": {
+    "results": [
+      {
+        "patch_file": "all_patches/verified_gpt4o_all_unique_patches/django__django-12155/dedup_patch_0.jsonl",
+        "inst": "django__django-12155",
+        "passed": 0,
+        "failed": 3
+      }
+    ],
+    "top_passed": 0,
+    "top_subset_size": 1
+  },
+  "reproduction": {
+    "admin_docs.test_utils.TestUtils.test_trim_docstring_with_non_empty_first_line#1": {
+      "repro_fails_on_clean": true,
+      "outcomes": [
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/django__django-12155/dedup_patch_0.jsonl",
+          "inst": "django__django-12155",
+          "passed": true
+        }
+      ]
+    },
+    "admin_docs.test_utils.TestUtils.test_trim_docstring_with_non_empty_first_line#2": {
+      "repro_fails_on_clean": true,
+      "outcomes": [
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/django__django-12155/dedup_patch_0.jsonl",
+          "inst": "django__django-12155",
+          "passed": true
+        }
+      ]
+    },
+    "reproduce_bug.py#3": {
+      "repro_fails_on_clean": true,
+      "outcomes": [
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/django__django-12155/dedup_patch_0.jsonl",
+          "inst": "django__django-12155",
+          "passed": false
+        }
+      ]
+    },
+    "admin_docs.test_utils.TestUtils.test_trim_docstring#4": {
+      "repro_fails_on_clean": true,
+      "outcomes": [
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/django__django-12155/dedup_patch_0.jsonl",
+          "inst": "django__django-12155",
+          "passed": true
+        }
+      ]
+    },
+    "admin_docs.test_utils.TestUtils.test_trim_docstring_with_non_empty_first_line#5": {
+      "repro_fails_on_clean": true,
+      "outcomes": [
+        {
+          "patch_file": "all_patches/verified_gpt4o_all_unique_patches/django__django-12155/dedup_patch_0.jsonl",
+          "inst": "django__django-12155",
+          "passed": false
+        }
+      ]
+    }
+  }
+}

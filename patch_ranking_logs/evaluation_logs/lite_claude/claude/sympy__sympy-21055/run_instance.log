@@ -1,0 +1,59 @@
+2025-09-04 06:32:30,118 - INFO - Creating container for sympy__sympy-21055...
+2025-09-04 06:32:30,309 - INFO - Container for sympy__sympy-21055 created: 5691fdb90598b74e626f7de255d4e8c5c097db005eefa906b54e15c909af3d2c
+2025-09-04 06:32:31,267 - INFO - Container for sympy__sympy-21055 started: 5691fdb90598b74e626f7de255d4e8c5c097db005eefa906b54e15c909af3d2c
+2025-09-04 06:32:31,267 - INFO - Intermediate patch for sympy__sympy-21055 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-21055/patch.diff, now applying to container...
+2025-09-04 06:32:31,411 - INFO - >>>>> Applied Patch:
+Checking patch sympy/functions/elementary/complexes.py...
+Applied patch sympy/functions/elementary/complexes.py cleanly.
+
+2025-09-04 06:32:31,877 - INFO - Git diff before:
+diff --git a/sympy/functions/elementary/complexes.py b/sympy/functions/elementary/complexes.py
+index b34ca3a7de..d0e468c287 100644
+--- a/sympy/functions/elementary/complexes.py
++++ b/sympy/functions/elementary/complexes.py
+@@ -765,6 +765,14 @@ def _eval_derivative(self, t):
+         return (x * Derivative(y, t, evaluate=True) - y *
+                     Derivative(x, t, evaluate=True)) / (x**2 + y**2)
+ 
++    def _eval_refine(self, assumptions):
++        from sympy.assumptions import ask, Q
++        arg = self.args[0]
++        if ask(Q.positive(arg), assumptions):
++            return S.Zero
++        if ask(Q.negative(arg), assumptions):
++            return S.Pi
++
+     def _eval_rewrite_as_atan2(self, arg, **kwargs):
+         x, y = self.args[0].as_real_imag()
+         return atan2(y, x)
+2025-09-04 06:32:31,877 - INFO - Eval script for sympy__sympy-21055 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-21055/eval.sh; copying to container...
+2025-09-04 06:32:41,919 - INFO - Test runtime: 9.96 seconds
+2025-09-04 06:32:41,919 - INFO - Test output for sympy__sympy-21055 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-21055/test_output.txt
+2025-09-04 06:32:41,999 - INFO - Git diff after:
+diff --git a/sympy/functions/elementary/complexes.py b/sympy/functions/elementary/complexes.py
+index b34ca3a7de..d0e468c287 100644
+--- a/sympy/functions/elementary/complexes.py
++++ b/sympy/functions/elementary/complexes.py
+@@ -765,6 +765,14 @@ def _eval_derivative(self, t):
+         return (x * Derivative(y, t, evaluate=True) - y *
+                     Derivative(x, t, evaluate=True)) / (x**2 + y**2)
+ 
++    def _eval_refine(self, assumptions):
++        from sympy.assumptions import ask, Q
++        arg = self.args[0]
++        if ask(Q.positive(arg), assumptions):
++            return S.Zero
++        if ask(Q.negative(arg), assumptions):
++            return S.Pi
++
+     def _eval_rewrite_as_atan2(self, arg, **kwargs):
+         x, y = self.args[0].as_real_imag()
+         return atan2(y, x)
+2025-09-04 06:32:41,999 - INFO - Grading answer for sympy__sympy-21055...
+2025-09-04 06:32:41,999 - INFO - report: {'sympy__sympy-21055': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_arg'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_Abs', 'test_pow1', 'test_pow2', 'test_exp', 'test_Piecewise', 'test_atan2', 'test_re', 'test_im', 'test_complex', 'test_sign', 'test_func_args', 'test_eval_refine', 'test_refine_issue_12724'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-21055: resolved: True
+2025-09-04 06:32:41,999 - INFO - Attempting to stop container sweb.eval.sympy__sympy-21055.lite_claude_all...
+2025-09-04 06:32:57,218 - INFO - Attempting to remove container sweb.eval.sympy__sympy-21055.lite_claude_all...
+2025-09-04 06:32:57,250 - INFO - Container sweb.eval.sympy__sympy-21055.lite_claude_all removed.
+2025-09-04 06:32:57,250 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-21055:latest...
+2025-09-04 06:32:57,401 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-21055:latest removed.

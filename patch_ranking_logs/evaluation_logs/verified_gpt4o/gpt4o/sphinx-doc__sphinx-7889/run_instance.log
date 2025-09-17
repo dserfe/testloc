@@ -1,0 +1,47 @@
+2025-08-26 05:14:13,291 - INFO - Creating container for sphinx-doc__sphinx-7889...
+2025-08-26 05:14:26,129 - INFO - Container for sphinx-doc__sphinx-7889 created: e9cd9bd534e05c7b60d508b264f37ab19c03c0d3f262bbfd8734b4c98c4d8f96
+2025-08-26 05:14:26,951 - INFO - Container for sphinx-doc__sphinx-7889 started: e9cd9bd534e05c7b60d508b264f37ab19c03c0d3f262bbfd8734b4c98c4d8f96
+2025-08-26 05:14:26,952 - INFO - Intermediate patch for sphinx-doc__sphinx-7889 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sphinx-doc__sphinx-7889/patch.diff, now applying to container...
+2025-08-26 05:14:27,069 - INFO - >>>>> Applied Patch:
+Checking patch sphinx/ext/autodoc/mock.py...
+Applied patch sphinx/ext/autodoc/mock.py cleanly.
+
+2025-08-26 05:14:27,341 - INFO - Git diff before:
+diff --git a/sphinx/ext/autodoc/mock.py b/sphinx/ext/autodoc/mock.py
+index 98a3a3a96..47e4408a4 100644
+--- a/sphinx/ext/autodoc/mock.py
++++ b/sphinx/ext/autodoc/mock.py
+@@ -70,7 +70,7 @@ class _MockObject:
+ 
+ def _make_subclass(name: str, module: str, superclass: Any = _MockObject,
+                    attributes: Any = None) -> Any:
+-    attrs = {'__module__': module, '__display_name__': module + '.' + name}
++    attrs = {'__module__': module, '__display_name__': module + '.' + str(name)}
+     attrs.update(attributes or {})
+ 
+     return type(name, (superclass,), attrs)
+2025-08-26 05:14:27,342 - INFO - Eval script for sphinx-doc__sphinx-7889 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sphinx-doc__sphinx-7889/eval.sh; copying to container...
+2025-08-26 05:14:31,292 - INFO - Test runtime: 3.88 seconds
+2025-08-26 05:14:31,292 - INFO - Test output for sphinx-doc__sphinx-7889 written to logs/run_evaluation/verified_gpt4o_all2/agentless/sphinx-doc__sphinx-7889/test_output.txt
+2025-08-26 05:14:31,352 - INFO - Git diff after:
+diff --git a/sphinx/ext/autodoc/mock.py b/sphinx/ext/autodoc/mock.py
+index 98a3a3a96..47e4408a4 100644
+--- a/sphinx/ext/autodoc/mock.py
++++ b/sphinx/ext/autodoc/mock.py
+@@ -70,7 +70,7 @@ class _MockObject:
+ 
+ def _make_subclass(name: str, module: str, superclass: Any = _MockObject,
+                    attributes: Any = None) -> Any:
+-    attrs = {'__module__': module, '__display_name__': module + '.' + name}
++    attrs = {'__module__': module, '__display_name__': module + '.' + str(name)}
+     attrs.update(attributes or {})
+ 
+     return type(name, (superclass,), attrs)
+2025-08-26 05:14:31,352 - INFO - Grading answer for sphinx-doc__sphinx-7889...
+2025-08-26 05:14:31,353 - INFO - report: {'sphinx-doc__sphinx-7889': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['tests/test_ext_autodoc_mock.py::test_MockObject']}, 'PASS_TO_PASS': {'success': ['tests/test_ext_autodoc_mock.py::test_MockModule', 'tests/test_ext_autodoc_mock.py::test_mock', 'tests/test_ext_autodoc_mock.py::test_mock_does_not_follow_upper_modules', 'tests/test_ext_autodoc_mock.py::test_abc_MockObject', 'tests/test_ext_autodoc_mock.py::test_mock_decorator'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sphinx-doc__sphinx-7889: resolved: False
+2025-08-26 05:14:31,354 - INFO - Attempting to stop container sweb.eval.sphinx-doc__sphinx-7889.verified_gpt4o_all2...
+2025-08-26 05:14:46,943 - INFO - Attempting to remove container sweb.eval.sphinx-doc__sphinx-7889.verified_gpt4o_all2...
+2025-08-26 05:14:49,976 - INFO - Container sweb.eval.sphinx-doc__sphinx-7889.verified_gpt4o_all2 removed.
+2025-08-26 05:14:49,983 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-7889:latest...
+2025-08-26 05:15:02,698 - INFO - Image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-7889:latest removed.

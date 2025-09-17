@@ -1,0 +1,53 @@
+2025-08-25 03:02:23,653 - INFO - Creating container for sphinx-doc__sphinx-8269...
+2025-08-25 03:02:24,311 - INFO - Container for sphinx-doc__sphinx-8269 created: 3becd8ea2b0ebfdf613f41582c8003ce6a4b9588a1832a4a884b963c5b02efe7
+2025-08-25 03:02:30,088 - INFO - Container for sphinx-doc__sphinx-8269 started: 3becd8ea2b0ebfdf613f41582c8003ce6a4b9588a1832a4a884b963c5b02efe7
+2025-08-25 03:02:30,091 - INFO - Intermediate patch for sphinx-doc__sphinx-8269 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-8269/patch.diff, now applying to container...
+2025-08-25 03:02:30,288 - INFO - >>>>> Applied Patch:
+Checking patch sphinx/builders/linkcheck.py...
+Applied patch sphinx/builders/linkcheck.py cleanly.
+
+2025-08-25 03:02:30,843 - INFO - Git diff before:
+diff --git a/sphinx/builders/linkcheck.py b/sphinx/builders/linkcheck.py
+index 9b54afc7c..27d75e367 100644
+--- a/sphinx/builders/linkcheck.py
++++ b/sphinx/builders/linkcheck.py
+@@ -166,8 +166,10 @@ class CheckExternalLinksBuilder(Builder):
+                     # Read the whole document and see if #anchor exists
+                     response = requests.get(req_url, stream=True, config=self.app.config,
+                                             auth=auth_info, **kwargs)
++                    # First check if the response was successful
++                    response.raise_for_status()
++                    # Only check for anchor if the page exists
+                     found = check_anchor(response, unquote(anchor))
+-
+                     if not found:
+                         raise Exception(__("Anchor '%s' not found") % anchor)
+                 else:
+2025-08-25 03:02:30,844 - INFO - Eval script for sphinx-doc__sphinx-8269 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-8269/eval.sh; copying to container...
+2025-08-25 03:02:38,262 - INFO - Test runtime: 6.51 seconds
+2025-08-25 03:02:38,262 - INFO - Test output for sphinx-doc__sphinx-8269 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-8269/test_output.txt
+2025-08-25 03:02:38,404 - INFO - Git diff after:
+diff --git a/sphinx/builders/linkcheck.py b/sphinx/builders/linkcheck.py
+index 9b54afc7c..27d75e367 100644
+--- a/sphinx/builders/linkcheck.py
++++ b/sphinx/builders/linkcheck.py
+@@ -166,8 +166,10 @@ class CheckExternalLinksBuilder(Builder):
+                     # Read the whole document and see if #anchor exists
+                     response = requests.get(req_url, stream=True, config=self.app.config,
+                                             auth=auth_info, **kwargs)
++                    # First check if the response was successful
++                    response.raise_for_status()
++                    # Only check for anchor if the page exists
+                     found = check_anchor(response, unquote(anchor))
+-
+                     if not found:
+                         raise Exception(__("Anchor '%s' not found") % anchor)
+                 else:
+2025-08-25 03:02:38,405 - INFO - Grading answer for sphinx-doc__sphinx-8269...
+2025-08-25 03:02:38,414 - INFO - report: {'sphinx-doc__sphinx-8269': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/test_build_linkcheck.py::test_raises_for_invalid_status'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/test_build_linkcheck.py::test_defaults', 'tests/test_build_linkcheck.py::test_defaults_json', 'tests/test_build_linkcheck.py::test_anchors_ignored', 'tests/test_build_linkcheck.py::test_auth', 'tests/test_build_linkcheck.py::test_linkcheck_request_headers'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sphinx-doc__sphinx-8269: resolved: True
+2025-08-25 03:02:38,414 - INFO - Attempting to stop container sweb.eval.sphinx-doc__sphinx-8269.verified_claude_new...
+2025-08-25 03:02:54,128 - INFO - Attempting to remove container sweb.eval.sphinx-doc__sphinx-8269.verified_claude_new...
+2025-08-25 03:02:54,200 - INFO - Container sweb.eval.sphinx-doc__sphinx-8269.verified_claude_new removed.
+2025-08-25 03:02:54,200 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8269:latest...
+2025-08-25 03:02:54,450 - INFO - Image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8269:latest removed.

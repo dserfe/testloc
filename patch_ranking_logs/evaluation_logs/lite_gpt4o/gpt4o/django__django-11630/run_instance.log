@@ -1,0 +1,55 @@
+2025-08-22 02:47:31,689 - INFO - Creating container for django__django-11630...
+2025-08-22 02:47:32,850 - INFO - Container for django__django-11630 created: c9210d0e5126e4401e14a4199ae57f0283eea4f0dfe6aa8a7a0d8a9616f5bb75
+2025-08-22 02:47:35,155 - INFO - Container for django__django-11630 started: c9210d0e5126e4401e14a4199ae57f0283eea4f0dfe6aa8a7a0d8a9616f5bb75
+2025-08-22 02:47:35,156 - INFO - Intermediate patch for django__django-11630 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-11630/patch.diff, now applying to container...
+2025-08-22 02:47:35,337 - INFO - >>>>> Applied Patch:
+Checking patch django/db/models/options.py...
+Applied patch django/db/models/options.py cleanly.
+
+2025-08-22 02:47:36,832 - INFO - Git diff before:
+diff --git a/django/db/models/options.py b/django/db/models/options.py
+index 1f11e26d87..1cdc2d5f1d 100644
+--- a/django/db/models/options.py
++++ b/django/db/models/options.py
+@@ -202,9 +202,10 @@ class Options:
+             self.verbose_name_plural = format_lazy('{}s', self.verbose_name)
+         del self.meta
+ 
+-        # If the db_table wasn't provided, use the app_label + model_name.
++        # If the db_table wasn't provided, ensure it is unique by using the app_label + model_name.
+         if not self.db_table:
+-            self.db_table = "%s_%s" % (self.app_label, self.model_name)
++            unique_app_label = self.app_label if self.app_label else cls.__module__.split('.')[0]
++            self.db_table = "%s_%s" % (unique_app_label, self.model_name)
+             self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+ 
+     def _format_names_with_class(self, cls, objs):
+2025-08-22 02:47:36,846 - INFO - Eval script for django__django-11630 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-11630/eval.sh; copying to container...
+2025-08-22 02:47:52,366 - INFO - Test runtime: 15.40 seconds
+2025-08-22 02:47:52,366 - INFO - Test output for django__django-11630 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-11630/test_output.txt
+2025-08-22 02:47:52,476 - INFO - Git diff after:
+diff --git a/django/db/models/options.py b/django/db/models/options.py
+index 1f11e26d87..1cdc2d5f1d 100644
+--- a/django/db/models/options.py
++++ b/django/db/models/options.py
+@@ -202,9 +202,10 @@ class Options:
+             self.verbose_name_plural = format_lazy('{}s', self.verbose_name)
+         del self.meta
+ 
+-        # If the db_table wasn't provided, use the app_label + model_name.
++        # If the db_table wasn't provided, ensure it is unique by using the app_label + model_name.
+         if not self.db_table:
+-            self.db_table = "%s_%s" % (self.app_label, self.model_name)
++            unique_app_label = self.app_label if self.app_label else cls.__module__.split('.')[0]
++            self.db_table = "%s_%s" % (unique_app_label, self.model_name)
+             self.db_table = truncate_name(self.db_table, connection.ops.max_name_length())
+ 
+     def _format_names_with_class(self, cls, objs):
+2025-08-22 02:47:52,497 - INFO - Grading answer for django__django-11630...
+2025-08-22 02:47:52,498 - INFO - report: {'django__django-11630': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_collision_across_apps_database_routers_installed (check_framework.test_model_checks.DuplicateDBTableTests)', 'test_collision_in_same_app_database_routers_installed (check_framework.test_model_checks.DuplicateDBTableTests)']}, 'PASS_TO_PASS': {'success': ['test_collision_abstract_model (check_framework.test_model_checks.IndexNameTests)', 'test_collision_across_apps (check_framework.test_model_checks.IndexNameTests)', 'test_collision_in_different_models (check_framework.test_model_checks.IndexNameTests)', 'test_collision_in_same_model (check_framework.test_model_checks.IndexNameTests)', 'test_no_collision_abstract_model_interpolation (check_framework.test_model_checks.IndexNameTests)', 'test_no_collision_across_apps_interpolation (check_framework.test_model_checks.IndexNameTests)', 'test_collision_abstract_model (check_framework.test_model_checks.ConstraintNameTests)', 'test_collision_across_apps (check_framework.test_model_checks.ConstraintNameTests)', 'test_collision_in_different_models (check_framework.test_model_checks.ConstraintNameTests)', 'test_collision_in_same_model (check_framework.test_model_checks.ConstraintNameTests)', 'test_no_collision_abstract_model_interpolation (check_framework.test_model_checks.ConstraintNameTests)', 'test_no_collision_across_apps_interpolation (check_framework.test_model_checks.ConstraintNameTests)', 'test_collision_across_apps (check_framework.test_model_checks.DuplicateDBTableTests)', 'test_collision_in_same_app (check_framework.test_model_checks.DuplicateDBTableTests)', 'test_no_collision_for_proxy_models (check_framework.test_model_checks.DuplicateDBTableTests)', 'test_no_collision_for_unmanaged_models (check_framework.test_model_checks.DuplicateDBTableTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-11630: resolved: False
+2025-08-22 02:47:52,498 - INFO - Attempting to stop container sweb.eval.django__django-11630.lite_gpt_all...
+2025-08-22 02:48:08,846 - INFO - Attempting to remove container sweb.eval.django__django-11630.lite_gpt_all...
+2025-08-22 02:48:10,562 - INFO - Container sweb.eval.django__django-11630.lite_gpt_all removed.
+2025-08-22 02:48:10,562 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-11630:latest...
+2025-08-22 02:48:15,230 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-11630:latest removed.

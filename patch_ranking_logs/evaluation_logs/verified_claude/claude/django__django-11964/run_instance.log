@@ -1,0 +1,49 @@
+2025-08-25 02:49:38,950 - INFO - Creating container for django__django-11964...
+2025-08-25 02:49:41,333 - INFO - Container for django__django-11964 created: 539fab16ea8772d1c00549be380288c5ab6f26c13183f91608681ff166ccdf34
+2025-08-25 02:49:42,882 - INFO - Container for django__django-11964 started: 539fab16ea8772d1c00549be380288c5ab6f26c13183f91608681ff166ccdf34
+2025-08-25 02:49:42,883 - INFO - Intermediate patch for django__django-11964 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-11964/patch.diff, now applying to container...
+2025-08-25 02:49:43,406 - INFO - >>>>> Applied Patch:
+Checking patch django/db/models/fields/__init__.py...
+Applied patch django/db/models/fields/__init__.py cleanly.
+
+2025-08-25 02:49:44,604 - INFO - Git diff before:
+diff --git a/django/db/models/fields/__init__.py b/django/db/models/fields/__init__.py
+index d610dc86f0..68ce5c1651 100644
+--- a/django/db/models/fields/__init__.py
++++ b/django/db/models/fields/__init__.py
+@@ -1010,6 +1010,9 @@ class CharField(Field):
+     def to_python(self, value):
+         if isinstance(value, str) or value is None:
+             return value
++        # Handle TextChoices/IntegerChoices enum members
++        if hasattr(value, '_value_'):
++            return value._value_
+         return str(value)
+ 
+     def get_prep_value(self, value):
+2025-08-25 02:49:44,604 - INFO - Eval script for django__django-11964 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-11964/eval.sh; copying to container...
+2025-08-25 02:49:55,484 - INFO - Test runtime: 10.76 seconds
+2025-08-25 02:49:55,485 - INFO - Test output for django__django-11964 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-11964/test_output.txt
+2025-08-25 02:49:55,646 - INFO - Git diff after:
+diff --git a/django/db/models/fields/__init__.py b/django/db/models/fields/__init__.py
+index d610dc86f0..68ce5c1651 100644
+--- a/django/db/models/fields/__init__.py
++++ b/django/db/models/fields/__init__.py
+@@ -1010,6 +1010,9 @@ class CharField(Field):
+     def to_python(self, value):
+         if isinstance(value, str) or value is None:
+             return value
++        # Handle TextChoices/IntegerChoices enum members
++        if hasattr(value, '_value_'):
++            return value._value_
+         return str(value)
+ 
+     def get_prep_value(self, value):
+2025-08-25 02:49:55,646 - INFO - Grading answer for django__django-11964...
+2025-08-25 02:49:55,648 - INFO - report: {'django__django-11964': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_str (model_enums.tests.ChoicesTests)', 'test_textchoices (model_enums.tests.ChoicesTests)']}, 'PASS_TO_PASS': {'success': ['test_integerchoices (model_enums.tests.ChoicesTests)', 'test_integerchoices_auto_label (model_enums.tests.ChoicesTests)', 'test_integerchoices_containment (model_enums.tests.ChoicesTests)', 'test_integerchoices_empty_label (model_enums.tests.ChoicesTests)', 'test_integerchoices_functional_api (model_enums.tests.ChoicesTests)', 'test_invalid_definition (model_enums.tests.ChoicesTests)', 'test_textchoices_auto_label (model_enums.tests.ChoicesTests)', 'test_textchoices_blank_value (model_enums.tests.ChoicesTests)', 'test_textchoices_containment (model_enums.tests.ChoicesTests)', 'test_textchoices_empty_label (model_enums.tests.ChoicesTests)', 'test_textchoices_functional_api (model_enums.tests.ChoicesTests)', 'test_bool_unsupported (model_enums.tests.CustomChoicesTests)', 'test_labels_valid (model_enums.tests.CustomChoicesTests)', 'test_timezone_unsupported (model_enums.tests.CustomChoicesTests)', 'test_uuid_unsupported (model_enums.tests.CustomChoicesTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-11964: resolved: False
+2025-08-25 02:49:55,648 - INFO - Attempting to stop container sweb.eval.django__django-11964.verified_claude_new...
+2025-08-25 02:50:11,121 - INFO - Attempting to remove container sweb.eval.django__django-11964.verified_claude_new...
+2025-08-25 02:50:11,306 - INFO - Container sweb.eval.django__django-11964.verified_claude_new removed.
+2025-08-25 02:50:11,306 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-11964:latest...
+2025-08-25 02:50:13,390 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-11964:latest removed.

@@ -1,0 +1,63 @@
+2025-08-22 02:56:11,424 - INFO - Creating container for sympy__sympy-13031...
+2025-08-22 02:56:12,497 - INFO - Container for sympy__sympy-13031 created: 2adea71e3404badf77ee82c1fb81a88b38dca40576fee707d3f78eff06f4a25f
+2025-08-22 02:56:14,027 - INFO - Container for sympy__sympy-13031 started: 2adea71e3404badf77ee82c1fb81a88b38dca40576fee707d3f78eff06f4a25f
+2025-08-22 02:56:14,030 - INFO - Intermediate patch for sympy__sympy-13031 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-13031/patch.diff, now applying to container...
+2025-08-22 02:56:14,337 - INFO - >>>>> Applied Patch:
+Checking patch sympy/matrices/expressions/blockmatrix.py...
+Applied patch sympy/matrices/expressions/blockmatrix.py cleanly.
+
+2025-08-22 02:56:14,772 - INFO - Git diff before:
+diff --git a/sympy/matrices/expressions/blockmatrix.py b/sympy/matrices/expressions/blockmatrix.py
+index 76390dc14..c93179a60 100644
+--- a/sympy/matrices/expressions/blockmatrix.py
++++ b/sympy/matrices/expressions/blockmatrix.py
+@@ -56,10 +56,12 @@ def __new__(cls, *args):
+     def shape(self):
+         numrows = numcols = 0
+         M = self.blocks
+-        for i in range(M.shape[0]):
+-            numrows += M[i, 0].shape[0]
+-        for i in range(M.shape[1]):
+-            numcols += M[0, i].shape[1]
++        if M.shape[0] > 0:
++            for i in range(M.shape[0]):
++                numrows += M[i, 0].shape[0]
++        if M.shape[1] > 0:
++            for i in range(M.shape[1]):
++                numcols += M[0, i].shape[1]
+         return (numrows, numcols)
+ 
+     @property
+2025-08-22 02:56:14,775 - INFO - Eval script for sympy__sympy-13031 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-13031/eval.sh; copying to container...
+2025-08-22 02:56:21,033 - INFO - Test runtime: 6.09 seconds
+2025-08-22 02:56:21,033 - INFO - Test output for sympy__sympy-13031 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-13031/test_output.txt
+2025-08-22 02:56:21,197 - INFO - Git diff after:
+diff --git a/sympy/matrices/expressions/blockmatrix.py b/sympy/matrices/expressions/blockmatrix.py
+index 76390dc14..c93179a60 100644
+--- a/sympy/matrices/expressions/blockmatrix.py
++++ b/sympy/matrices/expressions/blockmatrix.py
+@@ -56,10 +56,12 @@ def __new__(cls, *args):
+     def shape(self):
+         numrows = numcols = 0
+         M = self.blocks
+-        for i in range(M.shape[0]):
+-            numrows += M[i, 0].shape[0]
+-        for i in range(M.shape[1]):
+-            numcols += M[0, i].shape[1]
++        if M.shape[0] > 0:
++            for i in range(M.shape[0]):
++                numrows += M[i, 0].shape[0]
++        if M.shape[1] > 0:
++            for i in range(M.shape[1]):
++                numcols += M[0, i].shape[1]
+         return (numrows, numcols)
+ 
+     @property
+2025-08-22 02:56:21,198 - INFO - Grading answer for sympy__sympy-13031...
+2025-08-22 02:56:21,200 - INFO - report: {'sympy__sympy-13031': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_sparse_matrix']}, 'PASS_TO_PASS': {'success': ['test_transpose', 'test_trace', 'test_CL_RL', 'test_add', 'test_errors', 'test_len', 'test_sparse_zeros_sparse_eye', 'test_copyin', 'test_sparse_solve'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-13031: resolved: False
+2025-08-22 02:56:21,200 - INFO - Attempting to stop container sweb.eval.sympy__sympy-13031.lite_gpt_all...
+2025-08-22 02:56:38,164 - INFO - Attempting to remove container sweb.eval.sympy__sympy-13031.lite_gpt_all...
+2025-08-22 02:56:38,906 - INFO - Container sweb.eval.sympy__sympy-13031.lite_gpt_all removed.
+2025-08-22 02:56:38,906 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-13031:latest...
+2025-08-22 02:56:39,920 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-13031:latest removed.

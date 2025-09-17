@@ -1,0 +1,63 @@
+2025-08-22 02:55:45,196 - INFO - Creating container for sympy__sympy-13773...
+2025-08-22 02:55:49,028 - INFO - Container for sympy__sympy-13773 created: 6981481fbe8a127a0938e75e5bdbc74e96f51600c5ef60a252a047653f7b53d0
+2025-08-22 02:55:49,655 - INFO - Container for sympy__sympy-13773 started: 6981481fbe8a127a0938e75e5bdbc74e96f51600c5ef60a252a047653f7b53d0
+2025-08-22 02:55:49,655 - INFO - Intermediate patch for sympy__sympy-13773 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-13773/patch.diff, now applying to container...
+2025-08-22 02:55:49,808 - INFO - >>>>> Applied Patch:
+Checking patch sympy/matrices/expressions/matmul.py...
+Applied patch sympy/matrices/expressions/matmul.py cleanly.
+
+2025-08-22 02:55:50,255 - INFO - Git diff before:
+diff --git a/sympy/matrices/expressions/matmul.py b/sympy/matrices/expressions/matmul.py
+index 083c5eba4c..e36040c411 100644
+--- a/sympy/matrices/expressions/matmul.py
++++ b/sympy/matrices/expressions/matmul.py
+@@ -135,10 +135,13 @@ def args_cnc(self, **kwargs):
+ 
+ def validate(*matrices):
+     """ Checks for valid shapes for args of MatMul """
+-    for i in range(len(matrices)-1):
+-        A, B = matrices[i:i+2]
+-        if A.cols != B.rows:
+-            raise ShapeError("Matrices %s and %s are not aligned"%(A, B))
++    for i, matrix in enumerate(matrices):
++        if not hasattr(matrix, 'rows') or not hasattr(matrix, 'cols'):
++            raise ValueError(f"Argument {i} is not a matrix")
++        if i < len(matrices) - 1:
++            A, B = matrices[i:i+2]
++            if A.cols != B.rows:
++                raise ShapeError("Matrices %s and %s are not aligned"%(A, B))
+ 
+ # Rules
+2025-08-22 02:55:50,256 - INFO - Eval script for sympy__sympy-13773 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-13773/eval.sh; copying to container...
+2025-08-22 02:56:00,527 - INFO - Test runtime: 10.22 seconds
+2025-08-22 02:56:00,528 - INFO - Test output for sympy__sympy-13773 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-13773/test_output.txt
+2025-08-22 02:56:00,606 - INFO - Git diff after:
+diff --git a/sympy/matrices/expressions/matmul.py b/sympy/matrices/expressions/matmul.py
+index 083c5eba4c..e36040c411 100644
+--- a/sympy/matrices/expressions/matmul.py
++++ b/sympy/matrices/expressions/matmul.py
+@@ -135,10 +135,13 @@ def args_cnc(self, **kwargs):
+ 
+ def validate(*matrices):
+     """ Checks for valid shapes for args of MatMul """
+-    for i in range(len(matrices)-1):
+-        A, B = matrices[i:i+2]
+-        if A.cols != B.rows:
+-            raise ShapeError("Matrices %s and %s are not aligned"%(A, B))
++    for i, matrix in enumerate(matrices):
++        if not hasattr(matrix, 'rows') or not hasattr(matrix, 'cols'):
++            raise ValueError(f"Argument {i} is not a matrix")
++        if i < len(matrices) - 1:
++            A, B = matrices[i:i+2]
++            if A.cols != B.rows:
++                raise ShapeError("Matrices %s and %s are not aligned"%(A, B))
+ 
+ # Rules
+2025-08-22 02:56:00,606 - INFO - Grading answer for sympy__sympy-13773...
+2025-08-22 02:56:00,611 - INFO - report: {'sympy__sympy-13773': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_matmul']}, 'PASS_TO_PASS': {'success': ['test__MinimalMatrix', 'test_vec', 'test_tolist', 'test_row_col_del', 'test_get_diag_blocks1', 'test_get_diag_blocks2', 'test_shape', 'test_reshape', 'test_row_col', 'test_row_join', 'test_col_join', 'test_row_insert', 'test_col_insert', 'test_extract', 'test_hstack', 'test_vstack', 'test_atoms', 'test_free_symbols', 'test_has', 'test_is_anti_symmetric', 'test_diagonal_symmetrical', 'test_is_hermitian', 'test_is_Identity', 'test_is_symbolic', 'test_is_upper', 'test_is_lower', 'test_is_square', 'test_is_symmetric', 'test_is_hessenberg', 'test_is_zero', 'test_values', 'test_adjoint', 'test_as_real_imag', 'test_conjugate', 'test_doit', 'test_evalf', 'test_expand', 'test_replace', 'test_replace_map', 'test_simplify', 'test_subs', 'test_trace', 'test_xreplace', 'test_permute', 'test_abs', 'test_add', 'test_power', 'test_neg', 'test_sub', 'test_det', 'test_adjugate', 'test_cofactor_and_minors', 'test_charpoly', 'test_row_op', 'test_col_op', 'test_is_echelon', 'test_echelon_form', 'test_rref', 'test_eye', 'test_ones', 'test_zeros', 'test_diag', 'test_jordan_block', 'test_columnspace', 'test_rowspace', 'test_nullspace', 'test_eigenvals', 'test_singular_values', 'test_integrate'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-13773: resolved: False
+2025-08-22 02:56:00,611 - INFO - Attempting to stop container sweb.eval.sympy__sympy-13773.lite_gpt_all...
+2025-08-22 02:56:16,762 - INFO - Attempting to remove container sweb.eval.sympy__sympy-13773.lite_gpt_all...
+2025-08-22 02:56:16,942 - INFO - Container sweb.eval.sympy__sympy-13773.lite_gpt_all removed.
+2025-08-22 02:56:16,942 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-13773:latest...
+2025-08-22 02:56:17,272 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-13773:latest removed.

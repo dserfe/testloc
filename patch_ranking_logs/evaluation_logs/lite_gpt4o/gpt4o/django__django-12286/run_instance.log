@@ -1,0 +1,49 @@
+2025-08-22 02:47:59,241 - INFO - Creating container for django__django-12286...
+2025-08-22 02:48:04,271 - INFO - Container for django__django-12286 created: dbcd10fc21877c524218846c48810a8e1add27bb25942a857981bb3de092cab5
+2025-08-22 02:48:06,443 - INFO - Container for django__django-12286 started: dbcd10fc21877c524218846c48810a8e1add27bb25942a857981bb3de092cab5
+2025-08-22 02:48:06,444 - INFO - Intermediate patch for django__django-12286 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-12286/patch.diff, now applying to container...
+2025-08-22 02:48:06,846 - INFO - >>>>> Applied Patch:
+Checking patch django/conf/locale/__init__.py...
+Applied patch django/conf/locale/__init__.py cleanly.
+
+2025-08-22 02:48:08,181 - INFO - Git diff before:
+diff --git a/django/conf/locale/__init__.py b/django/conf/locale/__init__.py
+index 256ae01671..e01d6a7314 100644
+--- a/django/conf/locale/__init__.py
++++ b/django/conf/locale/__init__.py
+@@ -554,6 +554,9 @@ LANG_INFO = {
+         'name': 'Vietnamese',
+         'name_local': 'Tiếng Việt',
+     },
++    'de-at': {
++        'fallback': ['de'],
++    },
+     'zh-cn': {
+         'fallback': ['zh-hans'],
+     },
+2025-08-22 02:48:08,186 - INFO - Eval script for django__django-12286 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-12286/eval.sh; copying to container...
+2025-08-22 02:48:19,877 - INFO - Test runtime: 11.60 seconds
+2025-08-22 02:48:19,877 - INFO - Test output for django__django-12286 written to logs/run_evaluation/lite_gpt_all/agentless/django__django-12286/test_output.txt
+2025-08-22 02:48:19,970 - INFO - Git diff after:
+diff --git a/django/conf/locale/__init__.py b/django/conf/locale/__init__.py
+index 256ae01671..e01d6a7314 100644
+--- a/django/conf/locale/__init__.py
++++ b/django/conf/locale/__init__.py
+@@ -554,6 +554,9 @@ LANG_INFO = {
+         'name': 'Vietnamese',
+         'name_local': 'Tiếng Việt',
+     },
++    'de-at': {
++        'fallback': ['de'],
++    },
+     'zh-cn': {
+         'fallback': ['zh-hans'],
+     },
+2025-08-22 02:48:19,970 - INFO - Grading answer for django__django-12286...
+2025-08-22 02:48:19,971 - INFO - report: {'django__django-12286': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_valid_variant_consistent_language_settings (check_framework.test_translation.TranslationCheckTests)']}, 'PASS_TO_PASS': {'success': ['test_inconsistent_language_settings (check_framework.test_translation.TranslationCheckTests)', 'test_invalid_language_code (check_framework.test_translation.TranslationCheckTests)', 'test_invalid_languages (check_framework.test_translation.TranslationCheckTests)', 'test_invalid_languages_bidi (check_framework.test_translation.TranslationCheckTests)', 'test_valid_language_code (check_framework.test_translation.TranslationCheckTests)', 'test_valid_languages (check_framework.test_translation.TranslationCheckTests)', 'test_valid_languages_bidi (check_framework.test_translation.TranslationCheckTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-12286: resolved: False
+2025-08-22 02:48:19,971 - INFO - Attempting to stop container sweb.eval.django__django-12286.lite_gpt_all...
+2025-08-22 02:48:40,873 - INFO - Attempting to remove container sweb.eval.django__django-12286.lite_gpt_all...
+2025-08-22 02:48:41,329 - INFO - Container sweb.eval.django__django-12286.lite_gpt_all removed.
+2025-08-22 02:48:41,333 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-12286:latest...
+2025-08-22 02:48:46,116 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-12286:latest removed.

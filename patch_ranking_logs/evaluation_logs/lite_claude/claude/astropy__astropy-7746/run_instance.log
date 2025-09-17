@@ -1,0 +1,54 @@
+2025-09-04 06:22:53,242 - INFO - Creating container for astropy__astropy-7746...
+2025-09-04 06:23:03,383 - INFO - Container for astropy__astropy-7746 created: aa3cc7723cb64183450a7b15028dd01f33394007e25843909063fd5e5c61ae19
+2025-09-04 06:23:03,977 - INFO - Container for astropy__astropy-7746 started: aa3cc7723cb64183450a7b15028dd01f33394007e25843909063fd5e5c61ae19
+2025-09-04 06:23:03,978 - INFO - Intermediate patch for astropy__astropy-7746 written to logs/run_evaluation/lite_claude_all/agentless_claude/astropy__astropy-7746/patch.diff, now applying to container...
+2025-09-04 06:23:04,073 - INFO - >>>>> Applied Patch:
+/tmp/patch.diff:12: trailing whitespace.
+                
+Checking patch astropy/wcs/wcs.py...
+Applied patch astropy/wcs/wcs.py cleanly.
+warning: 1 line adds whitespace errors.
+
+2025-09-04 06:23:04,541 - INFO - Git diff before:
+diff --git a/astropy/wcs/wcs.py b/astropy/wcs/wcs.py
+index d3a06f2b31..b0042ec0f3 100644
+--- a/astropy/wcs/wcs.py
++++ b/astropy/wcs/wcs.py
+@@ -1212,6 +1212,10 @@ reduce these to 2 dimensions using the naxis kwarg.
+         """
+ 
+         def _return_list_of_arrays(axes, origin):
++            # Handle empty arrays
++            if any(len(x) == 0 for x in axes):
++                return [np.array([]) for _ in range(self.wcs.naxis)]
++                
+             try:
+                 axes = np.broadcast_arrays(*axes)
+             except ValueError:
+2025-09-04 06:23:04,541 - INFO - Eval script for astropy__astropy-7746 written to logs/run_evaluation/lite_claude_all/agentless_claude/astropy__astropy-7746/eval.sh; copying to container...
+2025-09-04 06:23:14,764 - INFO - Test runtime: 10.17 seconds
+2025-09-04 06:23:14,764 - INFO - Test output for astropy__astropy-7746 written to logs/run_evaluation/lite_claude_all/agentless_claude/astropy__astropy-7746/test_output.txt
+2025-09-04 06:23:14,862 - INFO - Git diff after:
+diff --git a/astropy/wcs/wcs.py b/astropy/wcs/wcs.py
+index d3a06f2b31..b0042ec0f3 100644
+--- a/astropy/wcs/wcs.py
++++ b/astropy/wcs/wcs.py
+@@ -1212,6 +1212,10 @@ reduce these to 2 dimensions using the naxis kwarg.
+         """
+ 
+         def _return_list_of_arrays(axes, origin):
++            # Handle empty arrays
++            if any(len(x) == 0 for x in axes):
++                return [np.array([]) for _ in range(self.wcs.naxis)]
++                
+             try:
+                 axes = np.broadcast_arrays(*axes)
+             except ValueError:
+2025-09-04 06:23:14,862 - INFO - Grading answer for astropy__astropy-7746...
+2025-09-04 06:23:14,864 - INFO - report: {'astropy__astropy-7746': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['astropy/wcs/tests/test_wcs.py::test_zero_size_input']}, 'PASS_TO_PASS': {'success': ['astropy/wcs/tests/test_wcs.py::TestMaps::test_consistency', 'astropy/wcs/tests/test_wcs.py::TestMaps::test_maps', 'astropy/wcs/tests/test_wcs.py::TestSpectra::test_consistency', 'astropy/wcs/tests/test_wcs.py::TestSpectra::test_spectra', 'astropy/wcs/tests/test_wcs.py::test_fixes', 'astropy/wcs/tests/test_wcs.py::test_outside_sky', 'astropy/wcs/tests/test_wcs.py::test_pix2world', 'astropy/wcs/tests/test_wcs.py::test_load_fits_path', 'astropy/wcs/tests/test_wcs.py::test_extra_kwarg', 'astropy/wcs/tests/test_wcs.py::test_3d_shapes', 'astropy/wcs/tests/test_wcs.py::test_preserve_shape', 'astropy/wcs/tests/test_wcs.py::test_shape_mismatch', 'astropy/wcs/tests/test_wcs.py::test_invalid_shape', 'astropy/wcs/tests/test_wcs.py::test_warning_about_defunct_keywords', 'astropy/wcs/tests/test_wcs.py::test_warning_about_defunct_keywords_exception', 'astropy/wcs/tests/test_wcs.py::test_to_header_string', 'astropy/wcs/tests/test_wcs.py::test_to_fits', 'astropy/wcs/tests/test_wcs.py::test_to_header_warning', 'astropy/wcs/tests/test_wcs.py::test_no_comments_in_header', 'astropy/wcs/tests/test_wcs.py::test_find_all_wcs_crash', 'astropy/wcs/tests/test_wcs.py::test_validate', 'astropy/wcs/tests/test_wcs.py::test_validate_with_2_wcses', 'astropy/wcs/tests/test_wcs.py::test_all_world2pix', 'astropy/wcs/tests/test_wcs.py::test_fixes2', 'astropy/wcs/tests/test_wcs.py::test_unit_normalization', 'astropy/wcs/tests/test_wcs.py::test_footprint_to_file', 'astropy/wcs/tests/test_wcs.py::test_validate_faulty_wcs', 'astropy/wcs/tests/test_wcs.py::test_error_message', 'astropy/wcs/tests/test_wcs.py::test_calc_footprint_1', 'astropy/wcs/tests/test_wcs.py::test_calc_footprint_2', 'astropy/wcs/tests/test_wcs.py::test_calc_footprint_3', 'astropy/wcs/tests/test_wcs.py::test_printwcs', 'astropy/wcs/tests/test_wcs.py::test_no_iteration', 'astropy/wcs/tests/test_wcs.py::test_sip_tpv_agreement', 'astropy/wcs/tests/test_wcs.py::test_tpv_copy', 'astropy/wcs/tests/test_wcs.py::test_hst_wcs', 'astropy/wcs/tests/test_wcs.py::test_list_naxis', 'astropy/wcs/tests/test_wcs.py::test_sip_broken', 'astropy/wcs/tests/test_wcs.py::test_no_truncate_crval', 'astropy/wcs/tests/test_wcs.py::test_no_truncate_crval_try2', 'astropy/wcs/tests/test_wcs.py::test_no_truncate_crval_p17', 'astropy/wcs/tests/test_wcs.py::test_no_truncate_using_compare', 'astropy/wcs/tests/test_wcs.py::test_passing_ImageHDU', 'astropy/wcs/tests/test_wcs.py::test_inconsistent_sip', 'astropy/wcs/tests/test_wcs.py::test_naxis', 'astropy/wcs/tests/test_wcs.py::test_sip_with_altkey', 'astropy/wcs/tests/test_wcs.py::test_to_fits_1', 'astropy/wcs/tests/test_wcs.py::test_keyedsip'], 'failure': ['astropy/wcs/tests/test_wcs.py::test_dict_init', 'astropy/wcs/tests/test_wcs.py::test_broadcasting', 'astropy/wcs/tests/test_wcs.py::test_crpix_maps_to_crval', 'astropy/wcs/tests/test_wcs.py::test_scamp_sip_distortion_parameters', 'astropy/wcs/tests/test_wcs.py::test_out_of_bounds', 'astropy/wcs/tests/test_wcs.py::test_sip', 'astropy/wcs/tests/test_wcs.py::test_invalid_spherical', 'astropy/wcs/tests/test_wcs.py::test_bounds_check']}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for astropy__astropy-7746: resolved: False
+2025-09-04 06:23:14,865 - INFO - Attempting to stop container sweb.eval.astropy__astropy-7746.lite_claude_all...
+2025-09-04 06:23:30,590 - INFO - Attempting to remove container sweb.eval.astropy__astropy-7746.lite_claude_all...
+2025-09-04 06:23:30,630 - INFO - Container sweb.eval.astropy__astropy-7746.lite_claude_all removed.
+2025-09-04 06:23:30,630 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.astropy_1776_astropy-7746:latest...
+2025-09-04 06:23:30,851 - INFO - Image swebench/sweb.eval.x86_64.astropy_1776_astropy-7746:latest removed.

@@ -1,0 +1,51 @@
+2025-08-25 03:02:24,337 - INFO - Creating container for sphinx-doc__sphinx-8120...
+2025-08-25 03:02:24,635 - INFO - Container for sphinx-doc__sphinx-8120 created: 22273e360f185f028a78d316b6aea323f947d1dbbaba4fee92d9f16d0fe6362e
+2025-08-25 03:02:30,336 - INFO - Container for sphinx-doc__sphinx-8120 started: 22273e360f185f028a78d316b6aea323f947d1dbbaba4fee92d9f16d0fe6362e
+2025-08-25 03:02:30,336 - INFO - Intermediate patch for sphinx-doc__sphinx-8120 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-8120/patch.diff, now applying to container...
+2025-08-25 03:02:31,300 - INFO - >>>>> Applied Patch:
+Checking patch sphinx/locale/__init__.py...
+Applied patch sphinx/locale/__init__.py cleanly.
+
+2025-08-25 03:02:32,047 - INFO - Git diff before:
+diff --git a/sphinx/locale/__init__.py b/sphinx/locale/__init__.py
+index 385ca3566..a3ea6ed25 100644
+--- a/sphinx/locale/__init__.py
++++ b/sphinx/locale/__init__.py
+@@ -134,7 +134,9 @@ def init(locale_dirs: List[str], language: str,
+             if translator is None:
+                 translator = trans
+             else:
+-                translator.add_fallback(trans)
++                # Make the new translation the primary and add the existing one as fallback
++                trans.add_fallback(translator)
++                translator = trans
+         except Exception:
+             # Language couldn't be found in the specified path
+             pass
+2025-08-25 03:02:32,048 - INFO - Eval script for sphinx-doc__sphinx-8120 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-8120/eval.sh; copying to container...
+2025-08-25 03:02:45,207 - INFO - Test runtime: 12.88 seconds
+2025-08-25 03:02:45,209 - INFO - Test output for sphinx-doc__sphinx-8120 written to logs/run_evaluation/verified_claude_new/agentless_claude/sphinx-doc__sphinx-8120/test_output.txt
+2025-08-25 03:02:45,313 - INFO - Git diff after:
+diff --git a/sphinx/locale/__init__.py b/sphinx/locale/__init__.py
+index 385ca3566..a3ea6ed25 100644
+--- a/sphinx/locale/__init__.py
++++ b/sphinx/locale/__init__.py
+@@ -134,7 +134,9 @@ def init(locale_dirs: List[str], language: str,
+             if translator is None:
+                 translator = trans
+             else:
+-                translator.add_fallback(trans)
++                # Make the new translation the primary and add the existing one as fallback
++                trans.add_fallback(translator)
++                translator = trans
+         except Exception:
+             # Language couldn't be found in the specified path
+             pass
+2025-08-25 03:02:45,314 - INFO - Grading answer for sphinx-doc__sphinx-8120...
+2025-08-25 03:02:45,432 - INFO - report: {'sphinx-doc__sphinx-8120': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/test_intl.py::test_customize_system_message'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/test_intl.py::test_text_toctree', 'tests/test_intl.py::test_text_emit_warnings', 'tests/test_intl.py::test_text_warning_node', 'tests/test_intl.py::test_text_title_underline', 'tests/test_intl.py::test_text_subdirs', 'tests/test_intl.py::test_text_inconsistency_warnings', 'tests/test_intl.py::test_text_literalblock_warnings', 'tests/test_intl.py::test_text_definition_terms', 'tests/test_intl.py::test_text_glossary_term', 'tests/test_intl.py::test_text_glossary_term_inconsistencies', 'tests/test_intl.py::test_gettext_section', 'tests/test_intl.py::test_text_section', 'tests/test_intl.py::test_text_seealso', 'tests/test_intl.py::test_text_figure_captions', 'tests/test_intl.py::test_text_rubric', 'tests/test_intl.py::test_text_docfields', 'tests/test_intl.py::test_text_admonitions', 'tests/test_intl.py::test_gettext_toctree', 'tests/test_intl.py::test_gettext_table', 'tests/test_intl.py::test_text_table', 'tests/test_intl.py::test_gettext_topic', 'tests/test_intl.py::test_text_topic', 'tests/test_intl.py::test_gettext_definition_terms', 'tests/test_intl.py::test_gettext_glossary_terms', 'tests/test_intl.py::test_gettext_glossary_term_inconsistencies', 'tests/test_intl.py::test_gettext_literalblock', 'tests/test_intl.py::test_gettext_buildr_ignores_only_directive', 'tests/test_intl.py::test_gettext_dont_rebuild_mo', 'tests/test_intl.py::test_html_footnotes', 'tests/test_intl.py::test_html_undefined_refs', 'tests/test_intl.py::test_html_index_entries', 'tests/test_intl.py::test_html_versionchanges', 'tests/test_intl.py::test_html_docfields', 'tests/test_intl.py::test_html_template', 'tests/test_intl.py::test_html_rebuild_mo', 'tests/test_intl.py::test_xml_footnotes', 'tests/test_intl.py::test_xml_footnote_backlinks', 'tests/test_intl.py::test_xml_refs_in_python_domain', 'tests/test_intl.py::test_xml_keep_external_links', 'tests/test_intl.py::test_xml_role_xref', 'tests/test_intl.py::test_xml_warnings', 'tests/test_intl.py::test_text_references', 'tests/test_intl.py::test_image_glob_intl', 'tests/test_intl.py::test_image_glob_intl_using_figure_language_filename'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sphinx-doc__sphinx-8120: resolved: True
+2025-08-25 03:02:45,434 - INFO - Attempting to stop container sweb.eval.sphinx-doc__sphinx-8120.verified_claude_new...
+2025-08-25 03:03:01,192 - INFO - Attempting to remove container sweb.eval.sphinx-doc__sphinx-8120.verified_claude_new...
+2025-08-25 03:03:01,258 - INFO - Container sweb.eval.sphinx-doc__sphinx-8120.verified_claude_new removed.
+2025-08-25 03:03:01,258 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8120:latest...
+2025-08-25 03:03:01,462 - INFO - Image swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8120:latest removed.

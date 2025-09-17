@@ -1,0 +1,53 @@
+2025-08-25 02:50:08,988 - INFO - Creating container for django__django-13158...
+2025-08-25 02:50:11,050 - INFO - Container for django__django-13158 created: ebc4e9934181537824199d98ecf6332486003b825c2ec2f0a1a6dd9c65181dfa
+2025-08-25 02:50:14,367 - INFO - Container for django__django-13158 started: ebc4e9934181537824199d98ecf6332486003b825c2ec2f0a1a6dd9c65181dfa
+2025-08-25 02:50:14,367 - INFO - Intermediate patch for django__django-13158 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-13158/patch.diff, now applying to container...
+2025-08-25 02:50:14,627 - INFO - >>>>> Applied Patch:
+Checking patch django/db/models/query.py...
+Applied patch django/db/models/query.py cleanly.
+
+2025-08-25 02:50:15,642 - INFO - Git diff before:
+diff --git a/django/db/models/query.py b/django/db/models/query.py
+index 07d6ffd4ca..67a4f9fce2 100644
+--- a/django/db/models/query.py
++++ b/django/db/models/query.py
+@@ -919,6 +919,12 @@ class QuerySet:
+     def none(self):
+         """Return an empty QuerySet."""
+         clone = self._chain()
++        # Handle case where this is a combined query (e.g. union)
++        if clone.query.combinator:
++            # Clear the combinator to ensure emptiness propagates correctly
++            clone.query.combinator = None
++            clone.query.combinator_all = False
++            clone.query.combined_queries = ()
+         clone.query.set_empty()
+         return clone
+2025-08-25 02:50:15,642 - INFO - Eval script for django__django-13158 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-13158/eval.sh; copying to container...
+2025-08-25 02:50:29,261 - INFO - Test runtime: 13.47 seconds
+2025-08-25 02:50:29,261 - INFO - Test output for django__django-13158 written to logs/run_evaluation/verified_claude_new/agentless_claude/django__django-13158/test_output.txt
+2025-08-25 02:50:29,338 - INFO - Git diff after:
+diff --git a/django/db/models/query.py b/django/db/models/query.py
+index 07d6ffd4ca..67a4f9fce2 100644
+--- a/django/db/models/query.py
++++ b/django/db/models/query.py
+@@ -919,6 +919,12 @@ class QuerySet:
+     def none(self):
+         """Return an empty QuerySet."""
+         clone = self._chain()
++        # Handle case where this is a combined query (e.g. union)
++        if clone.query.combinator:
++            # Clear the combinator to ensure emptiness propagates correctly
++            clone.query.combinator = None
++            clone.query.combinator_all = False
++            clone.query.combined_queries = ()
+         clone.query.set_empty()
+         return clone
+2025-08-25 02:50:29,338 - INFO - Grading answer for django__django-13158...
+2025-08-25 02:50:29,340 - INFO - report: {'django__django-13158': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_union_none (queries.test_qs_combinators.QuerySetSetOperationTests)'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_combining_multiple_models (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_count_difference (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_count_intersection (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_count_union (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_count_union_empty_result (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_difference_with_empty_qs (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_difference_with_values (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_intersection_with_empty_qs (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_intersection_with_values (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_limits (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_order_by_same_type (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_order_raises_on_non_selected_column (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_ordering (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_ordering_by_alias (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_ordering_by_f_expression (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_ordering_by_f_expression_and_alias (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_qs_with_subcompound_qs (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_simple_difference (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_simple_intersection (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_simple_union (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_distinct (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_with_empty_qs (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_with_extra_and_values_list (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_with_two_annotated_values_list (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_with_values (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_with_values_list_and_order (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_union_with_values_list_on_annotated_and_unannotated (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_unsupported_operations_on_combined_qs (queries.test_qs_combinators.QuerySetSetOperationTests)', 'test_unsupported_ordering_slicing_raises_db_error (queries.test_qs_combinators.QuerySetSetOperationTests)'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for django__django-13158: resolved: True
+2025-08-25 02:50:29,340 - INFO - Attempting to stop container sweb.eval.django__django-13158.verified_claude_new...
+2025-08-25 02:50:45,881 - INFO - Attempting to remove container sweb.eval.django__django-13158.verified_claude_new...
+2025-08-25 02:50:46,469 - INFO - Container sweb.eval.django__django-13158.verified_claude_new removed.
+2025-08-25 02:50:46,471 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.django_1776_django-13158:latest...
+2025-08-25 02:50:48,525 - INFO - Image swebench/sweb.eval.x86_64.django_1776_django-13158:latest removed.

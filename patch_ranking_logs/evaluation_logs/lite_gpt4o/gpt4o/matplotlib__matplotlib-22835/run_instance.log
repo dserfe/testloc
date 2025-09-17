@@ -1,0 +1,65 @@
+2025-08-22 02:53:41,365 - INFO - Creating container for matplotlib__matplotlib-22835...
+2025-08-22 02:53:57,796 - INFO - Container for matplotlib__matplotlib-22835 created: c57b0dcf9aada1b702d76f0f067758f50b333c84b11b7d31559f65a352a67f06
+2025-08-22 02:54:10,146 - INFO - Container for matplotlib__matplotlib-22835 started: c57b0dcf9aada1b702d76f0f067758f50b333c84b11b7d31559f65a352a67f06
+2025-08-22 02:54:10,146 - INFO - Intermediate patch for matplotlib__matplotlib-22835 written to logs/run_evaluation/lite_gpt_all/agentless/matplotlib__matplotlib-22835/patch.diff, now applying to container...
+2025-08-22 02:54:10,717 - INFO - >>>>> Applied Patch:
+Checking patch lib/matplotlib/artist.py...
+Applied patch lib/matplotlib/artist.py cleanly.
+
+2025-08-22 02:54:12,188 - INFO - Git diff before:
+diff --git a/lib/matplotlib/artist.py b/lib/matplotlib/artist.py
+index 1f33b9d3ec..d492e27ede 100644
+--- a/lib/matplotlib/artist.py
++++ b/lib/matplotlib/artist.py
+@@ -1304,10 +1304,13 @@ class Artist:
+             normed = self.norm(data)
+             if np.isfinite(normed):
+                 # Midpoints of neighboring color intervals.
+-                neighbors = self.norm.inverse(
+-                    (int(self.norm(data) * n) + np.array([0, 1])) / n)
+-                delta = abs(neighbors - data).max()
+-                g_sig_digits = cbook._g_sig_digits(data, delta)
++                try:
++                    neighbors = self.norm.inverse(
++                        (int(self.norm(data) * n) + np.array([0, 1])) / n)
++                    delta = abs(neighbors - data).max()
++                    g_sig_digits = cbook._g_sig_digits(data, delta)
++                except ValueError:
++                    g_sig_digits = 3  # Default value if inversion is not possible
+             else:
+                 g_sig_digits = 3  # Consistent with default below.
+             return "[{:-#.{}g}]".format(data, g_sig_digits)
+2025-08-22 02:54:12,188 - INFO - Eval script for matplotlib__matplotlib-22835 written to logs/run_evaluation/lite_gpt_all/agentless/matplotlib__matplotlib-22835/eval.sh; copying to container...
+2025-08-22 02:54:31,464 - INFO - Test runtime: 19.01 seconds
+2025-08-22 02:54:31,464 - INFO - Test output for matplotlib__matplotlib-22835 written to logs/run_evaluation/lite_gpt_all/agentless/matplotlib__matplotlib-22835/test_output.txt
+2025-08-22 02:54:31,755 - INFO - Git diff after:
+diff --git a/lib/matplotlib/artist.py b/lib/matplotlib/artist.py
+index 1f33b9d3ec..d492e27ede 100644
+--- a/lib/matplotlib/artist.py
++++ b/lib/matplotlib/artist.py
+@@ -1304,10 +1304,13 @@ class Artist:
+             normed = self.norm(data)
+             if np.isfinite(normed):
+                 # Midpoints of neighboring color intervals.
+-                neighbors = self.norm.inverse(
+-                    (int(self.norm(data) * n) + np.array([0, 1])) / n)
+-                delta = abs(neighbors - data).max()
+-                g_sig_digits = cbook._g_sig_digits(data, delta)
++                try:
++                    neighbors = self.norm.inverse(
++                        (int(self.norm(data) * n) + np.array([0, 1])) / n)
++                    delta = abs(neighbors - data).max()
++                    g_sig_digits = cbook._g_sig_digits(data, delta)
++                except ValueError:
++                    g_sig_digits = 3  # Default value if inversion is not possible
+             else:
+                 g_sig_digits = 3  # Consistent with default below.
+             return "[{:-#.{}g}]".format(data, g_sig_digits)
+2025-08-22 02:54:31,755 - INFO - Grading answer for matplotlib__matplotlib-22835...
+2025-08-22 02:54:31,756 - INFO - report: {'matplotlib__matplotlib-22835': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['lib/matplotlib/tests/test_artist.py::test_format_cursor_data_BoundaryNorm']}, 'PASS_TO_PASS': {'success': ['lib/matplotlib/tests/test_artist.py::test_patch_transform_of_none', 'lib/matplotlib/tests/test_artist.py::test_collection_transform_of_none', 'lib/matplotlib/tests/test_artist.py::test_clipping[png]', 'lib/matplotlib/tests/test_artist.py::test_clipping[pdf]', 'lib/matplotlib/tests/test_artist.py::test_clipping_zoom[png]', 'lib/matplotlib/tests/test_artist.py::test_cull_markers', 'lib/matplotlib/tests/test_artist.py::test_hatching[png]', 'lib/matplotlib/tests/test_artist.py::test_hatching[pdf]', 'lib/matplotlib/tests/test_artist.py::test_remove', 'lib/matplotlib/tests/test_artist.py::test_default_edges[png]', 'lib/matplotlib/tests/test_artist.py::test_properties', 'lib/matplotlib/tests/test_artist.py::test_setp', 'lib/matplotlib/tests/test_artist.py::test_None_zorder', 'lib/matplotlib/tests/test_artist.py::test_artist_inspector_get_valid_values[-unknown]', 'lib/matplotlib/tests/test_artist.py::test_artist_inspector_get_valid_values[ACCEPTS:', 'lib/matplotlib/tests/test_artist.py::test_artist_inspector_get_valid_values[..', 'lib/matplotlib/tests/test_artist.py::test_artist_inspector_get_valid_values[arg', 'lib/matplotlib/tests/test_artist.py::test_artist_inspector_get_valid_values[*arg', 'lib/matplotlib/tests/test_artist.py::test_artist_inspector_get_aliases', 'lib/matplotlib/tests/test_artist.py::test_set_alpha', 'lib/matplotlib/tests/test_artist.py::test_set_alpha_for_array', 'lib/matplotlib/tests/test_artist.py::test_callbacks', 'lib/matplotlib/tests/test_artist.py::test_set_signature', 'lib/matplotlib/tests/test_artist.py::test_set_is_overwritten'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for matplotlib__matplotlib-22835: resolved: False
+2025-08-22 02:54:31,756 - INFO - Attempting to stop container sweb.eval.matplotlib__matplotlib-22835.lite_gpt_all...
+2025-08-22 02:54:48,645 - INFO - Attempting to remove container sweb.eval.matplotlib__matplotlib-22835.lite_gpt_all...
+2025-08-22 02:54:53,816 - INFO - Container sweb.eval.matplotlib__matplotlib-22835.lite_gpt_all removed.
+2025-08-22 02:54:53,816 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-22835:latest...
+2025-08-22 02:55:13,904 - INFO - Image swebench/sweb.eval.x86_64.matplotlib_1776_matplotlib-22835:latest removed.

@@ -1,0 +1,49 @@
+2025-08-22 02:57:02,889 - INFO - Creating container for sympy__sympy-23117...
+2025-08-22 02:57:03,785 - INFO - Container for sympy__sympy-23117 created: 0f296bf9dd4285b243d064eeb892b0877e855fd92ac9a66e124edb33e41208a6
+2025-08-22 02:57:05,244 - INFO - Container for sympy__sympy-23117 started: 0f296bf9dd4285b243d064eeb892b0877e855fd92ac9a66e124edb33e41208a6
+2025-08-22 02:57:05,244 - INFO - Intermediate patch for sympy__sympy-23117 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-23117/patch.diff, now applying to container...
+2025-08-22 02:57:07,191 - INFO - >>>>> Applied Patch:
+Checking patch sympy/tensor/array/ndim_array.py...
+Applied patch sympy/tensor/array/ndim_array.py cleanly.
+
+2025-08-22 02:57:08,220 - INFO - Git diff before:
+diff --git a/sympy/tensor/array/ndim_array.py b/sympy/tensor/array/ndim_array.py
+index 6490a655a4..adad224e35 100644
+--- a/sympy/tensor/array/ndim_array.py
++++ b/sympy/tensor/array/ndim_array.py
+@@ -194,6 +194,9 @@ def f(pointer):
+             if not isinstance(pointer, Iterable):
+                 return [pointer], ()
+ 
++            if not pointer:  # Handle empty iterable case
++                return [], (0,)
++
+             result = []
+             elems, shapes = zip(*[f(i) for i in pointer])
+             if len(set(shapes)) != 1:
+2025-08-22 02:57:08,220 - INFO - Eval script for sympy__sympy-23117 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-23117/eval.sh; copying to container...
+2025-08-22 02:57:17,885 - INFO - Test runtime: 9.42 seconds
+2025-08-22 02:57:17,885 - INFO - Test output for sympy__sympy-23117 written to logs/run_evaluation/lite_gpt_all/agentless/sympy__sympy-23117/test_output.txt
+2025-08-22 02:57:18,031 - INFO - Git diff after:
+diff --git a/sympy/tensor/array/ndim_array.py b/sympy/tensor/array/ndim_array.py
+index 6490a655a4..adad224e35 100644
+--- a/sympy/tensor/array/ndim_array.py
++++ b/sympy/tensor/array/ndim_array.py
+@@ -194,6 +194,9 @@ def f(pointer):
+             if not isinstance(pointer, Iterable):
+                 return [pointer], ()
+ 
++            if not pointer:  # Handle empty iterable case
++                return [], (0,)
++
+             result = []
+             elems, shapes = zip(*[f(i) for i in pointer])
+             if len(set(shapes)) != 1:
+2025-08-22 02:57:18,031 - INFO - Grading answer for sympy__sympy-23117...
+2025-08-22 02:57:18,032 - INFO - report: {'sympy__sympy-23117': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_issue_17851'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_array_negative_indices', 'test_issue_18361', 'test_issue_20222'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-23117: resolved: True
+2025-08-22 02:57:18,032 - INFO - Attempting to stop container sweb.eval.sympy__sympy-23117.lite_gpt_all...
+2025-08-22 02:57:33,625 - INFO - Attempting to remove container sweb.eval.sympy__sympy-23117.lite_gpt_all...
+2025-08-22 02:57:36,021 - INFO - Container sweb.eval.sympy__sympy-23117.lite_gpt_all removed.
+2025-08-22 02:57:36,022 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-23117:latest...
+2025-08-22 02:57:37,643 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-23117:latest removed.

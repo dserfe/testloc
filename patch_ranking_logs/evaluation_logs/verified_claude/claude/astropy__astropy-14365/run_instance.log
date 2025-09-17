@@ -1,0 +1,47 @@
+2025-08-25 02:48:18,611 - INFO - Creating container for astropy__astropy-14365...
+2025-08-25 02:48:19,158 - INFO - Container for astropy__astropy-14365 created: 1e76ea0d174f881ea36bf8df3cc2bda9829dc26f0536aa8419d11df52fcdd50f
+2025-08-25 02:48:19,969 - INFO - Container for astropy__astropy-14365 started: 1e76ea0d174f881ea36bf8df3cc2bda9829dc26f0536aa8419d11df52fcdd50f
+2025-08-25 02:48:19,969 - INFO - Intermediate patch for astropy__astropy-14365 written to logs/run_evaluation/verified_claude_new/agentless_claude/astropy__astropy-14365/patch.diff, now applying to container...
+2025-08-25 02:48:20,095 - INFO - >>>>> Applied Patch:
+Checking patch astropy/io/ascii/qdp.py...
+Applied patch astropy/io/ascii/qdp.py cleanly.
+
+2025-08-25 02:48:20,571 - INFO - Git diff before:
+diff --git a/astropy/io/ascii/qdp.py b/astropy/io/ascii/qdp.py
+index 83a4f004a..5f3a3621e 100644
+--- a/astropy/io/ascii/qdp.py
++++ b/astropy/io/ascii/qdp.py
+@@ -60,7 +60,7 @@ def _line_type(line, delimiter=None):
+     ValueError: Unrecognized QDP line...
+     """
+     _decimal_re = r"[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?"
+-    _command_re = r"READ [TS]ERR(\s+[0-9]+)+"
++    _command_re = r"(?i)READ [TS]ERR(\s+[0-9]+)+"
+ 
+     sep = delimiter
+     if delimiter is None:
+2025-08-25 02:48:20,571 - INFO - Eval script for astropy__astropy-14365 written to logs/run_evaluation/verified_claude_new/agentless_claude/astropy__astropy-14365/eval.sh; copying to container...
+2025-08-25 02:49:19,907 - INFO - Test runtime: 59.26 seconds
+2025-08-25 02:49:19,907 - INFO - Test output for astropy__astropy-14365 written to logs/run_evaluation/verified_claude_new/agentless_claude/astropy__astropy-14365/test_output.txt
+2025-08-25 02:49:19,977 - INFO - Git diff after:
+diff --git a/astropy/io/ascii/qdp.py b/astropy/io/ascii/qdp.py
+index 83a4f004a..5f3a3621e 100644
+--- a/astropy/io/ascii/qdp.py
++++ b/astropy/io/ascii/qdp.py
+@@ -60,7 +60,7 @@ def _line_type(line, delimiter=None):
+     ValueError: Unrecognized QDP line...
+     """
+     _decimal_re = r"[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?"
+-    _command_re = r"READ [TS]ERR(\s+[0-9]+)+"
++    _command_re = r"(?i)READ [TS]ERR(\s+[0-9]+)+"
+ 
+     sep = delimiter
+     if delimiter is None:
+2025-08-25 02:49:19,977 - INFO - Grading answer for astropy__astropy-14365...
+2025-08-25 02:49:19,993 - INFO - report: {'astropy__astropy-14365': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['astropy/io/ascii/tests/test_qdp.py::test_roundtrip[True]']}, 'PASS_TO_PASS': {'success': ['astropy/io/ascii/tests/test_qdp.py::test_roundtrip[False]', 'astropy/io/ascii/tests/test_qdp.py::test_read_example', 'astropy/io/ascii/tests/test_qdp.py::test_roundtrip_example', 'astropy/io/ascii/tests/test_qdp.py::test_read_write_simple', 'astropy/io/ascii/tests/test_qdp.py::test_read_write_simple_specify_name', 'astropy/io/ascii/tests/test_qdp.py::test_get_lines_from_qdp'], 'failure': ['astropy/io/ascii/tests/test_qdp.py::test_get_tables_from_qdp_file', 'astropy/io/ascii/tests/test_qdp.py::test_roundtrip_example_comma']}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for astropy__astropy-14365: resolved: False
+2025-08-25 02:49:19,994 - INFO - Attempting to stop container sweb.eval.astropy__astropy-14365.verified_claude_new...
+2025-08-25 02:49:35,967 - INFO - Attempting to remove container sweb.eval.astropy__astropy-14365.verified_claude_new...
+2025-08-25 02:49:36,822 - INFO - Container sweb.eval.astropy__astropy-14365.verified_claude_new removed.
+2025-08-25 02:49:36,823 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.astropy_1776_astropy-14365:latest...
+2025-08-25 02:49:37,453 - INFO - Image swebench/sweb.eval.x86_64.astropy_1776_astropy-14365:latest removed.

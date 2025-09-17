@@ -1,0 +1,66 @@
+{
+  "instance_id": "pytest-dev__pytest-7205",
+  "container_id": "677770236b97d10f3f13c45e1734787673eda2ea1337854d4228b1a062872a1d",
+  "regression": {
+    "results": [
+      {
+        "patch_file": "all_patches/verified_gpt4o_all_unique_patches/pytest-dev__pytest-7205/dedup_patch_0.jsonl",
+        "inst": "pytest-dev__pytest-7205",
+        "passed": 0,
+        "failed": 2
+      },
+      {
+        "patch_file": "all_patches/verified_gpt4o_all_unique_patches/pytest-dev__pytest-7205/dedup_patch_1.jsonl",
+        "inst": "pytest-dev__pytest-7205",
+        "passed": 0,
+        "failed": 2
+      },
+      {
+        "patch_file": "all_patches/verified_gpt4o_all_unique_patches/pytest-dev__pytest-7205/dedup_patch_2.jsonl",
+        "inst": "pytest-dev__pytest-7205",
+        "passed": 0,
+        "failed": 2
+      },
+      {
+        "patch_file": "all_patches/verified_gpt4o_all_unique_patches/pytest-dev__pytest-7205/dedup_patch_3.jsonl",
+        "inst": "pytest-dev__pytest-7205",
+        "passed": 0,
+        "failed": 2
+      },
+      {
+        "patch_file": "all_patches/verified_gpt4o_all_unique_patches/pytest-dev__pytest-7205/dedup_patch_4.jsonl",
+        "inst": "pytest-dev__pytest-7205",
+        "passed": 0,
+        "failed": 2
+      }
+    ],
+    "top_passed": 0,
+    "top_subset_size": 5
+  },
+  "reproduction": {
+    "testing/test_setuponly.py::test_show_fixtures_with_parameter_ids_function#1": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "testing/test_setuponly.py::test_show_fixtures_and_execute_test#2": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "testing/test_setuponly.py::test_setup_show_with_KeyboardInterrupt_in_test#3": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "testing/test_setuponly.py::test_show_fixtures_with_parameters#4": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "reproduce_bug.py#5": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    },
+    "testing/test_setuponly.py::test_setup_show_with_KeyboardInterrupt_in_test#6": {
+      "repro_fails_on_clean": false,
+      "outcomes": []
+    }
+  }
+}

@@ -1,0 +1,87 @@
+2025-09-04 06:32:35,831 - INFO - Creating container for sympy__sympy-23191...
+2025-09-04 06:32:36,213 - INFO - Container for sympy__sympy-23191 created: 446447ea3c8dd4877d80e18b1efc64c44368856006cd35c71de75eeca124a78f
+2025-09-04 06:32:36,710 - INFO - Container for sympy__sympy-23191 started: 446447ea3c8dd4877d80e18b1efc64c44368856006cd35c71de75eeca124a78f
+2025-09-04 06:32:36,711 - INFO - Intermediate patch for sympy__sympy-23191 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-23191/patch.diff, now applying to container...
+2025-09-04 06:32:36,928 - INFO - >>>>> Applied Patch:
+Checking patch sympy/printing/pretty/pretty.py...
+Applied patch sympy/printing/pretty/pretty.py cleanly.
+
+2025-09-04 06:32:37,393 - INFO - Git diff before:
+diff --git a/sympy/printing/pretty/pretty.py b/sympy/printing/pretty/pretty.py
+index 66461181d0..c953186bf8 100644
+--- a/sympy/printing/pretty/pretty.py
++++ b/sympy/printing/pretty/pretty.py
+@@ -1145,21 +1145,16 @@ def _print_BasisDependent(self, expr):
+                 tempstr = partstr
+                 tempstr = tempstr.replace(vectstrs[i], '')
+                 if '\N{right parenthesis extension}' in tempstr:   # If scalar is a fraction
+-                    for paren in range(len(tempstr)):
+-                        flag[i] = 1
+-                        if tempstr[paren] == '\N{right parenthesis extension}':
+-                            tempstr = tempstr[:paren] + '\N{right parenthesis extension}'\
+-                                         + ' '  + vectstrs[i] + tempstr[paren + 1:]
+-                            break
++                    flag[i] = 1
++                    last_paren = tempstr.rindex('\N{right parenthesis extension}')
++                    tempstr = tempstr[:last_paren + 1] + ' ' + vectstrs[i] + tempstr[last_paren + 1:]
+                 elif '\N{RIGHT PARENTHESIS LOWER HOOK}' in tempstr:
+                     flag[i] = 1
+-                    tempstr = tempstr.replace('\N{RIGHT PARENTHESIS LOWER HOOK}',
+-                                        '\N{RIGHT PARENTHESIS LOWER HOOK}'
+-                                        + ' ' + vectstrs[i])
++                    last_paren = tempstr.rindex('\N{RIGHT PARENTHESIS LOWER HOOK}')
++                    tempstr = tempstr[:last_paren + 1] + ' ' + vectstrs[i] + tempstr[last_paren + 1:]
+                 else:
+-                    tempstr = tempstr.replace('\N{RIGHT PARENTHESIS UPPER HOOK}',
+-                                        '\N{RIGHT PARENTHESIS UPPER HOOK}'
+-                                        + ' ' + vectstrs[i])
++                    last_paren = tempstr.rindex('\N{RIGHT PARENTHESIS UPPER HOOK}')
++                    tempstr = tempstr[:last_paren + 1] + ' ' + vectstrs[i] + tempstr[last_paren + 1:]
+                 o1[i] = tempstr
+ 
+         o1 = [x.split('\n') for x in o1]
+2025-09-04 06:32:37,394 - INFO - Eval script for sympy__sympy-23191 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-23191/eval.sh; copying to container...
+2025-09-04 06:32:42,616 - INFO - Test runtime: 5.14 seconds
+2025-09-04 06:32:42,616 - INFO - Test output for sympy__sympy-23191 written to logs/run_evaluation/lite_claude_all/agentless_claude/sympy__sympy-23191/test_output.txt
+2025-09-04 06:32:42,675 - INFO - Git diff after:
+diff --git a/sympy/printing/pretty/pretty.py b/sympy/printing/pretty/pretty.py
+index 66461181d0..c953186bf8 100644
+--- a/sympy/printing/pretty/pretty.py
++++ b/sympy/printing/pretty/pretty.py
+@@ -1145,21 +1145,16 @@ def _print_BasisDependent(self, expr):
+                 tempstr = partstr
+                 tempstr = tempstr.replace(vectstrs[i], '')
+                 if '\N{right parenthesis extension}' in tempstr:   # If scalar is a fraction
+-                    for paren in range(len(tempstr)):
+-                        flag[i] = 1
+-                        if tempstr[paren] == '\N{right parenthesis extension}':
+-                            tempstr = tempstr[:paren] + '\N{right parenthesis extension}'\
+-                                         + ' '  + vectstrs[i] + tempstr[paren + 1:]
+-                            break
++                    flag[i] = 1
++                    last_paren = tempstr.rindex('\N{right parenthesis extension}')
++                    tempstr = tempstr[:last_paren + 1] + ' ' + vectstrs[i] + tempstr[last_paren + 1:]
+                 elif '\N{RIGHT PARENTHESIS LOWER HOOK}' in tempstr:
+                     flag[i] = 1
+-                    tempstr = tempstr.replace('\N{RIGHT PARENTHESIS LOWER HOOK}',
+-                                        '\N{RIGHT PARENTHESIS LOWER HOOK}'
+-                                        + ' ' + vectstrs[i])
++                    last_paren = tempstr.rindex('\N{RIGHT PARENTHESIS LOWER HOOK}')
++                    tempstr = tempstr[:last_paren + 1] + ' ' + vectstrs[i] + tempstr[last_paren + 1:]
+                 else:
+-                    tempstr = tempstr.replace('\N{RIGHT PARENTHESIS UPPER HOOK}',
+-                                        '\N{RIGHT PARENTHESIS UPPER HOOK}'
+-                                        + ' ' + vectstrs[i])
++                    last_paren = tempstr.rindex('\N{RIGHT PARENTHESIS UPPER HOOK}')
++                    tempstr = tempstr[:last_paren + 1] + ' ' + vectstrs[i] + tempstr[last_paren + 1:]
+                 o1[i] = tempstr
+ 
+         o1 = [x.split('\n') for x in o1]
+2025-09-04 06:32:42,675 - INFO - Grading answer for sympy__sympy-23191...
+2025-09-04 06:32:42,676 - INFO - report: {'sympy__sympy-23191': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['test_issue_23058']}, 'PASS_TO_PASS': {'success': ['test_str_printing', 'test_pretty_print_unicode_v', 'test_latex_printing'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for sympy__sympy-23191: resolved: False
+2025-09-04 06:32:42,676 - INFO - Attempting to stop container sweb.eval.sympy__sympy-23191.lite_claude_all...
+2025-09-04 06:32:57,990 - INFO - Attempting to remove container sweb.eval.sympy__sympy-23191.lite_claude_all...
+2025-09-04 06:32:58,016 - INFO - Container sweb.eval.sympy__sympy-23191.lite_claude_all removed.
+2025-09-04 06:32:58,016 - INFO - Attempting to remove image swebench/sweb.eval.x86_64.sympy_1776_sympy-23191:latest...
+2025-09-04 06:32:58,177 - INFO - Image swebench/sweb.eval.x86_64.sympy_1776_sympy-23191:latest removed.

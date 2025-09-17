@@ -2,6 +2,9 @@
 
 [Under Construction]
 
+- Logs: [zenodo link TBA]
+- File Structures
+
 
 ## 🌟 Setup
 

@@ -1,6 +1,7 @@
 # Issue Test Localizer
 
 - source code of testloc: [src](./src)
+- regression tests and reproduction tests: [tests](./tests)
 - logs and data: https://drive.google.com/drive/folders/1IQA67tSZUSx1FqG_IinijBWx1TpbNVIW?usp=share_link 
 
 ## 🌟 Setup

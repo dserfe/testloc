@@ -1,10 +1,7 @@
 # Issue Test Localizer
 
-[Under Construction]
-
-- Logs: [zenodo link TBA]
-- File Structures
-
+- source code of testloc: [src](./src)
+- logs and data: https://drive.google.com/drive/folders/1IQA67tSZUSx1FqG_IinijBWx1TpbNVIW?usp=share_link 
 
 ## 🌟 Setup
 
